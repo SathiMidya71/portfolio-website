@@ -3,7 +3,6 @@ import { CaseStudies } from "@/components/site/case-studies"
 import { Contact } from "@/components/site/contact"
 import { Experience } from "@/components/site/experience"
 import { Hero } from "@/components/site/hero"
-import { QuickLinks } from "@/components/site/quick-links"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
 import { Skills } from "@/components/site/skills"
@@ -15,7 +14,6 @@ export default function Home() {
       <SiteHeader />
       <main id="top">
         <Hero />
-        <QuickLinks />
         <About />
         <CaseStudies />
         <Experience />

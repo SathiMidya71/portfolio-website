@@ -11,7 +11,7 @@ export function SiteFooter() {
   ]
   return (
     <footer className="pt-6 pb-14">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-10 lg:px-[120px]">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-10 lg:px-[120px]">
         <div className="flex flex-wrap justify-between gap-8">
           <Link href="#top" className="flex items-center gap-3 text-xl font-semibold text-black">
             <Image src={profile.photo} alt="" width={48} height={48} className="size-12 rounded-full object-cover object-[center_25%]" />

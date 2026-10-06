@@ -29,29 +29,49 @@ export const stats = [
   { value: "4+", label: "Healthcare apps shipped" },
 ]
 
-export const quickLinks = [
+// Fanned cards under the hero intro. The "video" card shows `heroVideo` once it exists.
+export const heroVideo = "" // e.g. "/intro.mp4" (place the file in /public)
+
+export type HeroCard =
+  | { kind: "video" }
+  | {
+      kind: "card"
+      title: string
+      text: string
+      cta: string
+      href: string
+      color: string
+      external?: boolean
+    }
+
+export const heroCards: HeroCard[] = [
   {
-    icon: "layout",
+    kind: "card",
     title: "Recent work",
-    text: "How I turn messy enterprise problems into shipped, measurable experiences.",
-    cta: "Read case studies",
+    text: "See how I turn complex enterprise workflows into products people adopt.",
+    cta: "Read Case Studies",
     href: "#work",
+    color: "#ffd6ae",
+  },
+  { kind: "video" },
+  {
+    kind: "card",
+    title: "Visual explorations",
+    text: "UI concepts, dashboards and visual design experiments I share on Behance.",
+    cta: "View My Behance",
+    href: "https://behance.net/virgosathi0041",
+    color: "#d9d6fe",
+    external: true,
   },
   {
-    icon: "search",
-    title: "Research first",
-    text: "Interviews, usability tests and A/B experiments are how every design decision starts.",
-    cta: "See my process",
+    kind: "card",
+    title: "How I work",
+    text: "Research first: interviews, usability tests and A/B experiments behind every decision.",
+    cta: "See My Process",
     href: "#skills",
+    color: "#b2ddff",
   },
-  {
-    icon: "sparkles",
-    title: "Design systems",
-    text: "Component libraries and role-based systems that help teams ship faster and stay consistent.",
-    cta: "Where I've worked",
-    href: "#experience",
-  },
-] as const
+]
 
 export const about = {
   eyebrow: "A bit about me",

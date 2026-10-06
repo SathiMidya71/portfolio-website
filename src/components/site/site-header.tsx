@@ -5,7 +5,7 @@ import { nav, profile } from "@/lib/content"
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-b from-cream from-60% to-transparent py-5">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 sm:px-10 lg:px-[120px]">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-10 lg:px-[120px]">
         <Link href="#top" className="flex items-center gap-3 text-xl font-semibold text-black">
           <Image
             src={profile.photo}

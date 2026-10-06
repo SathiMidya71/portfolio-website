@@ -12,7 +12,7 @@ export function Section({
 }) {
   return (
     <section id={id} className={cn("mb-10 scroll-mt-24 max-sm:mb-6", className)}>
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-10 lg:px-[120px]">{children}</div>
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-10 lg:px-[120px]">{children}</div>
     </section>
   )
 }
@@ -40,7 +40,8 @@ export function SectionHeading({
 }
 
 /** Frosted white card used throughout the page. */
-export const surface = "glass rounded-[20px] ring-0 shadow-none py-0 gap-0"
+export const surface =
+  "glass rounded-[20px] ring-0 py-0 gap-0 shadow-[0_1px_2px_rgba(16,24,40,0.03)] backdrop-blur-sm"
 
 /** Button style overrides matching the reference (black 8px CTA, outlined pill). */
 export const btnPrimary = "h-10 rounded-lg px-3.5 text-sm font-semibold"
