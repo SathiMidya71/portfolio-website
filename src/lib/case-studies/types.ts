@@ -83,6 +83,8 @@ export type Block =
       /** "phone" renders narrow and centred, "wide" fills the column */
       layout: "phone" | "wide"
       background?: string
+      /** Optional full-width coloured stage behind a phone video, with a title shown on it */
+      stage?: { color: string; title: string; text?: string }
     }
 
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"

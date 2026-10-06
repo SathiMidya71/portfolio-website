@@ -172,6 +172,19 @@ export const arcConnectApp: CaseStudy = {
       title: "Key flows",
       blocks: [
         {
+          type: "video",
+          layout: "wide",
+          src: `${dir}/onboarding.mp4`,
+          poster: `${dir}/onboarding-poster.jpg`,
+          width: 1200,
+          height: 1200,
+          stage: {
+            color: "#212121",
+            title: "Splash and onboarding",
+            text: "The app opens on an animated Arc Connect mark, then onboarding introduces the app and its terms of use before sign-up.",
+          },
+        },
+        {
           type: "phoneFlow",
           title: "Sign up and log in",
           tone: "green",
