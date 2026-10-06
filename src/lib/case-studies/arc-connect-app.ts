@@ -176,6 +176,7 @@ export const arcConnectApp: CaseStudy = {
           title: "Splash and onboarding",
           eyebrow: "Authentication",
           display: "Onboarding",
+          background: "#212121",
           text: [
             "Onboarding is essential for any application, as it helps users understand the features and functionality of the app. It guides them through the interface and teaches them how to navigate, making it easier to use the app effectively.",
             "Onboarding can also increase engagement and retention by giving users a positive first experience. Arc Connect opens on its animated mark, then introduces the app and its Terms of Use before sign-up.",

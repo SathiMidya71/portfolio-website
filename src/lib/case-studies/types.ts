@@ -95,6 +95,8 @@ export type Block =
       eyebrow?: string
       /** Large faint display word shown as the visual heading */
       display?: string
+      /** Dark container colour; the block renders in light text on top of it */
+      background?: string
       text: string[]
       sticker: Img
       video: { src: string; poster: string; label: string }

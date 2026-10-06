@@ -122,20 +122,27 @@ export function VideoView({ block }: { block: VideoBlock }) {
 /** Cut-out sticker on the page background, with the animated screen playing on top of it. */
 export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
   const { sticker, video, screen } = block
+  const dark = Boolean(block.background)
   return (
-    <figure>
+    <figure
+      className={cn(dark && "overflow-hidden rounded-[24px] px-6 py-10 sm:px-10 md:py-12")}
+      style={dark ? { background: block.background } : undefined}
+    >
       {block.display ? (
         <>
           <h3 className="sr-only">{block.title}</h3>
           {block.eyebrow && (
-            <p className="flex items-center gap-2 text-[15px] font-medium text-ink">
+            <p className={cn("flex items-center gap-2 text-[15px] font-medium", dark ? "text-white" : "text-ink")}>
               <span aria-hidden className="size-2.5 rounded-full" style={{ background: "#A9D158" }} />
               {block.eyebrow}
             </p>
           )}
           <p
             aria-hidden
-            className="mt-1 text-[64px] leading-[0.95] font-normal tracking-[-0.03em] text-ink/[0.07] select-none sm:text-[96px] md:text-[120px]"
+            className={cn(
+              "mt-1 text-[64px] leading-[0.95] font-normal tracking-[-0.03em] select-none sm:text-[96px] md:text-[120px]",
+              dark ? "text-white/[0.08]" : "text-ink/[0.07]"
+            )}
           >
             {block.display}
           </p>
@@ -144,7 +151,12 @@ export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
         <h3 className="text-[22px] leading-tight font-semibold text-ink md:text-2xl">{block.title}</h3>
       )}
       <div className="mt-8 grid items-center gap-8 md:grid-cols-[1.45fr_1fr] md:gap-10">
-        <div className="relative mx-auto w-full max-w-[560px] drop-shadow-[0_22px_32px_rgba(16,24,40,0.16)]">
+        <div
+          className={cn(
+            "relative mx-auto w-full max-w-[560px]",
+            dark ? "drop-shadow-[0_22px_36px_rgba(0,0,0,0.45)]" : "drop-shadow-[0_22px_32px_rgba(16,24,40,0.16)]"
+          )}
+        >
           <Image
             src={sticker.src}
             alt={sticker.alt}
@@ -168,7 +180,9 @@ export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
             aria-label={video.label}
           />
         </div>
-        <figcaption className="flex flex-col gap-4 text-[15px] leading-relaxed text-body md:text-right">
+        <figcaption
+          className={cn("flex flex-col gap-4 text-[15px] leading-relaxed md:text-right", dark ? "text-white/75" : "text-body")}
+        >
           {block.text.map((t) => (
             <p key={t}>{t}</p>
           ))}
