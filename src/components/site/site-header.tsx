@@ -31,11 +31,16 @@ export function SiteHeader() {
     const onScroll = () => {
       setScrolled(window.scrollY > 60)
       if (pathname.startsWith("/work")) return setActive("/#work")
-      // On the home page, the active item is the last section whose top has passed 40% of the viewport
+      // On the home page, the active item is the section whose top is closest above 40% of the viewport
+      const line = window.innerHeight * 0.4
       let current = "/"
+      let best = -Infinity
       for (const item of nav) {
-        const el = document.getElementById(item.href.replace("/#", ""))
-        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) current = item.href
+        const top = document.getElementById(item.href.replace("/#", ""))?.getBoundingClientRect().top
+        if (top !== undefined && top < line && top > best) {
+          best = top
+          current = item.href
+        }
       }
       setActive(current)
     }
