@@ -4,14 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { profile, stats } from "@/lib/content"
+import { CompanyChip } from "./company-chip"
 import { Reveal } from "./reveal"
 import { Section, btnPill, btnPrimary, surface } from "./section"
-
-function Org({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="text-brand underline decoration-brand/30 underline-offset-4">{children}</span>
-  )
-}
 
 export function Hero() {
   return (
@@ -33,12 +28,11 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-[1120px] text-[19px] leading-[1.4] font-medium text-ink sm:text-2xl">
-              I turn <strong className="font-semibold">complex B2B workflows</strong> into{" "}
-              <strong className="font-semibold">simple, research-backed products</strong> that people actually adopt.
-              I&apos;m designing R&amp;D and supply-chain platforms at <Org>Scimplify</Org>. Before that, I designed
-              enterprise healthcare apps at <Org>ABM Respiratory Care</Org>. My background in fashion and product
-              design means I care about craft, down to the last pixel.
+            <p className="mt-8 max-w-[791px] text-[20px] leading-[1.4] font-medium text-ink md:max-w-[1120px] md:text-[24px]">
+              Product Designer turning complex B2B workflows into simple, research-backed products.
+              <br className="max-md:hidden" />{" "}
+              Designing R&amp;D platforms at <CompanyChip name="Scimplify" href="https://www.scimplify.com" />. Previously
+              at <CompanyChip name="ABM Respiratory Care" href="https://www.abmrc.com" />.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
