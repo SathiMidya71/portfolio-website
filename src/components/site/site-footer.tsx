@@ -22,7 +22,7 @@ export function SiteFooter() {
             <ul className="grid gap-1.5">
               {[...nav, { label: "Contact", href: "/#contact" }].map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href} className="hover:text-brand">{n.label}</Link>
+                  <Link href={n.href} className="transition-colors hover:text-[var(--tone-purple)]">{n.label}</Link>
                 </li>
               ))}
             </ul>
@@ -32,7 +32,7 @@ export function SiteFooter() {
             <ul className="grid gap-1.5">
               {links.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} target="_blank" rel="noopener" className="hover:text-brand">{l.label}</a>
+                  <a href={l.href} target="_blank" rel="noopener" className="transition-colors hover:text-[var(--tone-purple)]">{l.label}</a>
                 </li>
               ))}
             </ul>

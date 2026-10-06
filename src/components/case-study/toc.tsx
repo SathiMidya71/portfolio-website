@@ -17,7 +17,17 @@ export function Toc({ items }: { items: { id: string; label: string }[] }) {
       { rootMargin: "-20% 0px -70% 0px" }
     )
     els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    // Past the last section (e.g. "More work"), keep the last item active
+    const onScroll = () => {
+      const last = els[els.length - 1]
+      if (last && last.getBoundingClientRect().bottom < window.innerHeight * 0.3) setActive(last.id)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    onScroll()
+    return () => {
+      io.disconnect()
+      window.removeEventListener("scroll", onScroll)
+    }
   }, [items])
 
   return (

@@ -13,6 +13,7 @@ export const profile = {
     linkedin: "https://linkedin.com/in/sathimidya",
     behance: "https://behance.net/virgosathi0041",
     github: "https://github.com/SathiMidya71",
+    instagram: "", // add the Instagram profile URL to show it on the site
   },
 }
 

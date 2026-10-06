@@ -79,6 +79,16 @@ export type Section = {
   blocks: Block[]
 }
 
+/** A related project card ("More from …"). Links to a case study page or an external page such as Behance. */
+export type WorkCard = {
+  title: string
+  meta: string
+  summary: string
+  thumbnail: Img
+  href: string
+  external?: boolean
+}
+
 export type CaseStudy = {
   slug: string
   company: string
@@ -95,4 +105,6 @@ export type CaseStudy = {
   hero: Img & { background?: string }
   impact: Metric[]
   sections: Section[]
+  /** Other projects from the same company, shown at the end of the page */
+  moreWork?: { heading: string; items: WorkCard[] }
 }

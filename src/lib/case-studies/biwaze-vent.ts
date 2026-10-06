@@ -502,4 +502,27 @@ export const biwazeVent: CaseStudy = {
       ],
     },
   ],
+  moreWork: {
+    heading: "More from ABM Respiratory Care",
+    items: [
+      {
+        title: "Arc Connect: Lung Health Management App",
+        meta: "Mobile app · 2021",
+        summary:
+          "A connected respiratory telecare app for BiWaze patients that promotes adherence to care plans and keeps patients in touch with their healthcare team.",
+        thumbnail: { src: "/case-studies/thumbs/arc-connect-app.png", alt: "Arc Connect lung health management app cover", width: 808, height: 632 },
+        href: "https://www.behance.net/gallery/174251777/Arc-Connect-Lung-Health-Management-App",
+        external: true,
+      },
+      {
+        title: "Arc Connect: Web Portal",
+        meta: "Web portal · 2022",
+        summary:
+          "A clinician portal for managing patients by exception, giving healthcare teams an overview of therapy, goals and patient health information.",
+        thumbnail: { src: "/case-studies/thumbs/arc-connect-portal.png", alt: "Arc Connect web portal cover", width: 808, height: 632 },
+        href: "https://www.behance.net/gallery/181423391/Arc-Connect-Web-Portal",
+        external: true,
+      },
+    ],
+  },
 }

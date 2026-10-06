@@ -2,9 +2,10 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { BlockView } from "@/components/case-study/blocks"
 import { ImpactMetrics } from "@/components/case-study/impact-metrics"
+import { MoreWork } from "@/components/case-study/more-work"
 import { Toc } from "@/components/case-study/toc"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
@@ -131,42 +132,19 @@ export default async function CaseStudyPage({ params }: Params) {
             ))}
 
             {/* ---------- More work ---------- */}
-            <section className="mt-24 border-t border-line pt-14">
-              <h2 className="text-[32px] leading-tight tracking-[-0.02em] text-ink md:text-[40px]">More case studies</h2>
-              {others.length ? (
-                <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {others.map((o) => (
-                    <li key={o.slug}>
-                      <Link href={`/work/${o.slug}`} className="glass group block rounded-[20px] p-6">
-                        <p className="text-sm font-medium text-soft">{o.company}</p>
-                        <p className="mt-1 font-heading text-2xl font-semibold text-ink">{o.title.join(" ")}</p>
-                        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                          Read case study <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mt-4 max-w-[720px] text-lg text-body">
-                  More detailed case studies are on the way. In the meantime, explore my other work or get in touch.
-                </p>
-              )}
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/#work"
-                  className="inline-flex h-10 items-center gap-1.5 rounded-lg bg-black px-3.5 text-sm font-semibold text-white hover:opacity-80"
-                >
-                  <ArrowLeft className="size-4" /> All work
-                </Link>
-                <Link
-                  href="/#contact"
-                  className="inline-flex h-10 items-center rounded-full border border-line px-5 text-base font-medium text-brand hover:bg-white"
-                >
-                  Let&apos;s talk
-                </Link>
-              </div>
-            </section>
+            <MoreWork
+              heading={cs.moreWork?.heading ?? "More case studies"}
+              items={[
+                ...others.map((o) => ({
+                  title: o.title.join(" "),
+                  meta: o.company,
+                  summary: o.meta.overview,
+                  thumbnail: o.hero,
+                  href: `/work/${o.slug}`,
+                })),
+                ...(cs.moreWork?.items ?? []),
+              ]}
+            />
           </article>
         </div>
       </main>
