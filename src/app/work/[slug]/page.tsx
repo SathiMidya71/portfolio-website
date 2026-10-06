@@ -91,7 +91,11 @@ export default async function CaseStudyPage({ params }: Params) {
         <div className={`${shell} mt-12 lg:mt-16`}>
           <div
             className="relative overflow-hidden rounded-[24px]"
-            style={{ background: cs.hero.background ?? "var(--sand)", aspectRatio: `${cs.hero.width} / ${cs.hero.height}` }}
+            style={{
+              background: cs.hero.background ?? "var(--sand)",
+              // Transparent cut-outs sit on the page in a 16:9 stage; full images keep their own ratio
+              aspectRatio: cs.hero.background === "transparent" ? "16 / 9" : `${cs.hero.width} / ${cs.hero.height}`,
+            }}
           >
             <Image
               src={cs.hero.src}
@@ -99,7 +103,7 @@ export default async function CaseStudyPage({ params }: Params) {
               fill
               priority
               sizes="(min-width: 1200px) 1120px, 100vw"
-              className="object-cover"
+              className={cs.hero.background === "transparent" ? "object-contain" : "object-cover"}
             />
           </div>
         </div>

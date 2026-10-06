@@ -36,11 +36,11 @@ export const arcConnectApp: CaseStudy = {
     timeline: "2021 · 35 screens",
   },
   hero: {
-    src: `${dir}/hero.jpg`,
+    src: `${dir}/hero.png`,
     alt: "Three Arc Connect screens: log in, home with today's adherence score, and therapy goals",
-    width: 1920,
-    height: 1080,
-    background: "#eef6f2",
+    width: 1296,
+    height: 990,
+    background: "transparent",
   },
   impactTitle: "Project at a glance",
   impact: [
