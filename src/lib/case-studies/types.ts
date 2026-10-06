@@ -85,6 +85,21 @@ export type Block =
       background?: string
     }
   /**
+   * Home screen board: looping phone recording beside coded copy (title, illustration, tagline,
+   * paragraph) and coded widgets that echo the app's score ring and weekly bars.
+   */
+  | {
+      type: "homeBoard"
+      title: string
+      video: { src: string; poster: string; width: number; height: number; label: string }
+      illustration: Img
+      tagline: { text: string; color: string }[]
+      subtitle: string
+      text: string
+      score: number
+      week: { day: string; date: number; fill: number }[]
+    }
+  /**
    * A looping presentation video (e.g. an original Behance GIF, upscaled) with coded text:
    * an eyebrow label, a large faint display word and a paragraph, on an optional dark container.
    */
