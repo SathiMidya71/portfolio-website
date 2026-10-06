@@ -83,8 +83,18 @@ export type Block =
       /** "phone" renders narrow and centred, "wide" fills the column */
       layout: "phone" | "wide"
       background?: string
-      /** Optional full-width coloured stage behind a phone video, with a title shown on it */
-      stage?: { color: string; title: string; text?: string }
+    }
+  /**
+   * Static cut-out "sticker" (transparent PNG) with a looping video laid over one area of it,
+   * e.g. an animated phone screen. `screen` is that area in % of the sticker.
+   */
+  | {
+      type: "motionSticker"
+      title: string
+      text: string[]
+      sticker: Img
+      video: { src: string; poster: string; label: string }
+      screen: { left: number; top: number; width: number; height: number; radius: string }
     }
 
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"

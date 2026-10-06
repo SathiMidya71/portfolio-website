@@ -4,7 +4,7 @@ import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 import { ArcUserFlow } from "./arc-user-flow"
 import { DesignSystemView } from "./design-system"
-import { IllustrationsView, PhoneFlowView, VideoView } from "./mobile-blocks"
+import { IllustrationsView, MotionStickerView, PhoneFlowView, VideoView } from "./mobile-blocks"
 import { ProcessTimeline } from "./process-timeline"
 import { FindingsView, InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
 import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
@@ -263,5 +263,8 @@ export function BlockView({ block }: { block: Block }) {
 
     case "video":
       return <VideoView block={block} />
+
+    case "motionSticker":
+      return <MotionStickerView block={block} />
   }
 }

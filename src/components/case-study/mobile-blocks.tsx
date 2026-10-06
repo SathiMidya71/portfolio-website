@@ -6,6 +6,7 @@ import { LoopVideo } from "./loop-video"
 type PhoneFlowBlock = Extract<Block, { type: "phoneFlow" }>
 type IllustrationsBlock = Extract<Block, { type: "illustrations" }>
 type VideoBlock = Extract<Block, { type: "video" }>
+type MotionStickerBlock = Extract<Block, { type: "motionSticker" }>
 
 const tones: Record<Tone, { stroke: string }> = {
   green: { stroke: "var(--tone-green)" },
@@ -98,25 +99,6 @@ export function IllustrationsView({ block }: { block: IllustrationsBlock }) {
 
 /** Muted looping video, used for the converted Behance GIFs. */
 export function VideoView({ block }: { block: VideoBlock }) {
-  if (block.stage) {
-    return (
-      <figure className="overflow-hidden rounded-[24px] px-6 py-10 sm:px-10" style={{ background: block.stage.color }}>
-        <div className="mb-8 flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-10">
-          <h3 className="text-[22px] leading-tight font-semibold text-white md:text-2xl">{block.stage.title}</h3>
-          {block.stage.text && <p className="max-w-[460px] text-[15px] leading-relaxed text-white/70">{block.stage.text}</p>}
-        </div>
-        <LoopVideo
-          className={cn("mx-auto block h-auto w-full", block.layout === "phone" ? "max-w-[240px]" : "max-w-[720px] rounded-[16px]")}
-          src={block.src}
-          poster={block.poster}
-          width={block.width}
-          height={block.height}
-          aria-label={block.caption ?? block.stage.title}
-        />
-        {block.caption && <figcaption className="mt-4 text-center text-[13px] font-medium text-white/60">{block.caption}</figcaption>}
-      </figure>
-    )
-  }
   return (
     <figure className={cn(block.layout === "phone" ? "mx-auto w-full max-w-[300px]" : "w-full")}>
       <div
@@ -133,6 +115,47 @@ export function VideoView({ block }: { block: VideoBlock }) {
         />
       </div>
       {block.caption && <figcaption className="mt-3 text-center text-[15px] font-medium text-soft">{block.caption}</figcaption>}
+    </figure>
+  )
+}
+
+/** Cut-out sticker on the page background, with the animated screen playing on top of it. */
+export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
+  const { sticker, video, screen } = block
+  return (
+    <figure>
+      <h3 className="text-[22px] leading-tight font-semibold text-ink md:text-2xl">{block.title}</h3>
+      <div className="mt-8 grid items-center gap-8 md:grid-cols-[1.45fr_1fr] md:gap-10">
+        <div className="relative mx-auto w-full max-w-[560px] drop-shadow-[0_22px_32px_rgba(16,24,40,0.16)]">
+          <Image
+            src={sticker.src}
+            alt={sticker.alt}
+            width={sticker.width}
+            height={sticker.height}
+            sizes="(min-width: 768px) 560px, 100vw"
+            className="h-auto w-full"
+            priority={false}
+          />
+          <LoopVideo
+            className="absolute object-cover"
+            style={{
+              left: `${screen.left}%`,
+              top: `${screen.top}%`,
+              width: `${screen.width}%`,
+              height: `${screen.height}%`,
+              borderRadius: screen.radius,
+            }}
+            src={video.src}
+            poster={video.poster}
+            aria-label={video.label}
+          />
+        </div>
+        <figcaption className="flex flex-col gap-4 text-[15px] leading-relaxed text-body md:text-right">
+          {block.text.map((t) => (
+            <p key={t}>{t}</p>
+          ))}
+        </figcaption>
+      </div>
     </figure>
   )
 }
