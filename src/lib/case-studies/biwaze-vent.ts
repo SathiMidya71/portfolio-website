@@ -200,14 +200,6 @@ export const biwazeVent: CaseStudy = {
         },
         {
           type: "interviews",
-          tiles: [
-            { role: "Respiratory Therapist" },
-            { role: "Pulmonologist" },
-            { role: "ICU Nurse" },
-            { role: "Caregiver" },
-            { role: "Sathi · Moderator", moderator: true },
-          ],
-          caption: "Interview sessions with clinicians, caregivers and stakeholders. Faces hidden for participant privacy.",
           total: "20+",
           totalLabel: "interviews, plus surveys and usability tests",
           // Add per-group counts (e.g. count: "6") once confirmed.
