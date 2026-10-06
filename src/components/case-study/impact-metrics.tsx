@@ -49,10 +49,10 @@ function stepPath(levels: number[], w: number, h: number, r = 6) {
 function StepLine({ shape, tone }: { shape: "rising" | "falling"; tone: Tone }) {
   const id = useId()
   const w = 300
-  const h = 64
+  const h = 40
   const { d, end } = stepPath(shapes[shape], w - 6, h)
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="h-16 w-full overflow-visible" preserveAspectRatio="none" aria-hidden>
+    <svg viewBox={`0 0 ${w} ${h}`} className="h-10 w-full overflow-visible" preserveAspectRatio="none" aria-hidden>
       <defs>
         <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
           <stop offset="0" stopColor={tones[tone].stroke} stopOpacity="0.08" />
@@ -67,10 +67,10 @@ function StepLine({ shape, tone }: { shape: "rising" | "falling"; tone: Tone }) 
 }
 
 function StripedBar({ fill, tone }: { fill: number; tone: Tone }) {
-  const count = 90
+  const count = 44
   const on = Math.round((fill / 100) * count)
   return (
-    <div className="flex h-14 items-stretch gap-[3px] max-sm:gap-[2px]" aria-hidden>
+    <div className="flex h-10 items-stretch gap-[2px] sm:gap-[3px]" aria-hidden>
       {Array.from({ length: count }, (_, i) => (
         <span
           key={i}
@@ -88,17 +88,16 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
   return (
     <li
       className={cn(
-        "flex flex-col justify-between gap-6 rounded-[20px] bg-white/85 p-6 ring-1 ring-black/[0.04] shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_rgba(16,24,40,0.04)]",
-        m.visual.kind === "bar" && "sm:col-span-2"
+        "flex min-w-0 flex-col justify-between gap-3 rounded-[18px] bg-white/85 p-4 sm:gap-4 sm:p-5 ring-1 ring-black/[0.04] shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_rgba(16,24,40,0.04)]"
       )}
     >
       <div className="flex items-start justify-between">
-        <p className="text-[11px] font-semibold tracking-[0.12em] text-soft uppercase">{m.label}</p>
+        <p className="text-[10px] font-semibold tracking-[0.12em] text-soft uppercase sm:text-[11px]">{m.label}</p>
         <Icon className="size-4 text-soft" aria-hidden />
       </div>
-      <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
-        <p className="text-[56px] leading-none font-normal tracking-[-0.03em] text-ink tabular-nums">{m.value}</p>
-        <div className="mb-1.5 flex items-center gap-2">
+      <div className="flex flex-wrap items-end gap-x-3 gap-y-1.5">
+        <p className="text-[30px] leading-none sm:text-[40px] font-normal tracking-[-0.03em] text-ink tabular-nums">{m.value}</p>
+        <div className="mb-1 flex items-center gap-2">
           <span
             className="inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-xs font-semibold"
             style={{ background: tones[m.tone].soft, color: tones[m.tone].stroke }}
@@ -106,7 +105,7 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
             <Arrow className="size-3" strokeWidth={2.5} aria-hidden />
             {m.change}
           </span>
-          <span className="text-xs text-soft">{m.note}</span>
+          <span className="text-xs text-soft max-sm:hidden">{m.note}</span>
         </div>
       </div>
       <p className="sr-only">{m.text}</p>
@@ -121,7 +120,7 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
 
 export function ImpactMetrics({ items }: { items: Metric[] }) {
   return (
-    <ul className="grid gap-4 sm:grid-cols-2">
+    <ul className="grid grid-cols-2 gap-3 sm:gap-4">
       {items.map((m, i) => (
         <MetricCard key={m.label} m={m} index={i} />
       ))}
