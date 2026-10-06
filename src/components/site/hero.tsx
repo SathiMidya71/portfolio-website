@@ -28,7 +28,9 @@ export function Hero() {
             <h1 className="text-[44px] leading-[0.95] tracking-[-0.02em] text-brand md:text-[64px] lg:text-[88px] lg:leading-[0.92]">
               Hi, I&apos;m {profile.firstName}.
               <br />
-              {profile.role}.
+              <span className="bg-gradient-to-r from-brand to-brand/70 bg-clip-text pb-[0.06em] text-transparent">
+                {profile.role}.
+              </span>
             </h1>
 
             <p className="mt-8 max-w-[1120px] text-[19px] leading-[1.4] font-medium text-ink sm:text-2xl">
