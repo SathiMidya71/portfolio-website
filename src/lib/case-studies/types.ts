@@ -16,7 +16,18 @@ export type Block =
   | { type: "cards"; items: { title: string; text: string }[] }
   /** Problem pointers beside the ventilator illustration (expects 4 items, in illustration order) */
   | { type: "problemVisual"; items: { title: string; text: string }[] }
-  | { type: "findings"; items: { title: string; text: string; source?: string }[] }
+  | {
+      type: "findings"
+      items: {
+        title: string
+        text: string
+        /** Roles the finding was heard from */
+        source?: string
+        /** Design principle this finding fed into */
+        principle?: string
+        visual?: FindingVisual
+      }[]
+    }
   | { type: "chips"; items: string[] }
   /** Who took part in research. `count` per group is optional: only show numbers that are known. */
   | {
@@ -37,6 +48,8 @@ export type Block =
       colors: { name: string; hex: string }[]
       typeface: { name: string; weights: string }
     }
+
+export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"
 
 export type Tone = "green" | "orange" | "purple" | "blue"
 

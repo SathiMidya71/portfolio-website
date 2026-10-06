@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
-import { InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
+import { FindingsView, InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
 import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
 
 // Only used to preview the project's own typeface in the visual-system block
@@ -116,20 +116,7 @@ export function BlockView({ block }: { block: Block }) {
       )
 
     case "findings":
-      return (
-        <ol className="grid gap-px overflow-hidden rounded-[20px] bg-line">
-          {block.items.map((f, i) => (
-            <li key={f.title} className="grid gap-2 bg-white/80 p-6 sm:grid-cols-[56px_1fr] sm:gap-6 sm:p-7">
-              <span className="font-heading text-[32px] leading-none font-semibold text-brand/70">{i + 1}</span>
-              <div>
-                <h4 className="text-[19px] leading-snug font-semibold text-ink md:text-xl">{f.title}</h4>
-                <p className="mt-1.5 text-base leading-relaxed text-body md:text-[17px]">{f.text}</p>
-                {f.source && <p className="mt-3 text-[13px] font-medium text-soft">Heard from: {f.source}</p>}
-              </div>
-            </li>
-          ))}
-        </ol>
-      )
+      return <FindingsView block={block} />
 
     case "chips":
       return (
