@@ -55,6 +55,16 @@ export type Block =
       /** Optional icon set image */
       icons?: Img
     }
+  /** Bento design-system board: colour, typography scale and a Lucide icon set */
+  | {
+      type: "designSystem"
+      brand: { name: string; hex: string }[]
+      neutrals: { name: string; hex: string }[]
+      typeface: string
+      weights: string[]
+      scale: number[]
+      icons: { icon: import("@/components/case-study/design-system").IconKey; label: string }[]
+    }
   /** A hand-coded diagram component, referenced by name */
   | { type: "diagram"; name: "arc-user-flow" }
   /** A user flow shown as phone screens in sequence */
