@@ -51,32 +51,45 @@ export function PhoneFlowView({ block }: { block: PhoneFlowBlock }) {
   )
 }
 
-/** Illustration components as a labelled board. */
+/** Illustration components as a sticker sheet: cut-outs on soft tinted blobs, gently tilted. */
+const tilts = ["-3deg", "2.5deg", "-2deg", "3deg", "-2.5deg"]
+const blobs = [
+  "48% 52% 44% 56% / 55% 45% 55% 45%",
+  "56% 44% 52% 48% / 46% 56% 44% 54%",
+  "50% 50% 46% 54% / 52% 48% 52% 48%",
+  "44% 56% 50% 50% / 50% 44% 56% 50%",
+  "53% 47% 55% 45% / 47% 53% 47% 53%",
+]
+
 export function IllustrationsView({ block }: { block: IllustrationsBlock }) {
   return (
-    <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
+    <ul className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-6">
       {block.items.map((it, i) => (
-        <li key={it.name} className={cn("flex flex-col gap-3", i === 0 && "col-span-2 md:col-span-1 md:row-span-2")}>
-          <div
-            className={cn(
-              "relative grid flex-1 place-items-center overflow-hidden rounded-[18px] p-4 ring-1 ring-black/5",
-              i === 0 ? "aspect-[4/3] md:aspect-auto" : "aspect-[4/3]"
-            )}
-            style={{ background: it.background }}
-          >
+        <li
+          key={it.name}
+          className={cn("group flex flex-col items-center text-center", i < 2 ? "md:col-span-3" : "md:col-span-2", i === 0 && "col-span-2")}
+        >
+          <div className="relative grid aspect-[5/4] w-full place-items-center">
+            <span
+              aria-hidden
+              className="absolute inset-[6%] transition-transform duration-500 group-hover:scale-105"
+              style={{ background: it.background, borderRadius: blobs[i % blobs.length] }}
+            />
             <Image
               src={it.image.src}
               alt={it.image.alt}
               width={it.image.width}
               height={it.image.height}
-              sizes="(min-width: 768px) 280px, 50vw"
-              className="h-full max-h-full w-auto object-contain"
+              sizes="(min-width: 768px) 360px, 50vw"
+              className="relative h-auto max-h-[86%] w-auto max-w-[82%] object-contain drop-shadow-[0_14px_22px_rgba(16,24,40,0.16)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-0!"
+              style={{ rotate: tilts[i % tilts.length] }}
             />
           </div>
-          <div>
-            <p className="text-[15px] font-semibold text-ink">{it.name}</p>
-            <p className="text-[13px] text-soft">Used in: {it.usedIn}</p>
-          </div>
+          <p className="mt-3 text-[15px] font-semibold text-ink">{it.name}</p>
+          <p className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-[12px] font-medium text-body ring-1 ring-black/5">
+            <span className="size-1.5 rounded-full" style={{ background: "var(--tone-green)" }} />
+            {it.usedIn}
+          </p>
         </li>
       ))}
     </ul>
