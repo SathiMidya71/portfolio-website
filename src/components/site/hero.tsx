@@ -46,7 +46,7 @@ export function Hero() {
               Product Designer turning complex B2B workflows into simple, research-backed products.
               <br className="max-md:hidden" />{" "}
               Designing R&amp;D platforms at <CompanyChip name="Scimplify" href="https://www.scimplify.com" />. Previously
-              at <CompanyChip name="ABM Respiratory Care" href="https://www.abmrc.com" />.
+              at <CompanyChip name="ABM Respiratory Care" href="https://abmrc.com/" />.
             </p>
 
             {/* Below lg the card fan is hidden, so show the two primary actions instead */}

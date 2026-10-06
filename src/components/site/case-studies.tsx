@@ -23,7 +23,24 @@ export function CaseStudies() {
               className={`${surface} grid items-center gap-8 p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-8 md:grid-cols-[1fr_1.1fr]`}
             >
               <div className="flex flex-col gap-2.5">
-                <span className="mb-1 font-heading text-2xl leading-none font-bold tracking-[-1px] text-faint">{c.year}</span>
+                {c.logo ? (
+                  <a
+                    href={c.logo.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="mb-1 w-fit rounded-md transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-[var(--tone-purple)] focus-visible:outline-none"
+                  >
+                    <Image
+                      src={c.logo.src}
+                      alt={`${c.logo.alt} website`}
+                      width={c.logo.width}
+                      height={c.logo.height}
+                      className="h-10 w-auto"
+                    />
+                  </a>
+                ) : (
+                  <span className="mb-1 font-heading text-2xl leading-none font-bold tracking-[-1px] text-faint">{c.year}</span>
+                )}
                 <div className="flex flex-wrap gap-2">
                   {c.tags.map((t) => (
                     <Badge key={t} variant="secondary" className="rounded-full font-medium text-body">

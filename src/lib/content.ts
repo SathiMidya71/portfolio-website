@@ -84,6 +84,8 @@ export type CaseStudy = {
   image?: { src: string; alt: string }
   /** Link to the full case study page */
   href?: string
+  /** Company logo shown instead of the year label; links to the company's website */
+  logo?: { src: string; alt: string; width: number; height: number; href: string }
   locked?: boolean
 }
 
@@ -98,6 +100,13 @@ export const caseStudies: CaseStudy[] = [
     cover: "#000229",
     image: { src: "/case-studies/biwaze-vent/cover.jpg", alt: "BiWaze Vent: A Mechanical Ventilator, UI/UX case study cover" },
     href: "/work/biwaze-vent",
+    logo: {
+      src: "/logos/abm.png",
+      alt: "ABM Respiratory Care",
+      width: 200,
+      height: 106,
+      href: "https://abmrc.com/",
+    },
   },
   {
     slug: "rnd-visibility-dashboard",
