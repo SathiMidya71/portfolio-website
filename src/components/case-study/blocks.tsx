@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { ProcessTimeline } from "./process-timeline"
 import { FindingsView, InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
 import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
 
@@ -191,25 +192,7 @@ export function BlockView({ block }: { block: Block }) {
       )
 
     case "phases":
-      return (
-        <ol className="grid gap-4 md:grid-cols-3">
-          {block.items.map((ph, i) => (
-            <li key={ph.phase} className={cn(glass, "relative p-6")}>
-              <div className="mb-4 flex items-center gap-3">
-                <span className="grid size-8 place-items-center rounded-full bg-brand text-sm font-semibold text-white">{i + 1}</span>
-                <h4 className="font-heading text-[22px] font-semibold text-ink">{ph.phase}</h4>
-              </div>
-              <ul className="grid gap-1.5">
-                {ph.items.map((item) => (
-                  <li key={item} className="text-[15px] text-body">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-      )
+      return <ProcessTimeline block={block} />
 
     case "visualSystem":
       return (

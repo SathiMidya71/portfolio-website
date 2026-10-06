@@ -315,12 +315,13 @@ export const biwazeVent: CaseStudy = {
         {
           type: "phases",
           items: [
-            { phase: "Discover", items: ["User & stakeholder interviews", "Problem finding", "Define"] },
+            { phase: "Discover", stat: { value: "3", unit: "months" }, items: ["User & stakeholder interviews", "Problem finding", "Define"] },
             {
               phase: "Design",
+              stat: { value: "64", unit: "hours" },
               items: ["Wireframes", "Style guide", "Visual design", "User testing", "Validation"],
             },
-            { phase: "Deliver", items: ["Handover", "Developer collaboration", "Long-term support"] },
+            { phase: "Deliver", stat: { value: "70+", unit: "screens" }, items: ["Handover", "Developer collaboration", "Long-term support"] },
           ],
         },
         { type: "h3", text: "Four design principles" },

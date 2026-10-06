@@ -42,7 +42,10 @@ export type Block =
   | { type: "perspective"; from: string; context: string; items: string[] }
   | { type: "personas"; items: { name: string; role: string; goals: string[]; frustrations: string[] }[] }
   | { type: "quadrants"; items: { title: string; items: string[] }[] }
-  | { type: "phases"; items: { phase: string; items: string[] }[] }
+  | {
+      type: "phases"
+      items: { phase: string; items: string[]; stat?: { value: string; unit: string } }[]
+    }
   | {
       type: "visualSystem"
       colors: { name: string; hex: string }[]
