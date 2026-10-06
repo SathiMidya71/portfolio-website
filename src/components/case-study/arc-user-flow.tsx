@@ -80,15 +80,27 @@ const lines: { group: Group; d: string[] }[] = [
 // Dashed shortcuts between areas
 const dashed = ["M113,101 V33 H502 V378", "M83,347 H38 V642 H454", "M83,484 H56 V528 H358 V438"]
 
-/** Starburst ("seal") outline around a centre point. */
-function burst(cx: number, cy: number, r: number, spikes = 24) {
-  const pts: string[] = []
+/**
+ * Soft scalloped badge: alternating outer/inner points joined with quadratic curves
+ * (each point is a control point, the curve passes through the midpoints), so tips and
+ * valleys are rounded instead of sharp.
+ */
+function burst(cx: number, cy: number, r: number, spikes = 22) {
+  const pts: [number, number][] = []
   for (let i = 0; i < spikes * 2; i++) {
     const a = (Math.PI * i) / spikes - Math.PI / 2
-    const rr = i % 2 ? r * 0.88 : r
-    pts.push(`${(cx + rr * Math.cos(a)).toFixed(1)},${(cy + rr * Math.sin(a)).toFixed(1)}`)
+    const rr = i % 2 ? r * 0.9 : r
+    pts.push([cx + rr * Math.cos(a), cy + rr * Math.sin(a)])
   }
-  return `M${pts.join(" L")} Z`
+  const mid = (p: [number, number], q: [number, number]) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2]
+  const f = (n: number) => n.toFixed(1)
+  const start = mid(pts[pts.length - 1], pts[0])
+  let d = `M${f(start[0])},${f(start[1])}`
+  pts.forEach((p, i) => {
+    const m = mid(p, pts[(i + 1) % pts.length])
+    d += ` Q${f(p[0])},${f(p[1])} ${f(m[0])},${f(m[1])}`
+  })
+  return `${d} Z`
 }
 
 const legend: { group: Group; label: string }[] = [
