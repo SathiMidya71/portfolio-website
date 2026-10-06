@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
-import { Figtree, Fraunces } from "next/font/google"
+import { Bricolage_Grotesque, Figtree } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
-// Free stand-ins for the reference site's fonts: Fraunces ≈ Acorn, Figtree ≈ Roobert
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Free stand-ins for the reference site's fonts: Bricolage Grotesque ≈ Acorn, Figtree ≈ Roobert
+const heading = Bricolage_Grotesque({
+  variable: "--font-heading-face",
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  axes: ["opsz", "wdth"],
 })
 
 const figtree = Figtree({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${figtree.variable}`}>
+    <html lang="en" className={`${heading.variable} ${figtree.variable}`}>
       <body className="antialiased">
         {children}
         <Toaster position="bottom-center" theme="light" />

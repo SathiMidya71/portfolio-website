@@ -8,7 +8,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-figtree);
-  --font-heading: var(--font-fraunces);
+  --font-heading: var(--font-heading-face);
   --color-brand: var(--brand);
   --color-ink: var(--ink);
   --color-body: var(--body);
@@ -120,9 +120,8 @@
   html { scroll-behavior: smooth; }
   body { font-size: 16px; line-height: 24px; -webkit-font-smoothing: antialiased; }
   h1, h2, h3 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-heading-face), Arial, sans-serif;
     font-weight: 600;
-    font-variation-settings: "SOFT" 100, "WONK" 0;
   }
 }
 
