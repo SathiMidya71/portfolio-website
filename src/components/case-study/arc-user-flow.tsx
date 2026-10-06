@@ -3,7 +3,7 @@
 // colour-coded by area using the site's tone palette.
 
 type Group = "start" | "auth" | "home" | "connections" | "invitations" | "profile"
-type Node = { x: number; y: number; label: string; group: Group; main?: boolean }
+type Node = { x: number; y: number; label: string; group: Group; main?: boolean; r?: number }
 
 const palette: Record<Group, { strong: string; soft: string; text: string }> = {
   start: { strong: "#344054", soft: "#ffffff", text: "#344054" },
@@ -15,7 +15,7 @@ const palette: Record<Group, { strong: string; soft: string; text: string }> = {
 }
 
 const nodes: Node[] = [
-  { x: 355, y: 88, label: "Start\nScreen", group: "start", main: true },
+  { x: 355, y: 88, label: "Start\nScreen", group: "start", main: true, r: 46 },
   { x: 314, y: 222, label: "Login", group: "auth" },
   { x: 390, y: 222, label: "Onboarding", group: "auth" },
   { x: 466, y: 222, label: "Skip", group: "auth" },
@@ -136,7 +136,7 @@ export function ArcUserFlow() {
 
         {nodes.map((n) => {
           const c = palette[n.group]
-          const r = n.main ? 37 : 31
+          const r = n.r ?? (n.main ? 37 : 31)
           const textLines = n.label.split("\n")
           const size = n.main ? (textLines.length > 1 ? 9.6 : 10.6) : textLines.length > 2 ? 7.6 : 8.2
           const lh = size * 1.18
