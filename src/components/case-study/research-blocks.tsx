@@ -165,16 +165,32 @@ function FindingArt({ kind, color }: { kind: Visual; color: string }) {
 }
 
 export function FindingsView({ block }: { block: FindingsBlock }) {
-  // Static, editorial layout: tinted illustration on top, text on the page background.
-  // Deliberately no card surface, shadow, pills or arrows, so nothing reads as clickable.
+  // Bento grid drawn with separator lines only: the 1px gaps show the line colour, cells use the
+  // page colour, and there is no outer container. Static content, nothing reads as clickable.
+  const n = block.items.length
+  const lastRow = (i: number) => (n > 2 ? i >= 2 : true)
   return (
-    <ol className="grid gap-x-6 gap-y-10 md:grid-cols-6">
+    <ol className="grid gap-px bg-line md:grid-cols-6">
       {block.items.map((f, i) => {
         const tone = findingTones[i % findingTones.length]
         return (
-          <li key={f.title} className={cn("flex flex-col", i < 2 ? "md:col-span-3" : "md:col-span-2")}>
+          <li
+            key={f.title}
+            className={cn(
+              "flex flex-col bg-cream py-7",
+              i === 0 && "pt-0",
+              i === n - 1 && "pb-0",
+              i < 2 ? "md:col-span-3" : "md:col-span-2",
+              // inner padding only, so the outer edges stay flush with the page text
+              "md:px-7",
+              (i === 0 || i === 2) && "md:pl-0",
+              (i === 1 || i === n - 1) && "md:pr-0",
+              i < 2 ? "md:pt-0" : "md:pt-7",
+              lastRow(i) ? "md:pb-0" : "md:pb-7"
+            )}
+          >
             {f.visual && (
-              <div className="relative h-28 rounded-[16px] py-3 pr-4 pl-12" style={{ background: tone.soft }}>
+              <div className="relative h-28 rounded-[14px] py-3 pr-4 pl-12" style={{ background: tone.soft }}>
                 <FindingArt kind={f.visual} color={tone.stroke} />
                 <span
                   className="absolute top-3 left-3 grid size-7 place-items-center rounded-full text-[11px] font-bold text-white"
@@ -184,9 +200,9 @@ export function FindingsView({ block }: { block: FindingsBlock }) {
                 </span>
               </div>
             )}
-            <h4 className="mt-4 text-[17px] leading-snug font-semibold text-ink">{f.title}</h4>
+            <h4 className="mt-5 text-[17px] leading-snug font-semibold text-ink">{f.title}</h4>
             <p className="mt-1.5 flex-1 text-[15px] leading-relaxed text-body">{f.text}</p>
-            <dl className="mt-3 grid gap-1 border-t border-line pt-3 text-[13px] leading-snug">
+            <dl className="mt-4 grid gap-1 border-t border-dashed border-line pt-3 text-[13px] leading-snug">
               {f.source && (
                 <div className="flex gap-1.5">
                   <dt className="shrink-0 text-soft">Heard from:</dt>
