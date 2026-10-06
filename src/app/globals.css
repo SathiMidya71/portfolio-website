@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-figtree);
   --font-heading: var(--font-heading-face);
+  --font-hand: var(--font-hand);
   --color-brand: var(--brand);
   --color-ink: var(--ink);
   --color-body: var(--body);

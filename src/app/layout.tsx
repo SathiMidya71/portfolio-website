@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Bricolage_Grotesque, Figtree } from "next/font/google"
+import { Bricolage_Grotesque, Caveat, Figtree } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
@@ -8,6 +8,13 @@ const heading = Bricolage_Grotesque({
   variable: "--font-heading-face",
   subsets: ["latin"],
   axes: ["opsz", "wdth"],
+})
+
+// Handwritten annotations (e.g. the note above the intro video)
+const hand = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  weight: ["600", "700"],
 })
 
 const figtree = Figtree({
@@ -27,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${heading.variable} ${figtree.variable}`}>
+    <html lang="en" className={`${heading.variable} ${figtree.variable} ${hand.variable}`}>
       <body className="antialiased">
         {children}
         <Toaster position="bottom-center" theme="light" />
