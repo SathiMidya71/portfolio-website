@@ -1,7 +1,6 @@
 import Image from "next/image"
 import type { Block, Tone } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
-import { ChevronsUp } from "lucide-react"
 import { LoopVideo } from "./loop-video"
 
 type PhoneFlowBlock = Extract<Block, { type: "phoneFlow" }>
@@ -187,34 +186,7 @@ export function ShowcaseView({ block }: { block: ShowcaseBlock }) {
   )
 }
 
-const sky = "#5BCFEF"
-
-/** Today's score ring, drawn like the app's: thick sky arc on a light track, starting at 12 o'clock. */
-function ScoreRing({ score }: { score: number }) {
-  const r = 42
-  const c = 2 * Math.PI * r
-  return (
-    <svg viewBox="0 0 108 108" className="size-[104px] shrink-0" aria-hidden>
-      <circle cx="54" cy="54" r={r} fill="none" stroke="#e4e7ec" strokeWidth="11" />
-      <circle
-        cx="54"
-        cy="54"
-        r={r}
-        fill="none"
-        stroke={sky}
-        strokeWidth="11"
-        strokeLinecap="round"
-        strokeDasharray={`${(c * score) / 100} ${c}`}
-        transform="rotate(-90 54 54)"
-      />
-      <text x="54" y="55" textAnchor="middle" dominantBaseline="central" fontSize="28" fontWeight="700" fill="#4a4a4a">
-        {score}
-      </text>
-    </svg>
-  )
-}
-
-/** Home screen board: phone recording + coded copy and widgets on a white card. */
+/** Home screen board: phone recording + coded copy on a white card. */
 export function HomeBoardView({ block }: { block: HomeBoardBlock }) {
   return (
     <figure className="overflow-hidden rounded-[24px] bg-white px-6 py-10 ring-1 ring-black/5 sm:px-10 md:py-12">
@@ -246,35 +218,6 @@ export function HomeBoardView({ block }: { block: HomeBoardBlock }) {
           </p>
           <p className="mt-3 max-w-[300px] text-[15px] leading-snug text-[#7a7a7a]">{block.subtitle}</p>
           <p className="mt-5 max-w-[400px] text-[14px] leading-relaxed text-[#3a3a3a]">{block.text}</p>
-
-          <div
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6"
-            role="img"
-            aria-label={`Today's adherence score ${block.score}, and the last seven days`}
-          >
-            <div className="flex flex-col items-center gap-0.5 text-[#2b2b2b]" aria-hidden>
-              <ChevronsUp className="size-6" strokeWidth={2.2} />
-              <span className="text-[17px] font-semibold">Swipe up</span>
-            </div>
-            <ScoreRing score={block.score} />
-            <div className="flex items-end gap-2" aria-hidden>
-              {block.week.map((d) => (
-                <div key={d.date} className="flex flex-col items-center gap-1.5">
-                  <div className="relative h-[60px] w-[22px] overflow-hidden rounded-full bg-[#e4e7ec]">
-                    <div
-                      className="absolute inset-x-0 bottom-0 rounded-full"
-                      style={{ height: `${d.fill * 100}%`, background: `linear-gradient(to bottom, #c9f1fb, ${sky})` }}
-                    />
-                  </div>
-                  <span className="text-[10px] leading-tight text-[#8a8a8a]">
-                    {d.day}
-                    <br />
-                    {d.date}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </figure>

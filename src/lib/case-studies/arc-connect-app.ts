@@ -244,16 +244,6 @@ export const arcConnectApp: CaseStudy = {
           ],
           subtitle: "Share information with your healthcare team and caregivers",
           text: "Arc Connect enhances healthcare in the home. Studies have shown that people with chronic conditions who follow the care plans prescribed by their healthcare team are happier, maintain a better quality of life and reduce hospitalisations. Arc Connect enhances the care provided in the home by promoting adherence to the patient's care plan and enabling communication between the healthcare team and the patient.",
-          score: 85,
-          week: [
-            { day: "Thu", date: 10, fill: 1 },
-            { day: "Fri", date: 11, fill: 0.7 },
-            { day: "Sat", date: 12, fill: 0.85 },
-            { day: "Sun", date: 13, fill: 1 },
-            { day: "Mon", date: 14, fill: 0.8 },
-            { day: "Tue", date: 15, fill: 1 },
-            { day: "Wed", date: 16, fill: 0.9 },
-          ],
         },
         {
           type: "phoneFlow",
