@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
 
 // Only used to preview the project's own typeface in the visual-system block
 const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "500", "700", "900"] })
@@ -76,6 +77,31 @@ export function BlockView({ block }: { block: Block }) {
               <p className="text-base leading-relaxed text-body">{c.text}</p>
             </div>
           ))}
+        </div>
+      )
+
+    case "problemVisual":
+      return (
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <ol className="grid gap-6">
+            {block.items.map((c, i) => (
+              <li key={c.title} className="grid grid-cols-[28px_1fr] gap-x-3">
+                <span
+                  className="mt-0.5 grid size-7 place-items-center rounded-full text-[11px] font-bold text-white"
+                  style={{ background: problemTones[i % problemTones.length].stroke }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h4 className="text-[18px] leading-snug font-semibold text-ink">{c.title}</h4>
+                  <p className="mt-1 text-[15px] leading-relaxed text-body md:text-base">{c.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className="max-lg:-order-1 max-lg:mx-auto max-lg:w-full max-lg:max-w-[480px]">
+            <VentilatorProblemVisual />
+          </div>
         </div>
       )
 

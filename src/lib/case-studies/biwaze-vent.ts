@@ -91,7 +91,7 @@ export const biwazeVent: CaseStudy = {
           text: "Ventilators are used in high-stress environments where quick, accurate decisions matter. Before designing anything, I framed the problem around four constraints that would shape every decision:",
         },
         {
-          type: "cards",
+          type: "problemVisual",
           items: [
             {
               title: "Complexity and criticality",

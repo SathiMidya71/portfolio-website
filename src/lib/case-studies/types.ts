@@ -14,6 +14,8 @@ export type Block =
   | { type: "list"; items: string[] }
   | { type: "figure"; image: Img; caption?: string; dark?: boolean }
   | { type: "cards"; items: { title: string; text: string }[] }
+  /** Problem pointers beside the ventilator illustration (expects 4 items, in illustration order) */
+  | { type: "problemVisual"; items: { title: string; text: string }[] }
   | { type: "findings"; items: { title: string; text: string; source?: string }[] }
   | { type: "chips"; items: string[] }
   | { type: "personas"; items: { name: string; role: string; goals: string[]; frustrations: string[] }[] }
