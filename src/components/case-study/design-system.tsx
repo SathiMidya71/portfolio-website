@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Roboto } from "next/font/google"
 import {
   ChevronLeft,
@@ -39,93 +40,149 @@ export const iconMap = {
 
 export type IconKey = keyof typeof iconMap
 
-/** True when dark text reads better than white on this background. */
-function isLight(hex: string) {
-  const n = parseInt(hex.slice(1), 16)
-  return 0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255) > 150
-}
+const ALPHABET = "Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz"
+const eyebrow = "text-[11px] font-semibold tracking-[0.14em] text-soft uppercase"
 
-// Shared card + label styles so every card has identical padding and type
-const card = "rounded-[20px] bg-white/80 p-5 ring-1 ring-black/[0.05] shadow-[0_1px_2px_rgba(16,24,40,0.04)]"
-const cardLabel = "mb-4 text-[11px] font-semibold tracking-[0.12em] text-soft uppercase"
-
-function Swatch({ name, hex, large }: { name: string; hex: string; large?: boolean }) {
+function HexPill({ hex, name }: { hex: string; name: string }) {
   return (
-    <div
-      className={cn(
-        "flex flex-col justify-end rounded-xl p-2 ring-1 ring-black/[0.06]",
-        large ? "h-full min-h-16" : "h-14"
-      )}
-      style={{ background: hex }}
-    >
-      <div className={cn("w-fit rounded-lg px-2 py-1 backdrop-blur", isLight(hex) ? "bg-white/70" : "bg-white/90")}>
-        <p className="text-[12px] leading-tight font-semibold text-ink">{name}</p>
-        <p className="font-mono text-[10px] leading-tight text-body">{hex}</p>
-      </div>
-    </div>
+    <span className="inline-flex flex-col items-center rounded-full border border-line bg-white/70 px-3.5 py-1.5 leading-tight">
+      <span className="text-[11px] font-medium text-soft">{name}</span>
+      <span className="font-mono text-[12px] font-semibold text-ink">{hex}</span>
+    </span>
   )
 }
 
 export function DesignSystemView({ block }: { block: DesignSystemBlock }) {
+  const gradient = `linear-gradient(100deg, ${block.brand.map((b) => b.hex).slice(0, 3).join(", ")})`
+  const primary = block.icons.filter((i) => i.primary)
+  const secondary = block.icons.filter((i) => !i.primary)
+  const weights = { Regular: 400, Medium: 500, Bold: 700 } as Record<string, number>
+
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {/* Colour */}
-      <section className={cn(card, "flex flex-col")}>
-        <p className={cardLabel}>Colour</p>
-        <div className="grid flex-1 grid-rows-[1fr_auto] gap-2">
-          <div className="grid grid-cols-2 grid-rows-2 gap-2">
-            {block.brand.map((c) => (
-              <Swatch key={c.hex} {...c} large />
+    <div className="grid gap-20">
+      {/* ---------- Typography ---------- */}
+      <section className={roboto.className} aria-label="Typography">
+        <p className={cn(eyebrow, "font-sans")}>Typography</p>
+        <div className="mt-6 text-center">
+          <p
+            className="bg-clip-text text-[64px] leading-none font-bold tracking-[-0.03em] text-transparent sm:text-[96px]"
+            style={{ backgroundImage: gradient }}
+          >
+            {block.typeface}
+          </p>
+          <p className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-lg text-body">
+            {block.weights.map((w, i) => (
+              <span key={w} className="inline-flex items-center gap-4">
+                {i > 0 && <span className="text-soft/60">×</span>}
+                <span style={{ fontWeight: weights[w] ?? 400 }}>{w}</span>
+              </span>
             ))}
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {block.neutrals.map((c) => (
-              <Swatch key={c.hex} {...c} />
+          </p>
+        </div>
+
+        <div className="mt-12 grid items-end gap-6 md:grid-cols-[auto_1fr] md:gap-10">
+          <span className="text-[140px] leading-[0.78] font-medium tracking-[-0.04em] text-ink sm:text-[180px]">Aa</span>
+          <p className="max-w-[420px] pb-2 text-xl leading-relaxed text-body">{ALPHABET}</p>
+        </div>
+
+        {/* scale as a timeline: equal spacing, each label at its real size */}
+        <div className="relative mt-12">
+          <span aria-hidden className="absolute inset-x-0 top-[5px] h-px bg-ink/20" />
+          <ol className="relative flex justify-between">
+            {[...block.scale].reverse().map((px) => (
+              <li key={px} className="flex flex-col items-center gap-3">
+                <span className="size-[11px] rounded-full border-2 border-cream bg-ink" />
+                <span className="leading-none font-medium text-ink tabular-nums" style={{ fontSize: Math.max(12, px * 0.75) }}>
+                  {px}
+                  <span className="text-[0.55em] text-soft"> px</span>
+                </span>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      {/* Typography */}
-      <section className={card}>
-        <p className={cardLabel}>Typography</p>
-        <div className={roboto.className}>
-          <div className="flex items-end justify-between gap-4 border-b border-line pb-3">
-            <span className="text-[48px] leading-[0.8] font-medium text-ink">Aa</span>
-            <div className="text-right">
-              <p className="text-base font-bold text-ink">{block.typeface}</p>
-              <p className="text-[12px] text-soft">{block.weights.join(" · ")}</p>
-            </div>
-          </div>
-          <ul>
-            {block.scale.map((px) => (
-              <li key={px} className="flex items-baseline justify-between gap-4 border-b border-line py-1.5 last:border-0">
-                <span className="truncate leading-none text-ink" style={{ fontSize: Math.round(px * 0.8), fontWeight: px >= 24 ? 500 : 400 }}>
-                  Arc Connect
+      {/* ---------- Colour ---------- */}
+      <section aria-label="Colour">
+        <p className={eyebrow}>Colour</p>
+        <div className="mt-8 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-4">
+            {block.brand.map((c) => (
+              <li key={c.hex} className="flex flex-col items-center">
+                {c.image && (
+                  <>
+                    <span className="relative h-[150px] w-[64px] overflow-hidden rounded-full ring-1 ring-black/10 sm:h-[180px] sm:w-[76px]">
+                      <Image
+                        src={c.image.src}
+                        alt={c.image.alt}
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                        style={{ objectPosition: c.image.position ?? "center" }}
+                      />
+                    </span>
+                    <span aria-hidden className="h-8 w-px bg-ink/25" />
+                  </>
+                )}
+                <span
+                  className="size-[104px] rounded-full ring-1 ring-black/10 sm:size-[120px]"
+                  style={{ background: c.hex }}
+                />
+                <span className="mt-4">
+                  <HexPill hex={c.hex} name={c.name} />
                 </span>
-                <span className="shrink-0 font-sans text-[12px] font-medium text-soft tabular-nums">{px}px</span>
               </li>
             ))}
           </ul>
+
+          <div className="lg:pb-0">
+            <p className={cn(eyebrow, "mb-4 text-center lg:text-left")}>Neutrals</p>
+            <ul className="flex justify-center gap-4">
+              {block.neutrals.map((c) => (
+                <li key={c.hex} className="flex flex-col items-center gap-3">
+                  <span className="size-16 rounded-full ring-1 ring-black/10" style={{ background: c.hex }} />
+                  <HexPill hex={c.hex} name={c.name} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Icons */}
-      <section className={cn(card, "md:col-span-2")}>
-        <p className={cardLabel}>Icons</p>
-        <ul className="grid grid-cols-4 gap-x-2 gap-y-4 sm:grid-cols-6 lg:grid-cols-12">
-          {block.icons.map((ic) => {
-            const Icon = iconMap[ic.icon]
-            return (
-              <li key={ic.icon} className="flex flex-col items-center gap-1.5">
-                <span className="grid size-11 place-items-center rounded-xl bg-cream ring-1 ring-black/[0.05]">
-                  <Icon className="size-5 text-black" strokeWidth={1.75} aria-hidden />
-                </span>
-                <span className="text-center text-[11px] leading-tight font-medium text-body">{ic.label}</span>
-              </li>
-            )
-          })}
-        </ul>
+      {/* ---------- Icons ---------- */}
+      <section aria-label="Icons">
+        <p className={eyebrow}>Icons</p>
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <ul className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {primary.map((ic) => {
+              const Icon = iconMap[ic.icon]
+              return (
+                <li key={ic.icon} className="flex flex-col items-center gap-2">
+                  <span
+                    className="grid size-16 place-items-center rounded-full sm:size-[72px]"
+                    style={{ background: block.brand.find((b) => b.name === "Sky")?.hex ?? "#6CE3FF" }}
+                  >
+                    <Icon className="size-6 text-black" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  <span className="text-[12px] font-medium text-body">{ic.label}</span>
+                </li>
+              )
+            })}
+          </ul>
+          <ul className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {secondary.map((ic) => {
+              const Icon = iconMap[ic.icon]
+              return (
+                <li key={ic.icon} className="flex flex-col items-center gap-2">
+                  <span className="grid size-16 place-items-center rounded-full border-[1.5px] border-[#3798BF]/50 bg-white/60 sm:size-[72px]">
+                    <Icon className="size-6 text-black" strokeWidth={1.75} aria-hidden />
+                  </span>
+                  <span className="text-[12px] font-medium text-body">{ic.label}</span>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </section>
     </div>
   )
