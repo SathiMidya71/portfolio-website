@@ -18,6 +18,22 @@ export type Block =
   | { type: "problemVisual"; items: { title: string; text: string }[] }
   | { type: "findings"; items: { title: string; text: string; source?: string }[] }
   | { type: "chips"; items: string[] }
+  /**
+   * Illustrated interview call (faces replaced by camera-off placeholders) plus who took part.
+   * `count` per group is optional: only show numbers that are known.
+   */
+  | {
+      type: "interviews"
+      tiles: { role: string; moderator?: boolean }[]
+      caption: string
+      total: string
+      totalLabel: string
+      groups: { label: string; count?: string }[]
+    }
+  /** Verbatim participant quotes, shown as staggered cards */
+  | { type: "quotes"; items: { quote: string; by: string }[] }
+  /** Stakeholder perspective block (e.g. a team's view of the users). Only add real feedback. */
+  | { type: "perspective"; from: string; context: string; items: string[] }
   | { type: "personas"; items: { name: string; role: string; goals: string[]; frustrations: string[] }[] }
   | { type: "quadrants"; items: { title: string; items: string[] }[] }
   | { type: "phases"; items: { phase: string; items: string[] }[] }

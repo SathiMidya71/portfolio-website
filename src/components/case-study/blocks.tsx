@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
 import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
 
 // Only used to preview the project's own typeface in the visual-system block
@@ -79,6 +80,15 @@ export function BlockView({ block }: { block: Block }) {
           ))}
         </div>
       )
+
+    case "interviews":
+      return <InterviewsView block={block} />
+
+    case "quotes":
+      return <QuotesView block={block} />
+
+    case "perspective":
+      return <PerspectiveView block={block} />
 
     case "problemVisual":
       return (

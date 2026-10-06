@@ -196,8 +196,41 @@ export const biwazeVent: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Across the personas and the empathy map, the same themes kept coming back. These became the brief for the redesign.",
+          text: "I spoke with the people who rely on the ventilator every day, from respiratory therapists and pulmonologists to ICU nurses and caregivers. Across 20+ interviews, the same frustrations kept coming back.",
         },
+        {
+          type: "interviews",
+          tiles: [
+            { role: "Respiratory Therapist" },
+            { role: "Pulmonologist" },
+            { role: "ICU Nurse" },
+            { role: "Caregiver" },
+            { role: "Sathi · Moderator", moderator: true },
+          ],
+          caption: "Interview sessions with clinicians, caregivers and stakeholders. Faces hidden for participant privacy.",
+          total: "20+",
+          totalLabel: "interviews, plus surveys and usability tests",
+          // Add per-group counts (e.g. count: "6") once confirmed.
+          groups: [
+            { label: "Respiratory therapists" },
+            { label: "Pulmonologists" },
+            { label: "ICU nurses" },
+            { label: "Caregivers" },
+            { label: "Product & marketing stakeholders" },
+          ],
+        },
+        { type: "h3", text: "In their words" },
+        {
+          type: "quotes",
+          items: [
+            { quote: "It's overwhelming to manage all this data.", by: "Interview participant" },
+            { quote: "I feel anxious when alarms go off, especially without immediate help.", by: "Interview participant" },
+            { quote: "I wish it were easier to understand and use the interface.", by: "Interview participant" },
+            { quote: "I need to ensure I'm doing everything right for the patient.", by: "Interview participant" },
+          ],
+        },
+        // US marketing team feedback goes here as a { type: "perspective" } block once provided.
+        { type: "h3", text: "What we learned" },
         {
           type: "findings",
           items: [
