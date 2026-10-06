@@ -165,20 +165,16 @@ function FindingArt({ kind, color }: { kind: Visual; color: string }) {
 }
 
 export function FindingsView({ block }: { block: FindingsBlock }) {
+  // Static, editorial layout: tinted illustration on top, text on the page background.
+  // Deliberately no card surface, shadow, pills or arrows, so nothing reads as clickable.
   return (
-    <ol className="grid gap-4 md:grid-cols-6">
+    <ol className="grid gap-x-6 gap-y-10 md:grid-cols-6">
       {block.items.map((f, i) => {
         const tone = findingTones[i % findingTones.length]
         return (
-          <li
-            key={f.title}
-            className={cn(
-              "flex flex-col overflow-hidden rounded-[20px] bg-white/85 shadow-[0_1px_2px_rgba(16,24,40,0.04)] ring-1 ring-black/[0.04]",
-              i < 2 ? "md:col-span-3" : "md:col-span-2"
-            )}
-          >
+          <li key={f.title} className={cn("flex flex-col", i < 2 ? "md:col-span-3" : "md:col-span-2")}>
             {f.visual && (
-              <div className="relative h-28 py-3 pr-4 pl-12" style={{ background: tone.soft }}>
+              <div className="relative h-28 rounded-[16px] py-3 pr-4 pl-12" style={{ background: tone.soft }}>
                 <FindingArt kind={f.visual} color={tone.stroke} />
                 <span
                   className="absolute top-3 left-3 grid size-7 place-items-center rounded-full text-[11px] font-bold text-white"
@@ -188,27 +184,22 @@ export function FindingsView({ block }: { block: FindingsBlock }) {
                 </span>
               </div>
             )}
-            <div className="flex flex-1 flex-col gap-2 p-5">
-              <h4 className="text-[17px] leading-snug font-semibold text-ink">{f.title}</h4>
-              <p className="flex-1 text-[15px] leading-relaxed text-body">{f.text}</p>
+            <h4 className="mt-4 text-[17px] leading-snug font-semibold text-ink">{f.title}</h4>
+            <p className="mt-1.5 flex-1 text-[15px] leading-relaxed text-body">{f.text}</p>
+            <dl className="mt-3 grid gap-1 border-t border-line pt-3 text-[13px] leading-snug">
               {f.source && (
-                <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Heard from">
-                  {f.source.split(", ").map((s) => (
-                    <li key={s} className="rounded-full bg-sand px-2.5 py-0.5 text-xs font-medium text-body">
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {f.principle && (
-                <div className="mt-2 border-t border-line pt-3">
-                  <p className="text-[10px] font-semibold tracking-[0.12em] text-soft uppercase">Shaped principle</p>
-                  <p className="mt-0.5 text-sm font-semibold whitespace-nowrap" style={{ color: tone.stroke }}>
-                    {f.principle} →
-                  </p>
+                <div className="flex gap-1.5">
+                  <dt className="shrink-0 text-soft">Heard from:</dt>
+                  <dd className="text-body">{f.source.split(", ").join(" · ")}</dd>
                 </div>
               )}
-            </div>
+              {f.principle && (
+                <div className="flex gap-1.5">
+                  <dt className="shrink-0 text-soft">Shaped:</dt>
+                  <dd className="font-semibold text-ink">{f.principle}</dd>
+                </div>
+              )}
+            </dl>
           </li>
         )
       })}
