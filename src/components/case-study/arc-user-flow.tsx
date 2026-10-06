@@ -16,9 +16,9 @@ const palette: Record<Group, { strong: string; soft: string; text: string }> = {
 
 const nodes: Node[] = [
   { x: 355, y: 88, label: "Start\nScreen", group: "start", main: true },
-  { x: 322, y: 222, label: "Login", group: "auth" },
+  { x: 314, y: 222, label: "Login", group: "auth" },
   { x: 390, y: 222, label: "Onboarding", group: "auth" },
-  { x: 458, y: 222, label: "Skip", group: "auth" },
+  { x: 466, y: 222, label: "Skip", group: "auth" },
   { x: 390, y: 294, label: "Registration", group: "auth" },
   // main areas
   { x: 226, y: 409, label: "Home", group: "home", main: true },
@@ -30,8 +30,8 @@ const nodes: Node[] = [
   { x: 113, y: 203, label: "User\nAdherence\nScore", group: "home" },
   { x: 113, y: 275, label: "Adherence\nScore\nHistory", group: "home" },
   { x: 113, y: 347, label: "Device\nConnection\nStatus", group: "home" },
-  { x: 113, y: 409, label: "Set\nTherapy\nGoals", group: "home" },
-  { x: 113, y: 484, label: "Send\nInvite", group: "home" },
+  { x: 113, y: 419, label: "Set\nTherapy\nGoals", group: "home" },
+  { x: 113, y: 491, label: "Send\nInvite", group: "home" },
   // connections & invitations
   { x: 240, y: 492, label: "See\nConnections'\nHealth Data", group: "connections" },
   { x: 312, y: 492, label: "Search\nConnection", group: "connections" },
@@ -62,9 +62,9 @@ const nodes: Node[] = [
 const lines: { group: Group; d: string[] }[] = [
   {
     group: "auth",
-    d: ["M322,118 V192", "M390,118 V192", "M420,222 H428", "M390,252 V264", "M322,252 V340", "M390,324 V340", "M226,340 H484"],
+    d: ["M314,88 V192", "M390,88 V192", "M390,222 H466", "M390,252 V264", "M314,252 V340", "M390,324 V340", "M226,340 H484"],
   },
-  { group: "home", d: ["M226,340 V374", "M143,131 H162 V484 H143", "M143,203 H162", "M143,275 H162", "M143,347 H162", "M143,409 H191"] },
+  { group: "home", d: ["M226,340 V374", "M143,131 H162 V491 H143", "M143,203 H162", "M143,275 H162", "M143,347 H162", "M143,419 H162", "M162,409 H191"] },
   { group: "connections", d: ["M312,340 V374", "M312,444 V462", "M270,492 H282"] },
   { group: "invitations", d: ["M398,340 V374", "M398,444 V534"] },
   {
@@ -78,7 +78,7 @@ const lines: { group: Group; d: string[] }[] = [
 ]
 
 // Dashed shortcuts between areas
-const dashed = ["M113,101 V33 H502 V378", "M83,347 H38 V642 H454", "M83,484 H56 V528 H358 V438"]
+const dashed = ["M113,101 V33 H502 V378", "M83,347 H38 V642 H454", "M83,491 H56 V535 H355 V409 H398"]
 
 /**
  * Soft scalloped badge: alternating outer/inner points joined with quadratic curves
