@@ -1,8 +1,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Card } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { profile, stats } from "@/lib/content"
+import { profile } from "@/lib/content"
 import { CompanyChip } from "./company-chip"
 import { HeroCards } from "./hero-cards"
 import { Reveal } from "./reveal"
@@ -67,19 +66,6 @@ export function Hero() {
             </div>
 
             <HeroCards />
-
-            <Separator className="mt-10 bg-line" />
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-6 pt-7 lg:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <dt className="sr-only">{s.label}</dt>
-                  <dd className="font-heading text-[36px] leading-none font-bold tracking-[-2px] text-brand sm:text-[48px]">
-                    {s.value}
-                  </dd>
-                  <dd className="mt-1 text-sm font-medium text-ink">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </Card>
       </Reveal>

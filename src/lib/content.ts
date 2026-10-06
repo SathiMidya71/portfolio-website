@@ -23,13 +23,6 @@ export const nav = [
   { label: "Experience", href: "/#experience" },
 ]
 
-export const stats = [
-  { value: "9+", label: "Years in design" },
-  { value: "0→75%", label: "R&D platform adoption" },
-  { value: "40%", label: "Faster status lookups" },
-  { value: "4+", label: "Healthcare apps shipped" },
-]
-
 // Fanned cards under the hero intro. The "video" card shows `heroVideo` once it exists.
 export const heroVideo = "" // e.g. "/intro.mp4" (place the file in /public)
 
