@@ -124,7 +124,25 @@ export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
   const { sticker, video, screen } = block
   return (
     <figure>
-      <h3 className="text-[22px] leading-tight font-semibold text-ink md:text-2xl">{block.title}</h3>
+      {block.display ? (
+        <>
+          <h3 className="sr-only">{block.title}</h3>
+          {block.eyebrow && (
+            <p className="flex items-center gap-2 text-[15px] font-medium text-ink">
+              <span aria-hidden className="size-2.5 rounded-full" style={{ background: "#A9D158" }} />
+              {block.eyebrow}
+            </p>
+          )}
+          <p
+            aria-hidden
+            className="mt-1 text-[64px] leading-[0.95] font-normal tracking-[-0.03em] text-ink/[0.07] select-none sm:text-[96px] md:text-[120px]"
+          >
+            {block.display}
+          </p>
+        </>
+      ) : (
+        <h3 className="text-[22px] leading-tight font-semibold text-ink md:text-2xl">{block.title}</h3>
+      )}
       <div className="mt-8 grid items-center gap-8 md:grid-cols-[1.45fr_1fr] md:gap-10">
         <div className="relative mx-auto w-full max-w-[560px] drop-shadow-[0_22px_32px_rgba(16,24,40,0.16)]">
           <Image

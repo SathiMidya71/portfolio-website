@@ -174,12 +174,14 @@ export const arcConnectApp: CaseStudy = {
         {
           type: "motionSticker",
           title: "Splash and onboarding",
+          eyebrow: "Authentication",
+          display: "Onboarding",
           text: [
             "Onboarding is essential for any application, as it helps users understand the features and functionality of the app. It guides them through the interface and teaches them how to navigate, making it easier to use the app effectively.",
             "Onboarding can also increase engagement and retention by giving users a positive first experience. Arc Connect opens on its animated mark, then introduces the app and its Terms of Use before sign-up.",
           ],
           sticker: {
-            src: `${dir}/onboarding-sticker.png`,
+            src: `${dir}/onboarding-sticker-v2.png`,
             alt: "Two phones: the Arc Connect splash screen, and the Terms of Use unrolling from a second phone like a paper scroll",
             width: 1858,
             height: 1598,

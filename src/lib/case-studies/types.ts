@@ -91,6 +91,10 @@ export type Block =
   | {
       type: "motionSticker"
       title: string
+      /** Small label with a dot above the display word, e.g. the flow's area */
+      eyebrow?: string
+      /** Large faint display word shown as the visual heading */
+      display?: string
       text: string[]
       sticker: Img
       video: { src: string; poster: string; label: string }
