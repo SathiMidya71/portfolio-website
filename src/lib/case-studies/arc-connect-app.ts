@@ -136,9 +136,9 @@ export const arcConnectApp: CaseStudy = {
         {
           type: "designSystem",
           brand: [
-            { name: "Green", hex: "#A9D158", image: { src: `${dir}/swatch-green.jpg`, alt: "Green from the welcome illustration" } },
-            { name: "Blue", hex: "#3798BF", image: { src: `${dir}/swatch-blue.jpg`, alt: "Blue from the verification illustration" } },
-            { name: "Sky", hex: "#6CE3FF", image: { src: `${dir}/swatch-sky.jpg`, alt: "Sky blue adherence score ring on the home screen" } },
+            { name: "Green", hex: "#A9D158", image: { src: `${dir}/abm-green.jpg`, alt: "Woman breathing freely in a green forest, from abmrc.com" } },
+            { name: "Blue", hex: "#3798BF", image: { src: `${dir}/abm-blue.jpg`, alt: "Blue-toned photo of a tablet with contact icons, from abmrc.com" } },
+            { name: "Sky", hex: "#6CE3FF", image: { src: `${dir}/abm-sky.jpg`, alt: "Clinician in a light blue coat, from abmrc.com" } },
             { name: "Orange", hex: "#F26930", image: { src: `${dir}/swatch-orange.jpg`, alt: "Orange from the registration illustration" } },
           ],
           neutrals: [
