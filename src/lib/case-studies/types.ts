@@ -50,6 +50,26 @@ export type Block =
       type: "visualSystem"
       colors: { name: string; hex: string }[]
       typeface: { name: string; weights: string }
+      /** Optional type scale in px, largest first */
+      scale?: number[]
+      /** Optional icon set image */
+      icons?: Img
+    }
+  /** A user flow shown as phone screens in sequence */
+  | { type: "phoneFlow"; title: string; text: string; tone: Tone; screens: { image: Img; label: string }[] }
+  /** Illustration components with where each one is used */
+  | { type: "illustrations"; items: { image: Img; name: string; usedIn: string; background: string }[] }
+  /** Looping, muted video (converted from the original GIFs) */
+  | {
+      type: "video"
+      src: string
+      poster: string
+      width: number
+      height: number
+      caption?: string
+      /** "phone" renders narrow and centred, "wide" fills the column */
+      layout: "phone" | "wide"
+      background?: string
     }
 
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"
@@ -60,9 +80,9 @@ export type Tone = "green" | "orange" | "purple" | "blue"
 export type Metric = {
   label: string
   value: string
-  trend: "up" | "down"
+  trend?: "up" | "down"
   /** One word in the trend chip, e.g. "fewer" */
-  change: string
+  change?: string
   /** Short muted context beside the chip */
   note: string
   /** Brief pointer shown under the card divider, explaining what drove the number */
@@ -104,6 +124,8 @@ export type CaseStudy = {
   }
   hero: Img & { background?: string }
   impact: Metric[]
+  /** Heading above the metric cards (defaults to "Impact overview") */
+  impactTitle?: string
   sections: Section[]
   /** Other projects from the same company, shown at the end of the page */
   moreWork?: { heading: string; items: WorkCard[] }

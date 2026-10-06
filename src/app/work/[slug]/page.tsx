@@ -34,8 +34,9 @@ export default async function CaseStudyPage({ params }: Params) {
   const cs = getCaseStudy((await params).slug)
   if (!cs) notFound()
 
-  const toc = [{ id: "impact-overview", label: "Impact overview" }, ...cs.sections.map((s) => ({ id: s.id, label: s.nav }))]
-  const others = caseStudyPages.filter((c) => c.slug !== cs.slug)
+  const toc = [{ id: "impact-overview", label: cs.impactTitle ?? "Impact overview" }, ...cs.sections.map((s) => ({ id: s.id, label: s.nav }))]
+  // Other case studies from the same company, shown in "More from …"
+  const others = caseStudyPages.filter((c) => c.slug !== cs.slug && c.company === cs.company)
 
   return (
     <>
@@ -111,7 +112,9 @@ export default async function CaseStudyPage({ params }: Params) {
 
           <article className="min-w-0">
             <section id="impact-overview" className="scroll-mt-28">
-              <h2 className="mb-6 font-heading text-2xl font-semibold text-ink md:text-[28px]">Impact overview</h2>
+              <h2 className="mb-6 font-heading text-2xl font-semibold text-ink md:text-[28px]">
+                {cs.impactTitle ?? "Impact overview"}
+              </h2>
               <ImpactMetrics items={cs.impact} />
             </section>
 
@@ -137,7 +140,7 @@ export default async function CaseStudyPage({ params }: Params) {
               items={[
                 ...others.map((o) => ({
                   title: o.title.join(" "),
-                  meta: o.company,
+                  meta: o.eyebrow.split(" · ").slice(1).join(" · ") || o.company,
                   summary: o.meta.overview,
                   thumbnail: o.hero,
                   href: `/work/${o.slug}`,

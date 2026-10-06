@@ -84,7 +84,7 @@ function StripedBar({ fill, tone }: { fill: number; tone: Tone }) {
 
 function MetricCard({ m, index }: { m: Metric; index: number }) {
   const Icon = icons[index % icons.length]
-  const Arrow = m.trend === "up" ? ArrowUp : ArrowDown
+  const Arrow = m.trend === "up" ? ArrowUp : m.trend === "down" ? ArrowDown : null
   return (
     <li
       className={cn(
@@ -98,13 +98,15 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
       <div className="flex flex-wrap items-end gap-x-3 gap-y-1.5">
         <p className="text-[30px] leading-none sm:text-[40px] font-normal tracking-[-0.03em] text-ink tabular-nums">{m.value}</p>
         <div className="mb-1 flex items-center gap-2">
-          <span
-            className="inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-xs font-semibold"
-            style={{ background: tones[m.tone].soft, color: tones[m.tone].stroke }}
-          >
-            <Arrow className="size-3" strokeWidth={2.5} aria-hidden />
-            {m.change}
-          </span>
+          {m.change && (
+            <span
+              className="inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-xs font-semibold"
+              style={{ background: tones[m.tone].soft, color: tones[m.tone].stroke }}
+            >
+              {Arrow && <Arrow className="size-3" strokeWidth={2.5} aria-hidden />}
+              {m.change}
+            </span>
+          )}
           <span className="text-xs text-soft max-sm:hidden">{m.note}</span>
         </div>
       </div>

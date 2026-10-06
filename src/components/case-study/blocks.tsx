@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { IllustrationsView, PhoneFlowView, VideoView } from "./mobile-blocks"
 import { ProcessTimeline } from "./process-timeline"
 import { FindingsView, InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
 import { VentilatorProblemVisual, problemTones } from "./ventilator-problem-visual"
@@ -196,27 +197,63 @@ export function BlockView({ block }: { block: Block }) {
 
     case "visualSystem":
       return (
-        <div className="grid gap-4 md:grid-cols-[1fr_1fr]">
-          <div className="grid grid-cols-3 gap-3">
-            {block.colors.map((c) => (
-              <div
-                key={c.hex}
-                className={cn("flex min-h-44 flex-col justify-end rounded-[16px] p-4", isLight(c.hex) ? "text-ink" : "text-white")}
-                style={{ background: c.hex }}
-              >
-                <p className="text-sm font-semibold">{c.name}</p>
-                <p className="font-mono text-xs opacity-80">{c.hex}</p>
+        <div className="grid gap-4">
+          <div className="grid gap-4 md:grid-cols-[1fr_1fr]">
+            <div className={cn("grid gap-3", block.colors.length > 3 ? "grid-cols-3 sm:grid-cols-4" : "grid-cols-3")}>
+              {block.colors.map((c) => (
+                <div
+                  key={c.hex}
+                  className={cn(
+                    "flex flex-col justify-end rounded-[16px] p-4 ring-1 ring-black/5",
+                    block.colors.length > 3 ? "min-h-28" : "min-h-44",
+                    isLight(c.hex) ? "text-ink" : "text-white"
+                  )}
+                  style={{ background: c.hex }}
+                >
+                  <p className="text-sm font-semibold">{c.name}</p>
+                  <p className="font-mono text-xs opacity-80">{c.hex}</p>
+                </div>
+              ))}
+            </div>
+            <div className={cn(roboto.className, "flex min-h-44 flex-col justify-between rounded-[16px] bg-[#000229] p-5 text-white")}>
+              <span className="text-[72px] leading-none font-medium">Aa</span>
+              {block.scale && (
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  {block.scale.map((px) => (
+                    <span key={px} style={{ fontSize: Math.min(px, 36) }} className="leading-none font-medium">
+                      {px}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <div className="flex flex-wrap justify-between gap-2 text-sm">
+                <span className="font-bold">{block.typeface.name}</span>
+                <span className="opacity-70">{block.typeface.weights}</span>
               </div>
-            ))}
-          </div>
-          <div className={cn(roboto.className, "flex min-h-44 flex-col justify-between rounded-[16px] bg-[#000229] p-5 text-white")}>
-            <span className="text-[72px] leading-none font-medium">Aa</span>
-            <div className="flex flex-wrap justify-between gap-2 text-sm">
-              <span className="font-bold">{block.typeface.name}</span>
-              <span className="opacity-70">{block.typeface.weights}</span>
             </div>
           </div>
+          {block.icons && (
+            <div className="overflow-hidden rounded-[16px] bg-[#232323] ring-1 ring-black/5">
+              <Image
+                src={block.icons.src}
+                alt={block.icons.alt}
+                width={block.icons.width}
+                height={block.icons.height}
+                sizes="(min-width: 1200px) 860px, 100vw"
+                className="mx-auto h-auto w-full max-w-[640px]"
+              />
+            </div>
+          )}
         </div>
       )
+
+    case "phoneFlow":
+      return <PhoneFlowView block={block} />
+
+    case "illustrations":
+      return <IllustrationsView block={block} />
+
+    case "video":
+      return <VideoView block={block} />
   }
 }
