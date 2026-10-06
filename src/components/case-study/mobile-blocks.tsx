@@ -6,7 +6,7 @@ import { LoopVideo } from "./loop-video"
 type PhoneFlowBlock = Extract<Block, { type: "phoneFlow" }>
 type IllustrationsBlock = Extract<Block, { type: "illustrations" }>
 type VideoBlock = Extract<Block, { type: "video" }>
-type MotionStickerBlock = Extract<Block, { type: "motionSticker" }>
+type ShowcaseBlock = Extract<Block, { type: "showcase" }>
 
 const tones: Record<Tone, { stroke: string }> = {
   green: { stroke: "var(--tone-green)" },
@@ -119,9 +119,11 @@ export function VideoView({ block }: { block: VideoBlock }) {
   )
 }
 
-/** Cut-out sticker on the page background, with the animated screen playing on top of it. */
-export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
-  const { sticker, video, screen } = block
+const edgeFade =
+  "linear-gradient(to right, transparent, #000 2.4%, #000 97.6%, transparent), linear-gradient(to bottom, transparent, #000 2.8%, #000 97.2%, transparent)"
+
+/** Presentation video with coded label, display word and paragraph, on a matching dark container. */
+export function ShowcaseView({ block }: { block: ShowcaseBlock }) {
   const dark = Boolean(block.background)
   return (
     <figure
@@ -150,36 +152,27 @@ export function MotionStickerView({ block }: { block: MotionStickerBlock }) {
       ) : (
         <h3 className="text-[22px] leading-tight font-semibold text-ink md:text-2xl">{block.title}</h3>
       )}
-      <div className="mt-8 grid items-center gap-8 md:grid-cols-[1.45fr_1fr] md:gap-10">
-        <div
-          className={cn(
-            "relative mx-auto w-full max-w-[560px]",
-            dark ? "drop-shadow-[0_22px_36px_rgba(0,0,0,0.45)]" : "drop-shadow-[0_22px_32px_rgba(16,24,40,0.16)]"
-          )}
-        >
-          <Image
-            src={sticker.src}
-            alt={sticker.alt}
-            width={sticker.width}
-            height={sticker.height}
-            sizes="(min-width: 768px) 560px, 100vw"
-            className="h-auto w-full"
-            priority={false}
-          />
-          <LoopVideo
-            className="absolute object-cover"
-            style={{
-              left: `${screen.left}%`,
-              top: `${screen.top}%`,
-              width: `${screen.width}%`,
-              height: `${screen.height}%`,
-              borderRadius: screen.radius,
-            }}
-            src={video.src}
-            poster={video.poster}
-            aria-label={video.label}
-          />
-        </div>
+      <div className="mt-6 grid items-center gap-8 md:grid-cols-[1.6fr_1fr] md:gap-10">
+        <LoopVideo
+          className="mx-auto block h-auto w-full max-w-[620px]"
+          // The video carries a margin of its own background; feathering it hides any small
+          // colour shift between how browsers render video and the CSS container colour.
+          style={
+            dark
+              ? {
+                  maskImage: edgeFade,
+                  WebkitMaskImage: edgeFade,
+                  maskComposite: "intersect",
+                  WebkitMaskComposite: "source-in",
+                }
+              : undefined
+          }
+          src={block.video.src}
+          poster={block.video.poster}
+          width={block.video.width}
+          height={block.video.height}
+          aria-label={block.video.label}
+        />
         <figcaption
           className={cn("flex flex-col gap-4 text-[15px] leading-relaxed md:text-right", dark ? "text-white/75" : "text-body")}
         >

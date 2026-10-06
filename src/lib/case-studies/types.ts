@@ -85,22 +85,18 @@ export type Block =
       background?: string
     }
   /**
-   * Static cut-out "sticker" (transparent PNG) with a looping video laid over one area of it,
-   * e.g. an animated phone screen. `screen` is that area in % of the sticker.
+   * A looping presentation video (e.g. an original Behance GIF, upscaled) with coded text:
+   * an eyebrow label, a large faint display word and a paragraph, on an optional dark container.
    */
   | {
-      type: "motionSticker"
+      type: "showcase"
       title: string
-      /** Small label with a dot above the display word, e.g. the flow's area */
       eyebrow?: string
-      /** Large faint display word shown as the visual heading */
       display?: string
-      /** Dark container colour; the block renders in light text on top of it */
+      /** Container colour; should match the video's own background so the edges disappear */
       background?: string
       text: string[]
-      sticker: Img
-      video: { src: string; poster: string; label: string }
-      screen: { left: number; top: number; width: number; height: number; radius: string }
+      video: { src: string; poster: string; width: number; height: number; label: string }
     }
 
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"

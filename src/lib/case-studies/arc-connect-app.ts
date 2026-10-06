@@ -172,27 +172,22 @@ export const arcConnectApp: CaseStudy = {
       title: "Key flows",
       blocks: [
         {
-          type: "motionSticker",
+          type: "showcase",
           title: "Splash and onboarding",
           eyebrow: "Authentication",
           display: "Onboarding",
-          background: "#212121",
+          background: "#2d2d2d",
           text: [
             "Onboarding is essential for any application, as it helps users understand the features and functionality of the app. It guides them through the interface and teaches them how to navigate, making it easier to use the app effectively.",
             "Onboarding can also increase engagement and retention by giving users a positive first experience. Arc Connect opens on its animated mark, then introduces the app and its Terms of Use before sign-up.",
           ],
-          sticker: {
-            src: `${dir}/onboarding-sticker-v2.png`,
-            alt: "Two phones: the Arc Connect splash screen, and the Terms of Use unrolling from a second phone like a paper scroll",
-            width: 1858,
-            height: 1598,
-          },
           video: {
-            src: `${dir}/onboarding-screen.mp4`,
-            poster: `${dir}/onboarding-screen-poster.jpg`,
-            label: "The Arc Connect logo animating on the splash screen, followed by onboarding screens",
+            src: `${dir}/onboarding-motion.mp4`,
+            poster: `${dir}/onboarding-motion-poster.jpg`,
+            width: 1968,
+            height: 1696,
+            label: "The Arc Connect splash screen with its animated logo, followed by onboarding screens, next to the Terms of Use unrolling from a second phone",
           },
-          screen: { left: 3.98, top: 4.13, width: 26.91, height: 68.84, radius: "8% / 3.6%" },
         },
         {
           type: "phoneFlow",
