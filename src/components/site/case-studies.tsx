@@ -20,7 +20,7 @@ export function CaseStudies() {
         {caseStudies.map((c) => (
           <Reveal key={c.slug}>
             <Card
-              className={`${surface} grid items-center gap-6 p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6 md:grid-cols-[1fr_1.15fr] md:gap-8`}
+              className={`${surface} grid items-center gap-6 p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6 md:grid-cols-[1.5fr_1fr] md:gap-10`}
             >
               <div className="flex flex-col gap-2">
                 {c.logo ? (
@@ -91,7 +91,7 @@ export function CaseStudies() {
                     src={c.image.src}
                     alt={c.image.alt}
                     fill
-                    sizes="(min-width: 768px) 560px, 100vw"
+                    sizes="(min-width: 768px) 420px, 100vw"
                     className="object-cover transition-transform duration-500 hover:scale-[1.03]"
                   />
                 ) : (
