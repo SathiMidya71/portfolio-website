@@ -17,9 +17,9 @@ export const profile = {
 }
 
 export const nav = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
 ]
 
 export const stats = [
@@ -86,11 +86,25 @@ export type CaseStudy = {
   summary: string
   result: string
   tags: string[]
-  cover: string // CSS background until real images are added
+  cover: string // CSS background, shown behind the image (or alone until one is added)
+  image?: { src: string; alt: string }
+  /** Link to the full case study page */
+  href?: string
   locked?: boolean
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "biwaze-vent",
+    year: "ABM Respiratory Care",
+    title: "BiWaze Vent Ventilator UI",
+    summary: "A touchscreen interface for a life-support ventilator, designed so clinicians can read critical values and act fast.",
+    result: "70+ screens · 3 months · 4 user groups",
+    tags: ["Healthcare", "Medical device"],
+    cover: "#000229",
+    image: { src: "/case-studies/biwaze-vent/hero.jpg", alt: "BiWaze Vent ventilator interface" },
+    href: "/work/biwaze-vent",
+  },
   {
     slug: "rnd-visibility-dashboard",
     year: "2025",
@@ -117,16 +131,6 @@ export const caseStudies: CaseStudy[] = [
     result: "↑ 30% completion · data completeness 30% → 65%",
     tags: ["Forms", "A/B Testing"],
     cover: "linear-gradient(135deg,#344054,#02594e)",
-    locked: true,
-  },
-  {
-    slug: "healthcare-apps",
-    year: "2023",
-    title: "Enterprise Healthcare Apps",
-    summary: "Research-led redesign of 4+ healthcare apps, guided by 20+ interviews, personas and WCAG standards.",
-    result: "↓ ~30% user errors · ↑ ~20% engagement",
-    tags: ["Healthcare", "Accessibility"],
-    cover: "linear-gradient(135deg,#4c6763,#a9c2b8)",
     locked: true,
   },
 ]

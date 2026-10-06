@@ -13,14 +13,14 @@ export function SiteFooter() {
     <footer className="pt-6 pb-14">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-10 lg:px-[120px]">
         <div className="flex flex-wrap justify-between gap-8">
-          <Link href="#top" className="flex items-center gap-3 text-xl font-semibold text-black">
+          <Link href="/" className="flex items-center gap-3 text-xl font-semibold text-black">
             <Image src={profile.photo} alt="" width={48} height={48} className="size-12 rounded-full object-cover object-[center_25%]" />
             {profile.name}
           </Link>
           <div>
             <h4 className="mb-3 text-sm font-semibold text-ink">Navigation</h4>
             <ul className="grid gap-1.5">
-              {[...nav, { label: "Contact", href: "#contact" }].map((n) => (
+              {[...nav, { label: "Contact", href: "/#contact" }].map((n) => (
                 <li key={n.href}>
                   <Link href={n.href} className="hover:text-brand">{n.label}</Link>
                 </li>

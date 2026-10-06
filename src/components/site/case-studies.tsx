@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Lock } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -42,20 +43,32 @@ export function CaseStudies() {
                     </span>
                   ) : (
                     <Button asChild variant="outline" className={btnPill}>
-                      <Link href={`#${c.slug}`}>
+                      <Link href={c.href ?? `#${c.slug}`}>
                         Read case study <ArrowRight />
                       </Link>
                     </Button>
                   )}
                 </div>
               </div>
-              {/* Cover placeholder: swap for <Image> once real covers are ready */}
-              <div
-                className="grid aspect-[16/11] place-items-center rounded-2xl text-sm font-semibold tracking-wide text-white/85 max-md:-order-1"
+              <Link
+                href={c.href ?? "#work"}
+                aria-hidden={!c.href}
+                tabIndex={-1}
+                className="relative grid aspect-[16/11] place-items-center overflow-hidden rounded-2xl text-sm font-semibold tracking-wide text-white/85 max-md:-order-1"
                 style={{ background: c.cover }}
               >
-                COVER IMAGE · 1600×1000
-              </div>
+                {c.image ? (
+                  <Image
+                    src={c.image.src}
+                    alt={c.image.alt}
+                    fill
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+                  />
+                ) : (
+                  "COVER IMAGE · 1600×1000"
+                )}
+              </Link>
             </Card>
           </Reveal>
         ))}

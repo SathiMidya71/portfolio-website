@@ -6,7 +6,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-b from-cream from-60% to-transparent py-5">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-10 lg:px-[120px]">
-        <Link href="#top" className="flex items-center gap-3 text-xl font-semibold text-black">
+        <Link href="/" className="flex items-center gap-3 text-xl font-semibold text-black">
           <Image
             src={profile.photo}
             alt={profile.name}
@@ -27,7 +27,7 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link href="#contact" className="rounded-full px-3.5 py-2 text-base font-semibold text-brand">
+          <Link href="/#contact" className="rounded-full px-3.5 py-2 text-base font-semibold text-brand">
             Let&apos;s talk
           </Link>
         </nav>
