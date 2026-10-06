@@ -121,17 +121,7 @@ export const arcConnectApp: CaseStudy = {
           text: "I mapped every path from the start screen through onboarding, login and registration into four main areas. Each area holds the tasks patients repeat most: checking their score, managing their device, sharing data and keeping their profile up to date.",
         },
         { type: "chips", items: ["Home", "My Connections", "Invitations", "Profile"] },
-        {
-          type: "figure",
-          dark: true,
-          image: {
-            src: `${dir}/user-flow.jpg`,
-            alt: "Arc Connect user flow from the start screen through onboarding and login to Home, My Connections, Invitations and Profile, with every sub-screen",
-            width: 1400,
-            height: 2092,
-          },
-          caption: "User flow covering every screen in the four main areas.",
-        },
+        { type: "diagram", name: "arc-user-flow" },
       ],
     },
     {

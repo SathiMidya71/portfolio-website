@@ -55,6 +55,8 @@ export type Block =
       /** Optional icon set image */
       icons?: Img
     }
+  /** A hand-coded diagram component, referenced by name */
+  | { type: "diagram"; name: "arc-user-flow" }
   /** A user flow shown as phone screens in sequence */
   | { type: "phoneFlow"; title: string; text: string; tone: Tone; screens: { image: Img; label: string }[] }
   /** Illustration components with where each one is used */

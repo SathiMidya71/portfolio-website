@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { ArcUserFlow } from "./arc-user-flow"
 import { IllustrationsView, PhoneFlowView, VideoView } from "./mobile-blocks"
 import { ProcessTimeline } from "./process-timeline"
 import { FindingsView, InterviewsView, PerspectiveView, QuotesView } from "./research-blocks"
@@ -246,6 +247,9 @@ export function BlockView({ block }: { block: Block }) {
           )}
         </div>
       )
+
+    case "diagram":
+      return <ArcUserFlow />
 
     case "phoneFlow":
       return <PhoneFlowView block={block} />
