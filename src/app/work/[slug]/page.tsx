@@ -88,8 +88,8 @@ export default async function CaseStudyPage({ params }: Params) {
         {/* ---------- Hero image ---------- */}
         <div className={`${shell} mt-12 lg:mt-16`}>
           <div
-            className="relative aspect-[4/3] overflow-hidden rounded-[24px] md:aspect-[16/9]"
-            style={{ background: cs.hero.background ?? "var(--sand)" }}
+            className="relative overflow-hidden rounded-[24px]"
+            style={{ background: cs.hero.background ?? "var(--sand)", aspectRatio: `${cs.hero.width} / ${cs.hero.height}` }}
           >
             <Image
               src={cs.hero.src}

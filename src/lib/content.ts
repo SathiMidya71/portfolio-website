@@ -102,7 +102,7 @@ export const caseStudies: CaseStudy[] = [
     result: "↓ ~30% user errors · ↓ ~25% dev time · 70+ screens",
     tags: ["Healthcare", "Medical device"],
     cover: "#000229",
-    image: { src: "/case-studies/biwaze-vent/hero.jpg", alt: "BiWaze Vent ventilator interface" },
+    image: { src: "/case-studies/biwaze-vent/cover.jpg", alt: "BiWaze Vent: A Mechanical Ventilator, UI/UX case study cover" },
     href: "/work/biwaze-vent",
   },
   {

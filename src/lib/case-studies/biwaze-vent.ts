@@ -28,10 +28,10 @@ export const biwazeVent: CaseStudy = {
     timeline: "3 months · Discover → Design → Deliver",
   },
   hero: {
-    src: `${dir}/hero.jpg`,
-    alt: "BiWaze Vent ventilator showing the redesigned monitoring screen with live pressure, flow and volume waveforms",
-    width: 1920,
-    height: 1080,
+    src: `${dir}/cover.jpg`,
+    alt: "BiWaze Vent ventilator showing the redesigned monitoring screen, with the case study title: A Mechanical Ventilator, ABM Respiratory Care, UI/UX Designer",
+    width: 1400,
+    height: 960,
     background: "#000229",
   },
   impact: [
