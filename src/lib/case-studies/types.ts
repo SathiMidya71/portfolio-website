@@ -36,8 +36,8 @@ export type Metric = {
   change: string
   /** Short muted context beside the chip */
   note: string
-  /** Full sentence for screen readers and the Impact section */
-  text: string
+  /** Brief pointer shown under the card divider, explaining what drove the number */
+  pointer: string
   tone: Tone
   visual: { kind: "line"; shape: "rising" | "falling" } | { kind: "bar"; fill: number }
 }

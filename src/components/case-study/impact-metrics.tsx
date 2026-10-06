@@ -1,5 +1,5 @@
 import { useId } from "react"
-import { ArrowDown, ArrowUp, Clock3, Gauge, ShieldCheck, Sparkles } from "lucide-react"
+import { ArrowDown, ArrowUp, CircleCheck, Clock3, Gauge, ShieldCheck, Sparkles } from "lucide-react"
 import type { Metric, Tone } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 
@@ -108,12 +108,15 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
           <span className="text-xs text-soft max-sm:hidden">{m.note}</span>
         </div>
       </div>
-      <p className="sr-only">{m.text}</p>
       {m.visual.kind === "line" ? (
         <StepLine shape={m.visual.shape} tone={m.tone} />
       ) : (
         <StripedBar fill={m.visual.fill} tone={m.tone} />
       )}
+      <p className="flex gap-2 border-t border-line pt-3 text-[13px] leading-snug text-body sm:text-sm">
+        <CircleCheck className="mt-px size-4 shrink-0" style={{ color: tones[m.tone].stroke }} aria-hidden />
+        {m.pointer}
+      </p>
     </li>
   )
 }
