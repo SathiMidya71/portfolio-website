@@ -25,6 +25,23 @@ export type Block =
       typeface: { name: string; weights: string }
     }
 
+export type Tone = "green" | "orange" | "purple" | "blue"
+
+/** A headline result shown as a metric card. The chart is decorative, not plotted data. */
+export type Metric = {
+  label: string
+  value: string
+  trend: "up" | "down"
+  /** One word in the trend chip, e.g. "fewer" */
+  change: string
+  /** Short muted context beside the chip */
+  note: string
+  /** Full sentence for screen readers and the Impact section */
+  text: string
+  tone: Tone
+  visual: { kind: "line"; shape: "rising" | "falling" } | { kind: "bar"; fill: number }
+}
+
 export type Section = {
   id: string
   /** Short label for the "On this page" nav */
@@ -47,6 +64,6 @@ export type CaseStudy = {
     timeline: string
   }
   hero: Img & { background?: string }
-  impact: { label: string; text: string }[]
+  impact: Metric[]
   sections: Section[]
 }

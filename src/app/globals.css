@@ -67,6 +67,15 @@
   --line: #ece4d8;
   --sand: #f2ece3;
 
+  /* Accent pastels (hero cards) and their stronger "tone" pairs for charts */
+  --accent-orange: #ffd6ae;
+  --accent-purple: #d9d6fe;
+  --accent-blue: #b2ddff;
+  --tone-green: #02594e;
+  --tone-orange: #e8833a;
+  --tone-purple: #6e62e5;
+  --tone-blue: #2e90fa;
+
   /* shadcn tokens mapped to the palette */
   --background: var(--cream);
   --foreground: var(--body);

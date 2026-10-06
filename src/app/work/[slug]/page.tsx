@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowRight, CircleCheck } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { BlockView } from "@/components/case-study/blocks"
+import { ImpactMetrics } from "@/components/case-study/impact-metrics"
 import { Toc } from "@/components/case-study/toc"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
@@ -109,19 +110,8 @@ export default async function CaseStudyPage({ params }: Params) {
 
           <article className="min-w-0">
             <section id="impact-overview" className="scroll-mt-28">
-              <div className="glass rounded-[24px] p-6 shadow-[0_1px_2px_rgba(16,24,40,0.03)] sm:p-8">
-                <p className="font-heading text-2xl font-semibold text-ink">Impact overview</p>
-                <ul className="mt-6 grid gap-5">
-                  {cs.impact.map((item) => (
-                    <li key={item.label} className="flex gap-3">
-                      <CircleCheck className="mt-0.5 size-5 shrink-0 text-brand" />
-                      <p className="text-[17px] leading-relaxed text-ink md:text-lg">
-                        <span className="font-semibold">{item.label}</span> {item.text}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h2 className="mb-6 font-heading text-2xl font-semibold text-ink md:text-[28px]">Impact overview</h2>
+              <ImpactMetrics items={cs.impact} />
             </section>
 
             {cs.sections.map((section, i) => (
