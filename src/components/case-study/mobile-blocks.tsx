@@ -28,7 +28,13 @@ export function PhoneFlowView({ block }: { block: PhoneFlowBlock }) {
       {/* Horizontal scroll on small screens, centred row on larger ones */}
       <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pt-8 pb-2 sm:mx-0 sm:px-0 md:justify-center md:gap-8 md:overflow-visible">
         {block.screens.map((s, i) => (
-          <div key={s.image.src} className="flex w-[180px] shrink-0 snap-center flex-col items-center gap-3 md:w-[200px]">
+          <div
+            key={s.image.src}
+            className={cn(
+              "flex w-[180px] shrink-0 snap-center flex-col items-center gap-3",
+              block.screens.length > 3 ? "md:w-[172px]" : "md:w-[200px]"
+            )}
+          >
             <Image
               src={s.image.src}
               alt={s.image.alt}
