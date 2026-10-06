@@ -1,8 +1,8 @@
 import type { CaseStudy } from "./types"
 
-// Source: Behance case study "The BiWaze Vent Mechanical Ventilator" (Sathi Midya, Jan 2024).
-// Every fact, number and persona below comes from that case study. No outcome metrics were
-// published for this project, so impact is described through scope and qualitative results.
+// Sources: Behance case study "The BiWaze Vent Mechanical Ventilator" (Sathi Midya, Jan 2024)
+// for process, personas and visuals; impact metrics from Sathi's résumé (ABM Respiratory Care),
+// attributed to this project at her direction.
 
 const dir = "/case-studies/biwaze-vent"
 
@@ -36,16 +36,20 @@ export const biwazeVent: CaseStudy = {
   },
   impact: [
     {
-      label: "70+ screens",
-      text: "designed and delivered, covering monitoring, ventilation modes, alarms, device settings and setup guides.",
+      label: "~30% fewer user errors",
+      text: "after restructuring the information hierarchy, informed by 20+ interviews, surveys and usability testing.",
     },
     {
-      label: "3 months",
-      text: "from discovery to developer handover, including 64 hours of focused design work.",
+      label: "~20% higher engagement",
+      text: "with the new hi-fi UI, prototypes and interaction flows built in Figma.",
     },
     {
-      label: "One visual system",
-      text: "a style guide and annotated display specs that made every screen consistent and buildable.",
+      label: "~25% less development time",
+      text: "thanks to annotated Figma specs and a streamlined handover to engineering.",
+    },
+    {
+      label: "100% on-time delivery",
+      text: "across every sprint, taking 70+ screens from discovery to handover in 3 months.",
     },
   ],
   sections: [
@@ -92,7 +96,7 @@ export const biwazeVent: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I ran user and stakeholder interviews and an analysis centred on the product's intended audience, to understand their challenges and needs.",
+          text: "I ran 20+ user and stakeholder interviews, backed by surveys and an analysis centred on the product's intended audience, to understand their challenges and needs.",
         },
         {
           type: "figure",
@@ -418,21 +422,22 @@ export const biwazeVent: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "The project delivered a complete, documented interface for a life-support device:",
+          text: "The redesign made the ventilator easier to read and safer to operate, and faster for the team to build:",
         },
         {
           type: "list",
           items: [
-            "70+ screens designed and delivered in 3 months, from discovery to handover.",
-            "Every major design decision traced back to the needs of four user groups.",
-            "A reusable style guide and annotated display specs that gave engineering a single source of truth.",
-            "Ongoing collaboration and long-term support for developers through implementation.",
+            "Reduced user errors by ~30%, with every major decision traced back to research with four user groups.",
+            "Increased product engagement by ~20% through clearer hierarchy, interaction flows and high-fidelity UI.",
+            "Cut development time by ~25% with a reusable style guide, annotated display specs and a streamlined handover.",
+            "Delivered 70+ screens on time in every sprint, from discovery to handover in 3 months.",
+            "Applied WCAG standards and inclusive design so critical information stays legible and accessible under pressure.",
           ],
         },
         { type: "h3", text: "Reflection" },
         {
           type: "p",
-          text: "Designing for a medical device taught me that clarity is a safety feature. If I ran this project again, I'd agree success measures with the clinical team up front, such as time to silence an alarm, how far away key values can be read, and error rates when changing settings, so the impact could be shown in numbers as well as in the work.",
+          text: "Designing for a medical device taught me that clarity is a safety feature. Every value, colour and alert on screen has to earn its place, because the person reading it may have seconds to act.",
         },
       ],
     },

@@ -99,7 +99,7 @@ export const caseStudies: CaseStudy[] = [
     year: "ABM Respiratory Care",
     title: "BiWaze Vent Ventilator UI",
     summary: "A touchscreen interface for a life-support ventilator, designed so clinicians can read critical values and act fast.",
-    result: "70+ screens · 3 months · 4 user groups",
+    result: "↓ ~30% user errors · ↓ ~25% dev time · 70+ screens",
     tags: ["Healthcare", "Medical device"],
     cover: "#000229",
     image: { src: "/case-studies/biwaze-vent/hero.jpg", alt: "BiWaze Vent ventilator interface" },
