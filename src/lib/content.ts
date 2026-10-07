@@ -91,17 +91,6 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "deep-research",
-    year: "Scimplify",
-    title: "SCINODE Deep Research",
-    summary: "An AI research workspace that takes chemists from a scientific question to an evidence-backed research decision.",
-    result: "0 → 1 product · 8-stage research journey · design to production code",
-    tags: ["AI product", "Scientific research"],
-    cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
-    image: { src: "/case-studies/deep-research/cover.png", alt: "SCINODE Deep Research workspace with route cards and AI conversation" },
-    href: "/work/deep-research",
-  },
-  {
     slug: "biwaze-vent",
     year: "ABM Respiratory Care",
     title: "BiWaze Vent Ventilator UI",
@@ -136,6 +125,17 @@ export const caseStudies: CaseStudy[] = [
       height: 106,
       href: "https://abmrc.com/",
     },
+  },
+  {
+    slug: "deep-research",
+    year: "Scimplify",
+    title: "SCINODE Deep Research",
+    summary: "An AI research workspace that takes chemists from a scientific question to an evidence-backed research decision.",
+    result: "0 → 1 product · 8-stage research journey · design to production code",
+    tags: ["AI product", "Scientific research"],
+    cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
+    image: { src: "/case-studies/deep-research/cover.png", alt: "SCINODE Deep Research workspace with route cards and AI conversation" },
+    href: "/work/deep-research",
   },
   {
     slug: "rnd-visibility-dashboard",
