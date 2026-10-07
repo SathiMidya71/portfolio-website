@@ -40,7 +40,20 @@ export type Block =
   | { type: "quotes"; items: { quote: string; by: string }[] }
   /** Stakeholder perspective block (e.g. a team's view of the users). Only add real feedback. */
   | { type: "perspective"; from: string; context: string; items: string[] }
-  | { type: "personas"; items: { name: string; role: string; goals: string[]; frustrations: string[] }[] }
+  | {
+      type: "personas"
+      items: {
+        name: string
+        role: string
+        goals: string[]
+        frustrations: string[]
+        /** Optional richer persona details */
+        about?: string
+        facts?: { label: string; value: string }[]
+        needs?: string[]
+        quote?: string
+      }[]
+    }
   | { type: "quadrants"; items: { title: string; items: string[] }[] }
   | {
       type: "phases"
@@ -67,7 +80,35 @@ export type Block =
       icons: { icon: import("@/components/case-study/design-system").IconKey; label: string; primary?: boolean }[]
     }
   /** A hand-coded diagram component, referenced by name */
-  | { type: "diagram"; name: "arc-user-flow" }
+  | { type: "diagram"; name: "arc-user-flow" | "dr-user-flow" | "dr-fragmented" }
+  /** A sequence of steps shown as connected pills, e.g. Ask → Explore → Verify */
+  | { type: "flow"; items: string[]; label?: string }
+  /** A design principle or key insight, shown as a pull quote */
+  | { type: "principle"; text: string; label?: string }
+  /** A before → after reframe */
+  | { type: "shift"; from: string; to: string; label?: string }
+  /** Numbered insights; `trail` shows a question evolving, `chips` show what a case needs */
+  | { type: "insights"; items: { title: string; text: string; trail?: string[]; chips?: string[] }[] }
+  /** Journey map: one column per stage */
+  | { type: "journey"; stages: { stage: string; goal: string; action: string; response: string; pain: string }[] }
+  /** Information architecture as a tree of groups */
+  | { type: "tree"; root: string; groups: { title: string; note?: string; items: string[] }[] }
+  /** Coded product wireframe. Pass `image` to show a real screen instead. */
+  | { type: "productMock"; view: MockView; caption?: string; image?: Img }
+  /** Screen specifications: purpose, elements and primary action per screen */
+  | { type: "specs"; items: { name: string; purpose: string; elements: string[]; cta?: string; layout?: string }[] }
+  /** Typography hierarchy rendered in the product's own typeface */
+  | {
+      type: "typeHierarchy"
+      font: string
+      levels: { name: string; size: string; weight: string; use: string }[]
+      /** Scientific identifiers shown in the data style */
+      samples?: { label: string; value: string }[]
+    }
+  /** Colour palette with usage notes. Leave `hex` out when the exact value is not confirmed. */
+  | { type: "palette"; items: { name: string; hex?: string; tone?: Tone; use: string }[] }
+  /** Vertical numbered steps */
+  | { type: "steps"; items: { title: string; text: string }[] }
   /** A user flow shown as phone screens in sequence */
   | { type: "phoneFlow"; title: string; text: string; tone: Tone; screens: { image: Img; label: string }[] }
   /** Illustration components with where each one is used */
@@ -110,6 +151,8 @@ export type Block =
       text: string[]
       video: { src: string; poster: string; width: number; height: number; label: string }
     }
+
+export type MockView = "home" | "workspace" | "molecule" | "routes" | "modify" | "scale" | "sources" | "vault"
 
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"
 
@@ -162,6 +205,8 @@ export type CaseStudy = {
     timeline: string
   }
   hero: Img & { background?: string }
+  /** Coded hero shown instead of the hero image (the image is still used for thumbnails and sharing) */
+  heroVisual?: "deep-research"
   impact: Metric[]
   /** Heading above the metric cards (defaults to "Impact overview") */
   impactTitle?: string

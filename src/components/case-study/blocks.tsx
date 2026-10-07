@@ -3,6 +3,21 @@ import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 import { ArcUserFlow } from "./arc-user-flow"
+import {
+  FlowView,
+  InsightsView,
+  JourneyView,
+  PaletteView,
+  PrincipleView,
+  ProductMockView,
+  RichPersona,
+  ShiftView,
+  SpecsView,
+  StepsView,
+  TreeView,
+  TypeHierarchyView,
+} from "./deep-research/blocks"
+import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
 import { DesignSystemView } from "./design-system"
 import { HomeBoardView, IllustrationsView, ShowcaseView, PhoneFlowView, VideoView } from "./mobile-blocks"
 import { ProcessTimeline } from "./process-timeline"
@@ -74,7 +89,7 @@ export function BlockView({ block }: { block: Block }) {
 
     case "cards":
       return (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className={cn("grid gap-4 sm:grid-cols-2", block.items.length === 3 && "md:grid-cols-3")}>
           {block.items.map((c, i) => (
             <div key={c.title} className={cn(glass, "flex flex-col gap-3 p-6")}>
               <Num n={i + 1} />
@@ -138,6 +153,14 @@ export function BlockView({ block }: { block: Block }) {
       )
 
     case "personas":
+      if (block.items.some((p) => p.about || p.quote))
+        return (
+          <div className="grid gap-4">
+            {block.items.map((p) => (
+              <RichPersona key={p.name} p={p} />
+            ))}
+          </div>
+        )
       return (
         <div className="grid gap-4 md:grid-cols-2">
           {block.items.map((p, i) => (
@@ -253,7 +276,42 @@ export function BlockView({ block }: { block: Block }) {
       return <DesignSystemView block={block} />
 
     case "diagram":
+      if (block.name === "dr-user-flow") return <DrUserFlow />
+      if (block.name === "dr-fragmented") return <DrFragmented />
       return <ArcUserFlow />
+
+    case "flow":
+      return <FlowView block={block} />
+
+    case "principle":
+      return <PrincipleView block={block} />
+
+    case "shift":
+      return <ShiftView block={block} />
+
+    case "insights":
+      return <InsightsView block={block} />
+
+    case "journey":
+      return <JourneyView block={block} />
+
+    case "tree":
+      return <TreeView block={block} />
+
+    case "productMock":
+      return <ProductMockView block={block} />
+
+    case "specs":
+      return <SpecsView block={block} />
+
+    case "typeHierarchy":
+      return <TypeHierarchyView block={block} />
+
+    case "palette":
+      return <PaletteView block={block} />
+
+    case "steps":
+      return <StepsView block={block} />
 
     case "phoneFlow":
       return <PhoneFlowView block={block} />

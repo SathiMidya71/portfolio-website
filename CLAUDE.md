@@ -63,6 +63,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
   - Research: `findings`, `interviews`, `quotes`, `perspective`, `personas`, `quadrants`
   - Process and systems: `phases`, `visualSystem`, `designSystem`
   - Mobile and motion: `phoneFlow`, `video`, `showcase`, `homeBoard`
+  - Added for Deep Research (generic, reusable): `flow`, `principle`, `shift`, `insights`, `journey`, `tree`, `productMock`, `specs`, `typeHierarchy`, `palette`, `steps`; `personas` also accepts `about`, `facts`, `needs`, `quote` for a rich single-persona card
 - `src/lib/case-studies/*.ts` hold the case study data files; register new ones in `index.ts`.
 - Page template: `src/app/work/[slug]/page.tsx`. It shows:
   - Header meta: overview, role, team, timeline
@@ -77,6 +78,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
   - `arc-user-flow.tsx`: coded SVG flowchart with scalloped "burst" nodes, colour-coded by area, and dashed shortcuts
   - `design-system.tsx`: typography, colour capsules with photos, and Lucide icon grid
   - `mobile-blocks.tsx`: PhoneFlowView, VideoView, ShowcaseView, HomeBoardView
+  - `deep-research/`: `mocks.tsx` (coded SVG wireframes of 8 product screens in Inter, values as skeleton bars), `blocks.tsx` (the new block renderers), `diagrams.tsx` (fragmented vs. connected, core research flow), `hero.tsx` (coded hero; `heroVisual: "deep-research"` on the case study)
   - `loop-video.tsx`: client component that sets `muted` and calls `play()`, because React doesn't SSR `muted`; it respects reduced motion
 
 ## Case studies so far
@@ -94,6 +96,10 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
      - Phone flows: sign-up/login, device registration, home and adherence.
      - The Home `homeBoard`: a 2× phone recording on a white card, with coded "Home", "We care for you", subtitle and paragraph. The illustration is the original 600px Behance asset.
      - Therapy goals, invitations and connections, and Profile (Edit profile, Personal info, Medical condition, Settings).
+3. **SCINODE Deep Research** (`/work/deep-research`), Scimplify, 0 → 1 AI research workspace for chemists. Source: Sathi's own write-up (Oct 2026).
+   - No real screens yet: every screen is a coded wireframe (`productMock`). To use a real screenshot, add `image` to that block.
+   - No adoption metrics: "Project at a glance" shows scope facts (0 → 1, 8 stages, 9 screens, UX → code).
+   - Cover `public/case-studies/deep-research/cover.png` is a render of the coded hero (regenerate it if the hero changes).
 - Card for **Arc Connect Web Portal** links to Behance: https://www.behance.net/gallery/181423391/Arc-Connect-Web-Portal
 
 ## Asset pipeline (how existing assets were made)
@@ -112,7 +118,9 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
 ## Open items (ask me)
 - Instagram URL (`profile.links.instagram` in `content.ts`)
 - BiWaze: per-role interview counts, US marketing team feedback, and confirmation of team, year and "64 hours"
-- A Scimplify case study: logo and content still needed; follow the same `CaseStudy` structure
+- Scimplify logo (for the Deep Research card on the home page)
+- Deep Research: real product screenshots, the exact purple accent and success hex values, and the year/duration
+- Role title: Deep Research says "Senior Product Designer", the Experience section says "Product Designer" at Scimplify. Confirm which is right.
 - An original high-resolution export (Lottie/After Effects/MP4) of the Arc Connect logo animation, to replace the upscaled GIF
 - I must delete the empty repo `sathi-design/portfolio-website` myself.
 

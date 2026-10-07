@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { BlockView } from "@/components/case-study/blocks"
+import { DeepResearchHero } from "@/components/case-study/deep-research/hero"
 import { ImpactMetrics } from "@/components/case-study/impact-metrics"
 import { MoreWork } from "@/components/case-study/more-work"
 import { Toc } from "@/components/case-study/toc"
@@ -89,6 +90,9 @@ export default async function CaseStudyPage({ params }: Params) {
 
         {/* ---------- Hero image ---------- */}
         <div className={`${shell} mt-12 lg:mt-16`}>
+          {cs.heroVisual === "deep-research" ? (
+            <DeepResearchHero />
+          ) : (
           <div
             className="relative overflow-hidden rounded-[24px]"
             style={{
@@ -106,6 +110,7 @@ export default async function CaseStudyPage({ params }: Params) {
               className={cs.hero.background === "transparent" ? "object-contain" : "object-cover"}
             />
           </div>
+          )}
         </div>
 
         {/* ---------- Body ---------- */}
