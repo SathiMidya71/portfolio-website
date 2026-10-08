@@ -7,7 +7,6 @@ import {
   FlowView,
   InsightsView,
   JourneyView,
-  PaletteView,
   PrincipleView,
   ProductMockView,
   RichPersona,
@@ -18,6 +17,7 @@ import {
   TypeHierarchyView,
 } from "./deep-research/blocks"
 import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
+import { ColorStageView, DrJourneyMap, ProblemSolutionView } from "./deep-research/showcase"
 import { DesignSystemView } from "./design-system"
 import { HomeBoardView, IllustrationsView, ShowcaseView, PhoneFlowView, VideoView } from "./mobile-blocks"
 import { ProcessTimeline } from "./process-timeline"
@@ -278,6 +278,7 @@ export function BlockView({ block }: { block: Block }) {
     case "diagram":
       if (block.name === "dr-user-flow") return <DrUserFlow />
       if (block.name === "dr-fragmented") return <DrFragmented />
+      if (block.name === "dr-journey-map") return <DrJourneyMap />
       return <ArcUserFlow />
 
     case "flow":
@@ -308,7 +309,10 @@ export function BlockView({ block }: { block: Block }) {
       return <TypeHierarchyView block={block} />
 
     case "palette":
-      return <PaletteView block={block} />
+      return <ColorStageView block={block} />
+
+    case "problemSolution":
+      return <ProblemSolutionView block={block} />
 
     case "steps":
       return <StepsView block={block} />

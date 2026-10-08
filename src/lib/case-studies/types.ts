@@ -80,7 +80,7 @@ export type Block =
       icons: { icon: import("@/components/case-study/design-system").IconKey; label: string; primary?: boolean }[]
     }
   /** A hand-coded diagram component, referenced by name */
-  | { type: "diagram"; name: "arc-user-flow" | "dr-user-flow" | "dr-fragmented" }
+  | { type: "diagram"; name: "arc-user-flow" | "dr-user-flow" | "dr-fragmented" | "dr-journey-map" }
   /** A sequence of steps shown as connected pills, e.g. Ask → Explore → Verify */
   | { type: "flow"; items: string[]; label?: string }
   /** A design principle or key insight, shown as a pull quote */
@@ -106,7 +106,18 @@ export type Block =
       samples?: { label: string; value: string }[]
     }
   /** Colour palette with usage notes. Leave `hex` out when the exact value is not confirmed. */
-  | { type: "palette"; items: { name: string; hex?: string; tone?: Tone; use: string }[] }
+  | {
+      type: "palette"
+      /** Short paragraph shown beside the "Colour" title */
+      intro?: string
+      items: { name: string; hex?: string; tone?: Tone; use: string }[]
+    }
+  /** Problem (big statements, left), a coded centre visual, and the solution with chips (right) */
+  | {
+      type: "problemSolution"
+      problem: { text: string; items: { big: string; text: string }[] }
+      solution: { text: string; chips: string[] }
+    }
   /** Vertical numbered steps */
   | { type: "steps"; items: { title: string; text: string }[] }
   /** A user flow shown as phone screens in sequence */

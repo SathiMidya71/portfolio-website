@@ -454,30 +454,6 @@ export function TypeHierarchyView({ block }: { block: B<"typeHierarchy"> }) {
   )
 }
 
-/* ---------------- Palette ---------------- */
-
-const toneVar = { green: "var(--tone-green)", purple: "var(--tone-purple)", blue: "var(--tone-blue)", orange: "var(--tone-orange)" }
-
-export function PaletteView({ block }: { block: B<"palette"> }) {
-  return (
-    <ul className={cn(inter.className, "grid grid-cols-2 gap-3 sm:grid-cols-4")}>
-      {block.items.map((c) => {
-        const bg = c.hex ?? (c.tone ? toneVar[c.tone] : "#ccc")
-        return (
-          <li key={c.name} className="overflow-hidden rounded-[16px] bg-white ring-1 ring-black/[0.05]">
-            <div className="h-20 border-b border-black/[0.05]" style={{ background: bg }} />
-            <div className="p-3.5">
-              <p className="text-[14px] font-semibold text-[#171717]">{c.name}</p>
-              <p className="mt-0.5 font-mono text-[12px] text-[#6B6B6B]">{c.hex ?? "Hex to confirm"}</p>
-              <p className="mt-2 text-[12.5px] leading-snug text-[#6B6B6B]">{c.use}</p>
-            </div>
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
-
 /* ---------------- Vertical steps ---------------- */
 
 export function StepsView({ block }: { block: B<"steps"> }) {
