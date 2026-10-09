@@ -53,8 +53,9 @@ function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
   return (
     <aside
       className={cn(
-        "relative z-20 mx-auto -mt-6 w-[88%] max-w-[340px] md:absolute md:top-8 md:mx-0 md:mt-0 md:w-[300px] lg:w-[320px]",
-        right ? "md:-right-6" : "md:-left-6"
+        // Sits above the screenshot and overlaps only its top bars (browser bar + app header)
+        "relative z-20 -mb-7 w-[86%] max-w-[340px] sm:-mb-14 md:-mb-[72px] md:w-[320px]",
+        right ? "mr-1 ml-auto md:-mr-4" : "mr-auto ml-1 md:-ml-4"
       )}
       style={{ rotate: right ? "2.2deg" : "-2.2deg" }}
     >
@@ -97,10 +98,10 @@ export function MediaView({ block }: { block: MediaBlock }) {
     <div className="grid gap-8">
       {block.items.map((item, i) => (
         <figure key={item.src} className="relative min-w-0">
+          {i === 0 && block.note && <StickyNote note={block.note} />}
           <div className="rounded-[20px] p-2 sm:p-3" style={{ background: stage }}>
             <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
           </div>
-          {i === 0 && block.note && <StickyNote note={block.note} />}
           <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[14px] leading-snug font-medium text-body md:text-[15px]">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10.5px] font-semibold tracking-[0.08em] text-[#1f392d] uppercase">
               {item.kind === "video" ? <Clapperboard className="size-3" aria-hidden /> : <Camera className="size-3" aria-hidden />}
