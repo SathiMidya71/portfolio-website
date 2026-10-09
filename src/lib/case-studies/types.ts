@@ -112,7 +112,7 @@ export type Block =
       items: { name: string; hex?: string; tone?: Tone; use: string; featured?: boolean }[]
     }
   /** Presentation mockup: huge faint title behind a tilted touchscreen monitor; the screen is a real screenshot */
-  | { type: "kioskStage"; title: string; image: Img; caption?: string; notes?: { title: string; items: string[] } }
+  | { type: "kioskStage"; title: string; image: Img; caption?: string; notes?: { title: string; items: string[] }[]; prompt?: string }
   /** Real product media in a browser frame: one item full width, two side by side */
   | {
       type: "media"

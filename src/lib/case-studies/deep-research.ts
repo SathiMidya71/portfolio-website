@@ -214,20 +214,30 @@ export const deepResearch: CaseStudy = {
         { type: "h3", text: "1. Conversation first, workspace when needed" },
         {
           type: "p",
-          text: "It starts with one simple question. When the task needs more, like generating routes, the screen opens into a workspace: research on one side, the AI chat on the other.",
+          text: "I designed a conversational, natural-language entry point: one question starts the research. The full workspace, with research on one side and the AI chat on the other, opens only when the task needs it.",
         },
         {
           type: "kioskStage",
           title: "Deep Research",
-          notes: {
-            title: "Home screen",
-            items: [
-              "Recent searches, one click to reopen",
-              "My Repository and History in the top bar",
-              "A usage meter shows molecules used so far",
-              "Connect a live project so findings flow into project stages and reports",
-            ],
-          },
+          notes: [
+            {
+              title: "Home screen",
+              items: [
+                "Recent searches reopen in one click",
+                "My Repository and History sit in the top bar",
+                "A usage meter tracks molecules used",
+                "Link a live project so findings flow into project stages and reports",
+              ],
+            },
+            {
+              title: "Ask in your own words",
+              items: [
+                "Describe a molecule, material, sequence or question in natural language",
+                "Or start from a quick action: Generate Routes, Literature, Patents & Prior Art, Molecule Builder",
+              ],
+            },
+          ],
+          prompt: "Generate retrosynthesis routes for aspirin.",
           image: {
             src: "/case-studies/deep-research/screens/home-light.jpg",
             alt: "Deep Research home screen: Turn your next scientific question into a breakthrough, with a research session box and quick actions",

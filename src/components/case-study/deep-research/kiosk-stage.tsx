@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { House } from "lucide-react"
+import { House, MessageSquareText } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
 
 // Presentation mockup modelled on Sathi's touchscreen-kiosk reference: a huge faint title on the
@@ -53,22 +53,39 @@ export function KioskStageView({ block }: { block: KioskBlock }) {
           <div aria-hidden className="mx-[1.2%] h-[1.4cqw] rounded-b-[0.8cqw] bg-gradient-to-b from-[#3a3c3c] to-[#0d0e0e]" />
         </div>
       </div>
-      {block.notes && (
-        <figcaption className="relative z-20 mx-auto -mt-[6%] max-w-[880px] rounded-[20px] bg-white/90 p-5 shadow-[0_12px_40px_-18px_rgba(31,57,45,0.35)] ring-1 ring-black/[0.04] backdrop-blur sm:p-7">
-          <p className="flex items-center gap-3">
-            <span className="grid size-9 place-items-center rounded-[10px] bg-[#1f392d] text-white">
-              <House className="size-4" aria-hidden />
-            </span>
-            <span className="text-[12px] font-semibold tracking-[0.14em] text-[#1f392d] uppercase">{block.notes.title}</span>
-          </p>
-          <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
-            {block.notes.items.map((n) => (
-              <li key={n} className="flex gap-2.5 text-[15.5px] leading-snug text-ink md:text-base">
-                <span aria-hidden className="mt-[0.5em] size-1.5 shrink-0 rounded-full bg-[#1f392d]" />
-                {n}
-              </li>
-            ))}
-          </ul>
+      {(block.notes || block.prompt) && (
+        <figcaption className="relative z-20 mx-auto -mt-[6%] max-w-[920px] overflow-hidden rounded-[20px] bg-white/90 shadow-[0_12px_40px_-18px_rgba(31,57,45,0.35)] ring-1 ring-black/[0.04] backdrop-blur">
+          {block.notes && (
+            <div className="grid gap-7 p-5 sm:p-7 md:grid-cols-2 md:gap-10">
+              {block.notes.map((g, i) => {
+                const Icon = i === 0 ? House : MessageSquareText
+                return (
+                  <div key={g.title}>
+                    <p className="flex items-center gap-3">
+                      <span className="grid size-9 place-items-center rounded-[10px] bg-[#1f392d] text-white">
+                        <Icon className="size-4" aria-hidden />
+                      </span>
+                      <span className="text-[12px] font-semibold tracking-[0.14em] text-[#1f392d] uppercase">{g.title}</span>
+                    </p>
+                    <ul className="mt-4 grid gap-2.5">
+                      {g.items.map((n) => (
+                        <li key={n} className="flex gap-2.5 text-[15.5px] leading-snug text-ink md:text-base">
+                          <span aria-hidden className="mt-[0.5em] size-1.5 shrink-0 rounded-full bg-[#1f392d]" />
+                          {n}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+          {block.prompt && (
+            <div className="bg-[#1f392d] px-5 py-6 text-white sm:px-7 sm:py-7">
+              <p className="text-[11px] font-semibold tracking-[0.14em] text-white/60 uppercase">Example prompt</p>
+              <p className="mt-2 font-heading text-[22px] leading-snug font-medium italic md:text-[28px]">“{block.prompt}”</p>
+            </div>
+          )}
         </figcaption>
       )}
       {block.caption && <figcaption className="mt-3 px-1 text-[14px] font-medium text-soft md:text-[15px]">{block.caption}</figcaption>}
