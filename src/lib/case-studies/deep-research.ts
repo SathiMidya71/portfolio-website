@@ -246,13 +246,10 @@ export const deepResearch: CaseStudy = {
             height: 1080,
           },
         },
-        { type: "h3", text: "2. The agent gets to work" },
-        {
-          type: "p",
-          text: "When research starts, the AI agent first confirms what it is working on, so it never builds routes for the wrong compound.",
-        },
         {
           type: "media",
+          heading: "2. The agent gets to work",
+          intro: "When research starts, the AI agent first confirms what it is working on, so it never builds routes for the wrong compound.",
           note: {
             title: "The agent",
             color: "lavender",
@@ -274,13 +271,10 @@ export const deepResearch: CaseStudy = {
             },
           ],
         },
-        { type: "h3", text: "3. Every route, ranked and diagrammed" },
-        {
-          type: "p",
-          text: "The AI generates several synthesis routes and ranks them, so researchers can compare options at a glance instead of reading pages of output.",
-        },
         {
           type: "media",
+          heading: "3. Every route, ranked and diagrammed",
+          intro: "The AI generates several synthesis routes and ranks them, so researchers can compare options at a glance instead of reading pages of output.",
           note: {
             title: "Routes",
             color: "mint",
@@ -302,13 +296,10 @@ export const deepResearch: CaseStudy = {
             },
           ],
         },
-        { type: "h3", text: "4. Edit the route, not just read it" },
-        {
-          type: "p",
-          text: "AI output is a starting point, not a final answer. Researchers stay in control and can reshape any route themselves.",
-        },
         {
           type: "media",
+          heading: "4. Edit the route, not just read it",
+          intro: "AI output is a starting point, not a final answer. Researchers stay in control and can reshape any route themselves.",
           note: {
             title: "Modify the path",
             color: "peach",
@@ -336,13 +327,10 @@ export const deepResearch: CaseStudy = {
             { kind: "image", src: "/case-studies/deep-research/screens/analysis-v2.jpg", width: 2258, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
           ],
         },
-        { type: "h3", text: "5. From mmol to batch quantities" },
-        {
-          type: "p",
-          text: "Researchers see what a route needs in practice, without manual stoichiometry in a spreadsheet.",
-        },
         {
           type: "media",
+          heading: "5. From mmol to batch quantities",
+          intro: "Researchers see what a route needs in practice, without manual stoichiometry in a spreadsheet.",
           note: {
             title: "Scale it",
             color: "sky",
@@ -357,13 +345,10 @@ export const deepResearch: CaseStudy = {
             { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster-v2.jpg", width: 1600, height: 766, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Change an equivalent and every quantity updates." },
           ],
         },
-        { type: "h3", text: "6. Every route traced to its evidence" },
-        {
-          type: "p",
-          text: "Trust in AI output comes from provenance. Every route links back to the literature and patents behind it.",
-        },
         {
           type: "media",
+          heading: "6. Every route traced to its evidence",
+          intro: "Trust in AI output comes from provenance. Every route links back to the literature and patents behind it.",
           note: {
             title: "Sources",
             color: "pink",

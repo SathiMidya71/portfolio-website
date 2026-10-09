@@ -121,6 +121,9 @@ export type Block =
   | {
       type: "media"
       /** Sticky note taped over the top corner of the first item, listing the section's key points */
+      /** Section heading and intro shown beside the note (left), so the note and text share one row */
+      heading?: string
+      intro?: string
       note?: { title: string; items: string[]; side: "left" | "right"; color?: "lavender" | "mint" | "peach" | "sky" | "pink" | "butter" }
       items: {
         kind: "image" | "video"

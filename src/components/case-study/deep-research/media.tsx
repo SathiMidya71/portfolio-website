@@ -54,7 +54,7 @@ function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
     <aside
       className={cn(
         // Sits above the screenshot and overlaps only its top bars (browser bar + app header)
-        "relative z-20 -mb-7 w-[86%] max-w-[340px] sm:-mb-14 md:-mb-[72px] md:w-[320px]",
+        "relative z-20 -mb-7 w-[86%] max-w-[340px] shrink-0 sm:-mb-14 md:-mb-[72px] md:w-[320px]",
         right ? "mr-1 ml-auto md:-mr-4" : "mr-auto ml-1 md:-ml-4"
       )}
       style={{ rotate: right ? "2.2deg" : "-2.2deg" }}
@@ -98,7 +98,17 @@ export function MediaView({ block }: { block: MediaBlock }) {
     <div className="grid gap-8">
       {block.items.map((item, i) => (
         <figure key={item.src} className="relative min-w-0">
-          {i === 0 && block.note && <StickyNote note={block.note} />}
+          {i === 0 && block.note && (
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:gap-8">
+              {(block.heading || block.intro) && (
+                <div className="min-w-0 flex-1 md:pb-8">
+                  {block.heading && <h3 className="text-[22px] leading-tight text-ink md:text-[26px]">{block.heading}</h3>}
+                  {block.intro && <p className="mt-4 text-lg leading-[1.65] text-ink/90 md:text-xl">{block.intro}</p>}
+                </div>
+              )}
+              <StickyNote note={block.note} />
+            </div>
+          )}
           <div className="rounded-[20px] p-2 sm:p-3" style={{ background: stage }}>
             <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
           </div>
