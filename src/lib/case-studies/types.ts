@@ -135,6 +135,18 @@ export type Block =
         tilt?: number
       }[]
     }
+  /** Empathy map: says / thinks / does / feels around the persona, plus pains and gains */
+  | {
+      type: "empathyMap"
+      name: string
+      photo?: { src: string; alt: string; width: number; height: number }
+      says: string[]
+      thinks: string[]
+      does: string[]
+      feels: string[]
+      pains: string[]
+      gains: string[]
+    }
   /** Editorial lessons: big faint numerals, no cards */
   | { type: "lessons"; items: { title: string; text: string }[] }
   /** Closing statement, one line per sentence, with a handwritten sign-off */

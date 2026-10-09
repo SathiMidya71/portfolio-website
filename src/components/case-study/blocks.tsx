@@ -21,6 +21,7 @@ import {
 } from "./deep-research/blocks"
 import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
 import { KioskStageView } from "./deep-research/kiosk-stage"
+import { EmpathyMapView } from "./deep-research/empathy-map"
 import { MarkedImageView } from "./deep-research/marked-image"
 import { MediaView } from "./deep-research/media"
 import { PegboardView } from "./deep-research/pegboard"
@@ -345,6 +346,9 @@ export function BlockView({ block }: { block: Block }) {
 
     case "markedImage":
       return <MarkedImageView block={block} />
+
+    case "empathyMap":
+      return <EmpathyMapView block={block} />
 
     case "lessons":
       return <LessonsView block={block} />

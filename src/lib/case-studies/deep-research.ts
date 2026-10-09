@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types"
 
 // Source: Sathi's own case study write-up for SCINODE Deep Research (Scimplify), Oct 2026.
 // Condensed at her request: short, simple wording, framed as designing a GenAI product.
-// It is a 0 → 1 product with no published adoption metrics, so the overview shows scope facts
+// It is a new product (built from the ground up) with no published adoption metrics, so the overview shows scope facts
 // from the write-up, not impact numbers. Do not add percentages without real research data.
 // Product visuals are real: screenshots and clips taken from Sathi's Deep Research walkthrough
 // video (public/case-studies/deep-research/screens and /clips). The hero places a real screenshot
@@ -17,7 +17,7 @@ export const deepResearch: CaseStudy = {
   seo: {
     title: "Designing a GenAI Product: SCINODE Deep Research | AI UX Case Study | Sathi Midya",
     description:
-      "AI UX case study: how I designed SCINODE Deep Research, a GenAI research workspace for chemists, from 0 → 1. End-to-end product design, UX research, user flows, interaction design and design to code with Claude Code.",
+      "AI UX case study: how I designed SCINODE Deep Research, a GenAI research workspace for chemists, from first concept to launch. End-to-end product design, UX research, user flows, interaction design and design to code with Claude Code.",
   },
   meta: {
     overview:
@@ -29,7 +29,7 @@ export const deepResearch: CaseStudy = {
       { initials: "ENG", label: "Engineering" },
       { initials: "RES", label: "Research" },
     ],
-    timeline: "0 → 1 · from idea to production",
+    timeline: "First concept to launch",
   },
   hero: {
     src: "/case-studies/deep-research/hero-lab.jpg",
@@ -43,9 +43,9 @@ export const deepResearch: CaseStudy = {
   impact: [
     {
       label: "Product stage",
-      value: "0 → 1",
+      value: "Launched",
       change: "new product",
-      note: "built from scratch",
+      note: "concept to launch",
       pointer: "Defined how the product works, not just how it looks.",
       tone: "purple",
       visual: { kind: "line", shape: "rising" },
@@ -81,7 +81,7 @@ export const deepResearch: CaseStudy = {
     {
       id: "overview",
       nav: "Overview",
-      title: "Designing a GenAI product from 0 → 1",
+      title: "Designing a GenAI product from the ground up",
       blocks: [
         {
           type: "lead",
@@ -133,7 +133,7 @@ export const deepResearch: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "As a 0 → 1 product, there was no interface to test yet. I studied how research really happens.",
+          text: "As a brand-new product, there was no interface to test yet. I studied how research really happens.",
         },
         { type: "chips", items: ["Stakeholder interviews", "Workflow mapping", "Competitive analysis", "Prototype reviews"] },
         {
@@ -167,6 +167,7 @@ export const deepResearch: CaseStudy = {
             },
           ],
         },
+        { type: "h3", text: "Persona", spaced: true },
         {
           type: "personas",
           layout: "board",
@@ -191,6 +192,41 @@ export const deepResearch: CaseStudy = {
               quote: "Don't just give me an answer. Help me understand why this is the right direction.",
             },
           ],
+        },
+      ],
+    },
+    {
+      id: "empathy",
+      nav: "Empathy map",
+      title: "Inside a researcher's day",
+      blocks: [
+        {
+          type: "p",
+          text: "Built from stakeholder interviews and workflow mapping, the empathy map shows what Prem says, thinks, does and feels during an investigation.",
+        },
+        {
+          type: "empathyMap",
+          name: "Prem Kumar",
+          photo: {
+            src: "/case-studies/deep-research/persona-prem-face.jpg",
+            alt: "Prem Kumar, Senior Scientist at Scimplify",
+            width: 400,
+            height: 400,
+          },
+          says: [
+            "Don't just give me an answer. Help me understand why this is the right direction.",
+            "Which route is more practical?",
+            "What evidence supports this route?",
+          ],
+          thinks: ["Is the AI working on the right compound?", "Where did this information come from?", "Can I change this step to fit my lab?"],
+          does: [
+            "Jumps between literature, patents, molecule tools, spreadsheets and notes",
+            "Works out quantities by hand",
+            "Re-finds sources at the start of every session",
+          ],
+          feels: ["Buried in irrelevant literature", "Unsure when AI output has no clear source", "Frustrated when context is lost between sessions"],
+          pains: ["Too many tools for one question", "No provenance behind AI suggestions", "Manual calculations", "Findings that don't carry over"],
+          gains: ["Reliable answers, fast", "Routes compared side by side", "Evidence kept with every decision", "Research that picks up where it left off"],
         },
       ],
     },
