@@ -403,7 +403,7 @@ function RightPage() {
 
 /* ---------------- book ---------------- */
 
-type Phase = "closed" | "opening" | "open"
+type Phase = "closed" | "opening" | "turning" | "open"
 
 export function Journal() {
   const ref = useRef<HTMLDivElement>(null)
@@ -416,20 +416,22 @@ export function Journal() {
       setPhase("open")
       return
     }
-    let timer: ReturnType<typeof setTimeout>
+    const timers: ReturnType<typeof setTimeout>[] = []
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
         io.disconnect()
-        timer = setTimeout(() => setPhase("opening"), 250)
-        timer = setTimeout(() => setPhase("open"), 2150)
+        // cover swings open, then (once it has landed) blank pages turn over it, then content is stuck on
+        timers.push(setTimeout(() => setPhase("opening"), 250))
+        timers.push(setTimeout(() => setPhase("turning"), 1400))
+        timers.push(setTimeout(() => setPhase("open"), 2350))
       },
       { threshold: 0.45 }
     )
     io.observe(el)
     return () => {
       io.disconnect()
-      clearTimeout(timer)
+      timers.forEach(clearTimeout)
     }
   }, [])
 
@@ -460,11 +462,11 @@ export function Journal() {
                 style={{
                   background: paper,
                   ...dots,
-                  transform: phase === "open" || phase === "opening" ? "rotateY(-180deg)" : "rotateY(0)",
-                  transition: `transform 520ms cubic-bezier(.45,.05,.4,1) ${950 + i * 170}ms, opacity 160ms`,
+                  transform: phase === "turning" || phase === "open" ? "rotateY(-180deg)" : "rotateY(0)",
+                  transition: `transform 520ms cubic-bezier(.45,.05,.4,1) ${i * 170}ms, opacity 160ms`,
                   opacity: phase === "open" ? 0 : 1,
-                  // above the cover, so blank pages turn over onto the left page
-                  zIndex: 45 - i,
+                  // under the closed cover; above it once it has opened, so blank pages turn over onto the left page
+                  zIndex: phase === "closed" || phase === "opening" ? 20 - i : 45 - i,
                   boxShadow: "inset 1.5cqw 0 2cqw -1.5cqw rgba(0,0,0,0.12)",
                 }}
               />
