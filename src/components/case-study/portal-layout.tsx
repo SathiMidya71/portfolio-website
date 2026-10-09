@@ -75,7 +75,7 @@ export function SplitView({ block }: { block: SplitBlock }) {
   const [ref, shown] = useInView<HTMLDivElement>()
   const left = block.side === "left"
   return (
-    <div ref={ref} className="my-10 grid items-center gap-8 md:my-14 md:grid-cols-[1.35fr_1fr] md:gap-12">
+    <div ref={ref} className={cn("my-10 grid items-center gap-8 md:my-14 md:gap-10", left ? "md:grid-cols-[7fr_3fr]" : "md:grid-cols-[3fr_7fr]")}>
       <div
         className={cn("grid gap-10", left ? "md:order-1 md:[--slide:-40px]" : "md:order-2 md:[--slide:40px]")}
         style={{
@@ -87,9 +87,9 @@ export function SplitView({ block }: { block: SplitBlock }) {
       >
         {block.images.map((img) =>
           block.tablet ? (
-            <Tablet key={img.src} img={img} sizes="(min-width: 1200px) 560px, (min-width: 768px) 55vw, 100vw" />
+            <Tablet key={img.src} img={img} sizes="(min-width: 1200px) 640px, (min-width: 768px) 65vw, 100vw" />
           ) : (
-            <Screen key={img.src} img={img} sizes="(min-width: 1200px) 560px, (min-width: 768px) 55vw, 100vw" />
+            <Screen key={img.src} img={img} sizes="(min-width: 1200px) 640px, (min-width: 768px) 65vw, 100vw" />
           )
         )}
       </div>
