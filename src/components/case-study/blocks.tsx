@@ -20,6 +20,7 @@ import {
 import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
 import { KioskStageView } from "./deep-research/kiosk-stage"
 import { MediaView } from "./deep-research/media"
+import { PersonaBoard } from "./deep-research/persona-board"
 import { ColorStageView, DrJourneyMap, ProblemSolutionView } from "./deep-research/showcase"
 import { DesignSystemView } from "./design-system"
 import { HomeBoardView, IllustrationsView, ShowcaseView, PhoneFlowView, VideoView } from "./mobile-blocks"
@@ -162,6 +163,21 @@ export function BlockView({ block }: { block: Block }) {
       )
 
     case "personas":
+      if (block.layout === "board")
+        return (
+          <div className="grid gap-4">
+            {block.items.map((p) => (
+              <div key={p.name}>
+                <div className="hidden md:block">
+                  <PersonaBoard p={p} />
+                </div>
+                <div className="md:hidden">
+                  <RichPersona p={p} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )
       if (block.items.some((p) => p.about || p.quote))
         return (
           <div className="grid gap-4">

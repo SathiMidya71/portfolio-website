@@ -169,18 +169,19 @@ export const deepResearch: CaseStudy = {
         },
         {
           type: "personas",
+          layout: "board",
           items: [
             {
               name: "Prem Kumar",
-              role: "Scientist, Scimplify",
+              role: "Senior Scientist, Scimplify",
               photo: {
-                src: "/case-studies/deep-research/persona-prem.jpg",
+                src: "/case-studies/deep-research/persona-prem-face.jpg",
                 alt: "Prem Kumar, a scientist at Scimplify, in a lab coat and safety glasses, examining a flask",
-                width: 794,
-                height: 682,
+                width: 400,
+                height: 400,
               },
               facts: [
-                { label: "Experience", value: "7–12 years" },
+                { label: "Experience", value: "16–20 years" },
                 { label: "AI confidence", value: "Medium–High" },
               ],
               about: "Comfortable with scientific tools, but tired of jumping between them for every investigation.",

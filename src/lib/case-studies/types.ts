@@ -42,6 +42,8 @@ export type Block =
   | { type: "perspective"; from: string; context: string; items: string[] }
   | {
       type: "personas"
+      /** "board": illustrated desk scene on desktop (rich card on phones) */
+      layout?: "board"
       items: {
         name: string
         role: string
