@@ -3,9 +3,9 @@ import { ArrowDown, ArrowUp, CircleCheck, Clock3, Gauge, ShieldCheck, Sparkles }
 import type { Metric, Tone } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 
-const tones: Record<Tone, { stroke: string; soft: string }> = {
+const tones: Record<Tone, { stroke: string; soft: string; ink?: string }> = {
   green: { stroke: "var(--tone-green)", soft: "#d6eee6" },
-  purple: { stroke: "var(--tone-purple)", soft: "var(--accent-purple)" },
+  purple: { stroke: "var(--tone-purple)", soft: "var(--accent-purple)", ink: "var(--tone-purple-ink)" },
   orange: { stroke: "var(--tone-orange)", soft: "var(--accent-orange)" },
   blue: { stroke: "var(--tone-blue)", soft: "var(--accent-blue)" },
 }
@@ -101,7 +101,7 @@ function MetricCard({ m, index }: { m: Metric; index: number }) {
           {m.change && (
             <span
               className="inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-xs font-semibold"
-              style={{ background: tones[m.tone].soft, color: tones[m.tone].stroke }}
+              style={{ background: tones[m.tone].soft, color: tones[m.tone].ink ?? tones[m.tone].stroke }}
             >
               {Arrow && <Arrow className="size-3" strokeWidth={2.5} aria-hidden />}
               {m.change}

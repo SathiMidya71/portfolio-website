@@ -59,10 +59,10 @@ export function DrFragmented() {
       </figure>
 
       {/* After */}
-      <figure className="flex flex-col rounded-[22px] p-5 md:p-6" style={{ background: "linear-gradient(150deg,#eeecfd,#f6f5ff 55%,#e6f2fe)" }}>
-        <figcaption className="text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple)] uppercase">Deep Research · one continuous investigation</figcaption>
+      <figure className="flex flex-col rounded-[22px] p-5 md:p-6" style={{ background: "linear-gradient(150deg,#f3eefc,#f6f5ff 55%,#e6f2fe)" }}>
+        <figcaption className="text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple-ink)] uppercase">Deep Research · one continuous investigation</figcaption>
         <div className="mt-4 flex flex-1 flex-col justify-center gap-2 rounded-[18px] bg-white/80 p-4 shadow-[0_1px_2px_rgba(16,24,40,0.05)]">
-          <p className="flex items-center gap-2 rounded-xl bg-[var(--tone-purple)] px-3.5 py-2.5 text-[14px] font-medium text-white">
+          <p className="flex items-center gap-2 rounded-xl bg-[var(--tone-purple)] px-3.5 py-2.5 text-[14px] font-medium text-[var(--on-purple)]">
             <Sparkles className="size-4 shrink-0" aria-hidden />A scientific question
           </p>
           <ol className="grid grid-cols-3 gap-2">
@@ -91,7 +91,7 @@ function Node({ children, strong, tone }: { children: string; strong?: boolean; 
     <span
       className={cn(
         "inline-flex items-center rounded-xl px-3 py-2 text-[14px] leading-tight font-medium",
-        strong ? "text-white" : "bg-white text-ink shadow-[0_1px_2px_rgba(16,24,40,0.06)] ring-1 ring-black/[0.04]"
+        strong ? (tone === "var(--tone-purple)" ? "text-[var(--on-purple)]" : "text-white") : "bg-white text-ink shadow-[0_1px_2px_rgba(16,24,40,0.06)] ring-1 ring-black/[0.04]"
       )}
       style={strong ? { background: tone } : undefined}
     >
@@ -150,8 +150,8 @@ export function DrUserFlow() {
       <Down />
       <Lane n="02" title="Explore" tone="var(--tone-purple)">
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <div className="rounded-[16px] bg-[#eeecfd]/70 p-3">
-            <p className="mb-2 text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple)] uppercase">Routes branch</p>
+          <div className="rounded-[16px] bg-[#f3eefc]/70 p-3">
+            <p className="mb-2 text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple-ink)] uppercase">Routes branch</p>
             <Chain tone="var(--tone-purple)" strongFirst items={["Routes", "Compare", "Select route", "Route analysis", "Modify path", "Scale"]} />
           </div>
           <div className="rounded-[16px] bg-[#e6f2fe]/80 p-3">

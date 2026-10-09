@@ -9,7 +9,11 @@ import { inter } from "./fonts"
 type B<T extends Block["type"]> = Extract<Block, { type: T }>
 
 const tones = ["var(--tone-green)", "var(--tone-purple)", "var(--tone-blue)", "var(--tone-orange)"]
-const softTones = ["#e4f1eb", "#eeecfd", "#e6f2fe", "#fdeee0"]
+/** Text colour on each tone fill */
+/** Text colour for tone-coloured labels on the soft tints */
+const inkTones = ["var(--tone-green)", "var(--tone-purple-ink)", "var(--tone-blue)", "var(--tone-orange)"]
+const onTones = ["#fff", "var(--on-purple)", "#fff", "#fff"]
+const softTones = ["#e4f1eb", "#f3eefc", "#e6f2fe", "#fdeee0"]
 const label = "text-[11px] font-semibold tracking-[0.12em] text-soft uppercase"
 
 /* ---------------- Flow: A → B → C ---------------- */
@@ -39,7 +43,7 @@ export function PrincipleView({ block }: { block: B<"principle"> }) {
   return (
     <figure className="relative max-w-[760px] overflow-hidden rounded-[20px] bg-white/75 py-6 pr-6 pl-7 md:py-7 md:pr-8 md:pl-9">
       <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-[var(--tone-purple)]" />
-      <p className="text-[11px] font-semibold tracking-[0.14em] text-[var(--tone-purple)] uppercase">{block.label ?? "Design principle"}</p>
+      <p className="text-[11px] font-semibold tracking-[0.14em] text-[var(--tone-purple-ink)] uppercase">{block.label ?? "Design principle"}</p>
       <blockquote className="mt-2 font-heading text-[22px] leading-[1.3] font-semibold tracking-[-0.01em] text-ink md:text-[26px]">
         {block.text}
       </blockquote>
@@ -91,7 +95,7 @@ export function InsightsView({ block }: { block: B<"insights"> }) {
                   <span
                     aria-hidden
                     className="absolute top-1/2 -left-6 size-3.5 -translate-y-1/2 rounded-full border-2 border-cream"
-                    style={{ background: i === first.trail!.length - 1 ? "var(--tone-purple)" : "#c9c3ff" }}
+                    style={{ background: i === first.trail!.length - 1 ? "var(--tone-purple)" : "#d9caf7" }}
                   />
                   <span className="inline-block rounded-2xl rounded-bl-md bg-white px-4 py-2.5 text-[15px] leading-snug text-ink shadow-[0_1px_2px_rgba(16,24,40,0.06)]">
                     “{q}”
@@ -113,7 +117,7 @@ export function InsightsView({ block }: { block: B<"insights"> }) {
                 <li
                   key={c}
                   className="rounded-full px-2.5 py-1 text-[13px] font-semibold"
-                  style={{ background: softTones[(i + 1 + k) % softTones.length], color: tones[(i + 1 + k) % tones.length] }}
+                  style={{ background: softTones[(i + 1 + k) % softTones.length], color: inkTones[(i + 1 + k) % tones.length] }}
                 >
                   {c}
                 </li>
@@ -129,8 +133,8 @@ export function InsightsView({ block }: { block: B<"insights"> }) {
 function Badge({ n }: { n: number }) {
   return (
     <span
-      className="grid size-8 place-items-center rounded-full text-[12px] font-bold text-white"
-      style={{ background: tones[(n - 1) % tones.length] }}
+      className="grid size-8 place-items-center rounded-full text-[12px] font-bold"
+      style={{ background: tones[(n - 1) % tones.length], color: onTones[(n - 1) % tones.length] }}
     >
       {String(n).padStart(2, "0")}
     </span>
@@ -150,9 +154,9 @@ export function RichPersona({ p }: { p: Persona }) {
     <article className="overflow-hidden rounded-[24px] bg-white/80 shadow-[0_1px_2px_rgba(16,24,40,0.04)] ring-1 ring-black/[0.04]">
       <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         {/* identity */}
-        <div className="flex flex-col gap-6 p-6 md:p-8" style={{ background: "linear-gradient(160deg,#eeecfd,#f7f5ff 60%,#ffffff)" }}>
+        <div className="flex flex-col gap-6 p-6 md:p-8" style={{ background: "linear-gradient(160deg,#f3eefc,#f7f5ff 60%,#ffffff)" }}>
           <div className="flex items-center gap-4">
-            <span aria-hidden className="grid size-16 place-items-center rounded-full bg-[var(--tone-purple)] font-heading text-xl font-bold text-white">
+            <span aria-hidden className="grid size-16 place-items-center rounded-full bg-[var(--tone-purple)] font-heading text-xl font-bold text-[var(--on-purple)]">
               {p.name
                 .replace(/^Dr\.?\s*/, "")
                 .split(" ")
@@ -161,7 +165,7 @@ export function RichPersona({ p }: { p: Persona }) {
             </span>
             <div>
               <h4 className="font-heading text-[24px] leading-tight font-semibold text-ink">{p.name}</h4>
-              <p className="text-[15px] font-medium text-[var(--tone-purple)]">{p.role}</p>
+              <p className="text-[15px] font-medium text-[var(--tone-purple-ink)]">{p.role}</p>
             </div>
           </div>
           {p.facts && (
@@ -204,7 +208,7 @@ export function RichPersona({ p }: { p: Persona }) {
                   <li
                     key={n}
                     className="rounded-full px-3.5 py-1.5 text-sm font-semibold"
-                    style={{ background: softTones[i % softTones.length], color: tones[i % tones.length] }}
+                    style={{ background: softTones[i % softTones.length], color: inkTones[i % tones.length] }}
                   >
                     {n}
                   </li>
@@ -339,7 +343,7 @@ export function SpecsView({ block }: { block: B<"specs"> }) {
     <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {block.items.map((s, i) => (
         <li key={s.name} className="flex flex-col rounded-[18px] bg-white/80 p-5 ring-1 ring-black/[0.03]">
-          <p className="text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple)] uppercase">Screen {String(i + 1).padStart(2, "0")}</p>
+          <p className="text-[11px] font-semibold tracking-[0.12em] text-[var(--tone-purple-ink)] uppercase">Screen {String(i + 1).padStart(2, "0")}</p>
           <h4 className="mt-1 font-heading text-[19px] leading-tight font-semibold text-ink">{s.name}</h4>
           <p className="mt-2 text-[14px] leading-snug text-body">
             <span className="font-semibold text-ink">Purpose: </span>
@@ -360,9 +364,9 @@ export function SpecsView({ block }: { block: B<"specs"> }) {
           </ul>
           {s.cta && (
             <p className="mt-auto flex items-center gap-1.5 pt-4 text-[13px] text-soft">
-              <MousePointerClick className="size-4 text-[var(--tone-purple)]" aria-hidden />
+              <MousePointerClick className="size-4 text-[var(--tone-purple-ink)]" aria-hidden />
               Primary CTA
-              <span className="rounded-full bg-[var(--tone-purple)] px-2.5 py-0.5 text-[12px] font-semibold text-white">{s.cta}</span>
+              <span className="rounded-full bg-[var(--tone-purple)] px-2.5 py-0.5 text-[12px] font-semibold text-[var(--on-purple)]">{s.cta}</span>
             </p>
           )}
         </li>
@@ -438,8 +442,8 @@ export function StepsView({ block }: { block: B<"steps"> }) {
             />
           )}
           <span
-            className="relative grid size-10 place-items-center rounded-full font-heading text-sm font-bold text-white"
-            style={{ background: tones[i % tones.length] }}
+            className="relative grid size-10 place-items-center rounded-full font-heading text-sm font-bold"
+            style={{ background: tones[i % tones.length], color: onTones[i % tones.length] }}
           >
             {String(i + 1).padStart(2, "0")}
           </span>

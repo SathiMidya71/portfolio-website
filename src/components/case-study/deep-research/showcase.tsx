@@ -9,8 +9,9 @@ import { inter } from "./fonts"
 
 type B<T extends Block["type"]> = Extract<Block, { type: T }>
 
-const purple = "#6e62e5"
-const stage = "linear-gradient(120deg,#efedfb 0%,#f4f2f6 50%,#f5efe8 100%)"
+const purple = "#B79CEC"
+const onPurple = "#2B2150"
+const stage = "linear-gradient(120deg,#f3eefc 0%,#f4f2f6 50%,#f5efe8 100%)"
 
 /* ---------------- Problem and solution ---------------- */
 
@@ -24,9 +25,9 @@ function GlossyRing({ id }: { id: string }) {
     <svg viewBox="0 0 300 300" className="h-full w-full" aria-hidden>
       <defs>
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#a79ffb" />
+          <stop offset="0" stopColor="#e2d6fa" />
           <stop offset="0.45" stopColor={purple} />
-          <stop offset="1" stopColor="#3f33b8" />
+          <stop offset="1" stopColor="#8a6cd4" />
         </linearGradient>
         <linearGradient id={`${id}-shine`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#fff" stopOpacity="0.75" />
@@ -77,7 +78,7 @@ export function ProblemSolutionView({ block }: { block: B<"problemSolution"> }) 
         {/* Solution */}
         <div className="flex flex-col items-center text-center lg:items-center">
           <div className="relative">
-            <span className="grid size-24 place-items-center rounded-[26px] text-white shadow-[0_18px_40px_-14px_rgba(63,51,184,0.6)]" style={{ background: `linear-gradient(145deg,#8b81ff,${purple} 55%,#4a3ed0)` }}>
+            <span className="grid size-24 place-items-center rounded-[26px] text-[#2B2150] shadow-[0_18px_40px_-14px_rgba(120,90,200,0.55)]" style={{ background: `linear-gradient(145deg,#d9caf7,${purple} 55%,#9b7fe0)` }}>
               <FlaskConical className="size-11" strokeWidth={1.8} aria-hidden />
             </span>
             <span className="absolute -top-2 -right-2 grid size-8 place-items-center rounded-full bg-[var(--tone-orange)] text-[13px] font-bold text-white ring-4 ring-[#f4f2f6]">
@@ -94,7 +95,7 @@ export function ProblemSolutionView({ block }: { block: B<"problemSolution"> }) 
                 key={c}
                 className={cn(
                   "rounded-full px-4 py-2 text-[14px] font-medium",
-                  i === 0 ? "text-white" : "bg-white text-ink shadow-[0_1px_2px_rgba(16,24,40,0.05)]"
+                  i === 0 ? "text-[#2B2150]" : "bg-white text-ink shadow-[0_1px_2px_rgba(16,24,40,0.05)]"
                 )}
                 style={i === 0 ? { background: purple } : undefined}
               >
@@ -136,9 +137,9 @@ const MID = 300
 const H = 56
 
 function PillNode({ p, x, w }: { p: Pill; x: number; w: number }) {
-  const fill = p.kind === "active" ? purple : p.kind === "tint" ? "#efedfd" : "#f6f5f8"
-  const stroke = p.kind === "active" ? "none" : p.kind === "tint" ? "#b9b2f6" : "#d9d7e0"
-  const color = p.kind === "active" ? "#fff" : "#171717"
+  const fill = p.kind === "active" ? purple : p.kind === "tint" ? "#f3eefc" : "#f6f5f8"
+  const stroke = p.kind === "active" ? "none" : p.kind === "tint" ? "#d6c6f5" : "#d9d7e0"
+  const color = p.kind === "active" ? onPurple : "#171717"
   const textW = p.label.length * 9.9 + (p.icon ? 30 : 0)
   const tx = x + (w - textW) / 2
   return (
@@ -168,7 +169,7 @@ export function DrJourneyMap() {
     <figure className="overflow-hidden rounded-[28px] px-5 py-8 sm:px-10 md:py-12" style={{ background: stage }}>
       <div className="grid gap-5 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
         <div>
-          <span className="inline-block rounded-full px-3.5 py-1.5 text-[13px] font-medium text-white" style={{ background: purple }}>
+          <span className="inline-block rounded-full px-3.5 py-1.5 text-[13px] font-medium" style={{ background: purple, color: onPurple }}>
             Product journey
           </span>
           <p className="mt-5 font-heading text-[40px] leading-none font-normal tracking-[-0.03em] text-ink md:text-[56px]">User flow</p>
@@ -181,7 +182,7 @@ export function DrJourneyMap() {
       {/* Desktop diagram */}
       <svg viewBox="0 0 1040 600" className={cn(inter.className, "mt-10 hidden h-auto w-full md:block")} role="img" aria-label="User flow: Research Home or History, then ask a question or use a quick action (Generate Routes, Literature, Patents and Prior Art, Molecule Builder), leading to resolve molecule, compare routes, modify path, scale quantities, sources and evidence, and save to Research Vault">
         {/* faint circuit pattern */}
-        <g stroke="#6e62e5" strokeOpacity="0.06" strokeWidth="1.5" fill="none">
+        <g stroke="#B79CEC" strokeOpacity="0.06" strokeWidth="1.5" fill="none">
           <path d="M0,80 H120 l40,40 H300 M0,520 H110 l50,-50 H280 M720,40 v60 l40,40 M1040,575 H930 l-40,-40" />
           <circle cx="330" cy="120" r="10" />
           <circle cx="300" cy="470" r="10" />

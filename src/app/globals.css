@@ -74,6 +74,9 @@
   --tone-green: #02594e;
   --tone-orange: #e8833a;
   --tone-purple: #6e62e5;
+  /* purple for text; a case study can set a darker shade when its purple is light */
+  --tone-purple-ink: #6e62e5;
+  --on-purple: #ffffff;
   --tone-blue: #2e90fa;
 
   /* shadcn tokens mapped to the palette */

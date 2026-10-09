@@ -233,6 +233,8 @@ export type CaseStudy = {
     timeline: string
   }
   hero: Img & { background?: string }
+  /** Overrides the purple accent on this page: fill, text shade (readable on cream) and soft tint */
+  accent?: { purple: string; purpleInk: string; purpleSoft: string; onPurple: string }
   impact: Metric[]
   /** Heading above the metric cards (defaults to "Impact overview") */
   impactTitle?: string

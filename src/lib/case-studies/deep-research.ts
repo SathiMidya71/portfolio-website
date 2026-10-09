@@ -37,6 +37,8 @@ export const deepResearch: CaseStudy = {
     width: 2000,
     height: 1125,
   },
+  // Deep Research purple (from Sathi). Light, so text uses a darker shade and fills carry dark text.
+  accent: { purple: "#B79CEC", purpleInk: "#6B4CB8", purpleSoft: "#F1EBFC", onPurple: "#2B2150" },
   impactTitle: "Project at a glance",
   impact: [
     {
@@ -432,7 +434,7 @@ export const deepResearch: CaseStudy = {
             { name: "Deep green", hex: "#1F392D", use: "Primary actions, chat and selected route", featured: true },
             { name: "Ink", hex: "#171717", use: "Headings and scientific content", featured: true },
             { name: "Purple", hex: "#4A307D", use: "Active modes and toggles", featured: true },
-            { name: "Lavender", hex: "#AA92E7", use: "Step badges and tools", featured: true },
+            { name: "Lavender", hex: "#B79CEC", use: "Quick actions, step badges and tools", featured: true },
             { name: "Warm white", hex: "#FCFAF6", use: "Workspace background" },
             { name: "Lavender tint", hex: "#EFEDFB", use: "Tool chips" },
             { name: "Border", hex: "#E6E6E6", use: "Cards and dividers" },

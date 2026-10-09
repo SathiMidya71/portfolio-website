@@ -41,7 +41,18 @@ export default async function CaseStudyPage({ params }: Params) {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main
+        style={
+          cs.accent
+            ? ({
+                "--tone-purple": cs.accent.purple,
+                "--tone-purple-ink": cs.accent.purpleInk,
+                "--accent-purple": cs.accent.purpleSoft,
+                "--on-purple": cs.accent.onPurple,
+              } as React.CSSProperties)
+            : undefined
+        }
+      >
         {/* ---------- Header ---------- */}
         <header className={`${shell} pt-6 md:pt-10`}>
           <Link href="/#work" className="inline-flex items-center gap-1.5 text-sm font-medium text-body hover:text-brand">

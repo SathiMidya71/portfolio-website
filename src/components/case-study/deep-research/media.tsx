@@ -9,7 +9,7 @@ import { DemoVideo } from "./demo-video"
 type MediaBlock = Extract<Block, { type: "media" }>
 type Item = MediaBlock["items"][number]
 
-const stage = "linear-gradient(130deg,#efedfb 0%,#f4f2f6 50%,#f2efe8 100%)"
+const stage = "linear-gradient(130deg,#f3eefc 0%,#f4f2f6 50%,#f2efe8 100%)"
 
 function Frame({ item, sizes }: { item: Item; sizes: string }) {
   return (
