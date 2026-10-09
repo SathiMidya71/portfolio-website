@@ -237,7 +237,6 @@ export const deepResearch: CaseStudy = {
               ],
             },
           ],
-          prompt: "Generate retrosynthesis routes for aspirin.",
           image: {
             src: "/case-studies/deep-research/screens/home-light.jpg",
             alt: "Deep Research home screen: Turn your next scientific question into a breakthrough, with a research session box and quick actions",
