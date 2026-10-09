@@ -135,3 +135,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
 - Make small, verified changes. After each change, check the page in the browser at desktop and phone width, then commit and push to `main` with a clear message.
 - When I send a screenshot reference, match its layout and interaction closely, but use my content.
 - Give a short summary after each change: what changed, what I should look at, and anything you couldn't do.
+- End every reply with this line (Windows PowerShell, so I can pull and run the latest version):
+  ```
+  cd $HOME\Desktop\portfolio-website; git pull; npm.cmd run dev
+  ```
