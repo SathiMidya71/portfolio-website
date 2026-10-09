@@ -213,7 +213,7 @@ export const skills = [
 // "What it's like to work with me": LinkedIn-style recommendation cards in a scattered collage.
 // Sathi has asked colleagues for LinkedIn recommendations. Until they arrive:
 // - status "sample": placeholder person and text (shows a "Sample" tag)
-// - status "draft": real person, but text drafted for them to approve (shows a "Draft" tag)
+// - status "draft": real person, but text drafted for them to approve (no tag shown, at Sathi's request)
 // When the real recommendation arrives, paste its exact text and date and remove `status`.
 export type Recommendation = {
   name: string

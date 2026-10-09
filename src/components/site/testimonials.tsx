@@ -54,7 +54,7 @@ function RecCard({ r }: { r: Recommendation }) {
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span className="text-[15px] leading-snug font-semibold text-ink">{r.name}</span>
-            {r.status && <span className="shrink-0 rounded-full border border-dashed border-[#c9bfae] px-1.5 text-[10px] font-semibold tracking-wide text-soft uppercase">{r.status}</span>}
+            {r.status === "sample" && <span className="shrink-0 rounded-full border border-dashed border-[#c9bfae] px-1.5 text-[10px] font-semibold tracking-wide text-soft uppercase">{r.status}</span>}
           </span>
           <span className="block text-[13px] leading-snug text-body">{r.headline}</span>
           <span className="block text-[12px] text-soft">
