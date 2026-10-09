@@ -99,7 +99,7 @@ export function SplitView({ block }: { block: SplitBlock }) {
             </div>
           </Tablet>
         )}
-        {!block.coded && block.images.map((img) =>
+        {!block.coded && (block.images ?? []).map((img) =>
           block.tablet ? (
             <Tablet key={img.src} img={img} sizes="(min-width: 1200px) 640px, (min-width: 768px) 65vw, 100vw" />
           ) : (
@@ -245,9 +245,9 @@ export function PhotoTabletsView({ block }: { block: PhotoTabletsBlock }) {
           <Image src={block.photo.src} alt={block.photo.alt} width={block.photo.width} height={block.photo.height} sizes="(min-width: 768px) 460px, 100vw" className="h-auto w-full" />
         </div>
         <div className="relative z-10 grid gap-8 md:-ml-[12%] md:pt-[8%] md:gap-10">
-          {block.tablets.map((img, i) => (
+          {(block.coded ?? block.tablets ?? []).map((t, i) => (
             <div
-              key={img.src}
+              key={typeof t === "string" ? t : t.src}
               className={cn(i % 2 === 1 && "md:mr-[8%] md:-ml-[4%]")}
               style={{
                 opacity: shown ? 1 : 0,
@@ -255,7 +255,15 @@ export function PhotoTabletsView({ block }: { block: PhotoTabletsBlock }) {
                 transition: `opacity 700ms ease ${250 + i * 180}ms, translate 800ms cubic-bezier(.2,.7,.2,1) ${250 + i * 180}ms`,
               }}
             >
-              <Tablet img={img} sizes="(min-width: 1200px) 500px, (min-width: 768px) 55vw, 100vw" />
+              {typeof t === "string" ? (
+                <Tablet>
+                  <div className="[container-type:inline-size]">
+                    <CodedScreenView name={t} />
+                  </div>
+                </Tablet>
+              ) : (
+                <Tablet img={t} sizes="(min-width: 1200px) 500px, (min-width: 768px) 55vw, 100vw" />
+              )}
             </div>
           ))}
         </div>

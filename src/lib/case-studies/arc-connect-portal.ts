@@ -11,7 +11,6 @@ const dir = "/case-studies/arc-connect-portal"
 const appDir = "/case-studies/arc-connect-app"
 
 const comp = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/components/${name}.png`, alt, width, height })
-const screen = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/screens/${name}.jpg`, alt, width, height })
 const stat = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/stats/${name}.png`, alt, width, height })
 const img = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/${name}.jpg`, alt, width, height })
 
@@ -196,7 +195,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "right",
-          images: [screen("dashboard", "Dashboard for Apollo Clinic: Therapy, Patients and Transmission cards with counts by exception, and announcements below", 1527, 1032)],
+          coded: "dashboard",
           text: ["The home page gives an overview of the key information, sorted by exception."],
           list: [
             "Pick a care site and download the list of patients who meet the exception criteria.",
@@ -216,7 +215,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "left",
-          images: [screen("notification-settings", "Notification settings: care site, the days of the week to send emails, recipients and an adherence range slider", 1554, 1155)],
+          coded: "notification-settings",
           title: "Notification settings",
           text: ["Admins decide when the portal should speak up. For each care site they set:"],
           list: ["The notification schedule", "The notification recipients", "The range of adherence scores", "The range of SpO2"],
@@ -225,7 +224,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "right",
-          images: [screen("notification-summary", "Notification summary: current adherence, SpO2 and therapy deviation settings above a patient list", 1554, 1149)],
+          coded: "notification-summary",
           title: "Notification summary",
           text: [
             "On the scheduled days the system emails the recipients a link to the Notification Summary.",
@@ -338,7 +337,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "left",
-          images: [screen("messaging", "Messaging screen with a list of chats, group avatars and a conversation thread", 1527, 1033)],
+          coded: "messaging",
           text: [
             "Users can message anyone on their contact list, one to one or in groups.",
             "They can also open the profile of anyone on their connection list.",
@@ -356,7 +355,6 @@ export const arcConnectPortal: CaseStudy = {
           tablet: true,
           side: "right",
           coded: "invitations",
-          images: [screen("invitations", "Invitations screen with new, sent (120) and received (30) invitation cards above a table of sent invitations", 1527, 1018)],
           title: "Sent and received invitations",
           text: ["Care site admins see every sent and received invitation. To invite someone, they type the invitee's email address and choose the clinic."],
         },
@@ -364,7 +362,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "left",
-          images: [screen("invitation-new", "New invitation form: email address, a choice of patient, clinician or site admin, care site and Send invitations", 1549, 1164)],
+          coded: "invitation-new",
           title: "New invitation",
           text: ["Admins can invite other care site administrators, clinicians and patients."],
         },
@@ -372,7 +370,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "right",
-          images: [screen("care-site-settings", "Care site settings for Apollo Clinic: enrolled patients 1,325, clinicians 30 and care site admins 3, above the care site's details", 1527, 1034)],
+          coded: "care-site-settings",
           title: "Care site settings",
           text: ["Care site settings list the enrolled patients, clinicians and care site admins, with their counts, across every care site the admin manages."],
         },
@@ -380,7 +378,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "left",
-          images: [screen("clinician-profile", "Clinician profile form: name, specialties, licence number, accreditation, address, phone and email", 1547, 1234)],
+          coded: "clinician-profile",
           title: "Clinician profile",
           text: ["Admins can also save a clinician's profile, with their specialties, licence number and accreditation."],
         },
@@ -394,11 +392,8 @@ export const arcConnectPortal: CaseStudy = {
         {
           type: "photoTablets",
           text: "The welcome screens set the tone for the whole portal: get connected, stay informed, and collaborate with your patients and their caregivers.",
+          coded: ["login", "create-password"],
           photo: img("photo-inhaler", "A young boy using his therapy mask while playing with soft toys on his bed", 1200, 1609),
-          tablets: [
-            screen("login", "Welcome to Arc Connect: log in with username and password", 1526, 1032),
-            screen("create-password", "Welcome to Arc Connect: create a password", 1526, 1031),
-          ],
         },
       ],
     },
