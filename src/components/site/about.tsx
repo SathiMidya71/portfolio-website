@@ -4,12 +4,24 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { about, profile } from "@/lib/content"
+import { Journal } from "./journal"
 import { Reveal } from "./reveal"
 import { Section, btnPill, surface } from "./section"
 
-export function About() {
+/** About me as an opening journal (below the case studies). */
+export function AboutJournal() {
   return (
     <Section id="about">
+      <p className="mb-8 text-center font-hand text-[34px] leading-none font-bold text-brand md:mb-12 md:text-[44px]">{about.eyebrow}</p>
+      <Journal />
+    </Section>
+  )
+}
+
+/** Previous card layout, kept for reference; not rendered. */
+export function About() {
+  return (
+    <Section id="about-card">
       <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
         <Reveal>
           <Card className={`${surface} h-full p-6 sm:p-10`}>

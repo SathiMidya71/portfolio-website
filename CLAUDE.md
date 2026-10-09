@@ -40,7 +40,8 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
 **Home page** sections:
 - Hero: gradient H1, company chips, and a fan of 4 tilted hero cards. The video card has a focus/blur hover, a play button and a Caveat annotation.
 - Case studies: compact cards, text on the left (`1.5fr`) and thumbnail on the right (`1fr`). ABM cards show the ABM logo plus "abmrc.com ↗".
-- About, Experience, Skills, Testimonials, Contact, Footer.
+- Case studies are followed by About as an opening journal (`journal.tsx`, `AboutJournal` in `about.tsx`, id `about`): a green notebook (coded collage cover: stamps with her photo, waves, coffee, palette, gold wax seal, barcode "sathi", ribbon) that, on scroll into view, swings open (cover's back face is the left page), flips 3 pages fast, and lands on a dotted spread. Left: name, Product Designer, circled "9+ years" (résumé), experience list, interests chips, "Today" note, taped contact card, handwritten line. Right: polaroid of `public/about/sathi-journal.jpg` with an Instagram sticker (tooltip = `profile.instagramHandle`, link = `profile.links.instagram`, both empty until she provides them), tool tiles (Claude Code, Git & GitHub, Figma) and hobbies (Swimming, CoffeeLover.png, Painting). Content in `journal` in `content.ts`. From md up it animates (cqw units); phones get the two pages stacked via a 200%-wide container so cqw sizes match. Reduced motion starts open.
+- Then Experience, Skills, Testimonials, Contact, Footer. (The old About card is kept in `about.tsx` but not rendered.)
 
 ## Content rules (important)
 - **Keep everything authentic.** Never invent metrics, quotes, research or team details. If something is missing, leave a clearly marked placeholder and ask me.
@@ -122,7 +123,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
 - **Overwritten files:** after overwriting an image under the same name, rename it, because the Next image cache serves stale versions.
 
 ## Open items (ask me)
-- Instagram URL (`profile.links.instagram` in `content.ts`)
+- Instagram URL and handle (`profile.links.instagram`, `profile.instagramHandle` in `content.ts`), shown on the journal sticker
 - BiWaze: per-role interview counts, US marketing team feedback, and confirmation of team, year and "64 hours"
 - Scimplify logo (for the Deep Research card on the home page)
 - Deep Research: confirm the sampled palette, the year/duration, and any real validation or usability results (would unlock the reference-style insight charts). The video doesn't show the Scale/target-quantity input or Optimization (marked "coming soon").

@@ -15,6 +15,8 @@ export const profile = {
     github: "https://github.com/SathiMidya71",
     instagram: "", // add the Instagram profile URL to show it on the site
   },
+  /** Shown on hover over the Instagram sticker in the journal, e.g. "@sathi.designs" */
+  instagramHandle: "",
 }
 
 export const nav = [
@@ -66,6 +68,14 @@ export const heroCards: HeroCard[] = [
     color: "#b2ddff",
   },
 ]
+
+// "About me" journal, below the case studies
+export const journal = {
+  experienceYears: "9+ years", // from the résumé: 9+ years total experience
+  today: "Designing GenAI tools for chemists at Scimplify, and building them in code with Claude Code.",
+  // from the résumé's focus areas
+  interests: ["GenAI products", "User research", "Design systems", "Healthcare UX"],
+}
 
 export const about = {
   eyebrow: "A bit about me",

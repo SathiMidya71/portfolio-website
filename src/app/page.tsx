@@ -1,4 +1,4 @@
-import { About } from "@/components/site/about"
+import { AboutJournal } from "@/components/site/about"
 import { CaseStudies } from "@/components/site/case-studies"
 import { Contact } from "@/components/site/contact"
 import { Experience } from "@/components/site/experience"
@@ -14,8 +14,8 @@ export default function Home() {
       <SiteHeader />
       <main id="top">
         <Hero />
-        <About />
         <CaseStudies />
+        <AboutJournal />
         <Experience />
         <Skills />
         <Testimonials />
