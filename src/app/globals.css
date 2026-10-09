@@ -167,3 +167,10 @@
     transition: none;
   }
 }
+
+/* Arc Connect Portal architecture: dashes flowing out from the hub */
+@keyframes ia-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}

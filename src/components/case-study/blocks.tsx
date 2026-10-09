@@ -1,4 +1,5 @@
-import { AnnotatedScreenView, ArcPortalArchitecture, PhotosView } from "./arc-portal"
+import { AnnotatedScreenView, PhotosView } from "./arc-portal"
+import { ArcPortalArchitecture } from "./arc-portal-architecture"
 import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
