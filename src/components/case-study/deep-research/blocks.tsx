@@ -152,10 +152,10 @@ export function RichPersona({ p }: { p: Persona }) {
     { label: "Frustrations", items: p.frustrations, tone: "var(--tone-orange)" },
   ]
   return (
-    <article className="overflow-hidden rounded-[24px] bg-white/80 shadow-[0_1px_2px_rgba(16,24,40,0.04)] ring-1 ring-black/[0.04]">
+    <article className="overflow-hidden rounded-[24px] ring-1 ring-line">
       <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         {/* identity */}
-        <div className="flex flex-col gap-6 p-6 md:p-8" style={{ background: "linear-gradient(160deg,#f3eefc,#f7f5ff 60%,#ffffff)" }}>
+        <div className="flex flex-col gap-6 p-6 md:p-8">
           {p.photo && (
             <Image
               src={p.photo.src}
@@ -199,7 +199,7 @@ export function RichPersona({ p }: { p: Persona }) {
           )}
         </div>
         {/* goals, frustrations, needs */}
-        <div className="grid content-start gap-7 p-6 md:p-8">
+        <div className="grid content-start gap-7 border-line p-6 max-lg:border-t md:p-8 lg:border-l">
           {groups.map((g) => (
             <div key={g.label}>
               <p className={cn(label, "mb-3")}>{g.label}</p>

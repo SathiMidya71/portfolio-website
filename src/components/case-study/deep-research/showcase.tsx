@@ -11,7 +11,8 @@ type B<T extends Block["type"]> = Extract<Block, { type: T }>
 
 const purple = "#B79CEC"
 const onPurple = "#2B2150"
-const stage = "linear-gradient(120deg,#f3eefc 0%,#f4f2f6 50%,#f5efe8 100%)"
+// Boards sit straight on the page background (no tinted container)
+const stage = "transparent"
 
 /* ---------------- Problem and solution ---------------- */
 
@@ -47,7 +48,7 @@ function GlossyRing({ id }: { id: string }) {
 
 export function ProblemSolutionView({ block }: { block: B<"problemSolution"> }) {
   return (
-    <div className="relative overflow-hidden rounded-[28px] px-5 py-10 sm:px-10 md:py-14" style={{ background: stage }}>
+    <div className="relative overflow-hidden py-4 md:py-6" style={{ background: stage }}>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_200px_minmax(0,1fr)] lg:items-center lg:gap-8">
         {/* Problem */}
         <div>
@@ -166,7 +167,7 @@ export function DrJourneyMap() {
   const c3 = { x: 798, w: 236 }
   const dots = [134, 432, 752]
   return (
-    <figure className="overflow-hidden rounded-[28px] px-5 py-8 sm:px-10 md:py-12" style={{ background: stage }}>
+    <figure className="overflow-hidden py-4 md:py-6" style={{ background: stage }}>
       <div className="grid gap-5 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
         <div>
           <span className="inline-block rounded-full px-3.5 py-1.5 text-[13px] font-medium" style={{ background: purple, color: onPurple }}>
