@@ -255,10 +255,10 @@ export const workingWithMe = {
       status: "draft",
     },
     {
-      // DRAFT for Rohit to approve; colleague at Scimplify (Scinode)
+      // DRAFT for Rohit to approve; Sathi's manager at Scimplify (Scinode)
       name: "Rohit Deshpande",
       headline: "Accelerating innovation through Scinode · Scimplify",
-      relation: "Worked with Sathi on the same team",
+      relation: "Managed Sathi directly",
       date: "",
       text: "Give Sathi a problem and she's already on it. She breaks it down fast, uses AI tools smartly, and comes back with work we can ship.",
       tone: "orange",
