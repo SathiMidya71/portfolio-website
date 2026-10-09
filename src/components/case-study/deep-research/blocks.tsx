@@ -1,4 +1,4 @@
-import { ArrowRight, MousePointerClick } from "lucide-react"
+import { ArrowRight, ChartLine, Database, FastForward, MousePointerClick, Recycle } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 import { inter } from "./fonts"
@@ -449,6 +449,50 @@ export function StepsView({ block }: { block: B<"steps"> }) {
           </div>
         </li>
       ))}
+    </ol>
+  )
+}
+
+/* ---------------- Stat cards ---------------- */
+
+export function StatsView({ block }: { block: B<"stats"> }) {
+  return (
+    <ul className="grid gap-4 sm:grid-cols-2">
+      {block.items.map((st, i) => (
+        <li
+          key={st.label}
+          className={cn("flex flex-col justify-between gap-6 rounded-[22px] p-6 md:p-8", i === 0 ? "bg-[#1f392d] text-white" : "bg-white/80 text-[#1f392d] ring-1 ring-black/[0.04]")}
+        >
+          <p className="font-heading text-[64px] leading-none font-bold tracking-[-0.03em] md:text-[84px]">{st.value}</p>
+          <p className={cn("text-[17px] leading-snug md:text-lg", i === 0 ? "text-white/85" : "text-body")}>{st.label}</p>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+/* ---------------- Cycle cards ---------------- */
+
+const cycleIcons = { database: Database, recycle: Recycle, trend: ChartLine, forward: FastForward }
+
+export function CycleView({ block }: { block: B<"cycle"> }) {
+  const last = block.items.length - 1
+  return (
+    <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      {block.items.map((c, i) => {
+        const Icon = cycleIcons[c.icon]
+        const dark = i === last
+        return (
+          <li key={c.title} className={cn("flex flex-col rounded-[22px] p-6", dark ? "bg-[#1f392d] text-white" : "bg-white/80 ring-1 ring-black/[0.04]")}>
+            <div className="flex items-start justify-between">
+              <span className={cn("grid size-10 place-items-center rounded-[10px] font-heading text-lg font-bold", dark ? "bg-white/15 text-white" : "bg-[#e4ece7] text-[#1f392d]")}>{i + 1}</span>
+              <Icon className={cn("size-7", dark ? "text-white" : "text-[#1f392d]")} aria-hidden />
+            </div>
+            <h4 className={cn("mt-8 font-heading text-[22px] leading-tight font-semibold", dark ? "text-white" : "text-[#1f392d]")}>{c.title}</h4>
+            <p className={cn("mt-3 text-[15.5px] leading-snug", dark ? "text-white/85" : "text-body")}>{c.text}</p>
+          </li>
+        )
+      })}
     </ol>
   )
 }

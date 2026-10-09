@@ -63,7 +63,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
   - Research: `findings`, `interviews`, `quotes`, `perspective`, `personas`, `quadrants`
   - Process and systems: `phases`, `visualSystem`, `designSystem`
   - Mobile and motion: `phoneFlow`, `video`, `showcase`, `homeBoard`
-  - Added for Deep Research (generic, reusable): `flow`, `principle`, `shift`, `insights`, `journey`, `tree`, `media` (real screenshots and demo clips in a browser frame, always one per row at full width; videos are click-to-play, never autoplay), `kioskStage` (huge faint beige title on the page background, partly hidden behind a coded, tilted touchscreen monitor on a stand; optional `notes` groups (Home screen, Ask in your own words) form a panel overlapping its bottom edge; the screen is a real screenshot; style from a Behance reference, rebuilt in code because that image isn't free to use), `specs`, `typeHierarchy`, `palette` (rendered as a colour stage), `problemSolution`, `steps`; `personas` also accepts `about`, `facts`, `needs`, `quote` for a rich single-persona card
+  - Added for Deep Research (generic, reusable): `flow`, `principle`, `shift`, `insights`, `journey`, `tree`, `media` (real screenshots and demo clips in a browser frame, always one per row at full width; videos are click-to-play, never autoplay), `kioskStage` (huge faint beige title on the page background, partly hidden behind a coded, tilted touchscreen monitor on a stand; optional `notes` groups (Home screen, Ask in your own words) form a panel overlapping its bottom edge; the screen is a real screenshot; style from a Behance reference, rebuilt in code because that image isn't free to use), `specs`, `typeHierarchy`, `palette` (rendered as a colour stage), `problemSolution`, `steps`, `stats` (big-number cards, real figures only), `cycle` (4 numbered icon cards, last dark); `personas` also accepts `about`, `facts`, `needs`, `quote` for a rich single-persona card
 - `src/lib/case-studies/*.ts` hold the case study data files; register new ones in `index.ts`.
 - Page template: `src/app/work/[slug]/page.tsx`. It shows:
   - Header meta: overview, role, team, timeline
@@ -103,6 +103,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
    - `screens/home-light.jpg` (true aspect, 16:10 crop) is shown in the section 1 kiosk mockup.
    - Hero `hero-lab.jpg`: Sathi's lab stock photo with the Modify Path screenshot perspective-warped onto the green screen (OpenCV); glass tubes in front are kept by chroma-keying only the bottom-left. Also used as the home card and link preview image.
    - Palette hexes are sampled from the screenshots: deep green #1F392D (actions, chat), purple #4A307D (modes), lavender #AA92E7 (steps), warm white #FCFAF6.
+   - Key decisions follow Sathi's product slides: 1 Home + Ask (kiosk), 2 The agent gets to work, 3 Every route ranked and diagrammed, 4 Edit the route, 5 From mmol to batch quantities, 6 Every route traced to its evidence (18 sources / 10 references for aspirin), 7 A research partner that gets better as you work.
    - No adoption metrics: "Project at a glance" shows scope facts (0 → 1, 8 stages, 9 screens, UX → code).
 - Card for **Arc Connect Web Portal** links to Behance: https://www.behance.net/gallery/181423391/Arc-Connect-Web-Portal
 

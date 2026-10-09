@@ -11,6 +11,8 @@ import {
   RichPersona,
   ShiftView,
   SpecsView,
+  CycleView,
+  StatsView,
   StepsView,
   TreeView,
   TypeHierarchyView,
@@ -311,6 +313,12 @@ export function BlockView({ block }: { block: Block }) {
 
     case "kioskStage":
       return <KioskStageView block={block} />
+
+    case "cycle":
+      return <CycleView block={block} />
+
+    case "stats":
+      return <StatsView block={block} />
 
     case "media":
       return <MediaView block={block} />

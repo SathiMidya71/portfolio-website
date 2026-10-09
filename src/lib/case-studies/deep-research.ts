@@ -270,15 +270,44 @@ export const deepResearch: CaseStudy = {
             },
           ],
         },
-        { type: "h3", text: "3. Show the reasoning, keep humans in control" },
+        { type: "h3", text: "3. Every route, ranked and diagrammed" },
         {
           type: "p",
-          text: "Routes are compared by steps, yield and score, and each score explains itself. Researchers can edit any step, review the changes, let the AI build a new variant, and scale the quantities.",
+          text: "The AI generates several synthesis routes and ranks them, so researchers can compare options at a glance instead of reading pages of output.",
+        },
+        {
+          type: "list",
+          items: [
+            "Compare routes on steps, yield and score",
+            "The best route is flagged, with its rationale in plain language",
+            "A full reaction diagram for each route, details one click away",
+          ],
         },
         {
           type: "media",
           items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/analysis-v2.jpg", width: 2258, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
+            {
+              kind: "image",
+              src: "/case-studies/deep-research/screens/routes-ranked.jpg",
+              width: 2258,
+              height: 1080,
+              alt: "Routes A to E ranked by steps, yield and score; Route A is flagged Best with its rationale and a reaction diagram from start material to target",
+              caption: "Routes ranked side by side, the best one flagged.",
+            },
+          ],
+        },
+        { type: "h3", text: "4. Edit the route, not just read it" },
+        {
+          type: "p",
+          text: "AI output is a starting point, not a final answer. Researchers stay in control and can reshape any route themselves.",
+        },
+        {
+          type: "list",
+          items: [
+            "Switch between Scheme and Form views",
+            "Click any step to change reagents, solvents and conditions",
+            "Add a compound or a reaction, or open full screen",
+            "Want a different approach? Ask the agent for another one",
           ],
         },
         {
@@ -296,13 +325,47 @@ export const deepResearch: CaseStudy = {
         {
           type: "media",
           items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster-v2.jpg", width: 1600, height: 766, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Quantities update as you edit." },
+            { kind: "image", src: "/case-studies/deep-research/screens/analysis-v2.jpg", width: 2258, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
           ],
         },
-        { type: "h3", text: "4. Evidence and memory built in" },
+        { type: "h3", text: "5. From mmol to batch quantities" },
         {
           type: "p",
-          text: "Every route links to its literature and patents. Routes, papers, patents and figures are saved to My Repository, and History lets researchers pick up any session.",
+          text: "Researchers see what a route needs in practice, without manual stoichiometry in a spreadsheet.",
+        },
+        {
+          type: "list",
+          items: [
+            "Set a target quantity and amounts are calculated per step",
+            "Equivalents are editable for each reagent",
+            "Molecular weight, mmol and mass for every compound, with the limiting reagent shown",
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster-v2.jpg", width: 1600, height: 766, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Change an equivalent and every quantity updates." },
+          ],
+        },
+        { type: "h3", text: "6. Every route traced to its evidence" },
+        {
+          type: "p",
+          text: "Trust in AI output comes from provenance. Every route links back to the literature and patents behind it.",
+        },
+        {
+          type: "list",
+          items: [
+            "All literature and sources in one panel",
+            "Title, year, publisher and an abstract for each reference",
+            "Save any reference to your vault",
+          ],
+        },
+        {
+          type: "stats",
+          items: [
+            { value: "18", label: "sources behind the aspirin research" },
+            { value: "10", label: "literature references listed in the panel" },
+          ],
         },
         {
           type: "media",
@@ -311,9 +374,27 @@ export const deepResearch: CaseStudy = {
           ],
         },
         {
+          type: "p",
+          text: "Saved references, routes and figures live in My Repository, ready for the next investigation.",
+        },
+        {
           type: "media",
           items: [
             { kind: "video", src: "/case-studies/deep-research/clips/vault.mp4", poster: "/case-studies/deep-research/clips/vault-poster-v2.jpg", width: 1600, height: 766, alt: "My Repository: saved routes, literature, patents and artifacts for the compound", caption: "My Repository keeps routes, papers, patents and figures." },
+          ],
+        },
+        { type: "h3", text: "7. A research partner that gets better as you work" },
+        {
+          type: "lead",
+          text: "Published chemistry captures what succeeded. Your bench captures what actually happened.",
+        },
+        {
+          type: "cycle",
+          items: [
+            { title: "Your results, kept", text: "Every run, including the ones that did not work.", icon: "database" },
+            { title: "Nothing is wasted", text: "Failed conditions are evidence, not noise.", icon: "recycle" },
+            { title: "The plan improves", text: "Each result changes what Scinode proposes next.", icon: "trend" },
+            { title: "Every cycle starts ahead", text: "Each investigation begins where the last one ended.", icon: "forward" },
           ],
         },
       ],
