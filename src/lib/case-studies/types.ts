@@ -119,6 +119,22 @@ export type Block =
   | { type: "kioskStage"; title: string; image: Img; caption?: string; notes?: { title: string; items: string[] }[]; prompt?: string }
   /** Numbered icon cards in a row (last one dark) */
   | { type: "cycle"; items: { title: string; text: string; icon: "database" | "recycle" | "trend" | "forward" }[] }
+  /** Image marked up like a notebook: pen circles, arrows and handwritten notes (image coordinates) */
+  | {
+      type: "markedImage"
+      image: Img
+      caption?: string
+      marks: {
+        circle: { cx: number; cy: number; rx: number; ry: number }
+        text: string
+        textAt: [number, number]
+        note: { x: number; y: number }
+        arrowTo: [number, number]
+        bend?: number
+        size?: number
+        tilt?: number
+      }[]
+    }
   /** Notebook sketches pinned to a pegboard */
   | { type: "pegboard"; title?: string; items: { src: string; alt: string; width: number; height: number; caption: string }[] }
   /** Big-number stat cards (first one dark). Only real figures. */

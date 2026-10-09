@@ -498,15 +498,19 @@ export const deepResearch: CaseStudy = {
           ],
         },
         {
-          type: "figure",
-          dark: true,
+          type: "markedImage",
           image: {
-            src: "/case-studies/deep-research/launch-dashboard.jpg",
-            alt: "Usage dashboard for 30 Sep to 6 Oct 2026 with everything blurred except: 18 active users, 29 threads, and molecules per user (13 users researched one molecule)",
+            src: "/case-studies/deep-research/launch-dash-marked.jpg",
+            alt: "Usage dashboard for 30 Sep to 6 Oct 2026, mostly blurred, with hand-drawn circles and notes on 18 active users, 29 threads and 13 users who researched a molecule",
             width: 2625,
             height: 1707,
           },
           caption: "From the usage dashboard. Cost, usage and user details are blurred.",
+          marks: [
+            { circle: { cx: 100, cy: 240, rx: 80, ry: 58 }, text: "18 users\nin week one!", textAt: [470, 190], note: { x: 455, y: 215 }, arrowTo: [195, 232], bend: -0.25, tilt: -5 },
+            { circle: { cx: 1405, cy: 240, rx: 78, ry: 58 }, text: "29 research\nthreads", textAt: [1760, 190], note: { x: 1745, y: 215 }, arrowTo: [1495, 232], bend: -0.25, tilt: -3 },
+            { circle: { cx: 288, cy: 735, rx: 92, ry: 190 }, text: "13 users\nresearched\na molecule", textAt: [520, 680], note: { x: 505, y: 760 }, arrowTo: [395, 760], bend: 0.2, tilt: -4, size: 60 },
+          ],
         },
       ],
     },
