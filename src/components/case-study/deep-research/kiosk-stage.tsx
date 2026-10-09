@@ -1,8 +1,8 @@
 import Image from "next/image"
 import type { Block } from "@/lib/case-studies/types"
 
-// Presentation mockup modelled on Sathi's touchscreen-kiosk reference: a huge faint title on a soft
-// sage stage, and a black monitor tilted back on a stand. The monitor is coded; only the screen
+// Presentation mockup modelled on Sathi's touchscreen-kiosk reference: a huge faint title on the
+// page background, partly hidden behind the monitor, and a black monitor tilted back on a stand. The monitor is coded; only the screen
 // is an image (a real Deep Research screenshot).
 
 type KioskBlock = Extract<Block, { type: "kioskStage" }>
@@ -11,14 +11,13 @@ export function KioskStageView({ block }: { block: KioskBlock }) {
   return (
     <figure className="my-2">
       <div
-        className="relative isolate aspect-[16/10] overflow-hidden rounded-[28px] [container-type:inline-size]"
-        style={{ background: "radial-gradient(120% 100% at 50% 30%, #eef3ef 0%, #e2ebe5 55%, #d5e1d9 100%)" }}
+        className="relative isolate aspect-[16/10] overflow-hidden [container-type:inline-size]"
       >
         {/* huge faint title */}
         <p
           aria-hidden
-          className="absolute inset-x-0 top-[1%] text-center font-heading text-[15.5cqw] leading-none font-semibold tracking-[-0.04em] whitespace-nowrap text-white/70"
-          style={{ textShadow: "0 1px 0 rgba(255,255,255,0.6)" }}
+          className="absolute inset-x-0 top-[0%] text-center font-heading text-[15.5cqw] leading-none font-semibold tracking-[-0.04em] whitespace-nowrap"
+          style={{ color: "#e9e1d4" }}
         >
           {block.title}
         </p>
@@ -29,9 +28,9 @@ export function KioskStageView({ block }: { block: KioskBlock }) {
         </div>
 
         {/* monitor, tilted back */}
-        <div className="absolute top-[19%] left-1/2 w-[72%] -translate-x-1/2 [perspective:260cqw]">
+        <div className="absolute top-[7%] left-1/2 z-10 w-[72%] -translate-x-1/2 [perspective:260cqw]">
           <div
-            className="relative rounded-[1cqw] bg-[#0b0c0c] p-[0.9cqw] shadow-[0_4cqw_5cqw_-2cqw_rgba(20,40,30,0.45)]"
+            className="relative rounded-[1cqw] bg-[#0b0c0c] p-[0.9cqw] shadow-[0_4cqw_5cqw_-2cqw_rgba(60,45,25,0.35)]"
             style={{ transform: "rotateX(30deg)", transformOrigin: "50% 100%" }}
           >
             {/* bezel edge highlight */}
