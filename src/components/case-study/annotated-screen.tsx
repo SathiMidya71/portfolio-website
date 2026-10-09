@@ -12,9 +12,9 @@ import { cn } from "@/lib/utils"
 type AnnotatedBlock = Extract<Block, { type: "annotatedScreen" }>
 
 // lg layout, as fractions of the container width
-const IMG_LEFT = 0.3
-const IMG_W = 0.4
-const NOTE_W = 0.25
+const IMG_LEFT = 0.25
+const IMG_W = 0.5
+const NOTE_W = 0.21
 const ink = "#2e6fd0"
 
 function Pin({ n, className, style }: { n: number; className?: string; style?: React.CSSProperties }) {
@@ -59,7 +59,7 @@ export function AnnotatedScreenView({ block }: { block: AnnotatedBlock }) {
       const r = el.getBoundingClientRect()
       setSize({ w: r.width, h: r.height })
       // arrows leave each note from the middle of its first line
-      setAnchors(noteRefs.current.map((p) => (p ? p.offsetTop + 14 : 0)))
+      setAnchors(noteRefs.current.map((p) => (p ? p.offsetTop + 11 : 0)))
     }
     measure()
     const ro = new ResizeObserver(measure)
@@ -90,8 +90,8 @@ export function AnnotatedScreenView({ block }: { block: AnnotatedBlock }) {
           alt={block.image.alt}
           width={block.image.width}
           height={block.image.height}
-          sizes="(min-width: 1024px) 40vw, 440px"
-          className="relative h-auto w-full rounded-[22px] shadow-[0_24px_50px_-28px_rgba(16,24,40,0.45)] ring-1 ring-black/5 lg:ml-[30%] lg:w-[40%]"
+          sizes="(min-width: 1024px) 50vw, 440px"
+          className="relative h-auto w-full rounded-[22px] shadow-[0_24px_50px_-28px_rgba(16,24,40,0.45)] ring-1 ring-black/5 lg:ml-[25%] lg:w-[50%]"
         />
 
         {/* phones and tablets: numbers on the screen */}
@@ -106,7 +106,7 @@ export function AnnotatedScreenView({ block }: { block: AnnotatedBlock }) {
             ref={(el) => {
               noteRefs.current[i] = el
             }}
-            className={cn("absolute hidden font-hand text-[19px] leading-[1.15] font-bold lg:block", n.side === "left" ? "left-0 text-right" : "right-0")}
+            className={cn("absolute hidden font-hand text-[16px] leading-[1.12] font-bold lg:block", n.side === "left" ? "left-0 text-right" : "right-0")}
             style={{
               top: `${n.noteY * 100}%`,
               width: `${NOTE_W * 100}%`,
