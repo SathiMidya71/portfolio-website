@@ -222,7 +222,7 @@ export const deepResearch: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Before any screen or prompt, I worked the product out on paper: how routes branch, what a route card needs, where the agent shows progress, and how an edit becomes a new route. Stakeholder feedback went into the same notebook and was ticked off one by one.",
+          text: "Before any screen or prompt, I worked the product out on paper: how routes branch, what a route card needs, where the agent shows progress, and how an edit becomes a new route. Feedback from chemists and an A/B test of the new UI against the old one went into the same notebook, and each point was struck off as it was fixed.",
         },
         {
           type: "pegboard",
@@ -236,6 +236,8 @@ export const deepResearch: CaseStudy = {
             { src: "/case-studies/deep-research/sketches/idea-44.jpg", width: 1100, height: 1616, alt: "Notebook sketch: Route tabs: a thin scroll slider, expand and split view", caption: "Workspace controls" },
             { src: "/case-studies/deep-research/sketches/idea-41.jpg", width: 1100, height: 1967, alt: "Notebook sketch: Route A splits into graph and step; first icon doodles", caption: "Route structure" },
             { src: "/case-studies/deep-research/sketches/idea-45.jpg", width: 1048, height: 1527, alt: "Notebook sketch: Stakeholder feedback, worked through and ticked off", caption: "Feedback round" },
+            { src: "/case-studies/deep-research/sketches/idea-50.jpg", width: 1100, height: 1527, alt: "Notebook page: workspace feedback from a chemist on the chat area, route area and route card, items struck through as fixed", caption: "Chemist feedback" },
+            { src: "/case-studies/deep-research/sketches/idea-51.jpg", width: 1100, height: 1730, alt: "Notebook page: A/B test notes comparing the new UI with the old UI, from query to routes, step details and system messages", caption: "A/B test: new vs old UI" },
           ],
         },
       ],
