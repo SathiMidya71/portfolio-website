@@ -201,7 +201,7 @@ export function PhotoBannerView({ block }: { block: BannerBlock }) {
             {block.eyebrow}
           </span>
         )}
-        <p className="font-heading text-[22px] leading-[0.95] sm:text-[30px] md:text-[44px] font-semibold tracking-[-0.03em]">
+        <p className="font-heading text-[18px] leading-[0.95] sm:text-[22px] md:text-[28px] font-semibold tracking-[-0.03em]">
           {block.words.map((w) => (
             <span key={w.text} style={{ color: w.color }}>
               {w.text}
