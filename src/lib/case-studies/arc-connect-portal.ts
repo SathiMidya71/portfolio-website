@@ -10,6 +10,7 @@ import type { CaseStudy, Img } from "./types"
 const dir = "/case-studies/arc-connect-portal"
 const appDir = "/case-studies/arc-connect-app"
 
+const comp = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/components/${name}.png`, alt, width, height })
 const img = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/${name}.jpg`, alt, width, height })
 
 export const arcConnectPortal: CaseStudy = {
@@ -163,13 +164,24 @@ export const arcConnectPortal: CaseStudy = {
           text: "A small set of components carries the whole portal: adherence buckets, today's adherence score, pressure and duration charts, enrolment and invitation cards, and the notification range sliders.",
         },
         {
-          type: "figure",
-          image: img(
-            "components",
-            "Component sheet: therapy adherence buckets, today's adherence score with 14 days of bars, pressure and duration charts, enrolled patients and new invitation cards, adherence and SpO2 sliders and a therapy deviation toggle",
-            1800,
-            1442
-          ),
+          type: "componentBoard",
+          items: [
+            { image: comp("adherence-score", "Today's adherence score of 90 with 14 days of bars", 1200, 376), label: "Adherence score", span: 2, tilt: -1 },
+            {
+              image: comp("goals-updated", "Updated therapy goals: 5", 636, 116),
+              more: [comp("with-deviations", "Transmissions with deviations: 10", 635, 127), comp("without-deviations", "Transmissions without deviations: 220", 637, 125)],
+              label: "Quick filters",
+              tilt: 1.5,
+            },
+            { image: comp("therapy", "Therapy card with patients below 25%, 50% and 75% adherence", 943, 850), label: "Therapy buckets", tilt: 1 },
+            { image: comp("pressure", "Pressure chart with pause, inspiratory and expiratory pressure for five cycles", 1200, 1196), label: "Pressure by cycle", tilt: -1 },
+            { image: comp("enrolled", "Enrolled patients 1,325 with View and Invite buttons", 636, 576), label: "Enrolment", tilt: 2 },
+            { image: comp("duration", "Duration chart over a month", 944, 645), label: "Therapy duration", span: 2, tilt: -1 },
+            { image: comp("invitation", "New invitation card with a Create button", 635, 583), label: "Invitations", tilt: -1 },
+            { image: comp("slider-adherence", "Adherence notification range slider set to 0–75%", 723, 387), label: "Adherence range", tilt: -1.5 },
+            { image: comp("slider-spo2", "SpO2 notification range slider set to 0–90%", 724, 387), label: "SpO2 range", tilt: 1 },
+            { image: comp("therapy-deviation", "Therapy deviation toggle switched on", 723, 387), label: "Deviation alert", tilt: -1 },
+          ],
         },
       ],
     },

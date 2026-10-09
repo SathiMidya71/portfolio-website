@@ -94,6 +94,11 @@ export type Block =
       image: Img
       notes: { text: string; side: "left" | "right"; x: number; y: number; noteY: number }[]
     }
+  /**
+   * UI components cut out of a design (transparent PNGs) floating on the page background in a
+   * 3-column board. `span`/`rows` set the grid size from lg up; `tilt` in degrees.
+   */
+  | { type: "componentBoard"; items: { image: Img; label: string; span?: 1 | 2 | 3; rows?: 1 | 2; tilt?: number; /** More small cards stacked under the first */ more?: Img[] }[] }
   /** Photos side by side with rounded corners and optional captions (staggered from md up) */
   | { type: "photos"; items: { image: Img; caption?: string }[] }
   /** A sequence of steps shown as connected pills, e.g. Ask → Explore → Verify */
