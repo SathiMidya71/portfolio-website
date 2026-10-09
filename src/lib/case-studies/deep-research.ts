@@ -216,6 +216,31 @@ export const deepResearch: CaseStudy = {
       ],
     },
     {
+      id: "ideation",
+      nav: "Ideation",
+      title: "Sketched before it was prompted",
+      blocks: [
+        {
+          type: "p",
+          text: "Before any screen or prompt, I worked the product out on paper: how routes branch, what a route card needs, where the agent shows progress, and how an edit becomes a new route. Stakeholder feedback went into the same notebook and was ticked off one by one.",
+        },
+        {
+          type: "pegboard",
+          title: "From my notebook",
+          items: [
+            { src: "/case-studies/deep-research/sketches/idea-39.jpg", width: 1100, height: 1795, alt: "Notebook sketch: Mapping the route system: one compound, routes A–E, and the edit loop", caption: "Route system map" },
+            { src: "/case-studies/deep-research/sketches/idea-47.jpg", width: 1085, height: 1549, alt: "Notebook sketch: End-to-end flow: sign up → research → pick a route → step tools", caption: "Core flow" },
+            { src: "/case-studies/deep-research/sketches/idea-40.jpg", width: 1100, height: 1679, alt: "Notebook sketch: The route card: actions for step, graph, path and stoichiometry", caption: "Route card" },
+            { src: "/case-studies/deep-research/sketches/idea-43.jpg", width: 1100, height: 1633, alt: "Notebook sketch: Generating routes: compound header and a buckyball loader", caption: "Loading screen" },
+            { src: "/case-studies/deep-research/sketches/idea-42.jpg", width: 1100, height: 1300, alt: "Notebook sketch: Edit a value, then save, or save as a new route", caption: "Create a variant" },
+            { src: "/case-studies/deep-research/sketches/idea-44.jpg", width: 1100, height: 1616, alt: "Notebook sketch: Route tabs: a thin scroll slider, expand and split view", caption: "Workspace controls" },
+            { src: "/case-studies/deep-research/sketches/idea-41.jpg", width: 1100, height: 1967, alt: "Notebook sketch: Route A splits into graph and step; first icon doodles", caption: "Route structure" },
+            { src: "/case-studies/deep-research/sketches/idea-45.jpg", width: 1048, height: 1527, alt: "Notebook sketch: Stakeholder feedback, worked through and ticked off", caption: "Feedback round" },
+          ],
+        },
+      ],
+    },
+    {
       id: "visual-design",
       nav: "Typography & colour",
       title: "Typography and colour",
