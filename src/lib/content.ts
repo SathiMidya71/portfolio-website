@@ -244,13 +244,15 @@ export const workingWithMe = {
       status: "draft",
     },
     {
-      name: "Name Surname",
-      headline: "Product Manager · Company",
-      relation: "Worked with Sathi on the same team",
-      date: "Month 2026",
-      text: "She asks the right questions early and stays kind while doing it. Every workshop with Sathi ended with a clear plan.",
+      // DRAFT for Leah to approve; US-based at ABM, she brought Sathi feedback from the US market
+      name: "Leah Noaeill",
+      headline: "Global Healthcare Executive | Marketing | Strategy · ABM Respiratory Care",
+      relation: "Worked with Sathi but on different teams",
+      date: "",
+      text: "I worked with Sathi from the US side of ABM. She didn't have direct access to our US market and users, so I shared what I heard from customers, and she turned that feedback into clearer designs every time. She delivered on time, always, and brought creative ideas we hadn't thought of. Our healthcare web portal, the dashboard and the mobile app all got better because of her.",
       tone: "blue",
-      status: "sample",
+      photo: "/recommendations/leah-noaeill.jpg",
+      status: "draft",
     },
     {
       name: "Name Surname",
