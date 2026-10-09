@@ -217,12 +217,11 @@ export const deepResearch: CaseStudy = {
           text: "It starts with one simple question. When the task needs more, like generating routes, the screen opens into a workspace: research on one side, the AI chat on the other.",
         },
         {
-          type: "laptopStage",
-          title: ["Deep ", "Research"],
-          chips: ["GenAI product", "AI UX", "0 → 1"],
+          type: "kioskStage",
+          title: "Deep Research",
           image: {
-            src: "/case-studies/deep-research/screens/home-dark.jpg",
-            alt: "Deep Research home screen in dark mode: Turn your next scientific question into a breakthrough, with a research session box and quick actions",
+            src: "/case-studies/deep-research/screens/home-light.jpg",
+            alt: "Deep Research home screen: Turn your next scientific question into a breakthrough, with a research session box and quick actions",
             width: 1728,
             height: 1080,
           },
