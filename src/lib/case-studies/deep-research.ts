@@ -219,6 +219,15 @@ export const deepResearch: CaseStudy = {
         {
           type: "kioskStage",
           title: "Deep Research",
+          notes: {
+            title: "Home screen",
+            items: [
+              "Recent searches, one click to reopen",
+              "My Repository and History in the top bar",
+              "A usage meter shows molecules used so far",
+              "Connect a live project so findings flow into project stages and reports",
+            ],
+          },
           image: {
             src: "/case-studies/deep-research/screens/home-light.jpg",
             alt: "Deep Research home screen: Turn your next scientific question into a breakthrough, with a research session box and quick actions",
