@@ -22,8 +22,19 @@ export const profile = {
 export const nav = [
   { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#experience" },
+  { label: "Principles", href: "/#principles" },
 ]
+
+// "Principles that guide my work" (after the journal). Hover or tap a principle to see its three pointers.
+export const principles = {
+  title: "Principles that guide my work",
+  items: [
+    { title: "Business first", notes: ["Users", "Business", "Impact"] },
+    { title: "Research based", notes: ["Discovery", "Data", "Insights"] },
+    { title: "System thinking", notes: ["Standards", "Systems", "Speed"] },
+    { title: "Impact driven", notes: ["Measure", "Learn", "Improve"] },
+  ],
+}
 
 // Fanned cards under the hero intro. The "video" card shows `heroVideo` once it exists.
 export const heroVideo = "" // e.g. "/intro.mp4" (place the file in /public)

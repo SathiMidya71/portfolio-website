@@ -1,11 +1,10 @@
 import { AboutJournal } from "@/components/site/about"
 import { CaseStudies } from "@/components/site/case-studies"
 import { Contact } from "@/components/site/contact"
-import { Experience } from "@/components/site/experience"
 import { Hero } from "@/components/site/hero"
+import { Principles } from "@/components/site/principles"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
-import { Skills } from "@/components/site/skills"
 import { Testimonials } from "@/components/site/testimonials"
 
 export default function Home() {
@@ -16,8 +15,7 @@ export default function Home() {
         <Hero />
         <CaseStudies />
         <AboutJournal />
-        <Experience />
-        <Skills />
+        <Principles />
         <Testimonials />
         <Contact />
       </main>
