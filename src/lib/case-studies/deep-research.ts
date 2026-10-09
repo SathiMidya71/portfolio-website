@@ -216,9 +216,51 @@ export const deepResearch: CaseStudy = {
       ],
     },
     {
+      id: "visual-design",
+      nav: "Typography & colour",
+      title: "Typography and colour",
+      blocks: [
+        {
+          type: "p",
+          text: "Dense scientific data, without visual noise: a clear type scale in Inter, and colour used only when it means something.",
+        },
+        {
+          type: "typeHierarchy",
+          font: "Inter",
+          levels: [
+            { name: "Display", size: "48–56px", weight: "Bold / Semibold", use: "Product statements" },
+            { name: "H1", size: "32–40px", weight: "Semibold", use: "Workspace headings" },
+            { name: "H2", size: "24–28px", weight: "Semibold", use: "Sections" },
+            { name: "H3", size: "18–20px", weight: "Semibold", use: "Cards" },
+            { name: "Body", size: "14–16px", weight: "Regular", use: "Research content" },
+            { name: "Metadata", size: "12–13px", weight: "Regular / Medium", use: "CAS, sources, timestamps" },
+          ],
+          samples: [
+            { label: "CAS", value: "16409-43-1" },
+            { label: "Molecular weight", value: "154.1358 g/mol" },
+            { label: "SMILES", value: "CC(C)=CC1CC(C)CCO1" },
+          ],
+        },
+        {
+          type: "palette",
+          intro: "A warm, light base keeps the science readable. Deep green carries primary actions and the conversation; purple marks the tools, modes and steps you edit.",
+          items: [
+            { name: "Deep green", hex: "#1F392D", use: "Primary actions, chat and selected route", featured: true },
+            { name: "Ink", hex: "#171717", use: "Headings and scientific content", featured: true },
+            { name: "Purple", hex: "#4A307D", use: "Active modes and toggles", featured: true },
+            { name: "Lavender", hex: "#B79CEC", use: "Quick actions, step badges and tools", featured: true },
+            { name: "Warm white", hex: "#FCFAF6", use: "Workspace background" },
+            { name: "Lavender tint", hex: "#EFEDFB", use: "Tool chips" },
+            { name: "Border", hex: "#E6E6E6", use: "Cards and dividers" },
+            { name: "Secondary text", hex: "#6B6B6B", use: "Labels and metadata" },
+          ],
+        },
+      ],
+    },
+    {
       id: "design",
       nav: "Key decisions",
-      title: "Four design decisions that shaped the product",
+      title: "Seven design decisions that shaped the product",
       blocks: [
         { type: "h3", text: "1. Conversation first, workspace when needed" },
         {
@@ -371,48 +413,6 @@ export const deepResearch: CaseStudy = {
             { title: "Nothing is wasted", text: "Failed conditions are evidence, not noise.", icon: "recycle" },
             { title: "The plan improves", text: "Each result changes what Scinode proposes next.", icon: "trend" },
             { title: "Every cycle starts ahead", text: "Each investigation begins where the last one ended.", icon: "forward" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "visual-design",
-      nav: "Visual design",
-      title: "Calm, precise, AI-native",
-      blocks: [
-        {
-          type: "p",
-          text: "Dense scientific data, without visual noise: a clear type scale in Inter, and colour used only when it means something.",
-        },
-        {
-          type: "typeHierarchy",
-          font: "Inter",
-          levels: [
-            { name: "Display", size: "48–56px", weight: "Bold / Semibold", use: "Product statements" },
-            { name: "H1", size: "32–40px", weight: "Semibold", use: "Workspace headings" },
-            { name: "H2", size: "24–28px", weight: "Semibold", use: "Sections" },
-            { name: "H3", size: "18–20px", weight: "Semibold", use: "Cards" },
-            { name: "Body", size: "14–16px", weight: "Regular", use: "Research content" },
-            { name: "Metadata", size: "12–13px", weight: "Regular / Medium", use: "CAS, sources, timestamps" },
-          ],
-          samples: [
-            { label: "CAS", value: "16409-43-1" },
-            { label: "Molecular weight", value: "154.1358 g/mol" },
-            { label: "SMILES", value: "CC(C)=CC1CC(C)CCO1" },
-          ],
-        },
-        {
-          type: "palette",
-          intro: "A warm, light base keeps the science readable. Deep green carries primary actions and the conversation; purple marks the tools, modes and steps you edit.",
-          items: [
-            { name: "Deep green", hex: "#1F392D", use: "Primary actions, chat and selected route", featured: true },
-            { name: "Ink", hex: "#171717", use: "Headings and scientific content", featured: true },
-            { name: "Purple", hex: "#4A307D", use: "Active modes and toggles", featured: true },
-            { name: "Lavender", hex: "#B79CEC", use: "Quick actions, step badges and tools", featured: true },
-            { name: "Warm white", hex: "#FCFAF6", use: "Workspace background" },
-            { name: "Lavender tint", hex: "#EFEDFB", use: "Tool chips" },
-            { name: "Border", hex: "#E6E6E6", use: "Cards and dividers" },
-            { name: "Secondary text", hex: "#6B6B6B", use: "Labels and metadata" },
           ],
         },
       ],
