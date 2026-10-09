@@ -116,8 +116,8 @@ export const caseStudies: CaseStudy[] = [
     summary: "Designing a GenAI product: a research workspace that takes chemists from a question to an evidence-backed decision.",
     result: "New GenAI product, concept to launch · end-to-end UX · design to code",
     tags: ["GenAI", "AI UX", "Product launch"],
-    cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
-    image: { src: "/case-studies/deep-research/hero-lab.jpg", alt: "A chemist in a lab using SCINODE Deep Research on a desktop monitor" },
+    cover: "#f9f4ed",
+    image: { src: "/case-studies/deep-research/thumb-kiosk.jpg", alt: "SCINODE Deep Research home screen on a touchscreen monitor, with the words Deep Research behind it" },
     href: "/work/deep-research",
     // product logo; no public link yet, so no URL is shown
     logo: { src: "/logos/scinode-deep-research.svg", alt: "SCINODE Deep Research", width: 3699, height: 558 },

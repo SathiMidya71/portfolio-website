@@ -525,11 +525,6 @@ export const deepResearch: CaseStudy = {
             { title: "Building changes the design", text: "Working in code revealed details no prototype showed." },
           ],
         },
-        {
-          type: "finale",
-          lines: ["Every result is context.", "Every failed condition is evidence.", "Every investigation should start ahead of the last."],
-          sign: "Thanks for reading",
-        },
       ],
     },
   ],
