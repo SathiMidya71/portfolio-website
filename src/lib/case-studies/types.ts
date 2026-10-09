@@ -52,6 +52,8 @@ export type Block =
         facts?: { label: string; value: string }[]
         needs?: string[]
         quote?: string
+        /** Portrait for the rich persona card */
+        photo?: { src: string; alt: string; width: number; height: number }
       }[]
     }
   | { type: "quadrants"; items: { title: string; items: string[] }[] }

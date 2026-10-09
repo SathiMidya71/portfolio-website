@@ -7,7 +7,7 @@ import type { CaseStudy } from "./types"
 // Product visuals are real: screenshots and clips taken from Sathi's Deep Research walkthrough
 // video (public/case-studies/deep-research/screens and /clips). The hero places a real screenshot
 // on the monitor of a lab photo she supplied. Palette hexes are sampled from those screenshots.
-// Persona (Dr. Maya Rao) is the design persona from the write-up, not a real person.
+// Persona: Prem Kumar, a scientist at Scimplify (photo and name supplied by Sathi).
 
 export const deepResearch: CaseStudy = {
   slug: "deep-research",
@@ -171,8 +171,14 @@ export const deepResearch: CaseStudy = {
           type: "personas",
           items: [
             {
-              name: "Dr. Maya Rao",
-              role: "Senior Research Scientist",
+              name: "Prem Kumar",
+              role: "Scientist, Scimplify",
+              photo: {
+                src: "/case-studies/deep-research/persona-prem.jpg",
+                alt: "Prem Kumar, a scientist at Scimplify, in a lab coat and safety glasses, examining a flask",
+                width: 794,
+                height: 682,
+              },
               facts: [
                 { label: "Experience", value: "7–12 years" },
                 { label: "AI confidence", value: "Medium–High" },
@@ -349,13 +355,6 @@ export const deepResearch: CaseStudy = {
           },
           items: [
             { kind: "image", src: "/case-studies/deep-research/screens/sources-v2.jpg", width: 2258, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
-          ],
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "31", label: "sources behind the Rose Oxide research" },
-            { value: "3 + 8", label: "papers and patents cited for Route A alone" },
           ],
         },
         { type: "h3", text: "7. A research partner that gets better as you work", spaced: true },

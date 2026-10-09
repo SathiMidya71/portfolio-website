@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ArrowRight, ChartLine, Database, FastForward, MousePointerClick, Recycle } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
@@ -155,7 +156,18 @@ export function RichPersona({ p }: { p: Persona }) {
       <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         {/* identity */}
         <div className="flex flex-col gap-6 p-6 md:p-8" style={{ background: "linear-gradient(160deg,#f3eefc,#f7f5ff 60%,#ffffff)" }}>
+          {p.photo && (
+            <Image
+              src={p.photo.src}
+              alt={p.photo.alt}
+              width={p.photo.width}
+              height={p.photo.height}
+              sizes="(min-width: 1024px) 360px, 100vw"
+              className="aspect-[4/3] w-full rounded-[18px] object-cover object-[38%_30%] shadow-[0_12px_30px_-14px_rgba(40,30,60,0.45)]"
+            />
+          )}
           <div className="flex items-center gap-4">
+            {!p.photo && (
             <span aria-hidden className="grid size-16 place-items-center rounded-full bg-[var(--tone-purple)] font-heading text-xl font-bold text-[var(--on-purple)]">
               {p.name
                 .replace(/^Dr\.?\s*/, "")
@@ -163,6 +175,7 @@ export function RichPersona({ p }: { p: Persona }) {
                 .map((w) => w[0])
                 .join("")}
             </span>
+            )}
             <div>
               <h4 className="font-heading text-[24px] leading-tight font-semibold text-ink">{p.name}</h4>
               <p className="text-[15px] font-medium text-[var(--tone-purple-ink)]">{p.role}</p>
