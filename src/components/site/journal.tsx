@@ -115,22 +115,6 @@ function LeftPage() {
         ))}
       </ul>
 
-      {/* interests */}
-      <div className="mt-[1.4cqw]">
-        <Tag color="#fde3cf" rotate={1.5}>things I love designing</Tag>
-      </div>
-      <ul className="mt-[1.2cqw] flex flex-wrap gap-[0.7cqw]">
-        {journal.interests.map((t, i) => (
-          <li
-            key={t}
-            className="rounded-full px-[1.1cqw] py-[0.3cqw] font-hand text-[1.7cqw] leading-none font-bold"
-            style={{ background: ["#e9defd", "#d9f3e5", "#fde3cf", "#d9ecfd"][i % 4], color: ["#3a2a63", "#1f4634", "#5a3418", "#1d3f5f"][i % 4] }}
-          >
-            {t}
-          </li>
-        ))}
-      </ul>
-
       {/* today note */}
       <div className="absolute right-[2.4cqw] bottom-[11%] w-[44%] -rotate-1 overflow-hidden rounded-[0.8cqw] bg-white shadow-[0_0.5cqw_1.4cqw_-0.4cqw_rgba(0,0,0,0.25)]">
         <div className="flex gap-[0.4cqw] border-b border-black/5 bg-[#f6f5f2] px-[0.9cqw] py-[0.6cqw]">

@@ -73,8 +73,6 @@ export const heroCards: HeroCard[] = [
 export const journal = {
   experienceYears: "9+ years", // from the résumé: 9+ years total experience
   today: "Designing GenAI tools for chemists at Scimplify, and building them in code with Claude Code.",
-  // from the résumé's focus areas
-  interests: ["GenAI products", "User research", "Design systems", "Healthcare UX"],
 }
 
 export const about = {
