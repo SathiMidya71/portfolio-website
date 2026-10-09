@@ -11,6 +11,8 @@ const dir = "/case-studies/arc-connect-portal"
 const appDir = "/case-studies/arc-connect-app"
 
 const comp = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/components/${name}.png`, alt, width, height })
+const tab = (name: string, alt: string, height: number): Img => ({ src: `${dir}/tabs/${name}.png`, alt, width: 1600, height })
+const stat = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/stats/${name}.png`, alt, width, height })
 const img = (name: string, alt: string, width: number, height: number): Img => ({ src: `${dir}/${name}.jpg`, alt, width, height })
 
 export const arcConnectPortal: CaseStudy = {
@@ -190,24 +192,17 @@ export const arcConnectPortal: CaseStudy = {
       nav: "Dashboard",
       title: "Dashboard: who needs attention first",
       blocks: [
-        { type: "p", text: "The home page gives an overview of the key information, sorted by exception:" },
         {
-          type: "list",
-          items: [
+          type: "split",
+          side: "right",
+          images: [tab("dashboard", "Dashboard for Apollo Clinic: Therapy, Patients and Transmission cards with counts by exception, and announcements below", 1121)],
+          text: ["The home page gives an overview of the key information, sorted by exception."],
+          list: [
             "Pick a care site and download the list of patients who meet the exception criteria.",
             "See patients with an adherence score below 25%, 50% or 75%.",
             "Find patients whose device never transmitted a therapy log, or who missed three or more days.",
             "Check which patients transmitted therapy with or without deviations.",
           ],
-        },
-        {
-          type: "figure",
-          image: img(
-            "dashboard",
-            "Dashboard for Apollo Clinic: Therapy, Patients and Transmission cards with counts by exception, and announcements below",
-            1800,
-            1255
-          ),
         },
       ],
     },
@@ -217,30 +212,22 @@ export const arcConnectPortal: CaseStudy = {
       title: "Notifications on the team's schedule",
       blocks: [
         {
-          type: "p",
-          text: "Admins decide when the portal should speak up. For each care site they set the notification schedule and recipients, the range of adherence scores and the range of SpO2.",
+          type: "split",
+          side: "left",
+          images: [tab("notification-settings", "Notification settings: care site, the days of the week to send emails, recipients and an adherence range slider", 1239)],
+          title: "Notification settings",
+          text: ["Admins decide when the portal should speak up. For each care site they set:"],
+          list: ["The notification schedule", "The notification recipients", "The range of adherence scores", "The range of SpO2"],
         },
         {
-          type: "figure",
-          image: img(
-            "notification-settings",
-            "Notification settings: care site, the days of the week to send emails, recipients and an adherence range slider",
-            1800,
-            1414
-          ),
-        },
-        {
-          type: "p",
-          text: "On the scheduled days the system emails the recipients a link to the Notification Summary: the current settings and the list of patients who fall inside them.",
-        },
-        {
-          type: "figure",
-          image: img(
-            "notification-summary",
-            "Notification summary: current adherence, SpO2 and therapy deviation settings above a patient list with adherence, SpO2 and deviation columns",
-            1800,
-            1415
-          ),
+          type: "split",
+          side: "right",
+          images: [tab("notification-summary", "Notification summary: current adherence, SpO2 and therapy deviation settings above a patient list", 1230)],
+          title: "Notification summary",
+          text: [
+            "On the scheduled days the system emails the recipients a link to the Notification Summary.",
+            "It shows the current settings and the list of patients who fall inside them.",
+          ],
         },
       ],
     },
@@ -250,17 +237,27 @@ export const arcConnectPortal: CaseStudy = {
       title: "Statistics at a glance",
       blocks: [
         {
-          type: "p",
-          text: "Charts give quick access to patient information and make it easy to interpret: therapy duration over time, adherence percentage, pressure for every cycle, the active therapy goal and invitation counts.",
-        },
-        {
-          type: "figure",
-          image: img(
-            "statistics",
-            "Statistics cards: duration and percentage charts, a pressure chart by cycle, the active therapy goal and invitation cards",
-            1800,
-            1401
-          ),
+          type: "statsPanel",
+          title: "Statistics",
+          text: "Quick access to patient information, and easy to interpret.",
+          columns: [
+            [
+              { image: stat("duration", "Therapy duration chart for January", 1355, 910) },
+              { image: stat("pressure", "Pressure chart with pause, inspiratory and expiratory pressure for five cycles", 1355, 1312) },
+            ],
+            [
+              { image: stat("percentage", "Adherence percentage chart peaking at 90% on 20 January", 1400, 1004) },
+              { image: stat("goal-button", "Set new therapy goals button", 440, 68), align: "end", width: "48%" },
+              { image: stat("goal", "Active therapy goal: two therapies a day, every day", 1400, 350) },
+              {
+                row: [
+                  stat("invite-new", "New invitation card with a Create button", 476, 432),
+                  stat("invite-sent", "Sent invitations: 120", 476, 433),
+                  stat("invite-received", "Received invitations: 30", 476, 433),
+                ],
+              },
+            ],
+          ],
         },
       ],
     },
@@ -326,12 +323,13 @@ export const arcConnectPortal: CaseStudy = {
       title: "Messaging",
       blocks: [
         {
-          type: "p",
-          text: "Users can message anyone on their contact list, one to one or in groups, and open the profile of anyone on their connection list.",
-        },
-        {
-          type: "figure",
-          image: img("messaging", "Messaging screen with a list of chats, group avatars and a conversation thread", 1800, 1264),
+          type: "split",
+          side: "left",
+          images: [tab("messaging", "Messaging screen with a list of chats, group avatars and a conversation thread", 1120)],
+          text: [
+            "Users can message anyone on their contact list, one to one or in groups.",
+            "They can also open the profile of anyone on their connection list.",
+          ],
         },
       ],
     },
@@ -341,34 +339,32 @@ export const arcConnectPortal: CaseStudy = {
       title: "Invitations and care sites",
       blocks: [
         {
-          type: "p",
-          text: "Care site admins see every sent and received invitation. To invite someone, they type the invitee's email address and choose the clinic.",
+          type: "split",
+          side: "right",
+          images: [tab("invitations", "Invitations screen with new, sent (120) and received (30) invitation cards above a table of sent invitations", 1118)],
+          title: "Sent and received invitations",
+          text: ["Care site admins see every sent and received invitation. To invite someone, they type the invitee's email address and choose the clinic."],
         },
         {
-          type: "figure",
-          image: img("invitations", "Invitations screen with new, sent (120) and received (30) invitation cards above a table of sent invitations", 1800, 1261),
+          type: "split",
+          side: "left",
+          images: [tab("invitation-new", "New invitation form: email address, a choice of patient, clinician or site admin, care site and Send invitations", 1254)],
+          title: "New invitation",
+          text: ["Admins can invite other care site administrators, clinicians and patients."],
         },
         {
-          type: "p",
-          text: "Admins can invite other care site administrators, clinicians and patients.",
+          type: "split",
+          side: "right",
+          images: [tab("care-site-settings", "Care site settings for Apollo Clinic: enrolled patients 1,325, clinicians 30 and care site admins 3, above the care site's details", 1121)],
+          title: "Care site settings",
+          text: ["Care site settings list the enrolled patients, clinicians and care site admins, with their counts, across every care site the admin manages."],
         },
         {
-          type: "figure",
-          image: img("invitation-new", "New invitation form: email address, a choice of patient, clinician or site admin, care site and Send invitations", 1800, 1419),
-        },
-        { type: "h3", text: "Care site settings", spaced: true },
-        {
-          type: "p",
-          text: "Care site settings list the enrolled patients, clinicians and care site admins, with their counts, across every care site the admin manages.",
-        },
-        {
-          type: "figure",
-          image: img("care-site-settings", "Care site settings for Apollo Clinic: enrolled patients 1,325, clinicians 30 and care site admins 3, above the care site's address and details", 1800, 1258),
-        },
-        { type: "p", text: "Admins can also save a clinician's profile, with their specialties, licence number and accreditation." },
-        {
-          type: "figure",
-          image: img("clinician-profile", "Clinician profile form: name, specialties, licence number, accreditation, address, phone and email", 1800, 1431),
+          type: "split",
+          side: "left",
+          images: [tab("clinician-profile", "Clinician profile form: name, specialties, licence number, accreditation, address, phone and email", 1297)],
+          title: "Clinician profile",
+          text: ["Admins can also save a clinician's profile, with their specialties, licence number and accreditation."],
         },
       ],
     },
@@ -378,12 +374,13 @@ export const arcConnectPortal: CaseStudy = {
       title: "Log in",
       blocks: [
         {
-          type: "p",
-          text: "The welcome screens set the tone for the whole portal: get connected, stay informed, and collaborate with your patients and their caregivers.",
-        },
-        {
-          type: "figure",
-          image: img("login", "Welcome to Arc Connect screens: log in with username and password, and create a password", 1785, 2523),
+          type: "split",
+          side: "right",
+          images: [
+            tab("login", "Welcome to Arc Connect: log in with username and password", 1121),
+            tab("create-password", "Welcome to Arc Connect: create a password", 1123),
+          ],
+          text: ["The welcome screens set the tone for the whole portal: get connected, stay informed, and collaborate with your patients and their caregivers."],
         },
       ],
     },
