@@ -36,9 +36,20 @@ function Frame({ item, sizes }: { item: Item; sizes: string }) {
   )
 }
 
+// Pastel paper colours: [top, middle, bottom of the gradient, ink]
+const paper = {
+  lavender: ["#f3edff", "#e9defd", "#dccdf8", "#3a2a63"],
+  mint: ["#eafaf1", "#d9f3e5", "#c6ead6", "#1f4634"],
+  peach: ["#fff1e6", "#fde3cf", "#f8d2b5", "#5a3418"],
+  sky: ["#eaf5ff", "#d9ecfd", "#c4e0f9", "#1d3f5f"],
+  pink: ["#fff0f4", "#fde0e8", "#f8cdda", "#5c2337"],
+  butter: ["#fff8d6", "#fdf0b8", "#f8e59a", "#4a3b0c"],
+} as const
+
 /** A slightly tilted paper note held on by a strip of tape, with a lifted-corner shadow. */
 function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
   const right = note.side === "right"
+  const [c1, c2, c3, ink] = paper[note.color ?? "butter"]
   return (
     <aside
       className={cn(
@@ -55,8 +66,8 @@ function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
       <div
         className="relative px-6 pt-8 pb-6"
         style={{
-          background: "linear-gradient(170deg, #fff6b8 0%, #fdee95 60%, #f7e47f 100%)",
-          boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 10px 18px -8px rgba(60,45,10,0.35), inset 0 -10px 18px -12px rgba(120,90,10,0.25)",
+          background: `linear-gradient(170deg, ${c1} 0%, ${c2} 60%, ${c3} 100%)`,
+          boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 10px 18px -8px rgba(40,30,50,0.3), inset 0 -10px 18px -12px rgba(60,40,80,0.18)",
           borderRadius: right ? "2px 2px 2px 18px / 2px 2px 2px 8px" : "2px 2px 18px 2px / 2px 2px 8px 2px",
         }}
       >
@@ -66,11 +77,11 @@ function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
           className="absolute -top-3.5 left-1/2 h-7 w-28 -translate-x-1/2 border-x border-dashed border-white/50 bg-[#f4efe2]/75 shadow-[0_1px_3px_rgba(0,0,0,0.15)] backdrop-blur-[1px]"
           style={{ rotate: right ? "-4deg" : "4deg" }}
         />
-        <p className="font-hand text-[30px] leading-none font-bold text-[#3b2f0b]">{note.title}</p>
+        <p className="font-hand text-[30px] leading-none font-bold" style={{ color: ink }}>{note.title}</p>
         <ul className="mt-3 grid gap-2">
           {note.items.map((n) => (
-            <li key={n} className="flex gap-2 text-[14.5px] leading-snug text-[#3b3214]">
-              <span aria-hidden className="mt-[0.45em] size-1.5 shrink-0 rounded-full bg-[#3b2f0b]/70" />
+            <li key={n} className="flex gap-2 text-[14.5px] leading-snug" style={{ color: ink }}>
+              <span aria-hidden className="mt-[0.45em] size-1.5 shrink-0 rounded-full opacity-70" style={{ background: ink }} />
               {n}
             </li>
           ))}

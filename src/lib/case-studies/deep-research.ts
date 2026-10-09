@@ -255,6 +255,7 @@ export const deepResearch: CaseStudy = {
           type: "media",
           note: {
             title: "The agent",
+            color: "lavender",
             side: "right",
             items: [
               "Resolves the molecule: name, CAS, molecular weight, InChIKey and SMILES",
@@ -282,7 +283,8 @@ export const deepResearch: CaseStudy = {
           type: "media",
           note: {
             title: "Routes",
-            side: "left",
+            color: "mint",
+            side: "right",
             items: [
               "Compare routes on steps, yield and score",
               "The best route is flagged, with its rationale in plain language",
@@ -309,6 +311,7 @@ export const deepResearch: CaseStudy = {
           type: "media",
           note: {
             title: "Modify the path",
+            color: "peach",
             side: "right",
             items: [
               "Switch between Scheme and Form views",
@@ -342,7 +345,8 @@ export const deepResearch: CaseStudy = {
           type: "media",
           note: {
             title: "Scale it",
-            side: "left",
+            color: "sky",
+            side: "right",
             items: [
               "Set a target quantity and amounts are calculated per step",
               "Equivalents are editable for each reagent",
@@ -362,6 +366,7 @@ export const deepResearch: CaseStudy = {
           type: "media",
           note: {
             title: "Sources",
+            color: "pink",
             side: "right",
             items: [
               "All literature and sources in one panel",

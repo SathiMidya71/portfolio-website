@@ -121,7 +121,7 @@ export type Block =
   | {
       type: "media"
       /** Sticky note taped over the top corner of the first item, listing the section's key points */
-      note?: { title: string; items: string[]; side: "left" | "right" }
+      note?: { title: string; items: string[]; side: "left" | "right"; color?: "lavender" | "mint" | "peach" | "sky" | "pink" | "butter" }
       items: {
         kind: "image" | "video"
         src: string
