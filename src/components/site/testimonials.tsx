@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { workingWithMe, type Recommendation } from "@/lib/content"
+import { profile, workingWithMe, type Recommendation } from "@/lib/content"
 import { cn } from "@/lib/utils"
 import { Reveal } from "./reveal"
 import { Section } from "./section"
@@ -69,7 +69,7 @@ function Polaroid() {
     <div className="relative bg-white p-3 pb-10 shadow-[0_18px_40px_-14px_rgba(0,0,0,0.35)]">
       <span aria-hidden className="absolute -top-3 left-1/2 z-10 h-6 w-24 -translate-x-1/2 rotate-3 bg-[#bfe3d3]/85" />
       <div className="relative aspect-[3/4] overflow-hidden">
-        <Image src="/about/sathi-journal.jpg" alt="Sathi Midya" fill sizes="(min-width: 1280px) 300px, 60vw" className="object-cover" />
+        <Image src={profile.photo} alt={profile.name} fill sizes="(min-width: 1280px) 300px, 60vw" className="object-cover object-top" />
       </div>
       <p className="absolute inset-x-0 bottom-2.5 text-center font-hand text-[22px] leading-none font-bold text-ink">the team&apos;s designer</p>
     </div>
