@@ -238,7 +238,7 @@ export const workingWithMe = {
       headline: "Medical Devices | ISO 13485 | IEC 62304 | HMI · ABM Respiratory Care",
       relation: "Managed Sathi directly",
       date: "", // LinkedIn shows the date it was written; fill in when posted
-      text: "Sathi reported to me at ABM while we built our ventilator UI and the Arc Connect app. Her thought process is very clear and she works in a very structured way. In medical devices that matters. She took the time to learn the rules we work under, HIPAA for patient data, FDA human factors guidance and IEC 62366, and designed alarms and patient screens with them in mind from day one. It made our IEC 62304 documentation much easier.",
+      text: "Sathi's thinking is clear and her work is very structured. She designed our ventilator and patient screens with HIPAA, FDA human factors and IEC 62366 in mind from day one.",
       tone: "green",
       photo: "/recommendations/narayanan-krishnamurthy.jpg",
       status: "draft",
@@ -249,7 +249,7 @@ export const workingWithMe = {
       headline: "Global Healthcare Executive | Marketing | Strategy · ABM Respiratory Care",
       relation: "Worked with Sathi but on different teams",
       date: "",
-      text: "I worked with Sathi from the US side of ABM. She didn't have direct access to our US market and users, so I shared what I heard from customers, and she turned that feedback into clearer designs every time. She delivered on time, always, and brought creative ideas we hadn't thought of. Our healthcare web portal, the dashboard and the mobile app all got better because of her.",
+      text: "Sathi turned our US customer feedback into better designs, fast. Creative, and always on time across our portal, dashboard and mobile app.",
       tone: "blue",
       photo: "/recommendations/leah-noaeill.jpg",
       status: "draft",
