@@ -48,13 +48,19 @@ function Num({ n }: { n: number }) {
 export function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case "lead":
+      if (block.emphasis)
+        return (
+          <p className="max-w-[880px] font-heading text-[30px] leading-[1.15] font-normal tracking-[-0.02em] text-ink md:text-[42px]">
+            {block.text} <span className="font-semibold text-brand">{block.emphasis}</span>
+          </p>
+        )
       return <p className={cn(text, "text-[21px] leading-[1.45] font-medium text-ink md:text-2xl")}>{block.text}</p>
 
     case "p":
       return <p className={cn(text, "text-lg leading-[1.65] text-ink/90 md:text-xl")}>{block.text}</p>
 
     case "h3":
-      return <h3 className="mt-6 text-[22px] leading-tight text-ink md:text-[26px]">{block.text}</h3>
+      return <h3 className={cn("mt-6 text-[22px] leading-tight text-ink md:text-[26px]", block.spaced && "mt-16 md:mt-24")}>{block.text}</h3>
 
     case "list":
       return (

@@ -358,10 +358,11 @@ export const deepResearch: CaseStudy = {
             { value: "3 + 8", label: "papers and patents cited for Route A alone" },
           ],
         },
-        { type: "h3", text: "7. A research partner that gets better as you work" },
+        { type: "h3", text: "7. A research partner that gets better as you work", spaced: true },
         {
           type: "lead",
-          text: "Published chemistry captures what succeeded. Your bench captures what actually happened.",
+          text: "Published chemistry captures what succeeded.",
+          emphasis: "Your bench captures what actually happened.",
         },
         {
           type: "cycle",

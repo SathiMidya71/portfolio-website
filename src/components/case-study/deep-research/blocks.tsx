@@ -475,28 +475,64 @@ export function StatsView({ block }: { block: B<"stats"> }) {
   )
 }
 
-/* ---------------- Cycle cards ---------------- */
+/* ---------------- Cycle (presentation-board loop) ---------------- */
 
 const cycleIcons = { database: Database, recycle: Recycle, trend: ChartLine, forward: FastForward }
+// Pastels shared with the sticky notes: [circle fill, icon/ink]
+const cyclePaper = [
+  ["#e9defd", "#3a2a63"],
+  ["#d9f3e5", "#1f4634"],
+  ["#fde3cf", "#5a3418"],
+  ["#d9ecfd", "#1d3f5f"],
+] as const
 
 export function CycleView({ block }: { block: B<"cycle"> }) {
-  const last = block.items.length - 1
+  const n = block.items.length
   return (
-    <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      {block.items.map((c, i) => {
-        const Icon = cycleIcons[c.icon]
-        const dark = i === last
-        return (
-          <li key={c.title} className={cn("flex flex-col rounded-[22px] p-6", dark ? "bg-[#1f392d] text-white" : "bg-white/80 ring-1 ring-black/[0.04]")}>
-            <div className="flex items-start justify-between">
-              <span className={cn("grid size-10 place-items-center rounded-[10px] font-heading text-lg font-bold", dark ? "bg-white/15 text-white" : "bg-[#e4ece7] text-[#1f392d]")}>{i + 1}</span>
-              <Icon className={cn("size-7", dark ? "text-white" : "text-[#1f392d]")} aria-hidden />
-            </div>
-            <h4 className={cn("mt-8 font-heading text-[22px] leading-tight font-semibold", dark ? "text-white" : "text-[#1f392d]")}>{c.title}</h4>
-            <p className={cn("mt-3 text-[15.5px] leading-snug", dark ? "text-white/85" : "text-body")}>{c.text}</p>
-          </li>
-        )
-      })}
-    </ol>
+    <div className="relative mt-4">
+      <ol className="relative grid gap-12 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-6">
+        {block.items.map((c, i) => {
+          const Icon = cycleIcons[c.icon]
+          const [fill, ink] = cyclePaper[i % cyclePaper.length]
+          const last = i === n - 1
+          return (
+            <li key={c.title} className="relative">
+              {/* huge faint numeral behind */}
+              <span aria-hidden className="pointer-events-none block font-heading text-[104px] leading-[0.8] font-bold tracking-[-0.06em] text-[#ebe3d6] select-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {/* icon disc overlapping the numeral */}
+              <span
+                className="relative -mt-9 ml-[118px] grid size-14 place-items-center rounded-full shadow-[0_10px_24px_-10px_rgba(40,30,50,0.35)] ring-4 ring-cream"
+                style={{ background: fill, color: ink }}
+              >
+                <Icon className="size-6" strokeWidth={1.8} aria-hidden />
+              </span>
+              {/* dotted connector to the next step (desktop) */}
+              {!last && (
+                <svg aria-hidden viewBox="0 0 100 20" className="absolute top-[70px] left-[188px] hidden h-5 w-[calc(100%-176px)] lg:block" preserveAspectRatio="none">
+                  <line x1="0" y1="10" x2="94" y2="10" stroke="#c9bfae" strokeWidth="2" strokeDasharray="2 6" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                  <path d="M92,4 L99,10 L92,16" fill="none" stroke="#c9bfae" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+                </svg>
+              )}
+              <h4 className={cn("mt-6 font-heading text-[23px] leading-[1.15] font-semibold tracking-[-0.01em]", last ? "text-brand" : "text-ink")}>{c.title}</h4>
+              <p className="mt-2 max-w-[260px] text-[15.5px] leading-snug text-body">{c.text}</p>
+            </li>
+          )
+        })}
+      </ol>
+      {/* return arc: the loop starts again (desktop) */}
+      <div aria-hidden className="relative mt-8 hidden h-14 lg:block">
+        <svg viewBox="0 0 1000 56" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
+          <path d="M880,0 C880,44 860,48 820,48 L180,48 C140,48 120,44 120,8" fill="none" stroke="#1f392d" strokeOpacity="0.35" strokeWidth="2" strokeDasharray="2 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+        </svg>
+        <span className="absolute top-[6px] left-[12%] -translate-x-1/2 text-[#1f392d]/60">
+          <svg viewBox="0 0 12 12" className="size-3"><path d="M1,8 L6,2 L11,8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        </span>
+        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full bg-cream px-4 font-hand text-[24px] leading-none font-bold text-[#1f392d]">
+          and the loop starts again, smarter
+        </span>
+      </div>
+    </div>
   )
 }

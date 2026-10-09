@@ -9,8 +9,8 @@ export type Img = {
 
 export type Block =
   | { type: "p"; text: string }
-  | { type: "lead"; text: string }
-  | { type: "h3"; text: string }
+  | { type: "lead"; text: string; /** Optional second sentence, highlighted */ emphasis?: string }
+  | { type: "h3"; text: string; /** Extra space above, when the h3 starts a new sub-section */ spaced?: boolean }
   | { type: "list"; items: string[] }
   | { type: "figure"; image: Img; caption?: string; dark?: boolean }
   | { type: "cards"; items: { title: string; text: string }[] }
