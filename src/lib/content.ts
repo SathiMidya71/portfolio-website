@@ -255,13 +255,15 @@ export const workingWithMe = {
       status: "draft",
     },
     {
-      name: "Name Surname",
-      headline: "Frontend Developer · Company",
+      // DRAFT for Rohit to approve; colleague at Scimplify (Scinode)
+      name: "Rohit Deshpande",
+      headline: "Accelerating innovation through Scinode · Scimplify",
       relation: "Worked with Sathi on the same team",
-      date: "Month 2026",
-      text: "Her handoff files are the cleanest I have worked with. Every state, spacing and edge case is there, so building is fast.",
+      date: "",
+      text: "Give Sathi a problem and she's already on it. She breaks it down fast, uses AI tools smartly, and comes back with work we can ship.",
       tone: "orange",
-      status: "sample",
+      photo: "/recommendations/rohit-deshpande.jpg",
+      status: "draft",
     },
     {
       name: "Name Surname",
