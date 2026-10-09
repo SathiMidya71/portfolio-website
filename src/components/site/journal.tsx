@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { Coffee, GitBranch, Link2, Mail, MapPin, Palette, Waves } from "lucide-react"
+import { Coffee, Link2, Mail, MapPin, Palette, Waves } from "lucide-react"
 import { experience, journal, profile } from "@/lib/content"
 import { cn } from "@/lib/utils"
 
@@ -100,25 +100,30 @@ function LeftPage() {
       </div>
 
       {/* where I've worked */}
-      <ul className="mt-[2.4cqw] grid gap-[0.9cqw]">
+      <div className="mt-[1.6cqw]">
+        <Tag color="#d9ecfd" rotate={-2}>where I&apos;ve worked</Tag>
+      </div>
+      <ul className="mt-[1cqw] grid gap-[0.3cqw]">
         {experience.map((e) => (
-          <li key={e.company} className="grid grid-cols-[1fr_auto] items-baseline gap-[1cqw] text-[1.3cqw]">
-            <span className="flex items-center gap-[0.8cqw] font-medium">
-              <span aria-hidden className="size-[0.6cqw] rounded-full bg-[#2e90fa]" />
+          <li key={e.company} className="grid grid-cols-[1fr_auto] items-baseline gap-[1cqw] font-hand text-[2cqw] leading-tight font-bold text-[#22303f]">
+            <span className="flex items-center gap-[0.8cqw]">
+              <span aria-hidden className="text-[1.6cqw] text-[#e8833a]">✦</span>
               {e.company}
             </span>
-            <span className="font-serif text-[1.25cqw] text-[#4c6763] italic">{e.when.replace(" to ", " – ").replace("now", "Present")}</span>
+            <span className="text-[1.75cqw] text-[#4c6763]">{e.when.replace(" to ", " – ").replace("now", "now")}</span>
           </li>
         ))}
       </ul>
 
       {/* interests */}
-      <p className="mt-[2.4cqw] font-hand text-[2cqw] leading-none font-bold text-[#2e7fd6]">things I love designing</p>
-      <ul className="mt-[1cqw] flex flex-wrap gap-[0.7cqw]">
+      <div className="mt-[1.4cqw]">
+        <Tag color="#fde3cf" rotate={1.5}>things I love designing</Tag>
+      </div>
+      <ul className="mt-[1.2cqw] flex flex-wrap gap-[0.7cqw]">
         {journal.interests.map((t, i) => (
           <li
             key={t}
-            className="rounded-full px-[1cqw] py-[0.4cqw] text-[1.15cqw] font-semibold"
+            className="rounded-full px-[1.1cqw] py-[0.3cqw] font-hand text-[1.7cqw] leading-none font-bold"
             style={{ background: ["#e9defd", "#d9f3e5", "#fde3cf", "#d9ecfd"][i % 4], color: ["#3a2a63", "#1f4634", "#5a3418", "#1d3f5f"][i % 4] }}
           >
             {t}
@@ -127,7 +132,7 @@ function LeftPage() {
       </ul>
 
       {/* today note */}
-      <div className="absolute right-[2.4cqw] bottom-[13%] w-[46%] -rotate-1 overflow-hidden rounded-[0.8cqw] bg-white shadow-[0_0.5cqw_1.4cqw_-0.4cqw_rgba(0,0,0,0.25)]">
+      <div className="absolute right-[2.4cqw] bottom-[11%] w-[44%] -rotate-1 overflow-hidden rounded-[0.8cqw] bg-white shadow-[0_0.5cqw_1.4cqw_-0.4cqw_rgba(0,0,0,0.25)]">
         <div className="flex gap-[0.4cqw] border-b border-black/5 bg-[#f6f5f2] px-[0.9cqw] py-[0.6cqw]">
           {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
             <span key={c} className="size-[0.6cqw] rounded-full" style={{ background: c }} />
@@ -142,7 +147,7 @@ function LeftPage() {
 
       {/* contact card on graph paper with tape */}
       <div
-        className="absolute bottom-[6%] left-[2.6cqw] w-[44%] rotate-1 p-[1.2cqw] pt-[1.6cqw] shadow-[0_0.4cqw_1cqw_-0.3cqw_rgba(0,0,0,0.25)]"
+        className="absolute bottom-[4%] left-[2.6cqw] w-[44%] rotate-1 p-[1.2cqw] pt-[1.6cqw] shadow-[0_0.4cqw_1cqw_-0.3cqw_rgba(0,0,0,0.25)]"
         style={{ background: "#fafaf7", backgroundImage: "linear-gradient(#e7ecf2 1px,transparent 1px),linear-gradient(90deg,#e7ecf2 1px,transparent 1px)", backgroundSize: "1.2cqw 1.2cqw" }}
       >
         <span aria-hidden className="absolute -top-[1cqw] left-[18%] h-[2cqw] w-[9cqw] -rotate-6 bg-[#efe1c3]/85" />
@@ -174,28 +179,96 @@ function LeftPage() {
   )
 }
 
-function DeskItem({ x, y, label, children, rotate = 0 }: { x: number; y: number; label: string; children: React.ReactNode; rotate?: number }) {
+/* ---------------- scrapbook stickers ---------------- */
+
+/** Pasted-sticker look: a slight tilt and a layered shadow that follows the sticker's outline. */
+const stuck = "[filter:drop-shadow(0_0.15cqw_0.15cqw_rgba(0,0,0,0.22))_drop-shadow(0_0.7cqw_0.8cqw_rgba(40,30,10,0.18))]"
+
+function ImgSticker({ src, alt, w, rotate }: { src: string; alt: string; w: number; rotate: number }) {
   return (
-    <figure className="absolute flex w-[13cqw] flex-col items-center gap-[0.6cqw] text-center" style={{ left: `${x}%`, top: `${y}%`, rotate: `${rotate}deg` }}>
-      {children}
-      <figcaption className="text-[1.15cqw] font-medium text-[#344054]">{label}</figcaption>
-    </figure>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} className={cn("block h-auto", stuck)} style={{ width: `${w}cqw`, rotate: `${rotate}deg` }} />
   )
 }
 
-function Tile({ bg, fg, children }: { bg: string; fg: string; children: React.ReactNode }) {
+/** Coded sticker: artwork on a white die-cut edge. */
+function CodedSticker({ w, rotate, label, children, round }: { w: number; rotate: number; label: string; children: React.ReactNode; round?: boolean }) {
   return (
-    <span className="grid size-[6cqw] place-items-center rounded-[1.4cqw] shadow-[0_0.4cqw_0.9cqw_-0.3cqw_rgba(0,0,0,0.3)]" style={{ background: bg, color: fg }}>
+    <span
+      role="img"
+      aria-label={label}
+      className={cn("grid place-items-center bg-white p-[0.55cqw]", round ? "rounded-full" : "rounded-[1.6cqw]", stuck)}
+      style={{ width: `${w}cqw`, height: `${w}cqw`, rotate: `${rotate}deg` }}
+    >
       {children}
     </span>
   )
+}
+
+function PaletteArt() {
+  return (
+    <svg viewBox="0 0 120 110" className="h-full w-full" aria-hidden>
+      <path d="M58,10 C92,8 114,30 110,58 C106,82 86,100 60,100 C40,100 36,88 44,80 C50,74 46,66 36,68 C18,72 6,60 10,42 C14,22 32,11 58,10 Z" fill="#f3d9b1" stroke="#3b2a1a" strokeWidth="3" />
+      <ellipse cx="34" cy="36" rx="9" ry="8" fill="#3aa1e8" stroke="#3b2a1a" strokeWidth="2.5" />
+      <ellipse cx="62" cy="26" rx="9" ry="8" fill="#ef5a2a" stroke="#3b2a1a" strokeWidth="2.5" />
+      <ellipse cx="88" cy="40" rx="9" ry="8" fill="#ffd23f" stroke="#3b2a1a" strokeWidth="2.5" />
+      <ellipse cx="86" cy="70" rx="9" ry="8" fill="#fff" stroke="#3b2a1a" strokeWidth="2.5" />
+      <circle cx="56" cy="56" r="2.6" fill="#3b2a1a" />
+      <circle cx="70" cy="56" r="2.6" fill="#3b2a1a" />
+      <path d="M58,64 Q63,69 68,64" fill="none" stroke="#3b2a1a" strokeWidth="2.5" strokeLinecap="round" />
+      <g transform="rotate(28 104 62)">
+        <rect x="100" y="40" width="7" height="58" rx="3.5" fill="#9b5a2e" stroke="#3b2a1a" strokeWidth="2.5" />
+        <path d="M99,40 Q103.5,22 108,40 Z" fill="#3aa1e8" stroke="#3b2a1a" strokeWidth="2.5" />
+      </g>
+    </svg>
+  )
+}
+
+function GithubMark() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[60%] w-[60%]" aria-hidden>
+      <path
+        fill="#fff"
+        d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"
+      />
+    </svg>
+  )
+}
+
+function FigmaMark() {
+  return (
+    <svg viewBox="0 0 38 57" className="h-[70%]" aria-hidden>
+      <path fill="#1abcfe" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" />
+      <path fill="#0acf83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" />
+      <path fill="#ff7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" />
+      <path fill="#f24e1e" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" />
+      <path fill="#a259ff" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" />
+    </svg>
+  )
+}
+
+/** Paper luggage tag used as a group heading. */
+function Tag({ children, color, rotate }: { children: React.ReactNode; color: string; rotate: number }) {
+  return (
+    <span
+      className="relative inline-flex items-center py-[0.5cqw] pr-[1.6cqw] pl-[2.4cqw] font-hand text-[2.3cqw] leading-none font-bold text-[#2b2b2b] shadow-[0_0.3cqw_0.5cqw_-0.2cqw_rgba(0,0,0,0.3)]"
+      style={{ background: color, rotate: `${rotate}deg`, clipPath: "polygon(1.2cqw 0,100% 0,100% 100%,1.2cqw 100%,0 50%)" }}
+    >
+      <span aria-hidden className="absolute left-[1.15cqw] size-[0.55cqw] rounded-full bg-[#fffdf8] ring-1 ring-black/20" />
+      {children}
+    </span>
+  )
+}
+
+function Note({ children }: { children: React.ReactNode }) {
+  return <span className="mt-[0.6cqw] block text-center font-hand text-[1.75cqw] leading-none font-bold text-[#2e4fa8]">{children}</span>
 }
 
 function InstagramSticker() {
   const handle = profile.instagramHandle
   const sticker = (
     <span
-      className="grid size-[5.2cqw] place-items-center rounded-[1.4cqw] border-[0.35cqw] border-white shadow-[0_0.4cqw_0.8cqw_rgba(0,0,0,0.3)]"
+      className={cn("grid size-[5.4cqw] place-items-center rounded-[1.5cqw] border-[0.4cqw] border-white", stuck)}
       style={{ background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)" }}
     >
       <svg viewBox="0 0 24 24" className="size-[3cqw]" fill="none" stroke="#fff" strokeWidth="2">
@@ -206,7 +279,7 @@ function InstagramSticker() {
     </span>
   )
   return (
-    <span className="group/ig absolute -right-[2.4cqw] -bottom-[1.6cqw] rotate-[10deg]">
+    <span className="group/ig absolute -right-[2.6cqw] -bottom-[1.8cqw] rotate-[10deg]">
       {profile.links.instagram ? (
         <a href={profile.links.instagram} target="_blank" rel="noopener" aria-label={`Instagram ${handle ?? ""}`}>
           {sticker}
@@ -223,65 +296,87 @@ function InstagramSticker() {
   )
 }
 
+function Group({ x, y, children }: { x: number; y: number; children: React.ReactNode }) {
+  return (
+    <div className="absolute" style={{ left: `${x}%`, top: `${y}%` }}>
+      {children}
+    </div>
+  )
+}
+
 function RightPage() {
   return (
     <div className="relative h-full" style={{ background: paper, ...dots }}>
       <span aria-hidden className="absolute inset-y-0 left-0 w-[3cqw] bg-gradient-to-r from-black/[0.07] to-transparent" />
 
-      {/* photo with an Instagram sticker */}
-      <div className="absolute top-[24%] left-[32%] w-[34%] -rotate-2 bg-white p-[0.8cqw] pb-[2.6cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
+      {/* daily tools */}
+      <Group x={7} y={6}>
+        <Tag color="#ffd6ae" rotate={-3}>my daily tools</Tag>
+        <div className="mt-[1.6cqw] flex items-start gap-[1.6cqw]">
+          <figure>
+            <CodedSticker w={7.4} rotate={-6} label="Claude Code">
+              <span className="grid h-full w-full place-items-center rounded-[1.2cqw] bg-[#2a2622] font-mono text-[2cqw] leading-none font-bold text-[#e9824a]">&gt;_</span>
+            </CodedSticker>
+            <Note>Claude Code</Note>
+          </figure>
+          <figure className="mt-[1cqw]">
+            <CodedSticker w={7.4} rotate={5} label="GitHub" round>
+              <span className="grid h-full w-full place-items-center rounded-full bg-[#24292f]">
+                <GithubMark />
+              </span>
+            </CodedSticker>
+            <Note>Git &amp; GitHub</Note>
+          </figure>
+          <figure>
+            <CodedSticker w={7.4} rotate={-4} label="Figma">
+              <FigmaMark />
+            </CodedSticker>
+            <Note>Figma</Note>
+          </figure>
+        </div>
+      </Group>
+
+      {/* photo, taped in, with an Instagram sticker */}
+      <div className="absolute top-[5%] right-[7%] w-[34%] rotate-3 bg-white p-[0.8cqw] pb-[2.8cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
+        <span aria-hidden className="absolute -top-[1.2cqw] left-1/2 z-10 h-[2.4cqw] w-[9cqw] -translate-x-1/2 -rotate-3 bg-[#bfe3d3]/80" />
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image src="/about/sathi-journal.jpg" alt={`${profile.name} smiling, taking a mirror selfie in a bright tie-dye scarf`} fill sizes="240px" className="object-cover" />
         </div>
-        <p className="absolute inset-x-0 bottom-[0.6cqw] text-center font-hand text-[1.6cqw] leading-none font-bold text-[#344054]">that&apos;s me!</p>
+        <p className="absolute inset-x-0 bottom-[0.6cqw] text-center font-hand text-[1.8cqw] leading-none font-bold text-[#344054]">that&apos;s me!</p>
         <InstagramSticker />
       </div>
 
-      {/* tools */}
-      <DeskItem x={8} y={8} label="Claude Code" rotate={-3}>
-        <Tile bg="#22201c" fg="#e9824a">
-          <span className="font-mono text-[2cqw] leading-none font-bold">&gt;_</span>
-        </Tile>
-      </DeskItem>
-      <DeskItem x={42} y={4} label="Git & GitHub" rotate={2}>
-        <Tile bg="#24292f" fg="#fff">
-          <GitBranch className="size-[3cqw]" strokeWidth={2} />
-        </Tile>
-      </DeskItem>
-      <DeskItem x={74} y={9} label="Figma" rotate={-2}>
-        <Tile bg="#fff" fg="#000">
-          <svg viewBox="0 0 38 57" className="h-[3.4cqw]">
-            <path fill="#1abcfe" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" />
-            <path fill="#0acf83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" />
-            <path fill="#ff7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" />
-            <path fill="#f24e1e" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" />
-            <path fill="#a259ff" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" />
-          </svg>
-        </Tile>
-      </DeskItem>
+      {/* hobbies */}
+      <Group x={7} y={44}>
+        <Tag color="#d9f3e5" rotate={2}>hobbies</Tag>
+        <div className="mt-[1.4cqw] flex items-start gap-[2cqw]">
+          <figure>
+            <ImgSticker src="/about/stickers/swimming.png" alt="Swimming sticker" w={11.5} rotate={-5} />
+            <Note>swimming</Note>
+          </figure>
+          <figure className="mt-[1.2cqw]">
+            <CodedSticker w={11} rotate={6} label="Painting palette sticker" round>
+              <PaletteArt />
+            </CodedSticker>
+            <Note>painting</Note>
+          </figure>
+        </div>
+      </Group>
 
       {/* lifestyle */}
-      <DeskItem x={5} y={44} label="Swimming" rotate={3}>
-        <Tile bg="#d9ecfd" fg="#1d3f5f">
-          <Waves className="size-[3cqw]" strokeWidth={1.8} />
-        </Tile>
-      </DeskItem>
-      <DeskItem x={74} y={46} label="CoffeeLover.png" rotate={-3}>
-        <Tile bg="#fde3cf" fg="#5a3418">
-          <Coffee className="size-[3cqw]" strokeWidth={1.8} />
-        </Tile>
-      </DeskItem>
-      <DeskItem x={10} y={76} label="Painting" rotate={-2}>
-        <Tile bg="#e9defd" fg="#3a2a63">
-          <Palette className="size-[3cqw]" strokeWidth={1.8} />
-        </Tile>
-      </DeskItem>
-
-      <p className="absolute right-[4cqw] bottom-[6%] rotate-3 font-hand text-[1.9cqw] leading-[1.05] font-bold text-[#2e7fd6]">
-        tools by day,
-        <br />
-        paint &amp; laps by night ✦
-      </p>
+      <Group x={55} y={68}>
+        <Tag color="#e9defd" rotate={-2}>lifestyle</Tag>
+        <div className="mt-[1.4cqw] flex items-end gap-[2cqw]">
+          <figure>
+            <ImgSticker src="/about/stickers/coffee.png" alt="Takeaway coffee cup sticker" w={6.4} rotate={-8} />
+            <Note>coffee lover</Note>
+          </figure>
+          <figure>
+            <ImgSticker src="/about/stickers/pixel-heart.png" alt="Pixel creature with a heart sticker" w={10} rotate={5} />
+            <Note>pixel pal ♥</Note>
+          </figure>
+        </div>
+      </Group>
     </div>
   )
 }
