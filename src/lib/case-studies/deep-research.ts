@@ -317,18 +317,6 @@ export const deepResearch: CaseStudy = {
         },
         {
           type: "media",
-          items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/variant.mp4", poster: "/case-studies/deep-research/clips/variant-poster-v2.jpg", width: 1600, height: 766, alt: "A new Route F variant is created from the edits and opened in the workspace", caption: "The AI turns the edits into a new route." },
-          ],
-        },
-        {
-          type: "media",
-          items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/analysis-v2.jpg", width: 2258, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
-          ],
-        },
-        {
-          type: "media",
           heading: "5. From mmol to batch quantities",
           intro: "Researchers see what a route needs in practice, without manual stoichiometry in a spreadsheet.",
           note: {
@@ -368,16 +356,6 @@ export const deepResearch: CaseStudy = {
           items: [
             { value: "18", label: "sources behind the aspirin research" },
             { value: "10", label: "literature references listed in the panel" },
-          ],
-        },
-        {
-          type: "p",
-          text: "Saved references, routes and figures live in My Repository, ready for the next investigation.",
-        },
-        {
-          type: "media",
-          items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/vault.mp4", poster: "/case-studies/deep-research/clips/vault-poster-v2.jpg", width: 1600, height: 766, alt: "My Repository: saved routes, literature, patents and artifacts for the compound", caption: "My Repository keeps routes, papers, patents and figures." },
           ],
         },
         { type: "h3", text: "7. A research partner that gets better as you work" },
