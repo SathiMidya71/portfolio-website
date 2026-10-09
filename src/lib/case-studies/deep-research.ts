@@ -244,15 +244,30 @@ export const deepResearch: CaseStudy = {
             height: 1080,
           },
         },
-        { type: "h3", text: "2. Confirm before the AI generates" },
+        { type: "h3", text: "2. The agent gets to work" },
         {
           type: "p",
-          text: "Researchers ask in plain words. The product identifies the molecule and shows its name, formula, CAS and structure before generating anything, so the AI never works on the wrong compound.",
+          text: "When research starts, the AI agent first confirms what it is working on, so it never builds routes for the wrong compound.",
+        },
+        {
+          type: "list",
+          items: [
+            "Resolves the molecule: name, CAS, molecular weight, InChIKey and SMILES",
+            "Confirms the structure before any route is generated",
+            "Progress stays visible while routes are built",
+          ],
         },
         {
           type: "media",
           items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/ask.mp4", poster: "/case-studies/deep-research/clips/ask-poster-v2.jpg", width: 1600, height: 766, alt: "Typing Rose Oxide and starting research; the molecule is identified and the target confirmed", caption: "Ask in plain words; the target is confirmed first." },
+            {
+              kind: "image",
+              src: "/case-studies/deep-research/screens/resolving.jpg",
+              width: 2258,
+              height: 1080,
+              alt: "The agent resolving the target molecule: name, CAS, molecular weight and SMILES at the top, a buckyball loader and the message We're locking in the target",
+              caption: "The agent locks in the target before generating routes.",
+            },
           ],
         },
         { type: "h3", text: "3. Show the reasoning, keep humans in control" },
