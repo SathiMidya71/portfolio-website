@@ -5,16 +5,14 @@ import { cn } from "@/lib/utils"
 import { DemoVideo } from "./demo-video"
 
 // Real Deep Research screenshots and demo clips (taken from Sathi's product walkthrough video),
-// shown in a light browser frame on the case study's soft stage.
+// shown in a light browser frame with a soft shadow, straight on the page background.
 
 type MediaBlock = Extract<Block, { type: "media" }>
 type Item = MediaBlock["items"][number]
 
-const stage = "linear-gradient(130deg,#f3eefc 0%,#f4f2f6 50%,#f2efe8 100%)"
-
 function Frame({ item, sizes }: { item: Item; sizes: string }) {
   return (
-    <div className="overflow-hidden rounded-[12px] bg-white shadow-[0_24px_60px_-28px_rgba(31,57,45,0.45)] ring-1 ring-black/[0.06]">
+    <div className="overflow-hidden rounded-[14px] bg-white shadow-[0_2px_4px_rgba(31,57,45,0.06),0_18px_36px_-12px_rgba(31,57,45,0.22),0_44px_80px_-30px_rgba(31,57,45,0.35)] ring-1 ring-black/[0.06]">
       {/* browser bar */}
       <div className="flex items-center gap-1.5 border-b border-black/[0.06] bg-[#f6f5f2] px-3 py-2">
         {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
@@ -95,7 +93,7 @@ function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
 export function MediaView({ block }: { block: MediaBlock }) {
   // Always one column at the full width of the section (Sathi prefers big media over pairs)
   return (
-    <div className="grid gap-8">
+    <div className={cn("grid gap-12", block.heading && "mt-12 md:mt-20")}>
       {block.items.map((item, i) => (
         <figure key={item.src} className="relative min-w-0">
           {i === 0 && block.note && (
@@ -109,9 +107,7 @@ export function MediaView({ block }: { block: MediaBlock }) {
               <StickyNote note={block.note} />
             </div>
           )}
-          <div className="rounded-[20px] p-2 sm:p-3" style={{ background: stage }}>
-            <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
-          </div>
+          <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
           <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[14px] leading-snug font-medium text-body md:text-[15px]">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10.5px] font-semibold tracking-[0.08em] text-[#1f392d] uppercase">
               {item.kind === "video" ? <Clapperboard className="size-3" aria-hidden /> : <Camera className="size-3" aria-hidden />}
