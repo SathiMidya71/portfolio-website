@@ -103,7 +103,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
    - `screens/home-light.jpg` (true aspect, 16:10 crop) is shown in the section 1 kiosk mockup.
    - Hero `hero-lab.jpg`: Sathi's lab stock photo with the Modify Path screenshot perspective-warped onto the green screen (OpenCV); glass tubes in front are kept by chroma-keying only the bottom-left. Also used as the home card and link preview image.
    - Purple for this case study is #B79CEC (Sathi), set via `accent` on the CaseStudy: it overrides --tone-purple on <main>, with --tone-purple-ink #6B4CB8 for text on cream and --on-purple #2B2150 for text on purple fills (white on #B79CEC is unreadable). Palette: deep green #1F392D, purple #4A307D, lavender #B79CEC, warm white #FCFAF6.
-   - Key decisions follow Sathi's product slides: 1 Home + Ask (kiosk), 2 The agent gets to work, 3 Every route ranked and diagrammed, 4 Edit the route, 5 From mmol to batch quantities, 6 Every route traced to its evidence (18 sources / 10 references for aspirin), 7 A research partner that gets better as you work.
+   - Key decisions follow Sathi's product slides: 1 Home + Ask (kiosk), 2 The agent gets to work, 3 Every route ranked and diagrammed, 4 Edit the route, 5 From mmol to batch quantities, 6 Every route traced to its evidence (Rose Oxide: 31 sources; Route A cites 3 papers + 8 patents, from the screenshots), 7 A research partner that gets better as you work.
    - No adoption metrics: "Project at a glance" shows scope facts (0 → 1, 8 stages, 9 screens, UX → code).
 - Card for **Arc Connect Web Portal** links to Behance: https://www.behance.net/gallery/181423391/Arc-Connect-Web-Portal
 

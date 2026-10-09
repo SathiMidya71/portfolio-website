@@ -354,8 +354,8 @@ export const deepResearch: CaseStudy = {
         {
           type: "stats",
           items: [
-            { value: "18", label: "sources behind the aspirin research" },
-            { value: "10", label: "literature references listed in the panel" },
+            { value: "31", label: "sources behind the Rose Oxide research" },
+            { value: "3 + 8", label: "papers and patents cited for Route A alone" },
           ],
         },
         { type: "h3", text: "7. A research partner that gets better as you work" },
@@ -395,9 +395,9 @@ export const deepResearch: CaseStudy = {
             { name: "Metadata", size: "12–13px", weight: "Regular / Medium", use: "CAS, sources, timestamps" },
           ],
           samples: [
-            { label: "CAS", value: "50-78-2" },
-            { label: "InChIKey", value: "BSYNRYMUTXBXSQ-UHFFFAOYSA-N" },
-            { label: "SMILES", value: "CC(=O)OC1=CC=CC=C1C(=O)O" },
+            { label: "CAS", value: "16409-43-1" },
+            { label: "Molecular weight", value: "154.1358 g/mol" },
+            { label: "SMILES", value: "CC(C)=CC1CC(C)CCO1" },
           ],
         },
         {
