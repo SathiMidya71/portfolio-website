@@ -266,13 +266,15 @@ export const workingWithMe = {
       status: "draft",
     },
     {
-      name: "Name Surname",
-      headline: "Senior Scientist · Company",
-      relation: "Worked with Sathi as a user of her product",
-      date: "Month 2026",
-      text: "Sathi sat with us in the lab, watched how we really work and came back with a tool that fits our day. She keeps the people who use her designs at the centre.",
+      // DRAFT for Shalinee to approve; Product Manager building Scinode at Scimplify
+      name: "Shalinee Kumari",
+      headline: "Product Manager | Building Scinode @ Scimplify",
+      relation: "Worked with Sathi on the same team",
+      date: "",
+      text: "Sathi is an intuitive designer who solves problems quickly. She builds the front end herself with AI tools, so our developers can focus on the hard parts.",
       tone: "purple",
-      status: "sample",
+      photo: "/recommendations/shalinee-kumari.jpg",
+      status: "draft",
     },
     {
       name: "Name Surname",
