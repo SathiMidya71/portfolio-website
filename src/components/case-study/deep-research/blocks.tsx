@@ -474,13 +474,13 @@ export function StepsView({ block }: { block: B<"steps"> }) {
 
 export function StatsView({ block }: { block: B<"stats"> }) {
   return (
-    <ul className="grid gap-4 sm:grid-cols-2">
+    <ul className={cn("grid gap-4 sm:grid-cols-2", block.items.length > 4 && "lg:grid-cols-3")}>
       {block.items.map((st, i) => (
         <li
           key={st.label}
           className={cn("flex flex-col justify-between gap-6 rounded-[22px] p-6 md:p-8", i === 0 ? "bg-[#1f392d] text-white" : "bg-white/80 text-[#1f392d] ring-1 ring-black/[0.04]")}
         >
-          <p className="font-heading text-[64px] leading-none font-bold tracking-[-0.03em] md:text-[84px]">{st.value}</p>
+          <p className={cn("font-heading leading-none font-bold tracking-[-0.03em]", block.items.length > 4 ? "text-[52px] md:text-[64px]" : "text-[64px] md:text-[84px]")}>{st.value}</p>
           <p className={cn("text-[17px] leading-snug md:text-lg", i === 0 ? "text-white/85" : "text-body")}>{st.label}</p>
         </li>
       ))}

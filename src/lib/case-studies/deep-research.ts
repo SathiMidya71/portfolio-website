@@ -480,5 +480,27 @@ export const deepResearch: CaseStudy = {
         },
       ],
     },
+    {
+      id: "launch",
+      nav: "Launch week",
+      title: "The first week live",
+      blocks: [
+        {
+          type: "p",
+          text: "Usage from the first week after launch (30 Sep – 6 Oct 2026), taken from the product's internal usage dashboard.",
+        },
+        {
+          type: "stats",
+          items: [
+            { value: "18", label: "active users in week one, 17 of them running research" },
+            { value: "29", label: "research threads started" },
+            { value: "659", label: "AI model calls made by the agent" },
+            { value: "58.3M", label: "tokens processed" },
+            { value: "$1.81", label: "average cost per research thread" },
+            { value: "1.2%", label: "of AI spend counted as waste" },
+          ],
+        },
+      ],
+    },
   ],
 }
