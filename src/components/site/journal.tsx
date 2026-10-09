@@ -12,7 +12,8 @@ import { cn } from "@/lib/utils"
 // Sizes inside the book use container units (cqw) so it scales as one object.
 
 const paper = "#fffdf8"
-const dots = { backgroundImage: "radial-gradient(#d9d2c4 0.9px, transparent 1px)", backgroundSize: "1.8cqw 1.8cqw" }
+// dot-grid notebook paper
+const dots = { backgroundImage: "radial-gradient(circle, #b9ae9a 0.13cqw, transparent 0.15cqw)", backgroundSize: "2cqw 2cqw", backgroundPosition: "1cqw 1cqw" }
 
 /* ---------------- cover ---------------- */
 
