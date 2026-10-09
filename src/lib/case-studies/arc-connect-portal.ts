@@ -259,6 +259,16 @@ export const arcConnectPortal: CaseStudy = {
             ],
           ],
         },
+        {
+          type: "photoBanner",
+          image: img("photo-care", "A respiratory therapist in blue scrubs shows a patient how to use a therapy mask connected to a BiWaze device", 2000, 1032),
+          eyebrow: "Arc Connect",
+          words: [
+            { text: "We ", color: "#3798BF" },
+            { text: "care ", color: "#7FA82E" },
+            { text: "for you", color: "#3798BF" },
+          ],
+        },
       ],
     },
     {

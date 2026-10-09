@@ -99,6 +99,8 @@ export type Block =
    * 3-column board. `span`/`rows` set the grid size from lg up; `tilt` in degrees.
    */
   | { type: "componentBoard"; items: { image: Img; label: string; span?: 1 | 2 | 3; rows?: 1 | 2; tilt?: number; /** More small cards stacked under the first */ more?: Img[] }[] }
+  /** Full-width photo with a coded label card (coloured words) over its lower left corner */
+  | { type: "photoBanner"; image: Img; eyebrow?: string; words: { text: string; color: string }[]; text?: string }
   /** Text beside a screen (tablet mock-up cut-outs); `side` is where the image sits from md up */
   | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[] }
   /** A white board with an icon, heading and subtext above floating cards, arranged in columns */

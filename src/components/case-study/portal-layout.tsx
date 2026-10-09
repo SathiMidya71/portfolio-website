@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { BarChart3 } from "lucide-react"
+import { BarChart3, Heart } from "lucide-react"
 import type { Block, Img } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 
@@ -49,10 +49,11 @@ export function SplitView({ block }: { block: SplitBlock }) {
   return (
     <div ref={ref} className="my-10 grid items-center gap-8 md:my-14 md:grid-cols-[1.35fr_1fr] md:gap-12">
       <div
-        className={cn("grid gap-6", left ? "md:order-1" : "md:order-2")}
+        className={cn("grid gap-6", left ? "md:order-1 md:[--slide:-40px]" : "md:order-2 md:[--slide:40px]")}
         style={{
           opacity: shown ? 1 : 0,
-          translate: shown ? "0 0" : left ? "-40px 0" : "40px 0",
+          // sideways slide from md up only, so nothing pokes past a phone screen
+          translate: shown ? "0 0" : "var(--slide, 0px) 0",
           transition: "opacity 700ms ease, translate 900ms cubic-bezier(.2,.7,.2,1)",
         }}
       >
@@ -132,5 +133,51 @@ export function StatsPanelView({ block }: { block: StatsBlock }) {
         ))}
       </div>
     </div>
+  )
+}
+
+/* ---------------- photo banner ---------------- */
+
+type BannerBlock = Extract<Block, { type: "photoBanner" }>
+
+export function PhotoBannerView({ block }: { block: BannerBlock }) {
+  const [ref, shown] = useInView<HTMLElement>(0.25)
+  return (
+    <figure ref={ref} className="group relative my-12 overflow-hidden rounded-[28px] shadow-[0_30px_60px_-36px_rgba(16,24,40,0.5)] md:my-16">
+      <Image
+        src={block.image.src}
+        alt={block.image.alt}
+        width={block.image.width}
+        height={block.image.height}
+        sizes="(min-width: 1200px) 1040px, 100vw"
+        className="h-auto w-full transition-[scale] duration-[1600ms] ease-out group-hover:scale-[1.02]"
+        style={{ scale: shown ? undefined : "1.08" }}
+      />
+      {/* soft light from the left so the label reads on the window */}
+      <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/55 via-white/10 to-transparent" />
+      <figcaption
+        className="absolute bottom-3 left-3 max-w-[78%] rounded-[16px] bg-white/80 px-3.5 py-2.5 sm:rounded-[22px] sm:p-4 shadow-[0_18px_40px_-20px_rgba(16,24,40,0.45)] ring-1 ring-white/60 backdrop-blur-md sm:bottom-8 sm:left-8 sm:p-6 md:max-w-[420px]"
+        style={{
+          opacity: shown ? 1 : 0,
+          translate: shown ? "0 0" : "0 20px",
+          transition: "opacity 700ms ease 400ms, translate 800ms cubic-bezier(.2,.7,.2,1) 400ms",
+        }}
+      >
+        {block.eyebrow && (
+          <span className="mb-1 flex items-center gap-2 text-[10px] sm:mb-2 sm:text-[11px] font-semibold tracking-[0.16em] text-soft uppercase">
+            <Heart className="size-3.5 fill-[#F26930] text-[#F26930] motion-safe:animate-pulse" aria-hidden />
+            {block.eyebrow}
+          </span>
+        )}
+        <p className="font-heading text-[22px] leading-[0.95] sm:text-[30px] md:text-[44px] font-semibold tracking-[-0.03em]">
+          {block.words.map((w) => (
+            <span key={w.text} style={{ color: w.color }}>
+              {w.text}
+            </span>
+          ))}
+        </p>
+        {block.text && <p className="mt-2 hidden text-[15px] leading-snug text-body sm:block">{block.text}</p>}
+      </figcaption>
+    </figure>
   )
 }

@@ -1,7 +1,8 @@
-import { AnnotatedScreenView, PhotosView } from "./arc-portal"
+import { PhotosView } from "./arc-portal"
+import { AnnotatedScreenView } from "./annotated-screen"
 import { ArcPortalArchitecture } from "./arc-portal-architecture"
 import { ComponentBoardView } from "./component-board"
-import { SplitView, StatsPanelView } from "./portal-layout"
+import { PhotoBannerView, SplitView, StatsPanelView } from "./portal-layout"
 import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
@@ -321,6 +322,9 @@ export function BlockView({ block }: { block: Block }) {
 
     case "split":
       return <SplitView block={block} />
+
+    case "photoBanner":
+      return <PhotoBannerView block={block} />
 
     case "statsPanel":
       return <StatsPanelView block={block} />
