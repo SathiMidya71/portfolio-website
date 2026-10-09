@@ -8,7 +8,6 @@ import {
   InsightsView,
   JourneyView,
   PrincipleView,
-  ProductMockView,
   RichPersona,
   ShiftView,
   SpecsView,
@@ -17,6 +16,7 @@ import {
   TypeHierarchyView,
 } from "./deep-research/blocks"
 import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
+import { MediaView } from "./deep-research/media"
 import { ColorStageView, DrJourneyMap, ProblemSolutionView } from "./deep-research/showcase"
 import { DesignSystemView } from "./design-system"
 import { HomeBoardView, IllustrationsView, ShowcaseView, PhoneFlowView, VideoView } from "./mobile-blocks"
@@ -299,9 +299,6 @@ export function BlockView({ block }: { block: Block }) {
     case "tree":
       return <TreeView block={block} />
 
-    case "productMock":
-      return <ProductMockView block={block} />
-
     case "specs":
       return <SpecsView block={block} />
 
@@ -310,6 +307,9 @@ export function BlockView({ block }: { block: Block }) {
 
     case "palette":
       return <ColorStageView block={block} />
+
+    case "media":
+      return <MediaView block={block} />
 
     case "problemSolution":
       return <ProblemSolutionView block={block} />

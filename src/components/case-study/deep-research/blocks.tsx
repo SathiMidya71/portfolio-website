@@ -1,8 +1,7 @@
-import Image from "next/image"
 import { ArrowRight, MousePointerClick } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
-import { ProductMockSvg, inter } from "./mocks"
+import { inter } from "./fonts"
 
 // Block renderers added for the Deep Research case study. They are generic (driven by data),
 // so later case studies can reuse them.
@@ -330,39 +329,6 @@ export function TreeView({ block }: { block: B<"tree"> }) {
         </div>
       </div>
     </div>
-  )
-}
-
-/* ---------------- Product wireframe ---------------- */
-
-export function ProductMockView({ block }: { block: B<"productMock"> }) {
-  return (
-    <figure className="my-2">
-      <div className="relative overflow-hidden rounded-[22px] p-3 sm:p-5 md:p-7" style={{ background: "linear-gradient(140deg,#eeecfd 0%,#f4f3fb 45%,#e6f2fe 100%)" }}>
-        {block.image ? (
-          <Image
-            src={block.image.src}
-            alt={block.image.alt}
-            width={block.image.width}
-            height={block.image.height}
-            sizes="(min-width: 1200px) 860px, 100vw"
-            className="h-auto w-full rounded-[12px] shadow-[0_20px_50px_-20px_rgba(52,45,140,0.35)]"
-          />
-        ) : (
-          <ProductMockSvg view={block.view} className="drop-shadow-[0_20px_40px_rgba(52,45,140,0.16)]" />
-        )}
-      </div>
-      {block.caption && (
-        <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[15px] font-medium text-soft">
-          {!block.image && (
-            <span className="rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold tracking-[0.08em] text-[var(--tone-purple)] uppercase">
-              Coded wireframe
-            </span>
-          )}
-          {block.caption}
-        </figcaption>
-      )}
-    </figure>
   )
 }
 

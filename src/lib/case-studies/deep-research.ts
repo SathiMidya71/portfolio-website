@@ -4,8 +4,9 @@ import type { CaseStudy } from "./types"
 // Condensed at her request: short, simple wording, framed as designing a GenAI product.
 // It is a 0 → 1 product with no published adoption metrics, so the overview shows scope facts
 // from the write-up, not impact numbers. Do not add percentages without real research data.
-// Visuals are coded (components/case-study/deep-research). Real product screens can replace any
-// wireframe by adding `image` to its productMock block.
+// Product visuals are real: screenshots and clips taken from Sathi's Deep Research walkthrough
+// video (public/case-studies/deep-research/screens and /clips). The hero places a real screenshot
+// on the monitor of a lab photo she supplied. Palette hexes are sampled from those screenshots.
 // Persona (Dr. Maya Rao) is the design persona from the write-up, not a real person.
 
 export const deepResearch: CaseStudy = {
@@ -31,13 +32,11 @@ export const deepResearch: CaseStudy = {
     timeline: "0 → 1 · from idea to production",
   },
   hero: {
-    // Static render of the coded hero, used for thumbnails and link previews
-    src: "/case-studies/deep-research/cover.png",
-    alt: "SCINODE Deep Research workspace: route cards on the left with the AI conversation open on the right",
-    width: 1600,
-    height: 1000,
+    src: "/case-studies/deep-research/hero-lab.jpg",
+    alt: "A chemist in a lab suit at a workstation, using SCINODE Deep Research to modify a synthesis route",
+    width: 2000,
+    height: 1125,
   },
-  heroVisual: "deep-research",
   impactTitle: "Project at a glance",
   impact: [
     {
@@ -215,29 +214,81 @@ export const deepResearch: CaseStudy = {
         { type: "h3", text: "1. Conversation first, workspace when needed" },
         {
           type: "p",
-          text: "It starts with one simple question. When the task needs more, like comparing routes, the screen opens into a workspace: 70% research, 30% AI chat.",
+          text: "It starts with one simple question. When the task needs more, like comparing routes, the screen opens into a workspace: research on one side, the AI chat on the other.",
         },
-        { type: "productMock", view: "workspace", caption: "The AI chat stays open beside the research." },
+        {
+          type: "media",
+          items: [
+            { kind: "image", src: "/case-studies/deep-research/screens/home.jpg", width: 1920, height: 1080, alt: "Deep Research home: a question box under the headline Turn your next scientific question into a breakthrough, with quick actions", caption: "Start with a question, or a quick action." },
+            { kind: "video", src: "/case-studies/deep-research/clips/ask.mp4", poster: "/case-studies/deep-research/clips/ask-poster.jpg", width: 1600, height: 900, alt: "Typing Rose Oxide and starting research; the molecule is identified and confirmed", caption: "Ask in plain words." },
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "video", src: "/case-studies/deep-research/clips/routes.mp4", poster: "/case-studies/deep-research/clips/routes-poster.jpg", width: 1600, height: 900, alt: "Choosing Generate synthesis routes; the workspace opens while the AI resolves the molecule, then routes A to E appear", caption: "The workspace opens as the AI explores routes." },
+          ],
+        },
         { type: "h3", text: "2. Confirm before the AI generates" },
         {
           type: "p",
-          text: "The product shows the molecule (name, CAS, structure, identifiers) before generating anything, so the AI never works on the wrong compound.",
+          text: "The product shows the molecule (name, formula, CAS, structure) before generating anything, so the AI never works on the wrong compound.",
         },
-        { type: "productMock", view: "molecule", caption: "Molecule check for the aspirin example." },
+        {
+          type: "media",
+          items: [
+            { kind: "image", src: "/case-studies/deep-research/screens/molecule.jpg", width: 1920, height: 1080, alt: "Target confirmed: structure, name, formula, molecular weight, CAS and SMILES for 4-methyl-2-(2-methylprop-1-enyl)oxane", caption: "Target confirmed before any routes are generated." },
+          ],
+        },
         { type: "h3", text: "3. Show the reasoning, keep humans in control" },
         {
           type: "p",
-          text: "Routes are easy to compare, and the recommended one explains why. Researchers can then edit any step, or ask the AI for another approach.",
+          text: "Routes are easy to compare by steps, yield and score, and each one explains why. Researchers can edit any step, review the changes, and let the AI build a new variant.",
         },
-        { type: "productMock", view: "routes", caption: "Compare routes side by side." },
-        { type: "productMock", view: "modify", caption: "Edit any step visually or in a form." },
+        {
+          type: "media",
+          items: [
+            { kind: "image", src: "/case-studies/deep-research/screens/routes.jpg", width: 1920, height: 1080, alt: "Routes A to E compared by steps, yield and score; Route A is marked Best with its reaction scheme", caption: "Compare routes at a glance." },
+            { kind: "image", src: "/case-studies/deep-research/screens/analysis.jpg", width: 1920, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "video", src: "/case-studies/deep-research/clips/modify.mp4", poster: "/case-studies/deep-research/clips/modify-poster.jpg", width: 1600, height: 900, alt: "Modify Path: switching from scheme view to form view, changing the mode to continuous and adding a solvent, then reviewing the changes", caption: "Edit a step in Scheme or Form view." },
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "image", src: "/case-studies/deep-research/screens/changes.jpg", width: 1920, height: 1080, alt: "Changes to Route A: a side-by-side diff of the step before and after edits, with a Create Variant button", caption: "Review every change before applying it." },
+            { kind: "video", src: "/case-studies/deep-research/clips/variant.mp4", poster: "/case-studies/deep-research/clips/variant-poster.jpg", width: 1600, height: 900, alt: "A new Route F variant is created from the edits and opened in the workspace", caption: "The AI turns edits into a new route." },
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster.jpg", width: 1600, height: 900, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Scale: quantities update as you edit." },
+          ],
+        },
         { type: "h3", text: "4. Evidence and memory built in" },
         {
           type: "p",
-          text: "Every route links to its literature and patents. Useful sources and findings are saved to the Research Vault, so the next investigation starts ahead.",
+          text: "Every route links to its literature and patents. Routes, papers, patents and figures are saved to My Repository, and History lets researchers pick up any session.",
         },
-        { type: "productMock", view: "sources", caption: "Sources linked to the step they support." },
-        { type: "productMock", view: "vault", caption: "Research Vault and History." },
+        {
+          type: "media",
+          items: [
+            { kind: "image", src: "/case-studies/deep-research/screens/sources.jpg", width: 1920, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
+            { kind: "image", src: "/case-studies/deep-research/screens/history.jpg", width: 1920, height: 1080, alt: "History: previous research sessions with Continue buttons", caption: "Pick up where you left off." },
+          ],
+        },
+        {
+          type: "media",
+          items: [
+            { kind: "video", src: "/case-studies/deep-research/clips/vault.mp4", poster: "/case-studies/deep-research/clips/vault-poster.jpg", width: 1600, height: 900, alt: "My Repository: saved routes, literature, patents and artifacts for the compound", caption: "My Repository keeps routes, papers, patents and figures." },
+          ],
+        },
       ],
     },
     {
@@ -268,15 +319,16 @@ export const deepResearch: CaseStudy = {
         },
         {
           type: "palette",
-          intro: "A light, neutral base keeps the science readable. Purple marks actions and AI; green is saved for success.",
+          intro: "A warm, light base keeps the science readable. Deep green carries primary actions and the conversation; purple marks the tools, modes and steps you edit.",
           items: [
-            { name: "Primary background", hex: "#FFFFFF", use: "Workspace surfaces" },
-            { name: "Secondary background", hex: "#F7F7F8", use: "Panels and inputs" },
-            { name: "Primary text", hex: "#171717", use: "Headings and content" },
-            { name: "Secondary text", hex: "#6B6B6B", use: "Labels and metadata" },
+            { name: "Deep green", hex: "#1F392D", use: "Primary actions, chat and selected route", featured: true },
+            { name: "Ink", hex: "#171717", use: "Headings and scientific content", featured: true },
+            { name: "Purple", hex: "#4A307D", use: "Active modes and toggles", featured: true },
+            { name: "Lavender", hex: "#AA92E7", use: "Step badges and tools", featured: true },
+            { name: "Warm white", hex: "#FCFAF6", use: "Workspace background" },
+            { name: "Lavender tint", hex: "#EFEDFB", use: "Tool chips" },
             { name: "Border", hex: "#E6E6E6", use: "Cards and dividers" },
-            { name: "Primary accent", tone: "purple", use: "Actions, selections and AI" },
-            { name: "Success", tone: "green", use: "Completed states" },
+            { name: "Secondary text", hex: "#6B6B6B", use: "Labels and metadata" },
           ],
         },
       ],

@@ -93,8 +93,6 @@ export type Block =
   | { type: "journey"; stages: { stage: string; goal: string; action: string; response: string; pain: string }[] }
   /** Information architecture as a tree of groups */
   | { type: "tree"; root: string; groups: { title: string; note?: string; items: string[] }[] }
-  /** Coded product wireframe. Pass `image` to show a real screen instead. */
-  | { type: "productMock"; view: MockView; caption?: string; image?: Img }
   /** Screen specifications: purpose, elements and primary action per screen */
   | { type: "specs"; items: { name: string; purpose: string; elements: string[]; cta?: string; layout?: string }[] }
   /** Typography hierarchy rendered in the product's own typeface */
@@ -110,7 +108,22 @@ export type Block =
       type: "palette"
       /** Short paragraph shown beside the "Colour" title */
       intro?: string
-      items: { name: string; hex?: string; tone?: Tone; use: string }[]
+      /** `featured` colours are shown as the large swatches (up to 4, in order) */
+      items: { name: string; hex?: string; tone?: Tone; use: string; featured?: boolean }[]
+    }
+  /** Real product media in a browser frame: one item full width, two side by side */
+  | {
+      type: "media"
+      items: {
+        kind: "image" | "video"
+        src: string
+        /** Video poster */
+        poster?: string
+        width: number
+        height: number
+        alt: string
+        caption: string
+      }[]
     }
   /** Problem (big statements, left), a coded centre visual, and the solution with chips (right) */
   | {
@@ -163,8 +176,6 @@ export type Block =
       video: { src: string; poster: string; width: number; height: number; label: string }
     }
 
-export type MockView = "home" | "workspace" | "molecule" | "routes" | "modify" | "scale" | "sources" | "vault"
-
 export type FindingVisual = "distance" | "alarm" | "waveform" | "navigation" | "settings"
 
 export type Tone = "green" | "orange" | "purple" | "blue"
@@ -216,8 +227,6 @@ export type CaseStudy = {
     timeline: string
   }
   hero: Img & { background?: string }
-  /** Coded hero shown instead of the hero image (the image is still used for thumbnails and sharing) */
-  heroVisual?: "deep-research"
   impact: Metric[]
   /** Heading above the metric cards (defaults to "Impact overview") */
   impactTitle?: string

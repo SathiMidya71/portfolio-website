@@ -134,7 +134,7 @@ export const caseStudies: CaseStudy[] = [
     result: "0 → 1 GenAI product · end-to-end UX · design to code",
     tags: ["GenAI", "AI UX", "0 → 1"],
     cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
-    image: { src: "/case-studies/deep-research/cover.png", alt: "SCINODE Deep Research workspace with route cards and AI conversation" },
+    image: { src: "/case-studies/deep-research/hero-lab.jpg", alt: "A chemist in a lab using SCINODE Deep Research on a desktop monitor" },
     href: "/work/deep-research",
   },
   {

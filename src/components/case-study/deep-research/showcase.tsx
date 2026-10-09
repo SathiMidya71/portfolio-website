@@ -2,7 +2,7 @@ import { Atom, FileText, FlaskConical, History, House, ScrollText, Sparkles, Way
 import type { Block } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 import { DrUserFlow } from "./diagrams"
-import { inter } from "./mocks"
+import { inter } from "./fonts"
 
 // Presentation-style blocks for Deep Research, modelled on Sathi's reference boards:
 // a problem / solution split, a pill-and-connector product journey, and a colour stage.
@@ -247,12 +247,10 @@ const toneVar = { green: "var(--tone-green)", purple, blue: "var(--tone-blue)", 
 
 export function ColorStageView({ block }: { block: B<"palette"> }) {
   const colour = (c: (typeof block.items)[number]) => c.hex ?? (c.tone ? toneVar[c.tone] : "#ccc")
-  // Large swatches: colours with a role; small dots: the neutral surfaces
-  const hero = block.items.filter((c) => c.tone || ["#171717", "#6B6B6B"].includes(c.hex ?? ""))
-  const neutrals = block.items.filter((c) => !hero.includes(c))
-  // Visual order (left → right) and relative size, largest in the centre-left like the reference
-  const order = [hero.find((c) => c.hex === "#6B6B6B"), hero.find((c) => c.hex === "#171717"), hero.find((c) => c.tone === "purple"), hero.find((c) => c.tone === "green")].filter(Boolean) as typeof hero
-  const sizes = ["22%", "34%", "28%", "20%"]
+  // Large swatches: the featured colours (in order); small dots: the rest
+  const order = block.items.filter((c) => c.featured).slice(0, 4)
+  const neutrals = block.items.filter((c) => !order.includes(c))
+  const sizes = ["34%", "22%", "26%", "18%"]
 
   return (
     <div className={cn(inter.className, "relative overflow-hidden rounded-[28px] px-5 pt-10 sm:px-10 md:pt-14")} style={{ background: stage }}>
@@ -263,7 +261,7 @@ export function ColorStageView({ block }: { block: B<"palette"> }) {
             {neutrals.map((c) => (
               <span key={c.name} title={`${c.name} ${c.hex ?? ""}`} className="size-6 rounded-full ring-1 ring-black/10" style={{ background: colour(c) }} />
             ))}
-            {order.slice(1).map((c) => (
+            {order.map((c) => (
               <span key={c.name} title={c.name} className="size-6 rounded-full" style={{ background: colour(c) }} />
             ))}
           </span>
