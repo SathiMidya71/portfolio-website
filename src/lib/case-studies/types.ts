@@ -103,6 +103,8 @@ export type Block =
   | { type: "photoBanner"; image: Img; eyebrow?: string; words: { text: string; color: string }[]; text?: string }
   /** A large photo with tablet screens overlapping its edge, and text above */
   | { type: "photoTablets"; photo: Img; tablets: Img[]; text?: string }
+  /** Big centred statement heading; `highlight` is shown in colour on its own line */
+  | { type: "statement"; text: string; highlight: string; color?: string }
   /** Text beside a screen (tablet mock-up cut-outs); `side` is where the image sits from md up */
   | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[]; /** Show each image as the screen of a coded silver tablet */ tablet?: boolean }
   /** A white board with an icon, heading and subtext above floating cards, arranged in columns */

@@ -249,3 +249,23 @@ export function PhotoTabletsView({ block }: { block: PhotoTabletsBlock }) {
     </div>
   )
 }
+
+/* ---------------- statement heading ---------------- */
+
+type StatementBlock = Extract<Block, { type: "statement" }>
+
+export function StatementView({ block }: { block: StatementBlock }) {
+  const [ref, shown] = useInView<HTMLHeadingElement>(0.4)
+  return (
+    <h3
+      ref={ref}
+      className="mx-auto my-6 max-w-[900px] text-center text-[34px] leading-[1.08] font-normal tracking-[-0.03em] text-ink sm:text-[48px] md:text-[60px]"
+      style={{ opacity: shown ? 1 : 0, translate: shown ? "0 0" : "0 20px", transition: "opacity 700ms ease, translate 800ms cubic-bezier(.2,.7,.2,1)" }}
+    >
+      {block.text}{" "}
+      <span className="whitespace-nowrap" style={{ color: block.color ?? "#1e6fd9" }}>
+        {block.highlight}
+      </span>
+    </h3>
+  )
+}

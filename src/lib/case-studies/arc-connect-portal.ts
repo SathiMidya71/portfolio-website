@@ -276,8 +276,8 @@ export const arcConnectPortal: CaseStudy = {
     {
       id: "medical-record",
       nav: "Medical record",
-      title: "A full view of a patient's health",
       blocks: [
+        { type: "statement", text: "Full view of patient's health with", highlight: "medical record" },
         {
           type: "p",
           text: "The medical record brings everything about one patient onto a single page, from their health summary to every therapy session. These are the requirement notes I wrote beside the design.",
