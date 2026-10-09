@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { BarChart3, Heart } from "lucide-react"
 import type { Block, Img } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
+import { DemoVideo } from "./deep-research/demo-video"
 
 // Layout blocks for the Arc Connect Portal: text beside a tablet mock-up (alternating sides),
 // and the white Statistics board with floating chart cards. Both slide in when scrolled into view.
@@ -267,5 +268,43 @@ export function StatementView({ block }: { block: StatementBlock }) {
         {block.highlight}
       </span>
     </h3>
+  )
+}
+
+/* ---------------- tablet video ---------------- */
+
+type TabletVideoBlock = Extract<Block, { type: "tabletVideo" }>
+
+/** Walkthrough video in a black tablet: glossy bezel, front camera, soft floor shadow. */
+export function TabletVideoView({ block }: { block: TabletVideoBlock }) {
+  const [ref, shown] = useInView<HTMLDivElement>(0.2)
+  return (
+    <div ref={ref} className="my-6">
+      {(block.title || block.text) && (
+        <div className="mx-auto mb-10 max-w-[640px] text-center">
+          {block.title && <h3 className="text-[30px] leading-tight tracking-[-0.02em] text-ink md:text-[40px]">{block.title}</h3>}
+          {block.text && <p className="mt-3 text-[17px] leading-relaxed text-body">{block.text}</p>}
+        </div>
+      )}
+      <div
+        className="relative mx-auto max-w-[920px] [container-type:inline-size]"
+        style={{ opacity: shown ? 1 : 0, translate: shown ? "0 0" : "0 32px", transition: "opacity 700ms ease, translate 900ms cubic-bezier(.2,.7,.2,1)" }}
+      >
+        <span aria-hidden className="absolute inset-x-[6%] -bottom-[4%] h-[10%] rounded-[50%] bg-black/35 blur-2xl" />
+        <div
+          className="relative rounded-[4.5cqw] p-[2.6cqw]"
+          style={{
+            background: "linear-gradient(150deg, #3a3d42 0%, #111214 30%, #0a0a0b 70%, #2a2c30 100%)",
+            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.14), inset 0 0 0 0.3cqw #000, 0 2px 4px rgba(16,24,40,0.1), 0 40px 70px -28px rgba(16,24,40,0.5)",
+          }}
+        >
+          <span aria-hidden className="absolute top-[1cqw] left-1/2 size-[0.8cqw] -translate-x-1/2 rounded-full bg-[#1d2a3a] ring-[0.2cqw] ring-[#2c2f34]" />
+          <div className="relative overflow-hidden rounded-[1.6cqw] bg-white">
+            <DemoVideo src={block.src} poster={block.poster} width={block.width} height={block.height} label={block.label} />
+            <span aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_35%)]" />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -401,6 +401,22 @@ export const arcConnectPortal: CaseStudy = {
         },
       ],
     },
+    {
+      id: "walkthrough",
+      nav: "Walkthrough",
+      blocks: [
+        {
+          type: "tabletVideo",
+          title: "See it in action",
+          text: "A walkthrough of the portal: the dashboard, notification summary, a patient's profile, invitations and care site settings.",
+          src: `${dir}/walkthrough.mp4`,
+          poster: `${dir}/walkthrough-poster.jpg`,
+          width: 1792,
+          height: 1204,
+          label: "Walkthrough of the Arc Connect Portal, from the dashboard through the notification summary, a patient profile, invitations and care site settings",
+        },
+      ],
+    },
   ],
   moreWork: { heading: "More from ABM Respiratory Care", items: [] },
 }
