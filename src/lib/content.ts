@@ -210,9 +210,69 @@ export const skills = [
   },
 ]
 
-// Placeholders: replace with real quotes.
-export const testimonials = [
-  { quote: "Testimonial placeholder. Add a quote from a manager or PM about your research and design impact.", name: "Name Surname", title: "Product Manager, Company", initials: "AB" },
-  { quote: "Testimonial placeholder. A quote from an engineer about handoff, specs and collaboration works well here.", name: "Name Surname", title: "Engineering Lead, Company", initials: "CD" },
-  { quote: "Testimonial placeholder. A quote from a stakeholder about outcomes and how you present your work.", name: "Name Surname", title: "Head of Operations, Company", initials: "EF" },
-]
+// "What it's like to work with me": LinkedIn-style recommendation cards in a scattered collage.
+// SAMPLE TEXT: Sathi has asked colleagues for LinkedIn recommendations. Until they arrive these are
+// placeholders (`sample: true` shows a small "Sample" tag). Replace name, headline, relation, date
+// and text with the real recommendation, then set sample to false.
+export type Recommendation = {
+  name: string
+  headline: string
+  relation: string
+  date: string
+  text: string
+  tone: "blue" | "orange" | "purple" | "green"
+  sample?: boolean
+}
+
+export const workingWithMe = {
+  title: "What it's like to work with me",
+  intro: "Kind words from the people I have designed and built with.",
+  note: "Kind words from my teammates ♥",
+  recommendations: [
+    {
+      name: "Name Surname",
+      headline: "Engineering Manager · Company",
+      relation: "Managed Sathi directly",
+      date: "Month 2026",
+      text: "Sathi turns messy problems into clear, calm screens. She starts by listening to users, and her research made our product decisions easier for everyone.",
+      tone: "green",
+      sample: true,
+    },
+    {
+      name: "Name Surname",
+      headline: "Product Manager · Company",
+      relation: "Worked with Sathi on the same team",
+      date: "Month 2026",
+      text: "She asks the right questions early and stays kind while doing it. Every workshop with Sathi ended with a clear plan.",
+      tone: "blue",
+      sample: true,
+    },
+    {
+      name: "Name Surname",
+      headline: "Frontend Developer · Company",
+      relation: "Worked with Sathi on the same team",
+      date: "Month 2026",
+      text: "Her handoff files are the cleanest I have worked with. Every state, spacing and edge case is there, so building is fast.",
+      tone: "orange",
+      sample: true,
+    },
+    {
+      name: "Name Surname",
+      headline: "Senior Scientist · Company",
+      relation: "Worked with Sathi as a user of her product",
+      date: "Month 2026",
+      text: "Sathi sat with us in the lab, watched how we really work and came back with a tool that fits our day. She keeps the people who use her designs at the centre.",
+      tone: "purple",
+      sample: true,
+    },
+    {
+      name: "Name Surname",
+      headline: "Design Lead · Company",
+      relation: "Senior to Sathi but didn't manage her directly",
+      date: "Month 2026",
+      text: "Thoughtful, quick to learn and a joy to work with.",
+      tone: "blue",
+      sample: true,
+    },
+  ] satisfies Recommendation[],
+}
