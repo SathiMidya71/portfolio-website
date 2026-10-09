@@ -108,7 +108,7 @@ export type Block =
   /** Click-to-play walkthrough video inside a coded tablet with a black bezel */
   | { type: "tabletVideo"; src: string; poster: string; width: number; height: number; label: string; title?: string; text?: string }
   /** Text beside a screen (tablet mock-up cut-outs); `side` is where the image sits from md up */
-  | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[]; /** Show each image as the screen of a coded silver tablet */ tablet?: boolean }
+  | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[]; /** Show each image as the screen of a coded silver tablet */ tablet?: boolean; /** A screen rebuilt in code, shown in the tablet instead of the images */ coded?: "invitations" }
   /** A white board with an icon, heading and subtext above floating cards, arranged in columns */
   | {
       type: "statsPanel"

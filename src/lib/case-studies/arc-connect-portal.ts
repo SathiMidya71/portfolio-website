@@ -355,6 +355,7 @@ export const arcConnectPortal: CaseStudy = {
           type: "split",
           tablet: true,
           side: "right",
+          coded: "invitations",
           images: [screen("invitations", "Invitations screen with new, sent (120) and received (30) invitation cards above a table of sent invitations", 1527, 1018)],
           title: "Sent and received invitations",
           text: ["Care site admins see every sent and received invitation. To invite someone, they type the invitee's email address and choose the clinic."],

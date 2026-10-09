@@ -6,6 +6,7 @@ import { BarChart3, Heart } from "lucide-react"
 import type { Block, Img } from "@/lib/case-studies/types"
 import { cn } from "@/lib/utils"
 import { DemoVideo } from "./deep-research/demo-video"
+import { codedScreens } from "./portal-screens"
 
 // Layout blocks for the Arc Connect Portal: text beside a tablet mock-up (alternating sides),
 // and the white Statistics board with floating chart cards. Both slide in when scrolled into view.
@@ -43,7 +44,7 @@ function Screen({ img, sizes }: { img: Img; sizes: string }) {
 /* ---------------- tablet mock-up ---------------- */
 
 /** A coded tablet: metallic silver bezel, front camera, glass highlight and a soft floor shadow. */
-export function Tablet({ img, sizes }: { img: Img; sizes: string }) {
+export function Tablet({ img, sizes, children }: { img?: Img; sizes?: string; children?: React.ReactNode }) {
   return (
     <div className="relative [container-type:inline-size]">
       {/* floor shadow */}
@@ -59,13 +60,18 @@ export function Tablet({ img, sizes }: { img: Img; sizes: string }) {
         {/* front camera */}
         <span aria-hidden className="absolute top-[1.1cqw] left-1/2 size-[0.9cqw] -translate-x-1/2 rounded-full bg-[#2b2f36] ring-[0.25cqw] ring-[#9aa0a8]" />
         <div className="relative overflow-hidden rounded-[2cqw] bg-white ring-1 ring-black/10">
-          <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className="block h-auto w-full" />
+          {children ?? (img && <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className="block h-auto w-full" />)}
           {/* glass highlight */}
           <span aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_38%)]" />
         </div>
       </div>
     </div>
   )
+}
+
+function CodedScreenView({ name }: { name: keyof typeof codedScreens }) {
+  const Screen = codedScreens[name]
+  return <Screen />
 }
 
 /* ---------------- split ---------------- */
@@ -86,7 +92,14 @@ export function SplitView({ block }: { block: SplitBlock }) {
           transition: "opacity 700ms ease, translate 900ms cubic-bezier(.2,.7,.2,1)",
         }}
       >
-        {block.images.map((img) =>
+        {block.coded && (
+          <Tablet>
+            <div className="[container-type:inline-size]">
+              <CodedScreenView name={block.coded} />
+            </div>
+          </Tablet>
+        )}
+        {!block.coded && block.images.map((img) =>
           block.tablet ? (
             <Tablet key={img.src} img={img} sizes="(min-width: 1200px) 640px, (min-width: 768px) 65vw, 100vw" />
           ) : (
