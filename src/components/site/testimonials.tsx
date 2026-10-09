@@ -19,9 +19,8 @@ const tones: Record<Recommendation["tone"], { border: string; avatar: string; in
 const spots = [
   { left: "2%", top: "3%", width: "37%", rotate: 4, z: 3 },
   { left: "62%", top: "1%", width: "35%", rotate: 5, z: 7 },
-  { left: "60%", top: "34%", width: "33%", rotate: -4, z: 6 },
-  { left: "20%", top: "56%", width: "38%", rotate: 5, z: 4 },
-  { left: "66%", top: "70%", width: "30%", rotate: -7, z: 8 },
+  { left: "60%", top: "45%", width: "33%", rotate: -4, z: 6 },
+  { left: "20%", top: "62%", width: "38%", rotate: 5, z: 4 },
 ]
 
 function LinkedInMark() {
@@ -118,7 +117,7 @@ export function Testimonials() {
           <p className="text-[18px] leading-[1.35] font-medium text-body md:text-[22px]">{workingWithMe.intro}</p>
         </div>
 
-        <div className="relative mt-10 flex flex-col items-center gap-6 xl:block xl:h-[760px]">
+        <div className="relative mt-10 flex flex-col items-center gap-6 xl:block xl:h-[620px]">
           {recs.map((r, i) => (
             <Piece key={i} spot={spots[i]} mobileRotate={i % 2 ? -1.5 : 1.5} delay={i * 90}>
               <RecCard r={r} />
@@ -128,7 +127,7 @@ export function Testimonials() {
           <Piece spot={{ left: "38.5%", top: "5%", width: "22%", rotate: -7, z: 10 }} mobileRotate={-4} className="hidden xl:block" delay={120}>
             <Polaroid />
           </Piece>
-          <Piece spot={{ left: "2%", top: "44%", width: "17%", rotate: -10, z: 2 }} mobileRotate={-4} className="hidden xl:block" delay={240}>
+          <Piece spot={{ left: "2%", top: "54%", width: "17%", rotate: -10, z: 2 }} mobileRotate={-4} className="hidden xl:block" delay={240}>
             <StickyNote />
           </Piece>
         </div>

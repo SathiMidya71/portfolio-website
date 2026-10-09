@@ -276,14 +276,5 @@ export const workingWithMe = {
       photo: "/recommendations/shalinee-kumari.jpg",
       status: "draft",
     },
-    {
-      name: "Name Surname",
-      headline: "Design Lead · Company",
-      relation: "Senior to Sathi but didn't manage her directly",
-      date: "Month 2026",
-      text: "Thoughtful, quick to learn and a joy to work with.",
-      tone: "blue",
-      status: "sample",
-    },
   ] satisfies Recommendation[],
 }
