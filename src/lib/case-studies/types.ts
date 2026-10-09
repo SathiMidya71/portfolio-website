@@ -277,7 +277,8 @@ export type Section = {
   id: string
   /** Short label for the "On this page" nav */
   nav: string
-  title: string
+  /** Big section heading; leave empty when the first block carries its own heading */
+  title?: string
   blocks: Block[]
 }
 

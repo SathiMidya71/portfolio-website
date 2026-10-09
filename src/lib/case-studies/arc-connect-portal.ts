@@ -237,7 +237,6 @@ export const arcConnectPortal: CaseStudy = {
     {
       id: "statistics",
       nav: "Statistics",
-      title: "Statistics at a glance",
       blocks: [
         {
           type: "statsPanel",

@@ -138,9 +138,11 @@ export default async function CaseStudyPage({ params }: Params) {
                 <p className="text-sm font-semibold tracking-[0.08em] text-brand uppercase">
                   {String(i + 1).padStart(2, "0")} · {section.nav}
                 </p>
-                <h2 className="mt-3 max-w-[760px] text-[32px] leading-[1.08] tracking-[-0.02em] text-ink md:text-[44px]">
-                  {section.title}
-                </h2>
+                {section.title && (
+                  <h2 className="mt-3 max-w-[760px] text-[32px] leading-[1.08] tracking-[-0.02em] text-ink md:text-[44px]">
+                    {section.title}
+                  </h2>
+                )}
                 <div className="mt-8 grid gap-7">
                   {section.blocks.map((block, j) => (
                     <BlockView key={j} block={block} />
