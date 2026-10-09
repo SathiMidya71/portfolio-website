@@ -260,9 +260,6 @@ function Tag({ children, color, rotate }: { children: React.ReactNode; color: st
   )
 }
 
-function Note({ children }: { children: React.ReactNode }) {
-  return <span className="mt-[0.6cqw] block text-center font-hand text-[1.75cqw] leading-none font-bold text-[#2e4fa8]">{children}</span>
-}
 
 function InstagramSticker() {
   const handle = profile.instagramHandle
@@ -296,6 +293,24 @@ function InstagramSticker() {
   )
 }
 
+/** Places a sticker inside a cluster (cqw offsets), so neighbours overlap. */
+function Stuck({ x, y, z, children }: { x: number; y: number; z: number; children: React.ReactNode }) {
+  return (
+    <div className="absolute transition-transform duration-200 hover:z-10 hover:-translate-y-[0.4cqw] hover:scale-105" style={{ left: `${x}cqw`, top: `${y}cqw`, zIndex: z }}>
+      {children}
+    </div>
+  )
+}
+
+/** Handwritten caption under a cluster. */
+function Scribble({ x, y, rotate, children }: { x: number; y: number; rotate: number; children: React.ReactNode }) {
+  return (
+    <span className="absolute font-hand text-[1.8cqw] leading-[0.95] font-bold whitespace-nowrap text-[#2e4fa8]" style={{ left: `${x}cqw`, top: `${y}cqw`, rotate: `${rotate}deg` }}>
+      {children}
+    </span>
+  )
+}
+
 function Group({ x, y, children }: { x: number; y: number; children: React.ReactNode }) {
   return (
     <div className="absolute" style={{ left: `${x}%`, top: `${y}%` }}>
@@ -309,35 +324,35 @@ function RightPage() {
     <div className="relative h-full" style={{ background: paper, ...dots }}>
       <span aria-hidden className="absolute inset-y-0 left-0 w-[3cqw] bg-gradient-to-r from-black/[0.07] to-transparent" />
 
-      {/* daily tools */}
-      <Group x={7} y={6}>
+      {/* daily tools: an overlapping cluster (the pixel creature is Claude's mascot) */}
+      <Group x={4} y={4}>
         <Tag color="#ffd6ae" rotate={-3}>my daily tools</Tag>
-        <div className="mt-[1.6cqw] flex items-start gap-[1.6cqw]">
-          <figure>
-            <CodedSticker w={7.4} rotate={-6} label="Claude Code">
-              <span className="grid h-full w-full place-items-center rounded-[1.2cqw] bg-[#2a2622] font-mono text-[2cqw] leading-none font-bold text-[#e9824a]">&gt;_</span>
-            </CodedSticker>
-            <Note>Claude Code</Note>
-          </figure>
-          <figure className="mt-[1cqw]">
-            <CodedSticker w={7.4} rotate={5} label="GitHub" round>
+        <div className="relative mt-[0.6cqw] h-[14cqw] w-[20cqw]">
+          <Stuck x={0} y={0.8} z={2}>
+            <ImgSticker src="/about/stickers/pixel-heart.png" alt="Claude Code mascot sticker: a pixel creature with a heart" w={8.2} rotate={-7} />
+          </Stuck>
+          <Stuck x={7} y={-0.4} z={3}>
+            <CodedSticker w={5.8} rotate={8} label="GitHub" round>
               <span className="grid h-full w-full place-items-center rounded-full bg-[#24292f]">
                 <GithubMark />
               </span>
             </CodedSticker>
-            <Note>Git &amp; GitHub</Note>
-          </figure>
-          <figure>
-            <CodedSticker w={7.4} rotate={-4} label="Figma">
+          </Stuck>
+          <Stuck x={11.2} y={3.2} z={1}>
+            <CodedSticker w={5.8} rotate={-5} label="Figma">
               <FigmaMark />
             </CodedSticker>
-            <Note>Figma</Note>
-          </figure>
+          </Stuck>
+          <Scribble x={0.4} y={9.6} rotate={-4}>
+            Claude Code,
+            <br />
+            GitHub &amp; Figma
+          </Scribble>
         </div>
       </Group>
 
       {/* photo, taped in, with an Instagram sticker */}
-      <div className="absolute top-[5%] right-[7%] w-[34%] rotate-3 bg-white p-[0.8cqw] pb-[2.8cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
+      <div className="absolute top-[26%] left-1/2 z-10 w-[32%] -translate-x-1/2 rotate-2 bg-white p-[0.8cqw] pb-[2.8cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
         <span aria-hidden className="absolute -top-[1.2cqw] left-1/2 z-10 h-[2.4cqw] w-[9cqw] -translate-x-1/2 -rotate-3 bg-[#bfe3d3]/80" />
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image src="/about/sathi-journal.jpg" alt={`${profile.name} smiling, taking a mirror selfie in a bright tie-dye scarf`} fill sizes="240px" className="object-cover" />
@@ -346,35 +361,50 @@ function RightPage() {
         <InstagramSticker />
       </div>
 
-      {/* hobbies */}
-      <Group x={7} y={44}>
-        <Tag color="#d9f3e5" rotate={2}>hobbies</Tag>
-        <div className="mt-[1.4cqw] flex items-start gap-[2cqw]">
-          <figure>
-            <ImgSticker src="/about/stickers/swimming.png" alt="Swimming sticker" w={11.5} rotate={-5} />
-            <Note>swimming</Note>
-          </figure>
-          <figure className="mt-[1.2cqw]">
-            <CodedSticker w={11} rotate={6} label="Painting palette sticker" round>
-              <PaletteArt />
-            </CodedSticker>
-            <Note>painting</Note>
-          </figure>
+      {/* I love coffee */}
+      <Group x={66} y={6}>
+        <Tag color="#fde3cf" rotate={3}>I love coffee</Tag>
+        <div className="relative mt-[0.6cqw] h-[12cqw] w-[14cqw]">
+          <Stuck x={2.4} y={0.6} z={2}>
+            <ImgSticker src="/about/stickers/coffee.png" alt="Takeaway coffee cup sticker" w={6.2} rotate={-9} />
+          </Stuck>
+          <Scribble x={9} y={3.4} rotate={-8}>
+            one more
+            <br />
+            cup ♥
+          </Scribble>
         </div>
       </Group>
 
       {/* lifestyle */}
-      <Group x={55} y={68}>
-        <Tag color="#e9defd" rotate={-2}>lifestyle</Tag>
-        <div className="mt-[1.4cqw] flex items-end gap-[2cqw]">
-          <figure>
-            <ImgSticker src="/about/stickers/coffee.png" alt="Takeaway coffee cup sticker" w={6.4} rotate={-8} />
-            <Note>coffee lover</Note>
-          </figure>
-          <figure>
-            <ImgSticker src="/about/stickers/pixel-heart.png" alt="Pixel creature with a heart sticker" w={10} rotate={5} />
-            <Note>pixel pal ♥</Note>
-          </figure>
+      <Group x={4} y={66}>
+        <Tag color="#d9ecfd" rotate={2}>lifestyle</Tag>
+        <div className="relative mt-[0.4cqw] h-[14cqw] w-[18cqw]">
+          <Stuck x={0.6} y={0.8} z={2}>
+            <ImgSticker src="/about/stickers/swimming.png" alt="Swimming sticker" w={9.4} rotate={-7} />
+          </Stuck>
+          <Scribble x={10.6} y={4.6} rotate={-6}>
+            swimming
+            <br />
+            keeps me calm
+          </Scribble>
+        </div>
+      </Group>
+
+      {/* hobby */}
+      <Group x={62} y={66}>
+        <Tag color="#e9defd" rotate={-2}>hobby</Tag>
+        <div className="relative mt-[0.4cqw] h-[14cqw] w-[18cqw]">
+          <Stuck x={0.6} y={0.6} z={2}>
+            <CodedSticker w={8.6} rotate={8} label="Painting palette sticker" round>
+              <PaletteArt />
+            </CodedSticker>
+          </Stuck>
+          <Scribble x={10} y={4.4} rotate={5}>
+            painting
+            <br />
+            on weekends
+          </Scribble>
         </div>
       </Group>
     </div>
