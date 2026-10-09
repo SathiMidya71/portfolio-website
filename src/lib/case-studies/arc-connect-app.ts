@@ -297,18 +297,5 @@ export const arcConnectApp: CaseStudy = {
       ],
     },
   ],
-  moreWork: {
-    heading: "More from ABM Respiratory Care",
-    items: [
-      {
-        title: "Arc Connect: Web Portal",
-        meta: "Web portal · 2022",
-        summary:
-          "A clinician portal for managing patients by exception, giving healthcare teams an overview of therapy, goals and patient health information.",
-        thumbnail: { src: "/case-studies/thumbs/arc-connect-portal.png", alt: "Arc Connect web portal cover", width: 808, height: 632 },
-        href: "https://www.behance.net/gallery/181423391/Arc-Connect-Web-Portal",
-        external: true,
-      },
-    ],
-  },
+  moreWork: { heading: "More from ABM Respiratory Care", items: [] },
 }

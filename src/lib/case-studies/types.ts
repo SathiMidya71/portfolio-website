@@ -84,7 +84,18 @@ export type Block =
       icons: { icon: import("@/components/case-study/design-system").IconKey; label: string; primary?: boolean }[]
     }
   /** A hand-coded diagram component, referenced by name */
-  | { type: "diagram"; name: "arc-user-flow" | "dr-user-flow" | "dr-fragmented" | "dr-journey-map" }
+  | { type: "diagram"; name: "arc-user-flow" | "dr-user-flow" | "dr-fragmented" | "dr-journey-map" | "arc-portal-architecture" }
+  /**
+   * A tall screen with numbered pins and the designer's notes beside it (left/right from lg up,
+   * a numbered list below on smaller screens). Pin x/y and noteY are fractions (0–1) of the image.
+   */
+  | {
+      type: "annotatedScreen"
+      image: Img
+      notes: { text: string; side: "left" | "right"; x: number; y: number; noteY: number }[]
+    }
+  /** Photos side by side with rounded corners and optional captions (staggered from md up) */
+  | { type: "photos"; items: { image: Img; caption?: string }[] }
   /** A sequence of steps shown as connected pills, e.g. Ask → Explore → Verify */
   | { type: "flow"; items: string[]; label?: string }
   /** A design principle or key insight, shown as a pull quote */

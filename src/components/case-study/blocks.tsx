@@ -1,3 +1,4 @@
+import { AnnotatedScreenView, ArcPortalArchitecture, PhotosView } from "./arc-portal"
 import Image from "next/image"
 import { Roboto } from "next/font/google"
 import type { Block } from "@/lib/case-studies/types"
@@ -309,7 +310,14 @@ export function BlockView({ block }: { block: Block }) {
       if (block.name === "dr-user-flow") return <DrUserFlow />
       if (block.name === "dr-fragmented") return <DrFragmented />
       if (block.name === "dr-journey-map") return <DrJourneyMap />
+      if (block.name === "arc-portal-architecture") return <ArcPortalArchitecture />
       return <ArcUserFlow />
+
+    case "annotatedScreen":
+      return <AnnotatedScreenView block={block} />
+
+    case "photos":
+      return <PhotosView block={block} />
 
     case "flow":
       return <FlowView block={block} />
