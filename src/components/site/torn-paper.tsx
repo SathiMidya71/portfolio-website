@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-// Full-width band of greyish handmade paper with torn top and bottom edges.
+// Full-width band of white handmade paper with torn top and bottom edges.
 // The edges are jagged SVG masks (seeded, so server and client match) with a white
 // fibrous rim peeking out along the tear; the paper grain is SVG noise.
 
@@ -42,7 +42,7 @@ const rimBottom = tornEdge(58, "bottom")
 
 const svgUrl = (svg: string) => `url("data:image/svg+xml,${encodeURIComponent(svg)}")`
 const grain = svgUrl(
-  "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.33 0 0 0 0 0.3 0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>"
+  "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.33 0 0 0 0 0.3 0 0 0 0.1 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>"
 )
 const fibres = svgUrl(
   "<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.035 0.11' numOctaves='3' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 -0.3'/></filter><rect width='100%' height='100%' filter='url(#f)'/></svg>"
@@ -53,11 +53,11 @@ export function TornPaper({ className, children }: { className?: string; childre
   return (
     <div className={cn("relative", className)}>
       <div aria-hidden className="pointer-events-none absolute inset-0 drop-shadow-[0_2px_3px_rgba(60,50,35,0.14)]">
-        <div className="absolute inset-x-0 -inset-y-[4px] bg-[#fbfaf7]" style={mask(rimTop, rimBottom, edge)} />
+        <div className="absolute inset-x-0 -inset-y-[4px] bg-[#f3efe8]" style={mask(rimTop, rimBottom, edge)} />
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: "#e4e1da",
+            backgroundColor: "#ffffff",
             backgroundImage: `${fibres}, ${grain}, radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.45), transparent 70%)`,
             ...mask(paperTop, paperBottom, edge),
           }}

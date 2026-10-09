@@ -15,6 +15,9 @@ const paper = "#fffdf8"
 // dot-grid notebook paper
 const dots = { backgroundImage: "radial-gradient(circle, #b9ae9a 0.13cqw, transparent 0.15cqw)", backgroundSize: "2cqw 2cqw", backgroundPosition: "1cqw 1cqw" }
 
+/** Stagger slot for the "stuck on one by one" reveal (see .jr-pop in globals.css). */
+const popDelay = (i: number) => ({ "--d": `${i * 110}ms` }) as React.CSSProperties
+
 /* ---------------- cover ---------------- */
 
 function Stamp({ className, children, rotate }: { className?: string; children: React.ReactNode; rotate: number }) {
@@ -89,8 +92,10 @@ function Cover() {
 function LeftPage() {
   return (
     <div className="relative h-full p-[3.2cqw] pr-[2.6cqw] text-[#344054]" style={{ background: paper, ...dots }}>
-      <p className="font-hand text-[4.6cqw] leading-none font-bold text-[#22303f]">{profile.name}</p>
-      <div className="mt-[1.2cqw] flex items-center gap-[1.2cqw]">
+      <p style={popDelay(0)} className="jr-pop font-hand text-[4.6cqw] leading-none font-bold text-[#22303f]">
+        {profile.name}
+      </p>
+      <div style={popDelay(1)} className="jr-pop mt-[1.2cqw] flex items-center gap-[1.2cqw]">
         <span className="rounded-[0.5cqw] bg-[#e4f1eb] px-[1cqw] py-[0.4cqw] text-[1.25cqw] font-semibold text-[#02594e]">{profile.role}</span>
         <span className="relative px-[1cqw] py-[0.3cqw] text-[1.25cqw] font-semibold text-[#22303f]">
           {journal.experienceYears}
@@ -102,11 +107,11 @@ function LeftPage() {
 
       {/* where I've worked */}
       <div className="mt-[1.6cqw]">
-        <Tag color="#d9ecfd" rotate={-2}>where I&apos;ve worked</Tag>
+        <Tag d={2} color="#d9ecfd" rotate={-2}>where I&apos;ve worked</Tag>
       </div>
       <ul className="mt-[1cqw] grid gap-[0.3cqw]">
-        {experience.map((e) => (
-          <li key={e.company} className="grid grid-cols-[1fr_auto] items-baseline gap-[1cqw] font-hand text-[2cqw] leading-tight font-bold text-[#22303f]">
+        {experience.map((e, i) => (
+          <li key={e.company} style={popDelay(3 + i)} className="jr-pop grid grid-cols-[1fr_auto] items-baseline gap-[1cqw] font-hand text-[2cqw] leading-tight font-bold text-[#22303f]">
             <span className="flex items-center gap-[0.8cqw]">
               <span aria-hidden className="text-[1.6cqw] text-[#e8833a]">✦</span>
               {e.company}
@@ -117,7 +122,7 @@ function LeftPage() {
       </ul>
 
       {/* today note */}
-      <div className="absolute right-[2.4cqw] bottom-[11%] w-[44%] -rotate-1 overflow-hidden rounded-[0.8cqw] bg-white shadow-[0_0.5cqw_1.4cqw_-0.4cqw_rgba(0,0,0,0.25)]">
+      <div style={popDelay(7)} className="jr-pop absolute right-[2.4cqw] bottom-[11%] w-[44%] -rotate-1 overflow-hidden rounded-[0.8cqw] bg-white shadow-[0_0.5cqw_1.4cqw_-0.4cqw_rgba(0,0,0,0.25)]">
         <div className="flex gap-[0.4cqw] border-b border-black/5 bg-[#f6f5f2] px-[0.9cqw] py-[0.6cqw]">
           {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
             <span key={c} className="size-[0.6cqw] rounded-full" style={{ background: c }} />
@@ -132,8 +137,8 @@ function LeftPage() {
 
       {/* contact card on graph paper with tape */}
       <div
-        className="absolute bottom-[4%] left-[2.6cqw] w-[44%] rotate-1 p-[1.2cqw] pt-[1.6cqw] shadow-[0_0.4cqw_1cqw_-0.3cqw_rgba(0,0,0,0.25)]"
-        style={{ background: "#fafaf7", backgroundImage: "linear-gradient(#e7ecf2 1px,transparent 1px),linear-gradient(90deg,#e7ecf2 1px,transparent 1px)", backgroundSize: "1.2cqw 1.2cqw" }}
+        className="jr-pop absolute bottom-[4%] left-[2.6cqw] w-[44%] rotate-1 p-[1.2cqw] pt-[1.6cqw] shadow-[0_0.4cqw_1cqw_-0.3cqw_rgba(0,0,0,0.25)]"
+        style={{ ...popDelay(8), background: "#fafaf7", backgroundImage: "linear-gradient(#e7ecf2 1px,transparent 1px),linear-gradient(90deg,#e7ecf2 1px,transparent 1px)", backgroundSize: "1.2cqw 1.2cqw" }}
       >
         <span aria-hidden className="absolute -top-[1cqw] left-[18%] h-[2cqw] w-[9cqw] -rotate-6 bg-[#efe1c3]/85" />
         <ul className="grid gap-[0.7cqw] text-[1.15cqw] text-[#344054]">
@@ -154,7 +159,7 @@ function LeftPage() {
       </div>
 
       {/* handwritten note */}
-      <p className="absolute right-[3cqw] bottom-[3.2%] -rotate-6 font-hand text-[1.6cqw] leading-[1.05] font-bold text-[#2e7fd6]">
+      <p style={popDelay(9)} className="jr-pop absolute right-[3cqw] bottom-[3.2%] -rotate-6 font-hand text-[1.6cqw] leading-[1.05] font-bold text-[#2e7fd6]">
         Research is how I listen.
         <br />
         Design is how I answer.
@@ -169,21 +174,21 @@ function LeftPage() {
 /** Pasted-sticker look: a slight tilt and a layered shadow that follows the sticker's outline. */
 const stuck = "[filter:drop-shadow(0_0.15cqw_0.15cqw_rgba(0,0,0,0.22))_drop-shadow(0_0.7cqw_0.8cqw_rgba(40,30,10,0.18))]"
 
-function ImgSticker({ src, alt, w, rotate }: { src: string; alt: string; w: number; rotate: number }) {
+function ImgSticker({ src, alt, w, rotate, d }: { src: string; alt: string; w: number; rotate: number; d: number }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={src} alt={alt} className={cn("block h-auto", stuck)} style={{ width: `${w}cqw`, rotate: `${rotate}deg` }} />
+    <img src={src} alt={alt} className={cn("jr-pop block h-auto", stuck)} style={{ ...popDelay(d), width: `${w}cqw`, rotate: `${rotate}deg` }} />
   )
 }
 
 /** Coded sticker: artwork on a white die-cut edge. */
-function CodedSticker({ w, rotate, label, children, round }: { w: number; rotate: number; label: string; children: React.ReactNode; round?: boolean }) {
+function CodedSticker({ w, rotate, label, children, round, d }: { w: number; rotate: number; label: string; children: React.ReactNode; round?: boolean; d: number }) {
   return (
     <span
       role="img"
       aria-label={label}
-      className={cn("grid place-items-center bg-white p-[0.55cqw]", round ? "rounded-full" : "rounded-[1.6cqw]", stuck)}
-      style={{ width: `${w}cqw`, height: `${w}cqw`, rotate: `${rotate}deg` }}
+      className={cn("jr-pop grid place-items-center bg-white p-[0.55cqw]", round ? "rounded-full" : "rounded-[1.6cqw]", stuck)}
+      style={{ ...popDelay(d), width: `${w}cqw`, height: `${w}cqw`, rotate: `${rotate}deg` }}
     >
       {children}
     </span>
@@ -233,11 +238,11 @@ function FigmaMark() {
 }
 
 /** Paper luggage tag used as a group heading. */
-function Tag({ children, color, rotate }: { children: React.ReactNode; color: string; rotate: number }) {
+function Tag({ children, color, rotate, d }: { children: React.ReactNode; color: string; rotate: number; d: number }) {
   return (
     <span
-      className="relative inline-flex items-center py-[0.5cqw] pr-[1.6cqw] pl-[2.4cqw] font-hand text-[2.3cqw] leading-none font-bold text-[#2b2b2b] shadow-[0_0.3cqw_0.5cqw_-0.2cqw_rgba(0,0,0,0.3)]"
-      style={{ background: color, rotate: `${rotate}deg`, clipPath: "polygon(1.2cqw 0,100% 0,100% 100%,1.2cqw 100%,0 50%)" }}
+      className="jr-pop relative inline-flex items-center py-[0.5cqw] pr-[1.6cqw] pl-[2.4cqw] font-hand text-[2.3cqw] leading-none font-bold text-[#2b2b2b] shadow-[0_0.3cqw_0.5cqw_-0.2cqw_rgba(0,0,0,0.3)]"
+      style={{ ...popDelay(d), background: color, rotate: `${rotate}deg`, clipPath: "polygon(1.2cqw 0,100% 0,100% 100%,1.2cqw 100%,0 50%)" }}
     >
       <span aria-hidden className="absolute left-[1.15cqw] size-[0.55cqw] rounded-full bg-[#fffdf8] ring-1 ring-black/20" />
       {children}
@@ -261,7 +266,7 @@ function InstagramSticker() {
     </span>
   )
   return (
-    <span className="group/ig absolute -right-[2.6cqw] -bottom-[1.8cqw] rotate-[10deg]">
+    <span style={popDelay(16)} className="jr-pop group/ig absolute -right-[2.6cqw] -bottom-[1.8cqw] rotate-[10deg]">
       {profile.links.instagram ? (
         <a href={profile.links.instagram} target="_blank" rel="noopener" aria-label={`Instagram ${handle ?? ""}`}>
           {sticker}
@@ -288,9 +293,9 @@ function Stuck({ x, y, z, children }: { x: number; y: number; z: number; childre
 }
 
 /** Handwritten caption under a cluster. */
-function Scribble({ x, y, rotate, children }: { x: number; y: number; rotate: number; children: React.ReactNode }) {
+function Scribble({ x, y, rotate, children, d }: { x: number; y: number; rotate: number; children: React.ReactNode; d: number }) {
   return (
-    <span className="absolute font-hand text-[1.8cqw] leading-[0.95] font-bold whitespace-nowrap text-[#2e4fa8]" style={{ left: `${x}cqw`, top: `${y}cqw`, rotate: `${rotate}deg` }}>
+    <span className="jr-pop absolute font-hand text-[1.8cqw] leading-[0.95] font-bold whitespace-nowrap text-[#2e4fa8]" style={{ ...popDelay(d), left: `${x}cqw`, top: `${y}cqw`, rotate: `${rotate}deg` }}>
       {children}
     </span>
   )
@@ -311,24 +316,24 @@ function RightPage() {
 
       {/* daily tools: an overlapping cluster (the pixel creature is Claude's mascot) */}
       <Group x={4} y={4}>
-        <Tag color="#ffd6ae" rotate={-3}>my daily tools</Tag>
+        <Tag color="#ffd6ae" rotate={-3} d={10}>my daily tools</Tag>
         <div className="relative mt-[0.6cqw] h-[14cqw] w-[20cqw]">
           <Stuck x={0} y={0.8} z={2}>
-            <ImgSticker src="/about/stickers/pixel-heart.png" alt="Claude Code mascot sticker: a pixel creature with a heart" w={8.2} rotate={-7} />
+            <ImgSticker src="/about/stickers/pixel-heart.png" d={11} alt="Claude Code mascot sticker: a pixel creature with a heart" w={8.2} rotate={-7} />
           </Stuck>
           <Stuck x={7} y={-0.4} z={3}>
-            <CodedSticker w={5.8} rotate={8} label="GitHub" round>
+            <CodedSticker w={5.8} rotate={8} label="GitHub" d={12} round>
               <span className="grid h-full w-full place-items-center rounded-full bg-[#24292f]">
                 <GithubMark />
               </span>
             </CodedSticker>
           </Stuck>
           <Stuck x={11.2} y={3.2} z={1}>
-            <CodedSticker w={5.8} rotate={-5} label="Figma">
+            <CodedSticker w={5.8} rotate={-5} label="Figma" d={13}>
               <FigmaMark />
             </CodedSticker>
           </Stuck>
-          <Scribble x={0.4} y={9.6} rotate={-4}>
+          <Scribble x={0.4} y={9.6} rotate={-4} d={14}>
             Claude Code,
             <br />
             GitHub &amp; Figma
@@ -337,7 +342,7 @@ function RightPage() {
       </Group>
 
       {/* photo, taped in, with an Instagram sticker */}
-      <div className="absolute top-[26%] left-1/2 z-10 w-[32%] -translate-x-1/2 rotate-2 bg-white p-[0.8cqw] pb-[2.8cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
+      <div style={popDelay(15)} className="jr-pop absolute top-[26%] left-1/2 z-10 w-[32%] -translate-x-1/2 rotate-2 bg-white p-[0.8cqw] pb-[2.8cqw] shadow-[0_0.6cqw_1.6cqw_-0.4cqw_rgba(0,0,0,0.35)]">
         <span aria-hidden className="absolute -top-[1.2cqw] left-1/2 z-10 h-[2.4cqw] w-[9cqw] -translate-x-1/2 -rotate-3 bg-[#bfe3d3]/80" />
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image src="/about/sathi-journal.jpg" alt={`${profile.name} smiling, taking a mirror selfie in a bright tie-dye scarf`} fill sizes="240px" className="object-cover" />
@@ -348,12 +353,12 @@ function RightPage() {
 
       {/* I love coffee */}
       <Group x={66} y={6}>
-        <Tag color="#fde3cf" rotate={3}>I love coffee</Tag>
+        <Tag color="#fde3cf" rotate={3} d={17}>I love coffee</Tag>
         <div className="relative mt-[0.6cqw] h-[12cqw] w-[14cqw]">
           <Stuck x={2.4} y={0.6} z={2}>
-            <ImgSticker src="/about/stickers/coffee.png" alt="Takeaway coffee cup sticker" w={6.2} rotate={-9} />
+            <ImgSticker src="/about/stickers/coffee.png" d={18} alt="Takeaway coffee cup sticker" w={6.2} rotate={-9} />
           </Stuck>
-          <Scribble x={9} y={3.4} rotate={-8}>
+          <Scribble x={9} y={3.4} rotate={-8} d={19}>
             one more
             <br />
             cup ♥
@@ -363,12 +368,12 @@ function RightPage() {
 
       {/* lifestyle */}
       <Group x={4} y={66}>
-        <Tag color="#d9ecfd" rotate={2}>lifestyle</Tag>
+        <Tag color="#d9ecfd" rotate={2} d={20}>lifestyle</Tag>
         <div className="relative mt-[0.4cqw] h-[14cqw] w-[18cqw]">
           <Stuck x={0.6} y={0.8} z={2}>
-            <ImgSticker src="/about/stickers/swimming.png" alt="Swimming sticker" w={9.4} rotate={-7} />
+            <ImgSticker src="/about/stickers/swimming.png" d={21} alt="Swimming sticker" w={9.4} rotate={-7} />
           </Stuck>
-          <Scribble x={10.6} y={4.6} rotate={-6}>
+          <Scribble x={10.6} y={4.6} rotate={-6} d={22}>
             swimming
             <br />
             keeps me calm
@@ -378,14 +383,14 @@ function RightPage() {
 
       {/* hobby */}
       <Group x={62} y={66}>
-        <Tag color="#e9defd" rotate={-2}>hobby</Tag>
+        <Tag color="#e9defd" rotate={-2} d={23}>hobby</Tag>
         <div className="relative mt-[0.4cqw] h-[14cqw] w-[18cqw]">
           <Stuck x={0.6} y={0.6} z={2}>
-            <CodedSticker w={8.6} rotate={8} label="Painting palette sticker" round>
+            <CodedSticker w={8.6} rotate={8} label="Painting palette sticker" d={24} round>
               <PaletteArt />
             </CodedSticker>
           </Stuck>
-          <Scribble x={10} y={4.4} rotate={5}>
+          <Scribble x={10} y={4.4} rotate={5} d={25}>
             painting
             <br />
             on weekends
@@ -417,7 +422,7 @@ export function Journal() {
         if (!entry.isIntersecting) return
         io.disconnect()
         timer = setTimeout(() => setPhase("opening"), 250)
-        timer = setTimeout(() => setPhase("open"), 2300)
+        timer = setTimeout(() => setPhase("open"), 2150)
       },
       { threshold: 0.45 }
     )
@@ -432,7 +437,7 @@ export function Journal() {
   return (
     <>
       {/* desktop and tablet: the animated book */}
-      <div ref={ref} className="hidden md:block">
+      <div ref={ref} className="hidden md:block" data-reveal={phase === "open" ? "on" : "off"}>
         <div className="mx-auto w-full max-w-[1040px] [container-type:inline-size]">
           <div
             className="relative aspect-[2/1.24] transition-transform duration-[900ms] ease-[cubic-bezier(.2,.7,.2,1)] [perspective:220cqw]"
@@ -456,9 +461,10 @@ export function Journal() {
                   background: paper,
                   ...dots,
                   transform: phase === "open" || phase === "opening" ? "rotateY(-180deg)" : "rotateY(0)",
-                  transition: `transform 520ms cubic-bezier(.45,.05,.4,1) ${950 + i * 170}ms, opacity 200ms ${1600 + i * 170}ms`,
+                  transition: `transform 520ms cubic-bezier(.45,.05,.4,1) ${950 + i * 170}ms, opacity 160ms`,
                   opacity: phase === "open" ? 0 : 1,
-                  zIndex: 20 - i,
+                  // above the cover, so blank pages turn over onto the left page
+                  zIndex: 45 - i,
                   boxShadow: "inset 1.5cqw 0 2cqw -1.5cqw rgba(0,0,0,0.12)",
                 }}
               />
@@ -474,16 +480,24 @@ export function Journal() {
               }}
             >
               <Cover />
+              {/* back of the cover: blank paper while the pages turn */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-l-[1.4cqw] border border-r-0 border-[#0d5a49]/60 [backface-visibility:hidden] [transform:rotateY(180deg)]"
-                aria-hidden={!opened}
-              >
-                <LeftPage />
-              </div>
+                aria-hidden
+                className="absolute inset-0 rounded-l-[1.4cqw] border border-r-0 border-[#0d5a49]/60 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                style={{ background: paper, ...dots }}
+              />
+            </div>
+
+            {/* once open, a flat left page takes over (repaints reliably and its links work) */}
+            <div
+              aria-hidden={phase !== "open"}
+              className={cn("absolute inset-y-0 left-0 z-30 w-1/2 overflow-hidden rounded-l-[1.4cqw] border border-r-0 border-[#0d5a49]/60", phase !== "open" && "invisible")}
+            >
+              <LeftPage />
             </div>
 
             {/* ribbon bookmark */}
-            <span aria-hidden className="absolute -bottom-[5%] left-[51%] z-40 h-[10%] w-[2.4cqw] bg-[#5f8f72] [clip-path:polygon(0_0,100%_0,100%_100%,50%_78%,0_100%)]" />
+            <span aria-hidden className="absolute -bottom-[5%] left-[51%] z-50 h-[10%] w-[2.4cqw] bg-[#5f8f72] [clip-path:polygon(0_0,100%_0,100%_100%,50%_78%,0_100%)]" />
             {/* spine */}
             <span aria-hidden className="absolute inset-y-0 left-1/2 z-10 w-[1.4cqw] -translate-x-1/2 bg-gradient-to-r from-black/10 via-black/[0.03] to-black/10" />
           </div>

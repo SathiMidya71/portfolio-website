@@ -150,3 +150,20 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* About journal: content is "stuck on" one piece at a time once the pages have turned */
+.jr-pop {
+  transition:
+    opacity 0.25s ease var(--d, 0ms),
+    scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0ms);
+}
+[data-reveal="off"] .jr-pop {
+  opacity: 0;
+  scale: 1.35;
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .jr-pop {
+    transition: none;
+  }
+}
