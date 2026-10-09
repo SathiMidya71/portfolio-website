@@ -392,14 +392,13 @@ export const arcConnectPortal: CaseStudy = {
       title: "Log in",
       blocks: [
         {
-          type: "split",
-          tablet: true,
-          side: "right",
-          images: [
+          type: "photoTablets",
+          text: "The welcome screens set the tone for the whole portal: get connected, stay informed, and collaborate with your patients and their caregivers.",
+          photo: img("photo-inhaler", "A young boy using his therapy mask while playing with soft toys on his bed", 1200, 1609),
+          tablets: [
             screen("login", "Welcome to Arc Connect: log in with username and password", 1526, 1032),
             screen("create-password", "Welcome to Arc Connect: create a password", 1526, 1031),
           ],
-          text: ["The welcome screens set the tone for the whole portal: get connected, stay informed, and collaborate with your patients and their caregivers."],
         },
       ],
     },

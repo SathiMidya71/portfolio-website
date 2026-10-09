@@ -213,3 +213,39 @@ export function PhotoBannerView({ block }: { block: BannerBlock }) {
     </figure>
   )
 }
+
+/* ---------------- photo + tablets ---------------- */
+
+type PhotoTabletsBlock = Extract<Block, { type: "photoTablets" }>
+
+export function PhotoTabletsView({ block }: { block: PhotoTabletsBlock }) {
+  const [ref, shown] = useInView<HTMLDivElement>(0.15)
+  return (
+    <div ref={ref} className="my-8">
+      {block.text && <p className="mb-8 max-w-[640px] text-[17px] leading-relaxed text-body">{block.text}</p>}
+      <div className="relative grid gap-8 md:grid md:grid-cols-[52%_1fr] md:gap-0">
+        <div
+          className="self-start overflow-hidden rounded-[28px] shadow-[0_30px_60px_-36px_rgba(16,24,40,0.5)]"
+          style={{ opacity: shown ? 1 : 0, scale: shown ? "1" : "0.97", transition: "opacity 700ms ease, scale 900ms cubic-bezier(.2,.7,.2,1)" }}
+        >
+          <Image src={block.photo.src} alt={block.photo.alt} width={block.photo.width} height={block.photo.height} sizes="(min-width: 768px) 460px, 100vw" className="h-auto w-full" />
+        </div>
+        <div className="relative z-10 grid gap-8 md:-ml-[12%] md:pt-[8%] md:gap-10">
+          {block.tablets.map((img, i) => (
+            <div
+              key={img.src}
+              className={cn(i % 2 === 1 && "md:mr-[8%] md:-ml-[4%]")}
+              style={{
+                opacity: shown ? 1 : 0,
+                translate: shown ? "0 0" : "0 30px",
+                transition: `opacity 700ms ease ${250 + i * 180}ms, translate 800ms cubic-bezier(.2,.7,.2,1) ${250 + i * 180}ms`,
+              }}
+            >
+              <Tablet img={img} sizes="(min-width: 1200px) 500px, (min-width: 768px) 55vw, 100vw" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -101,6 +101,8 @@ export type Block =
   | { type: "componentBoard"; items: { image: Img; label: string; span?: 1 | 2 | 3; rows?: 1 | 2; tilt?: number; /** More small cards stacked under the first */ more?: Img[] }[] }
   /** Full-width photo with a coded label card (coloured words) over its lower left corner */
   | { type: "photoBanner"; image: Img; eyebrow?: string; words: { text: string; color: string }[]; text?: string }
+  /** A large photo with tablet screens overlapping its edge, and text above */
+  | { type: "photoTablets"; photo: Img; tablets: Img[]; text?: string }
   /** Text beside a screen (tablet mock-up cut-outs); `side` is where the image sits from md up */
   | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[]; /** Show each image as the screen of a coded silver tablet */ tablet?: boolean }
   /** A white board with an icon, heading and subtext above floating cards, arranged in columns */
