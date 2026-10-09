@@ -25,9 +25,9 @@ export function PegboardView({ block }: { block: PegBlock }) {
           {block.title}
         </p>
       )}
-      <ul className="columns-2 gap-5 md:columns-3 md:gap-7 [&>li]:mb-7">
+      <ul className="grid grid-cols-2 gap-x-5 gap-y-7 md:grid-cols-3 md:gap-x-7 md:gap-y-9">
         {block.items.map((it, i) => (
-          <li key={it.src} className="break-inside-avoid">
+          <li key={it.src}>
             <a
               href={it.src}
               target="_blank"
@@ -46,7 +46,7 @@ export function PegboardView({ block }: { block: PegBlock }) {
                 width={it.width}
                 height={it.height}
                 sizes="(min-width: 1200px) 280px, (min-width: 768px) 30vw, 45vw"
-                className="h-auto w-full"
+                className="aspect-[3/4] h-auto w-full object-cover object-top"
               />
               <p className="mt-2 px-1 font-hand text-[19px] leading-[1.05] font-bold text-[#2e4fa8] md:text-[21px]">{it.caption}</p>
             </a>

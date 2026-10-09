@@ -268,7 +268,6 @@ export const deepResearch: CaseStudy = {
             { src: "/case-studies/deep-research/sketches/idea-47.jpg", width: 1085, height: 1549, alt: "Notebook sketch: End-to-end flow: sign up → research → pick a route → step tools", caption: "Core flow" },
             { src: "/case-studies/deep-research/sketches/idea-40.jpg", width: 1100, height: 1679, alt: "Notebook sketch: The route card: actions for step, graph, path and stoichiometry", caption: "Route card" },
             { src: "/case-studies/deep-research/sketches/idea-43.jpg", width: 1100, height: 1633, alt: "Notebook sketch: Generating routes: compound header and a buckyball loader", caption: "Loading screen" },
-            { src: "/case-studies/deep-research/sketches/idea-42.jpg", width: 1100, height: 1300, alt: "Notebook sketch: Edit a value, then save, or save as a new route", caption: "Create a variant" },
             { src: "/case-studies/deep-research/sketches/idea-44.jpg", width: 1100, height: 1616, alt: "Notebook sketch: Route tabs: a thin scroll slider, expand and split view", caption: "Workspace controls" },
             { src: "/case-studies/deep-research/sketches/idea-41.jpg", width: 1100, height: 1967, alt: "Notebook sketch: Route A splits into graph and step; first icon doodles", caption: "Route structure" },
             { src: "/case-studies/deep-research/sketches/idea-45.jpg", width: 1048, height: 1527, alt: "Notebook sketch: Stakeholder feedback, worked through and ticked off", caption: "Feedback round" },
