@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ArrowUpRight, Camera, Clapperboard } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
+import { cn } from "@/lib/utils"
 import { DemoVideo } from "./demo-video"
 
 // Real Deep Research screenshots and demo clips (taken from Sathi's product walkthrough video),
@@ -35,15 +36,60 @@ function Frame({ item, sizes }: { item: Item; sizes: string }) {
   )
 }
 
+/** A slightly tilted paper note held on by a strip of tape, with a lifted-corner shadow. */
+function StickyNote({ note }: { note: NonNullable<MediaBlock["note"]> }) {
+  const right = note.side === "right"
+  return (
+    <aside
+      className={cn(
+        "relative z-20 mx-auto -mt-6 w-[88%] max-w-[340px] md:absolute md:top-8 md:mx-0 md:mt-0 md:w-[300px] lg:w-[320px]",
+        right ? "md:-right-6" : "md:-left-6"
+      )}
+      style={{ rotate: right ? "2.2deg" : "-2.2deg" }}
+    >
+      {/* lifted-corner shadow */}
+      <span
+        aria-hidden
+        className={cn("absolute bottom-1 h-8 w-[55%] bg-black/35 blur-[10px]", right ? "right-2 rotate-[4deg]" : "left-2 -rotate-[4deg]")}
+      />
+      <div
+        className="relative px-6 pt-8 pb-6"
+        style={{
+          background: "linear-gradient(170deg, #fff6b8 0%, #fdee95 60%, #f7e47f 100%)",
+          boxShadow: "0 1px 1px rgba(0,0,0,0.08), 0 10px 18px -8px rgba(60,45,10,0.35), inset 0 -10px 18px -12px rgba(120,90,10,0.25)",
+          borderRadius: right ? "2px 2px 2px 18px / 2px 2px 2px 8px" : "2px 2px 18px 2px / 2px 2px 8px 2px",
+        }}
+      >
+        {/* tape */}
+        <span
+          aria-hidden
+          className="absolute -top-3.5 left-1/2 h-7 w-28 -translate-x-1/2 border-x border-dashed border-white/50 bg-[#f4efe2]/75 shadow-[0_1px_3px_rgba(0,0,0,0.15)] backdrop-blur-[1px]"
+          style={{ rotate: right ? "-4deg" : "4deg" }}
+        />
+        <p className="font-hand text-[30px] leading-none font-bold text-[#3b2f0b]">{note.title}</p>
+        <ul className="mt-3 grid gap-2">
+          {note.items.map((n) => (
+            <li key={n} className="flex gap-2 text-[14.5px] leading-snug text-[#3b3214]">
+              <span aria-hidden className="mt-[0.45em] size-1.5 shrink-0 rounded-full bg-[#3b2f0b]/70" />
+              {n}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  )
+}
+
 export function MediaView({ block }: { block: MediaBlock }) {
   // Always one column at the full width of the section (Sathi prefers big media over pairs)
   return (
     <div className="grid gap-8">
-      {block.items.map((item) => (
-        <figure key={item.src} className="min-w-0">
+      {block.items.map((item, i) => (
+        <figure key={item.src} className="relative min-w-0">
           <div className="rounded-[20px] p-2 sm:p-3" style={{ background: stage }}>
             <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
           </div>
+          {i === 0 && block.note && <StickyNote note={block.note} />}
           <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[14px] leading-snug font-medium text-body md:text-[15px]">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10.5px] font-semibold tracking-[0.08em] text-[#1f392d] uppercase">
               {item.kind === "video" ? <Clapperboard className="size-3" aria-hidden /> : <Camera className="size-3" aria-hidden />}

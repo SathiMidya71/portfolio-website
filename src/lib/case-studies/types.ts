@@ -120,6 +120,8 @@ export type Block =
   /** Real product media in a browser frame: one item full width, two side by side */
   | {
       type: "media"
+      /** Sticky note taped over the top corner of the first item, listing the section's key points */
+      note?: { title: string; items: string[]; side: "left" | "right" }
       items: {
         kind: "image" | "video"
         src: string

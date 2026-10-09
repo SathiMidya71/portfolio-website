@@ -252,15 +252,16 @@ export const deepResearch: CaseStudy = {
           text: "When research starts, the AI agent first confirms what it is working on, so it never builds routes for the wrong compound.",
         },
         {
-          type: "list",
-          items: [
-            "Resolves the molecule: name, CAS, molecular weight, InChIKey and SMILES",
-            "Confirms the structure before any route is generated",
-            "Progress stays visible while routes are built",
-          ],
-        },
-        {
           type: "media",
+          note: {
+            title: "The agent",
+            side: "right",
+            items: [
+              "Resolves the molecule: name, CAS, molecular weight, InChIKey and SMILES",
+              "Confirms the structure before any route is generated",
+              "Progress stays visible while routes are built",
+            ],
+          },
           items: [
             {
               kind: "image",
@@ -278,15 +279,16 @@ export const deepResearch: CaseStudy = {
           text: "The AI generates several synthesis routes and ranks them, so researchers can compare options at a glance instead of reading pages of output.",
         },
         {
-          type: "list",
-          items: [
-            "Compare routes on steps, yield and score",
-            "The best route is flagged, with its rationale in plain language",
-            "A full reaction diagram for each route, details one click away",
-          ],
-        },
-        {
           type: "media",
+          note: {
+            title: "Routes",
+            side: "left",
+            items: [
+              "Compare routes on steps, yield and score",
+              "The best route is flagged, with its rationale in plain language",
+              "A full reaction diagram for each route, details one click away",
+            ],
+          },
           items: [
             {
               kind: "image",
@@ -304,16 +306,17 @@ export const deepResearch: CaseStudy = {
           text: "AI output is a starting point, not a final answer. Researchers stay in control and can reshape any route themselves.",
         },
         {
-          type: "list",
-          items: [
-            "Switch between Scheme and Form views",
-            "Click any step to change reagents, solvents and conditions",
-            "Add a compound or a reaction, or open full screen",
-            "Want a different approach? Ask the agent for another one",
-          ],
-        },
-        {
           type: "media",
+          note: {
+            title: "Modify the path",
+            side: "right",
+            items: [
+              "Switch between Scheme and Form views",
+              "Click any step to change reagents, solvents and conditions",
+              "Add a compound or a reaction, or open full screen",
+              "Want a different approach? Ask the agent for another one",
+            ],
+          },
           items: [
             { kind: "video", src: "/case-studies/deep-research/clips/modify.mp4", poster: "/case-studies/deep-research/clips/modify-poster-v2.jpg", width: 1600, height: 766, alt: "Modify Path: switching from scheme view to form view, changing the mode to continuous, adding a solvent and reviewing the changes", caption: "Edit any step, then review the changes." },
           ],
@@ -336,15 +339,16 @@ export const deepResearch: CaseStudy = {
           text: "Researchers see what a route needs in practice, without manual stoichiometry in a spreadsheet.",
         },
         {
-          type: "list",
-          items: [
-            "Set a target quantity and amounts are calculated per step",
-            "Equivalents are editable for each reagent",
-            "Molecular weight, mmol and mass for every compound, with the limiting reagent shown",
-          ],
-        },
-        {
           type: "media",
+          note: {
+            title: "Scale it",
+            side: "left",
+            items: [
+              "Set a target quantity and amounts are calculated per step",
+              "Equivalents are editable for each reagent",
+              "Molecular weight, mmol and mass for every compound, with the limiting reagent shown",
+            ],
+          },
           items: [
             { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster-v2.jpg", width: 1600, height: 766, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Change an equivalent and every quantity updates." },
           ],
@@ -355,11 +359,18 @@ export const deepResearch: CaseStudy = {
           text: "Trust in AI output comes from provenance. Every route links back to the literature and patents behind it.",
         },
         {
-          type: "list",
+          type: "media",
+          note: {
+            title: "Sources",
+            side: "right",
+            items: [
+              "All literature and sources in one panel",
+              "Title, year, publisher and an abstract for each reference",
+              "Save any reference to your vault",
+            ],
+          },
           items: [
-            "All literature and sources in one panel",
-            "Title, year, publisher and an abstract for each reference",
-            "Save any reference to your vault",
+            { kind: "image", src: "/case-studies/deep-research/screens/sources-v2.jpg", width: 2258, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
           ],
         },
         {
@@ -367,12 +378,6 @@ export const deepResearch: CaseStudy = {
           items: [
             { value: "18", label: "sources behind the aspirin research" },
             { value: "10", label: "literature references listed in the panel" },
-          ],
-        },
-        {
-          type: "media",
-          items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/sources-v2.jpg", width: 2258, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
           ],
         },
         {
