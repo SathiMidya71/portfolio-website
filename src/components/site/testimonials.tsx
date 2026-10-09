@@ -20,7 +20,7 @@ const spots = [
   { left: "2%", top: "3%", width: "41%", rotate: 4, z: 3 },
   { left: "62%", top: "1%", width: "35%", rotate: 5, z: 7 },
   { left: "60%", top: "33%", width: "33%", rotate: -4, z: 6 },
-  { left: "21%", top: "58%", width: "40%", rotate: 6, z: 4 },
+  { left: "23%", top: "64%", width: "38%", rotate: 5, z: 4 },
   { left: "67%", top: "71%", width: "30%", rotate: -7, z: 5 },
 ]
 
@@ -44,17 +44,21 @@ function RecCard({ r }: { r: Recommendation }) {
   return (
     <figure className="rounded-[14px] border-[3px] bg-white p-4 shadow-[0_16px_40px_-12px_rgba(2,89,78,0.22)] sm:p-5" style={{ borderColor: t.border }}>
       <figcaption className="flex items-start gap-3">
-        <span className="grid size-11 shrink-0 place-items-center rounded-full text-[15px] font-bold" style={{ background: t.avatar, color: t.ink }}>
-          {initials}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2">
-            <span className="truncate text-[15px] font-semibold text-ink">{r.name}</span>
-            {r.sample && <span className="rounded-full border border-dashed border-[#c9bfae] px-1.5 text-[10px] font-semibold tracking-wide text-soft uppercase">Sample</span>}
+        {r.photo ? (
+          <Image src={r.photo} alt={r.name} width={88} height={88} className="size-11 shrink-0 rounded-full object-cover" />
+        ) : (
+          <span className="grid size-11 shrink-0 place-items-center rounded-full text-[15px] font-bold" style={{ background: t.avatar, color: t.ink }}>
+            {initials}
           </span>
-          <span className="block truncate text-[13px] text-body">{r.headline}</span>
+        )}
+        <span className="min-w-0 flex-1">
+          <span className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+            <span className="text-[15px] leading-snug font-semibold text-ink">{r.name}</span>
+            {r.status && <span className="shrink-0 rounded-full border border-dashed border-[#c9bfae] px-1.5 text-[10px] font-semibold tracking-wide text-soft uppercase">{r.status}</span>}
+          </span>
+          <span className="block text-[13px] leading-snug text-body">{r.headline}</span>
           <span className="block text-[12px] text-soft">
-            {r.date} · {r.relation}
+            {[r.date, r.relation].filter(Boolean).join(" · ")}
           </span>
         </span>
         <LinkedInMark />
@@ -114,7 +118,7 @@ export function Testimonials() {
           <p className="text-[18px] leading-[1.35] font-medium text-body md:text-[22px]">{workingWithMe.intro}</p>
         </div>
 
-        <div className="relative mt-10 flex flex-col items-center gap-6 xl:block xl:h-[760px]">
+        <div className="relative mt-10 flex flex-col items-center gap-6 xl:block xl:h-[800px]">
           {recs.map((r, i) => (
             <Piece key={i} spot={spots[i]} mobileRotate={i % 2 ? -1.5 : 1.5} delay={i * 90}>
               <RecCard r={r} />
@@ -124,7 +128,7 @@ export function Testimonials() {
           <Piece spot={{ left: "39%", top: "6%", width: "22%", rotate: -9, z: 2 }} mobileRotate={-4} className="hidden xl:block" delay={120}>
             <Polaroid />
           </Piece>
-          <Piece spot={{ left: "1%", top: "43%", width: "18%", rotate: -10, z: 2 }} mobileRotate={-4} className="hidden xl:block" delay={240}>
+          <Piece spot={{ left: "2%", top: "73%", width: "17%", rotate: -10, z: 2 }} mobileRotate={-4} className="hidden xl:block" delay={240}>
             <StickyNote />
           </Piece>
         </div>

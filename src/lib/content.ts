@@ -211,9 +211,10 @@ export const skills = [
 ]
 
 // "What it's like to work with me": LinkedIn-style recommendation cards in a scattered collage.
-// SAMPLE TEXT: Sathi has asked colleagues for LinkedIn recommendations. Until they arrive these are
-// placeholders (`sample: true` shows a small "Sample" tag). Replace name, headline, relation, date
-// and text with the real recommendation, then set sample to false.
+// Sathi has asked colleagues for LinkedIn recommendations. Until they arrive:
+// - status "sample": placeholder person and text (shows a "Sample" tag)
+// - status "draft": real person, but text drafted for them to approve (shows a "Draft" tag)
+// When the real recommendation arrives, paste its exact text and date and remove `status`.
 export type Recommendation = {
   name: string
   headline: string
@@ -221,7 +222,9 @@ export type Recommendation = {
   date: string
   text: string
   tone: "blue" | "orange" | "purple" | "green"
-  sample?: boolean
+  /** Profile photo (square), shown in place of the initials */
+  photo?: string
+  status?: "sample" | "draft"
 }
 
 export const workingWithMe = {
@@ -230,13 +233,15 @@ export const workingWithMe = {
   note: "Kind words from my teammates ♥",
   recommendations: [
     {
-      name: "Name Surname",
-      headline: "Engineering Manager · Company",
+      // DRAFT for Narayanan to approve; Sathi reported to him at ABM Respiratory Care
+      name: "Narayanan Krishnamurthy",
+      headline: "Medical Devices | ISO 13485 | IEC 62304 | HMI · ABM Respiratory Care",
       relation: "Managed Sathi directly",
-      date: "Month 2026",
-      text: "Sathi turns messy problems into clear, calm screens. She starts by listening to users, and her research made our product decisions easier for everyone.",
+      date: "", // LinkedIn shows the date it was written; fill in when posted
+      text: "Sathi reported to me at ABM while we built our ventilator UI and the Arc Connect app. Her thought process is very clear and she works in a very structured way. In medical devices that matters. She took the time to learn the rules we work under, HIPAA for patient data, FDA human factors guidance and IEC 62366, and designed alarms and patient screens with them in mind from day one. It made our IEC 62304 documentation much easier.",
       tone: "green",
-      sample: true,
+      photo: "/recommendations/narayanan-krishnamurthy.jpg",
+      status: "draft",
     },
     {
       name: "Name Surname",
@@ -245,7 +250,7 @@ export const workingWithMe = {
       date: "Month 2026",
       text: "She asks the right questions early and stays kind while doing it. Every workshop with Sathi ended with a clear plan.",
       tone: "blue",
-      sample: true,
+      status: "sample",
     },
     {
       name: "Name Surname",
@@ -254,7 +259,7 @@ export const workingWithMe = {
       date: "Month 2026",
       text: "Her handoff files are the cleanest I have worked with. Every state, spacing and edge case is there, so building is fast.",
       tone: "orange",
-      sample: true,
+      status: "sample",
     },
     {
       name: "Name Surname",
@@ -263,7 +268,7 @@ export const workingWithMe = {
       date: "Month 2026",
       text: "Sathi sat with us in the lab, watched how we really work and came back with a tool that fits our day. She keeps the people who use her designs at the centre.",
       tone: "purple",
-      sample: true,
+      status: "sample",
     },
     {
       name: "Name Surname",
@@ -272,7 +277,7 @@ export const workingWithMe = {
       date: "Month 2026",
       text: "Thoughtful, quick to learn and a joy to work with.",
       tone: "blue",
-      sample: true,
+      status: "sample",
     },
   ] satisfies Recommendation[],
 }
