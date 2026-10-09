@@ -474,7 +474,7 @@ export function StepsView({ block }: { block: B<"steps"> }) {
 
 export function StatsView({ block }: { block: B<"stats"> }) {
   return (
-    <ul className={cn("grid gap-4 sm:grid-cols-2", block.items.length > 4 && "lg:grid-cols-3")}>
+    <ul className={cn("grid gap-4 sm:grid-cols-2", block.items.length > 4 && "lg:grid-cols-3", block.items.length === 3 && "sm:grid-cols-3")}>
       {block.items.map((st, i) => (
         <li
           key={st.label}

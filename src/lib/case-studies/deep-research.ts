@@ -487,18 +487,26 @@ export const deepResearch: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Usage from the first week after launch (30 Sep – 6 Oct 2026), taken from the product's internal usage dashboard.",
+          text: "Real adoption from the first week after launch (30 Sep – 6 Oct 2026), from the product's usage dashboard.",
         },
         {
           type: "stats",
           items: [
-            { value: "18", label: "active users in week one, 17 of them running research" },
+            { value: "18", label: "active users in the first week" },
             { value: "29", label: "research threads started" },
-            { value: "659", label: "AI model calls made by the agent" },
-            { value: "58.3M", label: "tokens processed" },
-            { value: "$1.81", label: "average cost per research thread" },
-            { value: "1.2%", label: "of AI spend counted as waste" },
+            { value: "13", label: "users researched a molecule" },
           ],
+        },
+        {
+          type: "figure",
+          dark: true,
+          image: {
+            src: "/case-studies/deep-research/launch-dashboard.jpg",
+            alt: "Usage dashboard for 30 Sep to 6 Oct 2026 with everything blurred except: 18 active users, 29 threads, and molecules per user (13 users researched one molecule)",
+            width: 2625,
+            height: 1707,
+          },
+          caption: "From the usage dashboard. Cost, usage and user details are blurred.",
         },
       ],
     },
