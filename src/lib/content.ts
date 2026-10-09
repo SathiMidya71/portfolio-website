@@ -103,12 +103,25 @@ export type CaseStudy = {
   image?: { src: string; alt: string }
   /** Link to the full case study page */
   href?: string
-  /** Company logo shown instead of the year label; links to the company's website */
-  logo?: { src: string; alt: string; width: number; height: number; href: string }
+  /** Logo shown instead of the year label; links to the website when `href` is set */
+  logo?: { src: string; alt: string; width: number; height: number; href?: string }
   locked?: boolean
 }
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "deep-research",
+    year: "Scimplify",
+    title: "SCINODE Deep Research",
+    summary: "Designing a GenAI product: a research workspace that takes chemists from a question to an evidence-backed decision.",
+    result: "New GenAI product, concept to launch · end-to-end UX · design to code",
+    tags: ["GenAI", "AI UX", "Product launch"],
+    cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
+    image: { src: "/case-studies/deep-research/hero-lab.jpg", alt: "A chemist in a lab using SCINODE Deep Research on a desktop monitor" },
+    href: "/work/deep-research",
+    // product logo; no public link yet, so no URL is shown
+    logo: { src: "/logos/scinode-deep-research.svg", alt: "SCINODE Deep Research", width: 3699, height: 558 },
+  },
   {
     slug: "biwaze-vent",
     year: "ABM Respiratory Care",
@@ -144,17 +157,6 @@ export const caseStudies: CaseStudy[] = [
       height: 106,
       href: "https://abmrc.com/",
     },
-  },
-  {
-    slug: "deep-research",
-    year: "Scimplify",
-    title: "SCINODE Deep Research",
-    summary: "Designing a GenAI product: a research workspace that takes chemists from a question to an evidence-backed decision.",
-    result: "New GenAI product, concept to launch · end-to-end UX · design to code",
-    tags: ["GenAI", "AI UX", "Product launch"],
-    cover: "linear-gradient(140deg,#eeecfd,#e3e8fb)",
-    image: { src: "/case-studies/deep-research/hero-lab.jpg", alt: "A chemist in a lab using SCINODE Deep Research on a desktop monitor" },
-    href: "/work/deep-research",
   },
   {
     slug: "rnd-visibility-dashboard",
