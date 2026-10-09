@@ -6,15 +6,18 @@ import { Card } from "@/components/ui/card"
 import { about, profile } from "@/lib/content"
 import { Journal } from "./journal"
 import { Reveal } from "./reveal"
+import { TornPaper } from "./torn-paper"
 import { Section, btnPill, surface } from "./section"
 
 /** About me as an opening journal (below the case studies). */
 export function AboutJournal() {
   return (
-    <Section id="about">
-      <p className="mb-8 text-center font-hand text-[34px] leading-none font-bold text-brand md:mb-12 md:text-[44px]">{about.eyebrow}</p>
-      <Journal />
-    </Section>
+    <TornPaper className="my-20 py-16 md:my-28 md:py-24">
+      <Section id="about" className="mb-0!">
+        <p className="mb-8 text-center font-hand text-[34px] leading-none font-bold text-brand md:mb-12 md:text-[44px]">{about.eyebrow}</p>
+        <Journal />
+      </Section>
+    </TornPaper>
   )
 }
 
