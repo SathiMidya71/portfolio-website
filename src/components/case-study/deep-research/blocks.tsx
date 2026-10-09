@@ -549,3 +549,47 @@ export function CycleView({ block }: { block: B<"cycle"> }) {
     </div>
   )
 }
+
+/* ---------------- Lessons (editorial, no cards) ---------------- */
+
+export function LessonsView({ block }: { block: B<"lessons"> }) {
+  return (
+    <ol className="grid gap-10 md:grid-cols-2 md:gap-0 md:divide-x md:divide-line">
+      {block.items.map((l, i) => (
+        <li key={l.title} className={cn(i > 0 && "md:pl-10", i < block.items.length - 1 && "md:pr-10")}>
+          <span aria-hidden className="block font-heading text-[88px] leading-[0.8] font-bold tracking-[-0.06em] text-[#ebe3d6] md:text-[112px]">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h4 className="-mt-5 font-heading text-[26px] leading-[1.1] font-semibold tracking-[-0.02em] text-ink md:text-[32px]">{l.title}</h4>
+          <p className="mt-3 max-w-[380px] text-[17px] leading-relaxed text-body">{l.text}</p>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+/* ---------------- Finale ---------------- */
+
+const finaleTones = ["text-ink", "text-brand", "text-[var(--tone-purple-ink)]"]
+
+export function FinaleView({ block }: { block: B<"finale"> }) {
+  return (
+    <div className="relative mt-10 border-t border-line pt-14 md:mt-16 md:pt-20">
+      <p className="font-heading text-[40px] leading-[1.02] font-semibold tracking-[-0.035em] md:text-[64px]">
+        {block.lines.map((line, i) => (
+          <span key={line} className={cn("block", finaleTones[i % finaleTones.length])}>
+            {line}
+          </span>
+        ))}
+      </p>
+      {block.sign && (
+        <p className="mt-10 flex items-center gap-3 font-hand text-[34px] leading-none font-bold text-[#2e7fd6] md:text-[42px]">
+          <svg aria-hidden viewBox="0 0 60 24" className="h-6 w-14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M2,14 C14,4 22,22 34,12 S52,6 58,10" />
+          </svg>
+          {block.sign}
+        </p>
+      )}
+    </div>
+  )
+}

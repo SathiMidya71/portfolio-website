@@ -445,44 +445,6 @@ export const deepResearch: CaseStudy = {
       ],
     },
     {
-      id: "outcome",
-      nav: "Outcome",
-      title: "What the product delivers",
-      blocks: [
-        {
-          type: "cards",
-          items: [
-            { title: "One connected workflow", text: "Question, molecule, routes, edits, scale and evidence in one place." },
-            { title: "Trust built in", text: "Every recommendation can be traced back to its sources." },
-            { title: "Human + AI", text: "AI speeds research up; researchers make the decisions." },
-            { title: "Design → code", text: "I built the interface in the production codebase, not just in Figma." },
-          ],
-        },
-        { type: "shift", label: "What changed", from: "“What can I find?”", to: "“What should I investigate next?”" },
-      ],
-    },
-    {
-      id: "learnings",
-      nav: "Learnings",
-      title: "What I learned",
-      blocks: [
-        {
-          type: "cards",
-          items: [
-            { title: "0 → 1 is product definition", text: "With no pattern to follow, I was designing the system, not just screens." },
-            { title: "Good AI has clear limits", text: "People need to see what the AI is doing, question it and take over." },
-            { title: "Structure beats simplifying", text: "Scientific data can't always be cut, but it can be layered: summary → detail → evidence." },
-            { title: "Building changes the design", text: "Working in code revealed details no prototype showed." },
-          ],
-        },
-        {
-          type: "principle",
-          label: "Closing",
-          text: "Every result is context. Every failed condition is evidence. Every investigation should start ahead of the last.",
-        },
-      ],
-    },
-    {
       id: "launch",
       nav: "Launch week",
       title: "The first week live",
@@ -513,6 +475,25 @@ export const deepResearch: CaseStudy = {
             { circle: { cx: 1405, cy: 240, rx: 78, ry: 58 }, text: "29 research\nthreads", textAt: [1760, 190], note: { x: 1745, y: 215 }, arrowTo: [1495, 232], bend: -0.25, tilt: -3 },
             { circle: { cx: 288, cy: 735, rx: 92, ry: 190 }, text: "13 users\nresearched\na molecule", textAt: [520, 680], note: { x: 505, y: 760 }, arrowTo: [395, 760], bend: 0.2, tilt: -4, size: 60 },
           ],
+        },
+      ],
+    },
+    {
+      id: "learnings",
+      nav: "Learnings",
+      title: "What I learned",
+      blocks: [
+        {
+          type: "lessons",
+          items: [
+            { title: "Good AI has clear limits", text: "People need to see what the AI is doing, question it and take over." },
+            { title: "Building changes the design", text: "Working in code revealed details no prototype showed." },
+          ],
+        },
+        {
+          type: "finale",
+          lines: ["Every result is context.", "Every failed condition is evidence.", "Every investigation should start ahead of the last."],
+          sign: "Thanks for reading",
         },
       ],
     },

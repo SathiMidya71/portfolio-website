@@ -12,6 +12,8 @@ import {
   ShiftView,
   SpecsView,
   CycleView,
+  FinaleView,
+  LessonsView,
   StatsView,
   StepsView,
   TreeView,
@@ -343,6 +345,12 @@ export function BlockView({ block }: { block: Block }) {
 
     case "markedImage":
       return <MarkedImageView block={block} />
+
+    case "lessons":
+      return <LessonsView block={block} />
+
+    case "finale":
+      return <FinaleView block={block} />
 
     case "pegboard":
       return <PegboardView block={block} />

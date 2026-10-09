@@ -135,6 +135,10 @@ export type Block =
         tilt?: number
       }[]
     }
+  /** Editorial lessons: big faint numerals, no cards */
+  | { type: "lessons"; items: { title: string; text: string }[] }
+  /** Closing statement, one line per sentence, with a handwritten sign-off */
+  | { type: "finale"; lines: string[]; sign?: string }
   /** Notebook sketches pinned to a pegboard */
   | { type: "pegboard"; title?: string; items: { src: string; alt: string; width: number; height: number; caption: string }[] }
   /** Big-number stat cards (first one dark). Only real figures. */
