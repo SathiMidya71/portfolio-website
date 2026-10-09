@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { ArrowUpRight, Camera, Clapperboard } from "lucide-react"
 import type { Block } from "@/lib/case-studies/types"
-import { cn } from "@/lib/utils"
 import { DemoVideo } from "./demo-video"
 
 // Real Deep Research screenshots and demo clips (taken from Sathi's product walkthrough video),
@@ -37,12 +36,14 @@ function Frame({ item, sizes }: { item: Item; sizes: string }) {
 }
 
 export function MediaView({ block }: { block: MediaBlock }) {
-  const pair = block.items.length > 1
+  // Always one column at the full width of the section (Sathi prefers big media over pairs)
   return (
-    <div className={cn("grid gap-6 rounded-[24px] p-3 sm:p-5 md:p-7", pair && "md:grid-cols-2 md:gap-5")} style={{ background: stage }}>
+    <div className="grid gap-8">
       {block.items.map((item) => (
         <figure key={item.src} className="min-w-0">
-          <Frame item={item} sizes={pair ? "(min-width: 1200px) 420px, (min-width: 768px) 45vw, 100vw" : "(min-width: 1200px) 860px, 100vw"} />
+          <div className="rounded-[20px] p-2 sm:p-3" style={{ background: stage }}>
+            <Frame item={item} sizes="(min-width: 1200px) 920px, 100vw" />
+          </div>
           <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 px-1 text-[14px] leading-snug font-medium text-body md:text-[15px]">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10.5px] font-semibold tracking-[0.08em] text-[#1f392d] uppercase">
               {item.kind === "video" ? <Clapperboard className="size-3" aria-hidden /> : <Camera className="size-3" aria-hidden />}

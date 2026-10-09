@@ -214,61 +214,57 @@ export const deepResearch: CaseStudy = {
         { type: "h3", text: "1. Conversation first, workspace when needed" },
         {
           type: "p",
-          text: "It starts with one simple question. When the task needs more, like comparing routes, the screen opens into a workspace: research on one side, the AI chat on the other.",
+          text: "It starts with one simple question. When the task needs more, like generating routes, the screen opens into a workspace: research on one side, the AI chat on the other.",
         },
         {
-          type: "media",
-          items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/home.jpg", width: 1920, height: 1080, alt: "Deep Research home: a question box under the headline Turn your next scientific question into a breakthrough, with quick actions", caption: "Start with a question, or a quick action." },
-            { kind: "video", src: "/case-studies/deep-research/clips/ask.mp4", poster: "/case-studies/deep-research/clips/ask-poster.jpg", width: 1600, height: 900, alt: "Typing Rose Oxide and starting research; the molecule is identified and confirmed", caption: "Ask in plain words." },
-          ],
-        },
-        {
-          type: "media",
-          items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/routes.mp4", poster: "/case-studies/deep-research/clips/routes-poster.jpg", width: 1600, height: 900, alt: "Choosing Generate synthesis routes; the workspace opens while the AI resolves the molecule, then routes A to E appear", caption: "The workspace opens as the AI explores routes." },
-          ],
+          type: "laptopStage",
+          title: ["Deep ", "Research"],
+          chips: ["GenAI product", "AI UX", "0 → 1"],
+          image: {
+            src: "/case-studies/deep-research/screens/home-dark.jpg",
+            alt: "Deep Research home screen in dark mode: Turn your next scientific question into a breakthrough, with a research session box and quick actions",
+            width: 1728,
+            height: 1080,
+          },
         },
         { type: "h3", text: "2. Confirm before the AI generates" },
         {
           type: "p",
-          text: "The product shows the molecule (name, formula, CAS, structure) before generating anything, so the AI never works on the wrong compound.",
+          text: "Researchers ask in plain words. The product identifies the molecule and shows its name, formula, CAS and structure before generating anything, so the AI never works on the wrong compound.",
         },
         {
           type: "media",
           items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/molecule.jpg", width: 1920, height: 1080, alt: "Target confirmed: structure, name, formula, molecular weight, CAS and SMILES for 4-methyl-2-(2-methylprop-1-enyl)oxane", caption: "Target confirmed before any routes are generated." },
+            { kind: "video", src: "/case-studies/deep-research/clips/ask.mp4", poster: "/case-studies/deep-research/clips/ask-poster-v2.jpg", width: 1600, height: 766, alt: "Typing Rose Oxide and starting research; the molecule is identified and the target confirmed", caption: "Ask in plain words; the target is confirmed first." },
           ],
         },
         { type: "h3", text: "3. Show the reasoning, keep humans in control" },
         {
           type: "p",
-          text: "Routes are easy to compare by steps, yield and score, and each one explains why. Researchers can edit any step, review the changes, and let the AI build a new variant.",
+          text: "Routes are compared by steps, yield and score, and each score explains itself. Researchers can edit any step, review the changes, let the AI build a new variant, and scale the quantities.",
         },
         {
           type: "media",
           items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/routes.jpg", width: 1920, height: 1080, alt: "Routes A to E compared by steps, yield and score; Route A is marked Best with its reaction scheme", caption: "Compare routes at a glance." },
-            { kind: "image", src: "/case-studies/deep-research/screens/analysis.jpg", width: 1920, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
+            { kind: "image", src: "/case-studies/deep-research/screens/analysis-v2.jpg", width: 2258, height: 1080, alt: "Route analysis panel explaining feasibility, cost and IP risk", caption: "Every score comes with its reasoning." },
           ],
         },
         {
           type: "media",
           items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/modify.mp4", poster: "/case-studies/deep-research/clips/modify-poster.jpg", width: 1600, height: 900, alt: "Modify Path: switching from scheme view to form view, changing the mode to continuous and adding a solvent, then reviewing the changes", caption: "Edit a step in Scheme or Form view." },
+            { kind: "video", src: "/case-studies/deep-research/clips/modify.mp4", poster: "/case-studies/deep-research/clips/modify-poster-v2.jpg", width: 1600, height: 766, alt: "Modify Path: switching from scheme view to form view, changing the mode to continuous, adding a solvent and reviewing the changes", caption: "Edit any step, then review the changes." },
           ],
         },
         {
           type: "media",
           items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/changes.jpg", width: 1920, height: 1080, alt: "Changes to Route A: a side-by-side diff of the step before and after edits, with a Create Variant button", caption: "Review every change before applying it." },
-            { kind: "video", src: "/case-studies/deep-research/clips/variant.mp4", poster: "/case-studies/deep-research/clips/variant-poster.jpg", width: 1600, height: 900, alt: "A new Route F variant is created from the edits and opened in the workspace", caption: "The AI turns edits into a new route." },
+            { kind: "video", src: "/case-studies/deep-research/clips/variant.mp4", poster: "/case-studies/deep-research/clips/variant-poster-v2.jpg", width: 1600, height: 766, alt: "A new Route F variant is created from the edits and opened in the workspace", caption: "The AI turns the edits into a new route." },
           ],
         },
         {
           type: "media",
           items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster.jpg", width: 1600, height: 900, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Scale: quantities update as you edit." },
+            { kind: "video", src: "/case-studies/deep-research/clips/scale.mp4", poster: "/case-studies/deep-research/clips/scale-poster-v2.jpg", width: 1600, height: 766, alt: "Stoichiometry: changing equivalents updates mmol and quantities for every compound in the step", caption: "Quantities update as you edit." },
           ],
         },
         { type: "h3", text: "4. Evidence and memory built in" },
@@ -279,14 +275,13 @@ export const deepResearch: CaseStudy = {
         {
           type: "media",
           items: [
-            { kind: "image", src: "/case-studies/deep-research/screens/sources.jpg", width: 1920, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
-            { kind: "image", src: "/case-studies/deep-research/screens/history.jpg", width: 1920, height: 1080, alt: "History: previous research sessions with Continue buttons", caption: "Pick up where you left off." },
+            { kind: "image", src: "/case-studies/deep-research/screens/sources-v2.jpg", width: 2258, height: 1080, alt: "Route A sources drawer listing the literature cited for each step, with DOIs", caption: "Sources for every route." },
           ],
         },
         {
           type: "media",
           items: [
-            { kind: "video", src: "/case-studies/deep-research/clips/vault.mp4", poster: "/case-studies/deep-research/clips/vault-poster.jpg", width: 1600, height: 900, alt: "My Repository: saved routes, literature, patents and artifacts for the compound", caption: "My Repository keeps routes, papers, patents and figures." },
+            { kind: "video", src: "/case-studies/deep-research/clips/vault.mp4", poster: "/case-studies/deep-research/clips/vault-poster-v2.jpg", width: 1600, height: 766, alt: "My Repository: saved routes, literature, patents and artifacts for the compound", caption: "My Repository keeps routes, papers, patents and figures." },
           ],
         },
       ],

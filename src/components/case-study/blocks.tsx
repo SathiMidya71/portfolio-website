@@ -16,6 +16,7 @@ import {
   TypeHierarchyView,
 } from "./deep-research/blocks"
 import { DrFragmented, DrUserFlow } from "./deep-research/diagrams"
+import { LaptopStageView } from "./deep-research/laptop-stage"
 import { MediaView } from "./deep-research/media"
 import { ColorStageView, DrJourneyMap, ProblemSolutionView } from "./deep-research/showcase"
 import { DesignSystemView } from "./design-system"
@@ -307,6 +308,9 @@ export function BlockView({ block }: { block: Block }) {
 
     case "palette":
       return <ColorStageView block={block} />
+
+    case "laptopStage":
+      return <LaptopStageView block={block} />
 
     case "media":
       return <MediaView block={block} />

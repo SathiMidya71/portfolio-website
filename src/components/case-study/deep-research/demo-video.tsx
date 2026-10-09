@@ -4,32 +4,22 @@ import { useEffect, useRef, useState } from "react"
 import { Pause, Play } from "lucide-react"
 
 /**
- * Muted product demo that only plays while it is on screen, so a page with several clips stays
- * light. Respects reduced motion (starts paused). A small button lets viewers pause or play.
+ * Product demo that plays only when clicked (no autoplay). Shows the poster with a large play
+ * button; clicking the video toggles play/pause. It pauses itself when scrolled out of view.
+ * Nothing loads until the first click.
  */
 export function DemoVideo({ src, poster, width, height, label }: { src: string; poster?: string; width: number; height: number; label: string }) {
   const ref = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(false)
-  const [userPaused, setUserPaused] = useState(false)
-  // latest choice, read by the observer callback
-  const userPausedRef = useRef(false)
-  useEffect(() => {
-    userPausedRef.current = userPaused
-  }, [userPaused])
+  const [started, setStarted] = useState(false)
 
   useEffect(() => {
     const v = ref.current
     if (!v) return
     v.muted = true
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (reduced) userPausedRef.current = true
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !reduced && !userPausedRef.current) void v.play().catch(() => {})
-        else v.pause()
-      },
-      { threshold: 0.35 }
-    )
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) v.pause()
+    })
     io.observe(v)
     return () => io.disconnect()
   }, [])
@@ -37,17 +27,13 @@ export function DemoVideo({ src, poster, width, height, label }: { src: string; 
   const toggle = () => {
     const v = ref.current
     if (!v) return
-    if (v.paused) {
-      setUserPaused(false)
-      void v.play().catch(() => {})
-    } else {
-      setUserPaused(true)
-      v.pause()
-    }
+    setStarted(true)
+    if (v.paused) void v.play().catch(() => {})
+    else v.pause()
   }
 
   return (
-    <div className="relative">
+    <div className="group relative">
       <video
         ref={ref}
         poster={poster}
@@ -60,20 +46,42 @@ export function DemoVideo({ src, poster, width, height, label }: { src: string; 
         aria-label={label}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        className="block h-auto w-full"
+        onClick={toggle}
+        className="block h-auto w-full cursor-pointer"
       >
         {/* H.264 first; a VP9 copy sits beside each clip for browsers without H.264 */}
         <source src={src} type="video/mp4" />
         <source src={src.replace(/\.mp4$/, ".webm")} type="video/webm" />
       </video>
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={playing ? "Pause demo" : "Play demo"}
-        className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full bg-black/60 text-white backdrop-blur transition hover:bg-black/80 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
-      >
-        {playing ? <Pause className="size-4" aria-hidden /> : <Play className="size-4 translate-x-px" aria-hidden />}
-      </button>
+
+      {/* Large play button while paused */}
+      {!playing && (
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={`Play demo: ${label}`}
+          className="absolute inset-0 grid place-items-center bg-black/10 transition-colors hover:bg-black/20 focus-visible:outline-none"
+        >
+          <span className="flex items-center gap-2.5 rounded-full bg-[#1f392d] py-3 pr-6 pl-4 text-[15px] font-semibold text-white shadow-[0_12px_32px_-8px_rgba(31,57,45,0.6)] ring-4 ring-white/70 transition-transform group-hover:scale-105 group-focus-within:ring-white">
+            <span className="grid size-9 place-items-center rounded-full bg-white text-[#1f392d]">
+              <Play className="size-4 translate-x-px fill-current" aria-hidden />
+            </span>
+            {started ? "Resume demo" : "Play demo"}
+          </span>
+        </button>
+      )}
+
+      {/* Small pause control while playing */}
+      {playing && (
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label="Pause demo"
+          className="absolute right-3 bottom-3 grid size-10 place-items-center rounded-full bg-black/60 text-white backdrop-blur transition hover:bg-black/80 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+        >
+          <Pause className="size-4" aria-hidden />
+        </button>
+      )}
     </div>
   )
 }

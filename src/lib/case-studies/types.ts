@@ -111,6 +111,8 @@ export type Block =
       /** `featured` colours are shown as the large swatches (up to 4, in order) */
       items: { name: string; hex?: string; tone?: Tone; use: string; featured?: boolean }[]
     }
+  /** Presentation mockup: huge title behind a laptop on a glowing podium; the screen is a real screenshot */
+  | { type: "laptopStage"; title: [string, string]; chips?: string[]; image: Img; caption?: string }
   /** Real product media in a browser frame: one item full width, two side by side */
   | {
       type: "media"

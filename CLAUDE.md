@@ -63,7 +63,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
   - Research: `findings`, `interviews`, `quotes`, `perspective`, `personas`, `quadrants`
   - Process and systems: `phases`, `visualSystem`, `designSystem`
   - Mobile and motion: `phoneFlow`, `video`, `showcase`, `homeBoard`
-  - Added for Deep Research (generic, reusable): `flow`, `principle`, `shift`, `insights`, `journey`, `tree`, `media` (real screenshots and demo clips in a browser frame; 1 item full width, 2 side by side), `specs`, `typeHierarchy`, `palette` (rendered as a colour stage), `problemSolution`, `steps`; `personas` also accepts `about`, `facts`, `needs`, `quote` for a rich single-persona card
+  - Added for Deep Research (generic, reusable): `flow`, `principle`, `shift`, `insights`, `journey`, `tree`, `media` (real screenshots and demo clips in a browser frame, always one per row at full width; videos are click-to-play, never autoplay), `laptopStage` (Neoverse-style mockup: huge green-neon/beige title behind a coded laptop on a glowing podium, real dark-mode screenshot on the screen), `specs`, `typeHierarchy`, `palette` (rendered as a colour stage), `problemSolution`, `steps`; `personas` also accepts `about`, `facts`, `needs`, `quote` for a rich single-persona card
 - `src/lib/case-studies/*.ts` hold the case study data files; register new ones in `index.ts`.
 - Page template: `src/app/work/[slug]/page.tsx`. It shows:
   - Header meta: overview, role, team, timeline
@@ -78,7 +78,7 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
   - `arc-user-flow.tsx`: coded SVG flowchart with scalloped "burst" nodes, colour-coded by area, and dashed shortcuts
   - `design-system.tsx`: typography, colour capsules with photos, and Lucide icon grid
   - `mobile-blocks.tsx`: PhoneFlowView, VideoView, ShowcaseView, HomeBoardView
-  - `deep-research/`: `blocks.tsx` (the new block renderers), `media.tsx` + `demo-video.tsx` (screenshots open full size; clips play only while on screen, MP4 with a WebM fallback, pause button, reduced motion), `diagrams.tsx` (core research flow lanes), `fonts.ts` (Inter), `showcase.tsx` (reference-board styles: problem/solution split, pill-and-connector user flow `dr-journey-map`, colour stage)
+  - `deep-research/`: `blocks.tsx` (the new block renderers), `media.tsx` + `demo-video.tsx` (screenshots open full size; clips are click-to-play with a large Play button, pause when scrolled away, MP4 with a WebM fallback), `diagrams.tsx` (core research flow lanes), `fonts.ts` (Inter), `showcase.tsx` (reference-board styles: problem/solution split, pill-and-connector user flow `dr-journey-map`, colour stage)
   - `loop-video.tsx`: client component that sets `muted` and calls `play()`, because React doesn't SSR `muted`; it respects reduced motion
 
 ## Case studies so far
@@ -99,7 +99,8 @@ The site is inspired by https://www.benshih.design/: its layout patterns, type s
 3. **SCINODE Deep Research** (`/work/deep-research`), Scimplify, 0 → 1 AI research workspace for chemists. Source: Sathi's own write-up (Oct 2026).
    - Condensed (Oct 2026) at Sathi's request: short, simple words, framed as "Designing a GenAI product", 8 sections. Keep it scannable; don't re-add long lists.
    - Visual style follows her reference boards: soft lavender-to-cream stages, large light headings, pill nodes, rounded colour squares. Reference charts with percentages (validation, sentiment, usability groups) are NOT used until she provides real results.
-   - Real product media only (never recreate product UI): from Sathi's walkthrough video (5:12, 1080p). 12 stills in `public/case-studies/deep-research/screens/` (1920×1080 JPEG q90) and 6 clips in `clips/` (1600 wide, H.264 CRF 25 + VP9 WebM, muted, waits sped up, posters at 35%).
+   - Real product media only (never recreate product UI): from Sathi's walkthrough video (5:12, 1080p). The source video has non-square pixels (SAR 1629:1384): always extract with `scale=trunc(iw*sar/2)*2:ih,setsar=1`, giving 2258×1080 stills and 1600×766 clips (H.264 CRF 25 + VP9 WebM, muted, waits sped up, posters `*-poster-v2.jpg` at 35%). Sathi prefers one video per feature over screenshot + video.
+   - `screens/home-dark.jpg` is the home screen converted to dark mode (neutral pixels inverted in LAB and tinted green-black, coloured buttons and chips kept), used in the section 1 laptop mockup.
    - Hero `hero-lab.jpg`: Sathi's lab stock photo with the Modify Path screenshot perspective-warped onto the green screen (OpenCV); glass tubes in front are kept by chroma-keying only the bottom-left. Also used as the home card and link preview image.
    - Palette hexes are sampled from the screenshots: deep green #1F392D (actions, chat), purple #4A307D (modes), lavender #AA92E7 (steps), warm white #FCFAF6.
    - No adoption metrics: "Project at a glance" shows scope facts (0 → 1, 8 stages, 9 screens, UX → code).
