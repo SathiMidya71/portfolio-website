@@ -102,7 +102,7 @@ export type Block =
   /** Full-width photo with a coded label card (coloured words) over its lower left corner */
   | { type: "photoBanner"; image: Img; eyebrow?: string; words: { text: string; color: string }[]; text?: string }
   /** Text beside a screen (tablet mock-up cut-outs); `side` is where the image sits from md up */
-  | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[] }
+  | { type: "split"; side: "left" | "right"; images: Img[]; title?: string; text: string[]; list?: string[]; /** Show each image as the screen of a coded silver tablet */ tablet?: boolean }
   /** A white board with an icon, heading and subtext above floating cards, arranged in columns */
   | {
       type: "statsPanel"

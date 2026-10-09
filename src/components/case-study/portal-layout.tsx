@@ -39,6 +39,34 @@ function Screen({ img, sizes }: { img: Img; sizes: string }) {
   return <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className={cn("h-auto w-full", shadow)} />
 }
 
+/* ---------------- tablet mock-up ---------------- */
+
+/** A coded tablet: metallic silver bezel, front camera, glass highlight and a soft floor shadow. */
+export function Tablet({ img, sizes }: { img: Img; sizes: string }) {
+  return (
+    <div className="relative [container-type:inline-size]">
+      {/* floor shadow */}
+      <span aria-hidden className="absolute inset-x-[6%] -bottom-[4%] h-[10%] rounded-[50%] bg-black/25 blur-2xl" />
+      <div
+        className="relative rounded-[5cqw] p-[3cqw]"
+        style={{
+          background: "linear-gradient(145deg, #fbfbfc 0%, #d9dce1 18%, #f1f2f4 38%, #b9bdc4 62%, #e9ebee 82%, #c6cad0 100%)",
+          boxShadow:
+            "inset 0 0 0 1px rgba(255,255,255,0.9), inset 0 0 0 0.35cqw rgba(140,146,156,0.35), 0 2px 4px rgba(16,24,40,0.08), 0 30px 60px -24px rgba(16,24,40,0.35)",
+        }}
+      >
+        {/* front camera */}
+        <span aria-hidden className="absolute top-[1.1cqw] left-1/2 size-[0.9cqw] -translate-x-1/2 rounded-full bg-[#2b2f36] ring-[0.25cqw] ring-[#9aa0a8]" />
+        <div className="relative overflow-hidden rounded-[2cqw] bg-white ring-1 ring-black/10">
+          <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className="block h-auto w-full" />
+          {/* glass highlight */}
+          <span aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_38%)]" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /* ---------------- split ---------------- */
 
 type SplitBlock = Extract<Block, { type: "split" }>
@@ -49,7 +77,7 @@ export function SplitView({ block }: { block: SplitBlock }) {
   return (
     <div ref={ref} className="my-10 grid items-center gap-8 md:my-14 md:grid-cols-[1.35fr_1fr] md:gap-12">
       <div
-        className={cn("grid gap-6", left ? "md:order-1 md:[--slide:-40px]" : "md:order-2 md:[--slide:40px]")}
+        className={cn("grid gap-10", left ? "md:order-1 md:[--slide:-40px]" : "md:order-2 md:[--slide:40px]")}
         style={{
           opacity: shown ? 1 : 0,
           // sideways slide from md up only, so nothing pokes past a phone screen
@@ -57,9 +85,13 @@ export function SplitView({ block }: { block: SplitBlock }) {
           transition: "opacity 700ms ease, translate 900ms cubic-bezier(.2,.7,.2,1)",
         }}
       >
-        {block.images.map((img) => (
-          <Screen key={img.src} img={img} sizes="(min-width: 1200px) 560px, (min-width: 768px) 55vw, 100vw" />
-        ))}
+        {block.images.map((img) =>
+          block.tablet ? (
+            <Tablet key={img.src} img={img} sizes="(min-width: 1200px) 560px, (min-width: 768px) 55vw, 100vw" />
+          ) : (
+            <Screen key={img.src} img={img} sizes="(min-width: 1200px) 560px, (min-width: 768px) 55vw, 100vw" />
+          )
+        )}
       </div>
       <div
         className={cn(left ? "md:order-2" : "md:order-1")}
